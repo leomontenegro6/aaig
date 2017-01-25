@@ -2,10 +2,10 @@ Programa desenvolvido para agilizar na edição de imagens do jogo "Ace Attorney
 
 "Ace Attorney Trilogy" é um jogo bastante extenso, com centenas de imagens com textos a ser editadas:
 
-*   Botões brancos com textos em vermelho cor-de-vinho; ![](img/background_botoes_preenchido.png)
-*   Nomes de provas / perfis, com fundo cinza escuro e textos em cor laranja; ![](img/background_nomes_preenchido.png)
-*   Subtítulos de provas / perfis, com fundo verde claro e textos em cor cinza escuro; ![](img/background_subtitulos_preenchido.png)
-*   Descrições de provas, com fundo cinza escuro e textos em cor branca; ![](img/background_descricao_preenchido.png)
+*   Botões brancos com textos em vermelho cor-de-vinho;
+*   Nomes de provas / perfis, com fundo cinza escuro e textos em cor laranja;
+*   Subtítulos de provas / perfis, com fundo verde claro e textos em cor cinza escuro;
+*   Descrições de provas, com fundo cinza escuro e textos em cor branca;
 
 A maneira tradicional de editar esses gráficos é através de arquivos .PSD via Adobe Photoshop, o que acaba sendo um trabalho extremamente repetitivo e cansativo para os romhackers. Foi justamente pensando em otimizar estes processos que eu criei este software.
 
@@ -45,5 +45,3 @@ Caso encontre algum bug, você pode me encontrar nos endereços:
 
 *   [Fórum Unificado de Romhacking e Tradução](http://www.romhacking.net.br/)
 *   [Chat do FURT, hospedado no Discord](https://discord.gg/0V2rK6RK47Okravl)
-
-Ou alternativamente, através do meu e-mail [leomontenegro6@gmail.com](leomontenegro6@gmail.com)

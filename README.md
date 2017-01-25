@@ -2,7 +2,7 @@
 
 **Programa desenvolvido para agilizar na edição de imagens do jogo "Ace Attorney Trilogy", para Nintendo 3DS.**
 
-[Prévia ao vivo](www.romhacking.net.br/tools/aaig/)
+[Prévia ao vivo](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" é um jogo bastante extenso, com centenas de imagens com textos a ser editadas:
 

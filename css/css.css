@@ -1,0 +1,107 @@
+@font-face {
+    font-family: "Vald Book";
+    src: url('../fonts/Vaud-Book.ttf');
+}
+
+#conteiner_botao{
+	display: inline-block;
+	vertical-align: top;
+	width: 512px;
+	height: 32px;
+	background-image: url('../img/background_botoes.png');
+}
+#conteiner_botao div.texto{
+	width: 280px;
+	font-family: Arial;
+	text-align: center;
+	font-size: 23px;
+	color: #802B00;
+	transform-origin: 0 0;
+}
+
+#conteiner_botao_menor{
+	display: inline-block;
+	vertical-align: top;
+	width: 256px;
+	height: 32px;
+	background-image: url('../img/background_botoes_menores.png');
+}
+#conteiner_botao_menor div.texto{
+	width: 160px;
+	font-family: Arial;
+	text-align: center;
+	font-size: 23px;
+	color: #802B00;
+	transform-origin: 0 0;
+}
+
+#conteiner_nome{
+	display: inline-block;
+	vertical-align: top;
+	width: 256px;
+	height: 32px;
+	background-image: url('../img/background_nomes.png');
+}
+#conteiner_nome div.texto{
+	width: 160px;
+	font-family: "Vald Book";
+	text-align: center;
+	font-size: 18px;
+	color: #E4A018;
+	transform-origin: 0 0;
+}
+
+#conteiner_subtitulo{
+	display: inline-block;
+	vertical-align: top;
+	width: 256px;
+	height: 64px;
+	background-image: url('../img/background_subtitulos.png');
+}
+#conteiner_subtitulo div.texto{
+	width: 160px;
+	font-family: "Vald Book";
+	font-size: 14px;
+	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
+	color: #444;
+	line-height: 1.35;
+	transform-origin: 0 0;
+}
+
+#conteiner_descricao{
+	display: inline-block;
+	vertical-align: top;
+	width: 512px;
+	height: 128px;
+	background-image: url('../img/background_descricao.png');
+}
+#conteiner_descricao.fundo_cinza_escuro{
+	background-color: #444;
+}
+#conteiner_descricao div.texto{
+	width: 238.139534884px; /* 256 dividido por (scaleX) */
+	font-family: "Vald Book";
+	font-size: 14px;
+	color: #eee;
+	line-height: 1.35;
+	transform: scaleX(1.075);
+	transform-origin: 0 0;
+}
+
+.negrito{
+	font-weight: bold;
+}
+
+.italico{
+	font-style: italic;
+}
+
+/* Regras para dispositivos mobile */
+@media (max-width: 480px) {
+	#header ul.title, #header ul.title>li{
+		display: inline-block;
+	}
+	#header ul.about{
+		float: right;
+	}
+}

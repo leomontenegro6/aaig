@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gerador de Imagens do Ace Attorney</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+		
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicons/apple-touch-icon-57x57.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicons/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicons/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicons/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicons/apple-touch-icon-60x60.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicons/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicons/apple-touch-icon-76x76.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicons/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="favicons/favicon-196x196.png" sizes="196x196" />
+		<link rel="icon" type="image/png" href="favicons/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/png" href="favicons/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="favicons/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="favicons/favicon-128.png" sizes="128x128" />
+		<meta name="application-name" content="&nbsp;"/>
+		<meta name="msapplication-TileColor" content="#FFFFFF" />
+		<meta name="msapplication-TileImage" content="favicons/mstile-144x144.png" />
+		<meta name="msapplication-square70x70logo" content="favicons/mstile-70x70.png" />
+		<meta name="msapplication-square150x150logo" content="favicons/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="favicons/mstile-310x150.png" />
+		<meta name="msapplication-square310x310logo" content="favicons/mstile-310x310.png" />
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-slider.min.css">
+		<link rel="stylesheet" href="css/css.css?a=3">
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
+		<script type="text/javascript" src="js/html2canvas.js"></script>
+		<script type="text/javascript" src="js/modal.js"></script>
+		<script type="text/javascript" src="js/aaig.js?a=3"></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="container-fluid">
+				<nav id="header" class="navbar-collapse">
+					<ul class="nav navbar-nav title">
+						<li>
+							<a class="navbar-brand" href="#" style="padding-top: 0;">
+								<img src="favicons/brand.png" />
+							</a>
+						</li>
+						<li>
+							<a class="navbar-brand" href="#">
+								<span class="hidden-xs">
+									Gerador de Imagens do Ace Attorney v0.3.2
+								</span>
+								<span class="visible-xs">
+									GIAA v0.3.2
+								</span>
+							</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right about">
+						<li>
+							<a class="navbar-brand" href="#" title="Sobre este programa" id="sobre_programa">
+								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</nav>
+		<div class="container">
+			
+			<!-- Abas -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#botoes" aria-controls="botoes" role="tab" data-toggle="tab">Botões</a></li>
+				<li role="presentation"><a href="#botoes_menores" aria-controls="botoes_menores" role="tab" data-toggle="tab">Botões Menores</a></li>
+				<li role="presentation"><a href="#nome_prova" aria-controls="nome_prova" role="tab" data-toggle="tab">Nome da Prova / Perfil</a></li>
+				<li role="presentation"><a href="#subtitulo_prova" aria-controls="subtitulo_prova" role="tab" data-toggle="tab">Subtítulo da Prova / Perfil</a></li>
+				<li role="presentation"><a href="#descricao_prova" aria-controls="descricao_prova" role="tab" data-toggle="tab">Descrição da Prova / Perfil</a></li>
+			</ul>
+
+			<!-- Contêiners das abas -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="botoes">
+					<!-- Botões -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form_botoes">
+								<div class="form-group">
+									<label for="texto_botoes" class="control-label">Texto do botão:</label>
+									<input type="text" name="texto_botoes" id="texto_botoes" class="form-control"
+										placeholder="Digite o texto a aparecer no botão" />
+								</div>
+								<div class="form-group">
+									<label for="escala_botao" class="control-label">Escala:&nbsp;&nbsp;</label>
+									<input type="text" id="escala_botao" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao" />
+								</div>
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="fonte_botao" class="control-label">Fonte:</label>
+									<select id="fonte_botao" name="fonte_botao" class="form-control">
+										<option value="Arial" selected>Arial (Recomendada)</option>
+										<option value="Vald Book">Vald Book</option>
+										<option value="_o_">Outra</option>
+									</select>
+									<input type="text" id="outra_fonte_botao" class="form-control"
+										placeholder="Digite o nome da fonte" style="display: none" />
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default" title="Negrito">
+											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_botao" />Negrito
+										</label>
+										<label class="btn btn-default" title="Itálico">
+											<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_botao" />Itálico
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="margem_superior_botao" class="control-label">Margem Superior:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="top" data-imagem="conteiner_botao" />
+								</div>
+								<div class="form-group">
+									<label for="margem_esquerdo_botao" class="control-label">Margem Esquerda:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="bottom" data-imagem="conteiner_botao" />
+								</div>
+								<button type="button" id="botao_gerar_botoes" class="btn btn-primary" aria-label="Gerar">
+									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									Gerar
+								</button>
+								<button type="reset" class="btn btn-default" aria-label="Resetar">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Resetar
+								</button>
+							</form>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">Prévia</div>
+							<div class="panel-body">
+								<div id="conteiner_botao">
+									<div class="texto" data-largura="280"></div>
+								</div>
+								<br /><br />
+								<img src="img/background_botoes_preenchido.png" class="botao_template" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="botoes_menores">
+					<!-- Botões Menores -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form_botoes_menores">
+								<div class="form-group">
+									<label for="texto_botoes_menores" class="control-label">Texto do botão:</label>
+									<input type="text" name="texto_botoes_menores" id="texto_botoes_menores" class="form-control"
+										placeholder="Digite o texto a aparecer no botão" />
+								</div>
+								<div class="form-group">
+									<label for="escala_botao_menor" class="control-label">Escala:&nbsp;&nbsp;</label>
+									<input type="text" id="escala_botao_menor" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao_menor" />
+								</div>
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="fonte_botao_menor" class="control-label">Fonte:</label>
+									<select id="fonte_botao_menor" name="fonte_botao_menor" class="form-control">
+										<option value="Arial" selected>Arial (Recomendada)</option>
+										<option value="Vald Book">Vald Book</option>
+										<option value="_o_">Outra</option>
+									</select>
+									<input type="text" id="outra_fonte_botao_menor" class="form-control"
+										placeholder="Digite o nome da fonte" style="display: none" />
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default" title="Negrito">
+											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_botao_menor" />Negrito
+										</label>
+										<label class="btn btn-default" title="Itálico">
+											<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_botao_menor" />Itálico
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="margem_superior_botao" class="control-label">Margem Superior:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="top" data-imagem="conteiner_botao_menor" />
+								</div>
+								<div class="form-group">
+									<label for="margem_esquerdo_botao" class="control-label">Margem Esquerda:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="bottom" data-imagem="conteiner_botao_menor" />
+								</div>
+								<button type="button" id="botao_gerar_botoes_menores" class="btn btn-primary" aria-label="Gerar">
+									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									Gerar
+								</button>
+								<button type="reset" class="btn btn-default" aria-label="Resetar">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Resetar
+								</button>
+							</form>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">Prévia</div>
+							<div class="panel-body">
+								<div id="conteiner_botao_menor">
+									<div class="texto" data-largura="160"></div>
+								</div>
+								<br /><br />
+								<img src="img/background_botoes_menores_preenchido.png" class="botao_template" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="nome_prova">
+					<!-- Nomes das Provas / Perfis -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form_nome_prova">
+								<div class="form-group">
+									<label for="texto_nome" class="control-label">Texto do nome da prova / perfil:</label>
+									<input type="text" name="texto_nome" id="texto_nome" class="form-control" placeholder="Digite o texto a aparecer no nome da prova / perfil" />
+								</div>
+								<div class="form-group">
+									<label for="escala_nome" class="control-label">Escala:&nbsp;&nbsp;</label>
+									<input type="text" id="escala_nome" class="slider escala" data-slider-min="0.500" data-slider-max="1.200"
+										data-slider-step="0.005" data-slider-value="1.045" data-imagem="conteiner_nome" />
+								</div>
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="fonte_nome" class="control-label">Fonte:</label>
+									<select id="fonte_nome" name="fonte_nome" class="form-control">
+										<option value="Arial">Arial</option>
+										<option value="Vald Book" selected>Vald Book (Recomendada)</option>
+										<option value="_o_">Outra</option>
+									</select>
+									<input type="text" id="outra_fonte_nome" class="form-control"
+										placeholder="Digite o nome da fonte" style="display: none" />
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default" title="Negrito">
+											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_nome" />Negrito
+										</label>
+										<label class="btn btn-default" title="Itálico">
+											<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_nome" />Itálico
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="margem_superior_botao" class="control-label">Margem Superior:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="top" data-imagem="conteiner_nome" />
+								</div>
+								<div class="form-group">
+									<label for="margem_esquerdo_botao" class="control-label">Margem Esquerda:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+										data-slider-tooltip-position="bottom" data-imagem="conteiner_nome" />
+								</div>
+								<button type="button" id="botao_gerar_nome" class="btn btn-primary" aria-label="Gerar">
+									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									Gerar
+								</button>
+								<button type="reset" class="btn btn-default" aria-label="Resetar">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Resetar
+								</button>
+							</form>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">Prévia</div>
+							<div class="panel-body">
+								<div id="conteiner_nome">
+									<div class="texto" data-largura="160"></div>
+								</div>
+								<br /><br />
+								<img src="img/background_nomes_preenchido.png" class="botao_template" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="subtitulo_prova">
+					<!-- Subtítulos das Provas / Subtítulos -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form_subtitulo_prova">
+								<div class="form-group">
+									<label for="texto_subtitulo" class="control-label">Texto do subtítulo da prova / perfil:</label>
+									<textarea name="texto_subtitulo" id="texto_subtitulo" class="form-control" rows="3" placeholder="Digite o texto a aparecer no subtítulo da prova / perfil"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="escala_subtitulo" class="control-label">Escala:&nbsp;&nbsp;</label>
+									<input type="text" id="escala_subtitulo" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_subtitulo" />
+								</div>
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="fonte_subtitulo" class="control-label">Fonte:</label>
+									<select id="fonte_subtitulo" name="fonte_subtitulo" class="form-control">
+										<option value="Arial">Arial</option>
+										<option value="Vald Book" selected>Vald Book (Recomendada)</option>
+										<option value="_o_">Outra</option>
+									</select>
+									<input type="text" id="outra_fonte_subtitulo" class="form-control"
+										placeholder="Digite o nome da fonte" style="display: none" />
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default" title="Negrito">
+											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_subtitulo" />Negrito
+										</label>
+										<label class="btn btn-default" title="Itálico">
+											<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_subtitulo" />Itálico
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="margem_superior_botao" class="control-label">Margem Superior:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="4"
+										data-slider-tooltip-position="top" data-imagem="conteiner_subtitulo" />
+								</div>
+								<div class="form-group">
+									<label for="margem_esquerdo_botao" class="control-label">Margem Esquerda:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="2"
+										data-slider-tooltip-position="bottom" data-imagem="conteiner_subtitulo" />
+								</div>
+								<button type="button" id="botao_gerar_subtitulo" class="btn btn-primary" aria-label="Gerar">
+									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									Gerar
+								</button>
+								<button type="reset" class="btn btn-default" aria-label="Resetar">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Resetar
+								</button>
+							</form>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">Prévia</div>
+							<div class="panel-body">
+								<div id="conteiner_subtitulo">
+									<div class="texto" data-largura="160"></div>
+								</div>
+								<br /><br />
+								<img src="img/background_subtitulos_preenchido.png" class="botao_template" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="descricao_prova">
+					<!-- Descrição da Prova / Perfil -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<form class="form_descricao_prova">
+								<div class="form-group">
+									<label for="texto_descricao" class="control-label">Texto da descrição da prova / perfil:</label>
+									<textarea name="texto_descricao" id="texto_descricao" class="form-control" rows="3" placeholder="Digite o texto a aparecer na descrição da prova / perfil"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="escala_descricao" class="control-label">Escala:&nbsp;&nbsp;</label>
+									<input type="text" id="escala_descricao" class="slider escala" data-slider-min="0.500" data-slider-max="1.075"
+										data-slider-step="0.005" data-slider-value="1.075" data-imagem="conteiner_descricao" />
+								</div>
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="fonte_descricao" class="control-label">Fonte:</label>
+									<select id="fonte_descricao" name="fonte_descricao" class="form-control">
+										<option value="Arial">Arial</option>
+										<option value="Vald Book" selected>Vald Book (Recomendada)</option>
+										<option value="_o_">Outra</option>
+									</select>
+									<input type="text" id="outra_fonte_descricao" class="form-control"
+										placeholder="Digite o nome da fonte" style="display: none" />
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default" title="Negrito">
+											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_descricao" />Negrito
+										</label>
+										<label class="btn btn-default" title="Itálico">
+											<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_descricao" />Itálico
+										</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="margem_superior_botao" class="control-label">Margem Superior:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="3"
+										data-slider-tooltip-position="top" data-imagem="conteiner_descricao" />
+								</div>
+								<div class="form-group">
+									<label for="margem_esquerdo_botao" class="control-label">Margem Esquerda:&nbsp;&nbsp;</label>
+									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="23"
+										data-slider-tooltip-position="bottom" data-imagem="conteiner_descricao" />
+								</div>
+								<button type="button" id="botao_gerar_descricao" class="btn btn-primary" aria-label="Gerar">
+									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+									Gerar
+								</button>
+								<button type="reset" class="btn btn-default" aria-label="Resetar">
+									<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+									Resetar
+								</button>
+							</form>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">Prévia</div>
+							<div class="panel-body">
+								<div id="conteiner_descricao" class="fundo_cinza_escuro">
+									<div class="texto" data-largura="256"></div>
+								</div>
+								<br /><br />
+								<img src="img/background_descricao_preenchido.png" class="botao_template" style="background: #444" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

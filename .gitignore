@@ -2,3 +2,25 @@
 # para auxiliar no processo de commit
 *.sh
 *.bat
+
+# Fontes proprietárias
+fonts/AlteHaasGroteskRegular.eot
+fonts/AlteHaasGroteskRegular.otf
+fonts/AlteHaasGroteskRegular.svg
+fonts/AlteHaasGroteskRegular.ttf
+fonts/AlteHaasGroteskRegular.woff
+fonts/helvetica-normal.eot
+fonts/helvetica-normal.otf
+fonts/helvetica-normal.svg
+fonts/helvetica-normal.ttf
+fonts/helvetica-normal.woff
+fonts/univers-light-normal.eot
+fonts/univers-light-normal.otf
+fonts/univers-light-normal.svg
+fonts/univers-light-normal.ttf
+fonts/univers-light-normal.woff
+fonts/whitney-medium.eot
+fonts/whitney-medium.otf
+fonts/whitney-medium.svg
+fonts/whitney-medium.ttf
+fonts/whitney-medium.woff

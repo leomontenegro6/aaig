@@ -94,11 +94,11 @@ $(function(){
 	var $divTextoDescricao = $divDescricao.children('div.texto');
 	
 	// Definindo texto padrão para os campos
-	$inputTextoBotoes.val('Phoenix Wright');
-	$inputTextoBotoesMenores.val("Chief's Office");
-	$inputTextoNome.val("Fingerprinting Set");
-	$textareaSubtitulo.val('Age: 27\nGender: Female');
-	$textareaDescricao.val('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
+	$inputTextoBotoes.attr('value', 'Phoenix Wright');
+	$inputTextoBotoesMenores.attr('value', "Chief's Office");
+	$inputTextoNome.attr('value', 'Fingerprinting Set');
+	$textareaSubtitulo.html('Age: 27\nGender: Female');
+	$textareaDescricao.html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
 	
 	// Evento do botão "Sobre este programa"
 	$ancoraSobrePrograma.on('click', function(){
@@ -168,54 +168,67 @@ $(function(){
 		}
 	});
 	
-	// Evento dos campos de seleção de fonte
-	$selectFonteBotoes.on('change', function(){
-		var fonte = this.value;
-		if(fonte == '_o_'){
-			$inputOutraFonteBotoes.show();
-		} else {
-			$inputOutraFonteBotoes.val('').hide();
-			$divTextoBotao.css('fontFamily', fonte);
-		}
+	// Configurando campos de seleção de fonte
+	$selectFonteBotoes.add($selectFonteBotoesMenores).add($selectFonteNome).add($selectFonteSubtitulo).add($selectFonteDescricao).html(
+		$("<option />").html('Carregando...').attr({
+			'value': '',
+			'selected': 'selected',
+			'disabled': 'disabled'
+		})
+	);
+	$.get('fonts.html', function(r){
+		// Obtendo fontes carregadas via ajax
+		$selectFonteBotoes.add($selectFonteBotoesMenores).add($selectFonteNome).add($selectFonteSubtitulo).add($selectFonteDescricao).html(r);
 		
-	});
-	$selectFonteBotoesMenores.on('change', function(){
-		var fonte = this.value;
-		if(fonte == '_o_'){
-			$inputOutraFonteBotoesMenores.show();
-		} else {
-			$inputOutraFonteBotoesMenores.val('').hide();
-			$divTextoBotaoMenor.css('fontFamily', fonte);
-		}
-		
-	});
-	$selectFonteNome.on('change', function(){
-		var fonte = this.value;
-		if(fonte == '_o_'){
-			$inputOutraFonteNome.show();
-		} else {
-			$inputOutraFonteNome.val('').hide();
-			$divTextoNome.css('fontFamily', fonte);
-		}
-	});
-	$selectFonteSubtitulo.on('change', function(){
-		var fonte = this.value;
-		if(fonte == '_o_'){
-			$inputOutraFonteSubtitulo.show();
-		} else {
-			$inputOutraFonteSubtitulo.val('').hide();
-			$divTextoSubtitulo.css('fontFamily', fonte);
-		}
-	});
-	$selectFonteDescricao.on('change', function(){
-		var fonte = this.value;
-		if(fonte == '_o_'){
-			$inputOutraFonteDescricao.show();
-		} else {
-			$inputOutraFonteDescricao.val('').hide();
-			$divTextoDescricao.css('fontFamily', fonte);
-		}
-	});
+		// Setando valor e evento nos campos.
+		$selectFonteBotoes.val('Arial').on('change', function(){
+			var fonte = this.value;
+			if(fonte == '_o_'){
+				$inputOutraFonteBotoes.show();
+			} else {
+				$inputOutraFonteBotoes.val('').hide();
+				$divTextoBotao.css('fontFamily', fonte);
+			}
+
+		});
+		$selectFonteBotoesMenores.val('Arial').on('change', function(){
+			var fonte = this.value;
+			if(fonte == '_o_'){
+				$inputOutraFonteBotoesMenores.show();
+			} else {
+				$inputOutraFonteBotoesMenores.val('').hide();
+				$divTextoBotaoMenor.css('fontFamily', fonte);
+			}
+
+		});
+		$selectFonteNome.val('Vald Book').on('change', function(){
+			var fonte = this.value;
+			if(fonte == '_o_'){
+				$inputOutraFonteNome.show();
+			} else {
+				$inputOutraFonteNome.val('').hide();
+				$divTextoNome.css('fontFamily', fonte);
+			}
+		});
+		$selectFonteSubtitulo.val('Vald Book').on('change', function(){
+			var fonte = this.value;
+			if(fonte == '_o_'){
+				$inputOutraFonteSubtitulo.show();
+			} else {
+				$inputOutraFonteSubtitulo.val('').hide();
+				$divTextoSubtitulo.css('fontFamily', fonte);
+			}
+		});
+		$selectFonteDescricao.val('Vald Book').on('change', function(){
+			var fonte = this.value;
+			if(fonte == '_o_'){
+				$inputOutraFonteDescricao.show();
+			} else {
+				$inputOutraFonteDescricao.val('').hide();
+				$divTextoDescricao.css('fontFamily', fonte);
+			}
+		});
+	})
 	
 	// Evento dos campos de digitação de outras fontes
 	$inputOutraFonteBotoes.on('keyup', function(){
@@ -291,13 +304,15 @@ $(function(){
 		});
 	});
 	
+	// Ação dos botões "resetar"
 	$formularios.on('reset', function(){
 		var $form = $(this);
 		setTimeout(function(){
 			$form.find("input[type='text'], input[type='checkbox'], select, textarea").each(function(){
 				var $campo = $(this);
-				if($campo.hasClass('slider')) $campo.slider('refresh');
-				if($campo.is('select')){
+				if($campo.is('input.slider')){
+					$campo.slider('refresh').trigger('change');
+				} else if($campo.is('select')){
 					$campo.trigger('change');
 				} else if($campo.is("input[type='checkbox']")){
 					$campo.prop('checked', false).closest('label').removeClass('active');

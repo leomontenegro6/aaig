@@ -1,52 +1,55 @@
-# Gerador de Imagens do Ace Attorney
+# Ace Attorney Image Generator
 
-**Programa desenvolvido para agilizar na edição de imagens do jogo "Ace Attorney Trilogy", para Nintendo 3DS.**
+**Program created to increase speed edition of images from Nintendo 3DS game "Ace Attorney Trilogy".**
 
-[Prévia ao vivo](http://www.romhacking.net.br/tools/aaig/)
+*Read this in other languages: [Português do Brasil](README.pt-br.md), [Español](README.es.md).*
 
-"Ace Attorney Trilogy" é um jogo bastante extenso, com centenas de imagens com textos a ser editadas:
+[Live preview](http://www.romhacking.net.br/tools/aaig/)
 
-*   Botões brancos com textos em vermelho cor-de-vinho;
-*   Nomes de provas / perfis, com fundo cinza escuro e textos em cor laranja;
-*   Subtítulos de provas / perfis, com fundo verde claro e textos em cor cinza escuro;
-*   Descrições de provas, com fundo cinza escuro e textos em cor branca;
+"Ace Attorney Trilogy" is a very big game, with lots of text images to be edited:
 
-A maneira tradicional de editar esses gráficos é através de arquivos .PSD via Adobe Photoshop, o que acaba sendo um trabalho extremamente repetitivo e cansativo para os romhackers. Foi justamente pensando em otimizar estes processos que eu criei este software.
+*   White buttons with text in wine red color;
+*   Proof / Profile names, with dark gray background and texts in orange color;
+*   Proof / Profile subtitles, with light green background and texts in dark gray color;
+*   Proof / Profile descriptions, with dark gray background and texts in white color;
 
-O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imagens no padrão do jogo "Ace Attorney Trilogy". Para isso, são utilizadas as seguintes tecnologias:
+The traditional way of editing those graphics is through .PSD files in Adobe Photoshop, which ends up being an extremely repetitive and tiresome task for romhackers. This was the main reason why I created this software.
 
-*   HTML5, para a montagem das páginas;
-*   CSS3, para a estilização dos textos nas imagens;
-*   JavaScript e [jQuery](https://jquery.com/), para a programação de campos e botões;
-*   [Html2canvas](http://html2canvas.hertzen.com/), para conversão de elementos HTML para imagens em PNG;
-*   [Bootstrap](http://getbootstrap.com/), para tornar esta página responsiva;
-*   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), para os campos de escala;
+The "Ace Attorney Image Generator" is a program that can generate imagens on the same patterns of "Ace Attorney Trilogy" game. For such task, the following technologies were used:
 
-#### Pré-Requisitos
+*   HTML5, for web page creation;
+*   CSS3, for text styling on images;
+*   JavaScript and [jQuery](https://jquery.com/), for fields' and buttons' programming;
+*   [Html2canvas](http://html2canvas.hertzen.com/), for converting HTML elements to PNG images;
+*   [Bootstrap](http://getbootstrap.com/), to become this page responsive;
+*   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), for scale and margin fields;
 
-*   Um navegador moderno atualizado. De preferência o Google Chrome, visto que em outros navegadores, como Mozilla Firefox, Safari ou Internet Explorer, poderão surgir algumas diferenças de comportamento de estilizações CSS;
-*   A fonte "Arial" instalada no seu computador. Necessária para a geração correta das imagens de botões por exemplo (Caso use Windows, desconsidere);
-*   A fonte "Vald Book" instalada no seu computador. Necessária para a geração correta das imagens de descrições de provas por exemplo;
-*   Um servidor web. O programa não funcionará se executado localmente pelo navegador do usuário¹.
+#### Prerequisites
 
-¹ Mesmo este programa sendo totalmente local, a forma como as imagens são geradas (conversão de elementos <canvas> para imagem PNG) viola certas [diretrizes de segurança de navegadores web](http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported) . Por isso, recomenda-se executar este programa a partir de um servidor web (Apache2 por exemplo), nem que seja apenas para servir os arquivos para os clientes.
+*   A modern updated web browser. Google Chrome is recommended, since a few CSS behaviour differences can be seen on other browsers such as Firefox, Safari or IE;
+*   The "Arial" font installed on your computer. Needed for the right generation of some kinds of images, such as buttons per example (If you're using any Windows SO, you can ignore this);
+*   The "Vaud Book" font installed on your computer. Needed for the right generation of some kinds of images, such as descriptions of proofs / profiles;
+*   A web server. This software won't work if ran locally by user's web browser¹.
 
-#### Como usar?
+¹ Even if this software being totally local, the method used for image generation (conversion of HTML &lt;canvas&gt; elements to PNG images) can trigger an [uncaught security error of tainted canvases](http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported) , denying any attempts of data exporting. Thus, we recommend to run this software through a web server (Apache2, per example), even if it's only to serve files to clients.
 
-1.  Selecione o tipo de imagem a ser gerada, clicando em uma das abas "Botões", "Nome da Prova / Perfil", etc;
-2.  No campo de texto, digite o texto a ser inserido na imagem;
-3.  Opcional: Altere a escala, fonte e margens de acordo com o texto digitado, se for o caso;
-4.  Opcional: Em caso de uso de fontes externas, siga os passos:
-    *   No campo "Fonte", escolha a opção "Outra";
-    *   Digite o nome da fonte no campo de texto que surgiu ao lado;
-    *   Uma vez que o nome tenha sido digitado corretamente, o navegador imediatamente deve fazer uso da mesma e replicar o resultado;
-5.  Ao realizar qualquer operação nos itens anteriores a este, a imagem é automaticamente atualizada na seção "Prévia". Verifique se a prévia está de acordo com o seu contexto, e altere os campos anteriores da maneira que lhe for conveniente;
-6.  Recomendado: Desfaça qualquer alteração de zoom do seu navegador, pois isto pode prejudicar a geração das imagens. Mantenha os níveis de zoom do seu browser sempre nos valores padrões (100%);
-7.  Clique no botão "Gerar", e a imagem será automaticamente gerada e salva em formato PNG, com o arquivo sendo nomeado de acordo com o texto digitado no campo de texto.
+#### How to use?
 
-#### Considerações gerais
+1.  Select image type, by clicking on any of the tabs "Buttons", "Proof / Profile Names", etc;
+2.  In the text field, type the text to be shown on the image;
+3.  Optional: If applicable, change values of scale, font and margins accordingly to the text you typed;
+4.  Optional: If you wish to use external fonts, do the following:
+    *   In "Font" field, choose "Another";
+    *   In the text field on the right, type the name of the font;
+    *   Once the font name is typed correctly, your browser will imediatelly make use of it, and show the result below;
+5.  After you change values of any form fields, the image is automatically updated on the "Preview" below. Change the form fields as you wish, and check if the preview matches your needs;
+6.  Recommended: Undo any custom zoom settings on your web browser, because this can result in wrongly-generated images. Keep your zoom settings always on default values (100%);
+7.  Click on "Generate" button, and the image will be automatically generated and saved on PNG format. The filename will be set accordingly to the text you typed on form fields;
+8.  Optional: If you messed with all default values, click on "Reset" button and all of them will be resetted to its default values.
 
-Caso encontre algum bug, você pode me encontrar nos endereços:
+#### Feedback
 
-*   [Fórum Unificado de Romhacking e Tradução](http://www.romhacking.net.br/)
-*   [Chat do FURT, hospedado no Discord](https://discord.gg/0V2rK6RK47Okravl)
+If you find any bug, you can find me on the addresses below:
+
+*   [Brazilian's Romhacking and Translation Forum (Fórum Unificado de Romhacking e Tradução - FURT)](http://www.romhacking.net.br/)
+*   [FURT's chat on Discord](https://discord.gg/0V2rK6RK47Okravl)

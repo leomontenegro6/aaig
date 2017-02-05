@@ -18,6 +18,34 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	});
 }
 
+function adicionarScriptIdioma(idioma, callback){
+	$.getScript('js/lang.' + idioma + '.js', function(){
+		if(callback) callback();
+	})
+}
+
+function removerScriptsIdiomas(){
+	$('head').find("script[src^='lang']").remove();
+}
+
+function atualizarIdioma(tipo){
+	for(var tipo in LANGUAGE){
+		var tipos = LANGUAGE[tipo];
+		for(var subtipo in tipos){
+			var texto = tipos[subtipo];
+			var seletor = '.' + tipo + '_' + subtipo;
+			
+			if(tipo == 'l'){
+				$(seletor).html(texto);
+			} else if(tipo == 't'){
+				$(seletor).attr('title', texto);
+			} else if(tipo == 'p'){
+				$(seletor).attr('placeholder', texto);
+			}
+		}
+	}
+}
+
 /* Função que retorna o dispositivo utilizado pelo usuário, para acessar o sistema
  * Valores possíveis de retorno:
  *	- xs: Extra small (Celulares, com largura de tela menor que 768px);
@@ -51,6 +79,10 @@ function getDispositivo(onresize) {
 $(function(){
 	// Campos diversos
 	var $ancoraSobrePrograma = $('#sobre_programa');
+	var $botaoIdioma = $('#botao_idioma');
+	var $imgBandeira = $botaoIdioma.children('img.bandeira');
+	var $spanNomeIdioma = $botaoIdioma.children('span.nome_idioma');
+	var $ulListaIdiomas = $('#lista_idiomas');
 	var $formularios = $('form');
 	
 	// Campos de botões
@@ -93,6 +125,25 @@ $(function(){
 	var $divDescricao = $('#conteiner_descricao');
 	var $divTextoDescricao = $divDescricao.children('div.texto');
 	
+	// Evento dos campos de seleção de idiomas
+	$ulListaIdiomas.find('a').on('click', function(e){
+		var $a = $(this);
+		var idioma = ( $a.attr('href') ).replace('#', '');
+		var imagem = $a.children('img').attr('src');
+		var nome_idioma = $a.children('span').html();
+		
+		$imgBandeira.attr('src', imagem);
+		$spanNomeIdioma.attr('data-valor', idioma).html(nome_idioma);
+		
+		removerScriptsIdiomas();
+		adicionarScriptIdioma(idioma, atualizarIdioma);
+
+		e.preventDefault();
+	});
+	
+	// Definindo textos do idioma padrão (Português)
+	atualizarIdioma();
+	
 	// Definindo texto padrão para os campos
 	$inputTextoBotoes.attr('value', 'Phoenix Wright');
 	$inputTextoBotoesMenores.attr('value', "Chief's Office");
@@ -102,7 +153,10 @@ $(function(){
 	
 	// Evento do botão "Sobre este programa"
 	$ancoraSobrePrograma.on('click', function(){
-		abrirModal('about.html');
+		var idioma = $spanNomeIdioma.attr('data-valor');
+		var titulo = LANGUAGE.m.titulo;
+		
+		abrirModal('about.' + idioma + '.html', titulo);
 	});
 
 	// Eventos dos campos de texto
@@ -180,8 +234,16 @@ $(function(){
 		// Obtendo fontes carregadas via ajax
 		$selectFonteBotoes.add($selectFonteBotoesMenores).add($selectFonteNome).add($selectFonteSubtitulo).add($selectFonteDescricao).html(r);
 		
-		// Setando valor e evento nos campos.
-		$selectFonteBotoes.val('Arial').on('change', function(){
+		// Gerando variáveis auxiliares
+		var fonte_padrao = '';
+		
+		// Setando valor e evento no campo de fonte para botões comuns
+		fonte_padrao = 'Arial';
+		$selectFonteBotoes.val(fonte_padrao);
+		var $opcaoSelecionada = $selectFonteBotoes.find('option:selected');
+		$opcaoSelecionada.addClass('recomendada');
+		$opcaoSelecionada[0].defaultSelected = true;
+		$selectFonteBotoes.on('change', function(){
 			var fonte = this.value;
 			if(fonte == '_o_'){
 				$inputOutraFonteBotoes.show();
@@ -191,7 +253,14 @@ $(function(){
 			}
 
 		});
-		$selectFonteBotoesMenores.val('Arial').on('change', function(){
+		
+		// Setando valor e evento no campo de fonte para botões menores
+		fonte_padrao = 'Arial';
+		$selectFonteBotoesMenores.val('Arial');
+		var $opcaoSelecionada = $selectFonteBotoesMenores.find('option:selected');
+		$opcaoSelecionada.addClass('recomendada');
+		$opcaoSelecionada[0].defaultSelected = true;
+		$selectFonteBotoesMenores.on('change', function(){
 			var fonte = this.value;
 			if(fonte == '_o_'){
 				$inputOutraFonteBotoesMenores.show();
@@ -201,7 +270,14 @@ $(function(){
 			}
 
 		});
-		$selectFonteNome.val('Vald Book').on('change', function(){
+		
+		// Setando valor e evento no campo de fonte para nomes de provas / perfis
+		fonte_padrao = 'Vald Book';
+		$selectFonteNome.val('Vald Book');
+		var $opcaoSelecionada = $selectFonteNome.find('option:selected');
+		$opcaoSelecionada.addClass('recomendada');
+		$opcaoSelecionada[0].defaultSelected = true;
+		$selectFonteNome.on('change', function(){
 			var fonte = this.value;
 			if(fonte == '_o_'){
 				$inputOutraFonteNome.show();
@@ -210,7 +286,14 @@ $(function(){
 				$divTextoNome.css('fontFamily', fonte);
 			}
 		});
-		$selectFonteSubtitulo.val('Vald Book').on('change', function(){
+		
+		// Setando valor e evento no campo de fonte para subtítulo de provas / perfis
+		fonte_padrao = 'Vald Book';
+		$selectFonteSubtitulo.val('Vald Book');
+		var $opcaoSelecionada = $selectFonteSubtitulo.find('option:selected');
+		$opcaoSelecionada.addClass('recomendada');
+		$opcaoSelecionada[0].defaultSelected = true;
+		$selectFonteSubtitulo.on('change', function(){
 			var fonte = this.value;
 			if(fonte == '_o_'){
 				$inputOutraFonteSubtitulo.show();
@@ -219,7 +302,14 @@ $(function(){
 				$divTextoSubtitulo.css('fontFamily', fonte);
 			}
 		});
-		$selectFonteDescricao.val('Vald Book').on('change', function(){
+		
+		// Setando valor e evento no campo de fonte para descrições de provas / perfis
+		fonte_padrao = 'Vald Book';
+		$selectFonteDescricao.val('Vald Book');
+		var $opcaoSelecionada = $selectFonteDescricao.find('option:selected');
+		$opcaoSelecionada.addClass('recomendada');
+		$opcaoSelecionada[0].defaultSelected = true;
+		$selectFonteDescricao.on('change', function(){
 			var fonte = this.value;
 			if(fonte == '_o_'){
 				$inputOutraFonteDescricao.show();
@@ -228,6 +318,9 @@ $(function(){
 				$divTextoDescricao.css('fontFamily', fonte);
 			}
 		});
+		
+		// Definindo textos das opções "Outra", dos campos de fonte
+		$('.l_opcao_outra_fonte').html(LANGUAGE.l.opcao_outra_fonte);
 	})
 	
 	// Evento dos campos de digitação de outras fontes

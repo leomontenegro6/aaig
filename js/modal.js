@@ -9,8 +9,8 @@
 
 function modal(){}
 
-modal.instanciar = function(mensagem, titulo, tipo, callback, tem_modal, tem_animacao, arrastavel){
-	if(typeof tipo == 'undefined') tipo = 'i';
+modal.instanciar = function(mensagem, parametros, titulo, callback, tem_modal, tem_animacao, arrastavel){
+	var tipo = 'm';
 	if(typeof tem_modal == 'undefined') tem_modal = true;
 	if(typeof tem_animacao == 'undefined') tem_animacao = true;
 	if(typeof arrastavel == 'undefined') arrastavel = true;
@@ -48,7 +48,7 @@ modal.instanciar = function(mensagem, titulo, tipo, callback, tem_modal, tem_ani
 		)
 	);
 	$modal_header.append(
-		$("<h4 />").addClass('modal-title').html('Sobre este Software')
+		$("<h4 />").addClass('modal-title').html(titulo)
 	);
 	var $modal_body = $("<div />").addClass('modal-body');
 	$conteudo_janela_modal.append($modal_header).append($modal_body);
@@ -116,7 +116,6 @@ modal.instanciar = function(mensagem, titulo, tipo, callback, tem_modal, tem_ani
 	}
 	
 	var pagina = mensagem;
-	var parametros = titulo;
 	var metodo;
 	if(typeof parametros != 'undefined'){
 		metodo = 'POST';
@@ -139,8 +138,8 @@ modal.instanciar = function(mensagem, titulo, tipo, callback, tem_modal, tem_ani
 	});
 }
 
-function abrirModal(pagina, parametros, callback, tem_modal, tem_animacao){
-	modal.instanciar(pagina, parametros, 'm', callback, tem_modal, tem_animacao, false);
+function abrirModal(pagina, titulo, callback, tem_modal, tem_animacao){
+	modal.instanciar(pagina, '', titulo, callback, tem_modal, tem_animacao, false);
 }
 
 function fecharModal(callback){

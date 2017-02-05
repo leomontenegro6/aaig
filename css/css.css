@@ -83,6 +83,10 @@
 	transform-origin: 0 0;
 }
 
+select.form-control option.recomendada{
+	background: #ddd;
+}
+
 .negrito{
 	font-weight: bold;
 }

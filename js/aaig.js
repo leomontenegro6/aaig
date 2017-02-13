@@ -28,7 +28,7 @@ function removerScriptsIdiomas(){
 	$('head').find("script[src^='lang']").remove();
 }
 
-function atualizarIdioma(tipo){
+function atualizarIdioma(){
 	for(var tipo in LANGUAGE){
 		var tipos = LANGUAGE[tipo];
 		for(var subtipo in tipos){

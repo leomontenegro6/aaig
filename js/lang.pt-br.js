@@ -3,7 +3,7 @@ var LANGUAGE = {
 		'titulo_principal': 'Gerador de Imagens do Ace Attorney',
 		'titulo_navbar': 'Gerador de Imagens do Ace Attorney',
 		'titulo_navbar_mobile': 'GIAA',
-		'versao': 'v0.3.3',
+		'versao': 'v0.3.4',
 		'aba_botoes': 'Botões',
 		'aba_botoes_menores': 'Botões Menores',
 		'aba_nome_prova': 'Nome da Prova / Perfil',
@@ -15,6 +15,7 @@ var LANGUAGE = {
 		'rotulo_texto_subtitulo_prova': 'Texto do subtítulo da prova / perfil:',
 		'rotulo_texto_descricao_prova': 'Texto da descrição da prova / perfil:',
 		
+		'rotulo_plataforma': 'Plataforma:',
 		'rotulo_escala': 'Escala:',
 		'rotulo_fonte': 'Fonte:',
 		'opcao_outra_fonte': 'Outra',
@@ -36,8 +37,5 @@ var LANGUAGE = {
 		'about': 'Sobre este programa',
 		'botao_negrito': 'Negrito',
 		'botao_italico': 'Itálico',
-	},
-	'm': { // Modal
-		'titulo': 'Sobre este programa'
 	}
 }

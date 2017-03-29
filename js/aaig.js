@@ -87,6 +87,7 @@ $(function(){
 	
 	// Campos de botões
 	var $inputTextoBotoes = $('#texto_botoes');
+	var $selectPlataformaBotoes = $('#plataforma_botao');
 	var $selectFonteBotoes = $('#fonte_botao');
 	var $inputOutraFonteBotoes = $('#outra_fonte_botao');
 	var $botaoGerarBotoes = $('#botao_gerar_botoes');
@@ -154,9 +155,14 @@ $(function(){
 	// Evento do botão "Sobre este programa"
 	$ancoraSobrePrograma.on('click', function(){
 		var idioma = $spanNomeIdioma.attr('data-valor');
-		var titulo = LANGUAGE.m.titulo;
+		var readme_page;
+		if(idioma != 'en-us'){
+			readme_page = 'README.' + idioma + '.md';
+		} else {
+			readme_page = 'README.md';
+		}
 		
-		abrirModal('about.' + idioma + '.html', titulo);
+		window.open('https://github.com/leomontenegro6/aaig/blob/master/' + readme_page);
 	});
 
 	// Eventos dos campos de texto
@@ -180,6 +186,33 @@ $(function(){
 		var texto = (this.value).replace(/\n/g, '<br />');
 		$divTextoDescricao.html(texto);
 	});
+	
+	// Eventos dos campos de plataforma
+	$selectPlataformaBotoes.on('change', function(){
+		var $campoEscalaBotao = $('#escala_botao');
+		var $campoMargemSuperiorBotao = $('#margem_superior_botao');
+		var $campoMargemEsquerdoBotao = $('#margem_esquerdo_botao');
+		var $previaBotoes = $('#previa_botoes');
+		var $divTexto = $previaBotoes.find('div.texto');
+		var $divConteinerBotao = $divTexto.parent();
+		var $imgPreenchida = $previaBotoes.find('img.botao_template');
+		var plataforma = this.value;
+		
+		if(plataforma == 'ds'){
+			$campoMargemSuperiorBotao.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 4);
+			$campoMargemEsquerdoBotao.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 16);
+			$divConteinerBotao.attr('id', 'conteiner_botao_ds');
+			$divTexto.attr('data-largura', '224');
+			$imgPreenchida.attr('src', 'img/background_botoes_preenchido_ds.png');
+		} else {
+			$campoMargemSuperiorBotao.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
+			$campoMargemEsquerdoBotao.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
+			$divConteinerBotao.attr('id', 'conteiner_botao');
+			$divTexto.attr('data-largura', '280');
+			$imgPreenchida.attr('src', 'img/background_botoes_preenchido.png');
+		}
+		$campoEscalaBotao.add($campoMargemSuperiorBotao).add($campoMargemEsquerdoBotao).trigger('change');
+	})
 	
 	// Instanciando campos de escala, bem como seus eventos
 	$('input.slider').each(function(){

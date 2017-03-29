@@ -1,0 +1,122 @@
+<p class="text-justify">
+	Programa creado para incrementar la velocidad haciendo imágenes
+	para el juego de Nintendo 3DS "Ace Attorney Trilogy".
+</p>
+<p class="text-justify">
+	"Ace Attorney Trilogy" es un juego muy grande, con muchas
+	imágenes a editar:
+</p>
+<ul>
+	<li>
+		Botones blancos con texto en color rojo vino;
+		<img src="img/background_botoes_preenchido.png" />
+	</li>
+	<li>
+		Nombres de pruebas / perfiles, con fondo gris oscuro y texto en color naranja;
+		<img src="img/background_nomes_preenchido.png" />
+	</li>
+	<li>
+		Subtítulos de pruebas / perfiles, con fondo verde y texto en color gris oscuro;
+		<img src="img/background_subtitulos_preenchido.png" />
+	</li>
+	<li>
+		Descripciones de pruebas / perfiles, con fondo gris oscuro y texto en color blanco;
+		<img src="img/background_descricao_preenchido.png" style="background: #444;" />
+	</li>
+</ul>
+<p class="text-justify">
+	La manera tradicional de editar estas imágenes es a través de
+	archivos .PSD en Adobe Photoshop, que acaba siendo una tarea
+	muy pesada y repetitiva. Esa es la principal razón por la que
+	este software fue creado.
+</p>
+<p class="text-justify">
+	"Generador de imágenes Ace Attorney" es un programa que puede
+	generar imágenes para el juego "Ace Attorney Trilogy". Para su
+	creación, fue usado:
+</p>
+<ul>
+	<li>HTML5, para la creación de la web;</li>
+	<li>CSS3, para el estilo del texto en la imagen;</li>
+	<li>JavaScript y <a href="https://jquery.com/" target="_blank">jQuery</a>, para campo' y botones' en cuestiones de programación;</li>
+	<li><a href="http://html2canvas.hertzen.com/" target="_blank">Html2canvas</a>, para la conversión de elementos HTML a PNG;</li>
+	<li><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>, para hacer la web adaptativa;</li>
+	<li><a href="https://github.com/seiyria/bootstrap-slider" target="_blank">Bootstrap Slider</a>, para los campos de margen;</li>
+</ul>
+<h4>Requisitos</h4>
+<ul>
+	<li>
+		Un navegador moderno. Google Chrome es recomendado, ya que hay algunas
+		diferencias en el comportamiento del CSS en algunos navegadores como
+		Firefox, Safari o IE;
+	</li>
+	<li>
+		La fuente "Arial" instalada en el ordenador. Es necesaria para la
+		correcta creación de imágenes, así como los botones (Si usas algún
+		SO de Windows puedes omitir esto);
+	</li>
+	<li>
+		La fuente "Vaud Book" instalada en el ordenador. Es necesaria para
+		la correcta creación de imágenes, así como descripciones de
+		pruebas / perfiles;
+	</li>
+	<li>
+		Un servidro web. El software no funcionará si no se cumple el
+		requisito¹.
+	</li>
+</ul>
+<sup>
+	1. Even if this software being totally local, the method used for image generation
+	(conversion of HTML &lt;canvas&gt; elements to PNG images) can trigger an
+	<a href="http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported" target="_blank">
+		uncaught security error of tainted canvases
+	</a>, denying any attempts of data exporting. Thus, we recommend to run this software
+	through a web server (Apache2, per example), even if it's only to serve files to clients.
+</sup>
+<h4>¿Como usar?</h4>
+<ol>
+	<li>Selecciona tipo de imagen, pinchando en "Botones", "Pruebas / nombres", etc;</li>
+	<li>En el campo de texto, escribe para que se muestre en la imagen;</li>
+	<li>Opcional: Si es posible, cambiar variables de escala, fuente y márgenes para el texto escrito;</li>
+	<li>
+		Opcional: Si es necesario usar fuentes externas, realizar lo siguiente:
+		<ul>
+			<li>En el campo "Fuente", elegir "Otra";</li>
+			<li>En el campo de texto de la derecha, escribir el nombre de la fuente;</li>
+			<li>Una vez escrita, el navegador comenzará a usarla y a mostrar el resultado abajo;</li>
+		</ul>
+	</li>
+	<li>
+		Después de cambiar los valores de los campos de cualquier formulario,
+		la imagen se actualiza automáticamente en la vista previa. Cambie los
+		campos de formulario como desee y compruebe si la vista previa coincide
+		con sus necesidades;
+	</li>
+	<li>
+		Recomendado: deshaga cualquier configuración de zoom personalizado en su
+		navegador web, ya que esto puede resultar en imágenes generadas
+		erróneamente. Mantenga los ajustes de zoom siempre en los valores
+		predeterminados (100%);
+	</li>
+	<li>
+		Haga clic en el botón "Generar" y la imagen se generará y guardará
+		automáticamente en formato PNG. El nombre de archivo se ajustará al
+		texto que escribió en los campos del formulario;
+	</li>
+	<li>
+		Opcional: Si se estropea todos los valores predeterminados, haga clic
+		en el botón "Resetear" y todos ellos se restablecerán a sus valores
+		predeterminados.
+	</li>
+</ol>
+<h4>Feedback</h4>
+<p class="text-justify">
+	Si se encuentra algún error, contactar a:
+</p>
+<ul>
+	<li><a href="http://www.romhacking.net.br/" target="_blank">Foro de romhacking y traducción brasileño (Fórum Unificado de Romhacking e Tradução - FURT)</a></li>
+	<li><a href="https://discord.gg/0V2rK6RK47Okravl" target="_blank">Chat de FURT en Discord</a></li>
+</ul>
+<p class="text-justify">
+	O bien, a través de correo electrónico <a href="mailto: leomontenegro6@gmail.com" target="_blank">leomontenegro6@gmail.com</a>.
+</p>

@@ -35,7 +35,7 @@ O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imag
 
 1.  Selecione o tipo de imagem a ser gerada, clicando em uma das abas "Botões", "Nome da Prova / Perfil", etc;
 2.  No campo de texto, digite o texto a ser inserido na imagem;
-3.  Opcional: Altere a escala, fonte e margens de acordo com o texto digitado, se for o caso;
+3.  Opcional: Altere a plataforma, escala, fonte e margens de acordo com o texto digitado, se for o caso;
 4.  Opcional: Em caso de uso de fontes externas, siga os passos:
     *   No campo "Fonte", escolha a opção "Outra";
     *   Digite o nome da fonte no campo de texto que surgiu ao lado;
@@ -43,6 +43,12 @@ O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imag
 5.  Ao realizar qualquer operação nos itens anteriores a este, a imagem é automaticamente atualizada na seção "Prévia". Verifique se a prévia está de acordo com o seu contexto, e altere os campos anteriores da maneira que lhe for conveniente;
 6.  Recomendado: Desfaça qualquer alteração de zoom do seu navegador, pois isto pode prejudicar a geração das imagens. Mantenha os níveis de zoom do seu browser sempre nos valores padrões (100%);
 7.  Clique no botão "Gerar", e a imagem será automaticamente gerada e salva em formato PNG, com o arquivo sendo nomeado de acordo com o texto digitado no campo de texto.
+
+#### Imagens Geradas
+
+![alt tag](img/amostra_1.png)
+![alt tag](img/amostra_2.png)
+![alt tag](img/amostra_3.png)
 
 #### Considerações gerais
 

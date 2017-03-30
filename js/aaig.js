@@ -96,6 +96,7 @@ $(function(){
 	
 	// Campos de botões menores
 	var $inputTextoBotoesMenores = $('#texto_botoes_menores');
+	var $selectPlataformaBotoesMenores = $('#plataforma_botao_menor');
 	var $selectFonteBotoesMenores = $('#fonte_botao_menor');
 	var $inputOutraFonteBotoesMenores = $('#outra_fonte_botao_menor');
 	var $botaoGerarBotoesMenores = $('#botao_gerar_botoes_menores');
@@ -189,29 +190,51 @@ $(function(){
 	
 	// Eventos dos campos de plataforma
 	$selectPlataformaBotoes.on('change', function(){
-		var $campoEscalaBotao = $('#escala_botao');
-		var $campoMargemSuperiorBotao = $('#margem_superior_botao');
-		var $campoMargemEsquerdoBotao = $('#margem_esquerdo_botao');
-		var $previaBotoes = $('#previa_botoes');
-		var $divTexto = $previaBotoes.find('div.texto');
-		var $divConteinerBotao = $divTexto.parent();
-		var $imgPreenchida = $previaBotoes.find('img.botao_template');
+		var $campoEscala = $('#escala_botao');
+		var $campoMargemSuperior = $('#margem_superior_botao');
+		var $campoMargemEsquerdo = $('#margem_esquerdo_botao');
+		var $previa = $('#previa_botoes');
+		var $divTexto = $previa.find('div.texto');
+		var $divConteiner = $divTexto.parent();
+		var $imgPreenchida = $previa.find('img.botao_template');
 		var plataforma = this.value;
 		
 		if(plataforma == 'ds'){
-			$campoMargemSuperiorBotao.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 4);
-			$campoMargemEsquerdoBotao.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 16);
-			$divConteinerBotao.attr('id', 'conteiner_botao_ds');
+			$campoMargemSuperior.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 4);
+			$campoMargemEsquerdo.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 16);
+			$divConteiner.attr('id', 'conteiner_botao_ds');
 			$divTexto.attr('data-largura', '224');
 			$imgPreenchida.attr('src', 'img/background_botoes_preenchido_ds.png');
 		} else {
-			$campoMargemSuperiorBotao.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
-			$campoMargemEsquerdoBotao.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
-			$divConteinerBotao.attr('id', 'conteiner_botao');
+			$campoMargemSuperior.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
+			$campoMargemEsquerdo.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
+			$divConteiner.attr('id', 'conteiner_botao');
 			$divTexto.attr('data-largura', '280');
 			$imgPreenchida.attr('src', 'img/background_botoes_preenchido.png');
 		}
-		$campoEscalaBotao.add($campoMargemSuperiorBotao).add($campoMargemEsquerdoBotao).trigger('change');
+		$campoEscala.add($campoMargemSuperior).add($campoMargemEsquerdo).trigger('change');
+	})
+	$selectPlataformaBotoesMenores.on('change', function(){
+		var $campoEscala = $('#escala_botao_menor');
+		var $campoMargemSuperior = $('#margem_superior_botao_menor');
+		var $previa = $('#previa_botoes_menores');
+		var $divTexto = $previa.find('div.texto');
+		var $divConteiner = $divTexto.parent();
+		var $imgPreenchida = $previa.find('img.botao_template');
+		var plataforma = this.value;
+		
+		if(plataforma == 'ds'){
+			$campoMargemSuperior.slider('setValue', 3);
+			$divConteiner.attr('id', 'conteiner_botao_menor_ds');
+			$divTexto.attr('data-largura', '128');
+			$imgPreenchida.attr('src', 'img/background_botoes_menores_preenchido_ds.png');
+		} else {
+			$campoMargemSuperior.slider('setValue', 0);
+			$divConteiner.attr('id', 'conteiner_botao_menor');
+			$divTexto.attr('data-largura', '160');
+			$imgPreenchida.attr('src', 'img/background_botoes_preenchido.png');
+		}
+		$campoEscala.add($campoMargemSuperior).trigger('change');
 	})
 	
 	// Instanciando campos de escala, bem como seus eventos

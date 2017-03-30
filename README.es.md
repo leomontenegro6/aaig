@@ -37,7 +37,7 @@ La manera tradicional de editar estas imágenes es a través de archivos .PSD en
 
 1.  Selecciona tipo de imagen, pinchando en "Botones", "Pruebas / nombres", etc;
 2.  En el campo de texto, escribe para que se muestre en la imagen;
-3.  Opcional: Si es posible, cambiar variables de escala, fuente y márgenes para el texto escrito;
+3.  Opcional: Si es posible, cambiar variables de plataforma, escala, fuente y márgenes para el texto escrito;
 4.  Opcional: Si es necesario usar fuentes externas, realizar lo siguiente:
     *   En el campo "Fuente", elegir "Otra";
     *   En el campo de texto de la derecha, escribir el nombre de la fuente;
@@ -46,6 +46,12 @@ La manera tradicional de editar estas imágenes es a través de archivos .PSD en
 6.  Recomendado: deshaga cualquier configuración de zoom personalizado en su navegador web, ya que esto puede resultar en imágenes generadas erróneamente. Mantenga los ajustes de zoom siempre en los valores predeterminados (100%);
 7.  Haga clic en el botón "Generar" y la imagen se generará y guardará automáticamente en formato PNG. El nombre de archivo se ajustará al texto que escribió en los campos del formulario;
 8.  Opcional: Si se estropea todos los valores predeterminados, haga clic en el botón "Resetear" y todos ellos se restablecerán a sus valores predeterminados.
+
+#### Imágenes Generadas
+
+![alt tag](img/amostra_1.png)
+![alt tag](img/amostra_2.png)
+![alt tag](img/amostra_3.png)
 
 #### Feedback
 

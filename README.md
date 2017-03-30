@@ -8,10 +8,18 @@
 
 "Ace Attorney Trilogy" is a very big game, with lots of text images to be edited:
 
-*   White buttons with text in wine red color ![alt tag](img/background_botoes_preenchido.png);
-*   Proof / Profile names, with dark gray background and texts in orange color ![alt tag](img/background_nomes_preenchido.png);
-*   Proof / Profile subtitles, with light green background and texts in dark gray color ![alt tag](img/background_subtitulos_preenchido.png);
-*   Proof / Profile descriptions, with dark gray background and texts in white color ![alt tag](img/background_descricao_fundo_cinza.png);
+*   White buttons with text in wine red color;
+
+![alt tag](img/background_botoes_preenchido.png)
+*   Proof / Profile names, with dark gray background and texts in orange color;
+
+![alt tag](img/background_nomes_preenchido.png)
+*   Proof / Profile subtitles, with light green background and texts in dark gray color;
+
+![alt tag](img/background_subtitulos_preenchido.png)
+*   Proof / Profile descriptions, with dark gray background and texts in white color;
+
+![alt tag](img/background_descricao_fundo_cinza.png)
 
 The traditional way of editing those graphics is through .PSD files in Adobe Photoshop, which ends up being an extremely repetitive and tiresome task for romhackers. This was the main reason why I created this software.
 

@@ -28,14 +28,14 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-slider.min.css">
-		<link rel="stylesheet" href="css/fonts.css">
-		<link rel="stylesheet" href="css/css.css">
+		<link rel="stylesheet" href="css/fonts.css?a=c">
+		<link rel="stylesheet" href="css/css.css?a=c">
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
 		<script type="text/javascript" src="js/html2canvas.js"></script>
-		<script type="text/javascript" src="js/aaig.js?a=b"></script>
-		<script type="text/javascript" src="js/lang.pt-br.js?a=b"></script>
+		<script type="text/javascript" src="js/aaig.js?a=c"></script>
+		<script type="text/javascript" src="js/lang.pt-br.js?a=c"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-static-top">
@@ -105,11 +105,36 @@
 		<div class="container">
 			<!-- Abas -->
 			<ul class="nav nav-tabs" role="tablist">
-				<li role="presentation" class="active"><a href="#botoes" aria-controls="botoes" role="tab" data-toggle="tab" class="l_aba_botoes">&nbsp;</a></li>
-				<li role="presentation"><a href="#botoes_menores" aria-controls="botoes_menores" role="tab" data-toggle="tab" class="l_aba_botoes_menores">&nbsp;</a></li>
-				<li role="presentation"><a href="#nome_prova" aria-controls="nome_prova" role="tab" data-toggle="tab" class="l_aba_nome_prova">&nbsp;</a></li>
-				<li role="presentation"><a href="#subtitulo_prova" aria-controls="subtitulo_prova" role="tab" data-toggle="tab" class="l_aba_subtitulo_prova">&nbsp;</a></li>
-				<li role="presentation"><a href="#descricao_prova" aria-controls="descricao_prova" role="tab" data-toggle="tab" class="l_aba_descricao_prova">&nbsp;</a></li>
+				<li role="presentation" class="active">
+					<a href="#botoes" aria-controls="botoes" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-align-justify"></span>
+						<span class="l_aba_botoes">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#botoes_menores" aria-controls="botoes_menores" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-th-list"></span>
+						<span class="l_aba_botoes_menores">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#nome_prova" aria-controls="nome_prova" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-text-background"></span>
+						<span class="l_aba_nome_prova">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#subtitulo_prova" aria-controls="subtitulo_prova" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-text-background"></span>
+						<span class="l_aba_subtitulo_prova">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#descricao_prova" aria-controls="descricao_prova" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-list-alt"></span>
+						<span class="l_aba_descricao_prova">&nbsp;</span>
+					</a>
+				</li>
 			</ul>
 
 			<!-- Contêiners das abas -->
@@ -119,26 +144,33 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form class="form_botoes">
+								<!-- Texto do Botão -->
 								<div class="form-group">
 									<label for="texto_botoes" class="control-label l_rotulo_texto_botao">&nbsp;</label>
 									<input type="text" name="texto_botoes" id="texto_botoes" class="form-control p_texto" />
 								</div>
-								<div class="form-group">
+								<!-- Plataforma -->
+								<div class="form-inline">
 									<label for="plataforma_botao" class="control-label l_rotulo_plataforma">&nbsp;</label>
 									<select id="plataforma_botao" name="plataforma_botao" class="form-control">
 										<option value="ds">Nintendo DS</option>
 										<option value="3ds" selected>Nintendo 3DS</option>
 									</select>
 								</div>
-								<div class="form-group">
+								<!-- Escala -->
+								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="escala_botao" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="escala_botao" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
-										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao" />
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao"
+										data-slider-tooltip="hide" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Fonte -->
 								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="fonte_botao" class="control-label l_rotulo_fonte">&nbsp;</label>
 									<select id="fonte_botao" name="fonte_botao" class="form-control"></select>
 									<input type="text" id="outra_fonte_botao" class="form-control p_outra_fonte" style="display: none" />
+									<select id="tamanho_fonte_botao" name="tamanho_fonte_botao" class="form-control tamanho_fonte"></select>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default t_botao_negrito" title="">
 											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_botao" />
@@ -150,18 +182,23 @@
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
+								<!-- Margem Superior -->
+								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="margem_superior_botao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="margem_superior_botao" class="slider margem_superior"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="top" data-imagem="conteiner_botao" />
+										data-slider-tooltip="hide" data-imagem="conteiner_botao" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
-								<div class="form-group">
+								<!-- Margem Esquerda -->
+								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="margem_esquerdo_botao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="bottom" data-imagem="conteiner_botao" />
+										data-slider-tooltip="hide" data-imagem="conteiner_botao" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Botões Gerar e Resetar -->
 								<button type="button" id="botao_gerar_botoes" class="btn btn-primary" aria-label="Generate button">
 									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 									<span class="l_botao_gerar">&nbsp;</span>
@@ -190,26 +227,33 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form class="form_botoes_menores">
+								<!-- Texto do Botão Menor -->
 								<div class="form-group">
 									<label for="texto_botoes_menores" class="control-label l_rotulo_texto_botao_menor">&nbsp;</label>
 									<input type="text" name="texto_botoes_menores" id="texto_botoes_menores" class="form-control p_texto" />
 								</div>
-								<div class="form-group">
+								<!-- Plataforma -->
+								<div class="form-inline">
 									<label for="plataforma_botao_menor" class="control-label l_rotulo_plataforma">&nbsp;</label>
 									<select id="plataforma_botao_menor" name="plataforma_botao_menor" class="form-control">
 										<option value="ds">Nintendo DS</option>
 										<option value="3ds" selected>Nintendo 3DS</option>
 									</select>
 								</div>
-								<div class="form-group">
-									<label for="escala_botao_menor" class="control-label l_rotulo_escala">&nbsp;</label>
+								<!-- Escala -->
+								<div class="form-inline" style="margin-bottom: 5px;">
+									<label for="escala_botao_menor" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="escala_botao_menor" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
-										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao_menor" />
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao_menor"
+										data-slider-tooltip="hide" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Fonte -->
 								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="fonte_botao_menor" class="control-label l_rotulo_fonte">&nbsp;</label>
 									<select id="fonte_botao_menor" name="fonte_botao_menor" class="form-control"></select>
 									<input type="text" id="outra_fonte_botao_menor" class="form-control p_outra_fonte" style="display: none" />
+									<select id="tamanho_fonte_botao_menor" name="tamanho_fonte_botao_menor" class="form-control tamanho_fonte"></select>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default t_botao_negrito">
 											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_botao_menor" />
@@ -221,18 +265,23 @@
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
+								<!-- Margem Superior -->
+								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="margem_superior_botao_menor" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="margem_superior_botao_menor" class="slider margem_superior"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="top" data-imagem="conteiner_botao_menor" />
+										data-slider-tooltip="hide" data-imagem="conteiner_botao_menor" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
-								<div class="form-group">
+								<!-- Margem Esquerda -->
+								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="margem_esquerdo_botao_menor" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
 									<input type="text" id="margem_esquerdo_botao_menor" class="slider margem_esquerda"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="bottom" data-imagem="conteiner_botao_menor" />
+										data-slider-tooltip="hide" data-imagem="conteiner_botao_menor" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Botões Gerar e Resetar -->
 								<button type="button" id="botao_gerar_botoes_menores" class="btn btn-primary" aria-label="Generate Button">
 									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 									<span class="l_botao_gerar">&nbsp;</span>
@@ -261,19 +310,33 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form class="form_nome_prova">
+								<!-- Texto do nome da prova / perfil -->
 								<div class="form-group">
 									<label for="texto_nome" class="control-label l_rotulo_texto_nome_prova">&nbsp;</label>
 									<input type="text" name="texto_nome" id="texto_nome" class="form-control p_texto" />
 								</div>
-								<div class="form-group">
-									<label for="escala_nome" class="control-label l_rotulo_escala">&nbsp;</label>
-									<input type="text" id="escala_nome" class="slider escala" data-slider-min="0.500" data-slider-max="1.200"
-										data-slider-step="0.005" data-slider-value="1.045" data-imagem="conteiner_nome" />
+								<!-- Plataforma -->
+								<div class="form-inline">
+									<label for="plataforma_nome" class="control-label l_rotulo_plataforma">&nbsp;</label>
+									<select id="plataforma_nome" name="plataforma_nome" class="form-control">
+										<option value="ds">Nintendo DS</option>
+										<option value="3ds" selected>Nintendo 3DS</option>
+									</select>
 								</div>
+								<!-- Escala -->
+								<div class="form-inline" style="margin-bottom: 5px;">
+									<label for="escala_nome" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="escala_nome" class="slider escala" data-slider-min="0.500" data-slider-max="1.200"
+										data-slider-step="0.005" data-slider-value="1.045" data-imagem="conteiner_nome"
+										data-slider-tooltip="hide" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+								</div>
+								<!-- Fonte -->
 								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="fonte_nome" class="control-label l_rotulo_fonte">&nbsp;</label>
 									<select id="fonte_nome" name="fonte_nome" class="form-control"></select>
 									<input type="text" id="outra_fonte_nome" class="form-control p_outra_fonte" style="display: none" />
+									<select id="tamanho_fonte_nome" name="tamanho_fonte_nome" class="form-control tamanho_fonte"></select>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default t_botao_negrito">
 											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_nome" />
@@ -285,18 +348,23 @@
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="margem_superior_botao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+								<!-- Margem Superior -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_superior_nome" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_superior_nome" class="slider margem_superior"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="top" data-imagem="conteiner_nome" />
+										data-slider-tooltip="hide" data-imagem="conteiner_nome" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
-								<div class="form-group">
-									<label for="margem_esquerdo_botao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+								<!-- Margem Esquerda -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_esquerdo_nome" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_esquerdo_nome" class="slider margem_esquerda"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-										data-slider-tooltip-position="bottom" data-imagem="conteiner_nome" />
+										data-slider-tooltip="hide" data-imagem="conteiner_nome" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Botões Gerar e Resetar -->
 								<button type="button" id="botao_gerar_nome" class="btn btn-primary" aria-label="Generate button">
 									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 									<span class="l_botao_gerar">&nbsp;</span>
@@ -325,19 +393,33 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form class="form_subtitulo_prova">
+								<!-- Texto do subtítulo da prova / perfil -->
 								<div class="form-group">
 									<label for="texto_subtitulo" class="control-label l_rotulo_texto_subtitulo_prova">&nbsp;</label>
 									<textarea name="texto_subtitulo" id="texto_subtitulo" class="form-control p_texto" rows="3"></textarea>
 								</div>
-								<div class="form-group">
-									<label for="escala_subtitulo" class="control-label l_rotulo_escala">&nbsp;</label>
-									<input type="text" id="escala_subtitulo" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
-										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_subtitulo" />
+								<!-- Plataforma -->
+								<div class="form-inline">
+									<label for="plataforma_subtitulo" class="control-label l_rotulo_plataforma">&nbsp;</label>
+									<select id="plataforma_subtitulo" name="plataforma_subtitulo" class="form-control">
+										<option value="ds">Nintendo DS</option>
+										<option value="3ds" selected>Nintendo 3DS</option>
+									</select>
 								</div>
+								<!-- Escala -->
+								<div class="form-inline" style="margin-bottom: 5px;">
+									<label for="escala_subtitulo" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="escala_subtitulo" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
+										data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_subtitulo"
+										data-slider-tooltip="hide" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+								</div>
+								<!-- Fonte -->
 								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="fonte_subtitulo" class="control-label l_rotulo_fonte">&nbsp;</label>
 									<select id="fonte_subtitulo" name="fonte_subtitulo" class="form-control"></select>
 									<input type="text" id="outra_fonte_subtitulo" class="form-control p_outra_fonte" style="display: none" />
+									<select id="tamanho_fonte_subtitulo" name="tamanho_fonte_subtitulo" class="form-control tamanho_fonte"></select>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default t_botao_negrito">
 											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_subtitulo" />
@@ -349,18 +431,31 @@
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="margem_superior_botao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+								<!-- Altura da Linha -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="altura_linha_subtitulo" class="control-label l_rotulo_altura_linha" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="altura_linha_subtitulo" class="slider altura_linha"
+										data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
+										data-slider-tooltip="hide" data-imagem="conteiner_subtitulo" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+								</div>
+								<!-- Margem Superior -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_superior_subtitulo" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_superior_subtitulo" class="slider margem_superior"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="4"
-										data-slider-tooltip-position="top" data-imagem="conteiner_subtitulo" />
+										data-slider-tooltip="hide" data-imagem="conteiner_subtitulo" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
-								<div class="form-group">
-									<label for="margem_esquerdo_botao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+								<!-- Margem Esquerda -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_esquerdo_subtitulo" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_esquerdo_subtitulo" class="slider margem_esquerda"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="2"
-										data-slider-tooltip-position="bottom" data-imagem="conteiner_subtitulo" />
+										data-slider-tooltip="hide" data-imagem="conteiner_subtitulo" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Botões Gerar e Resetar -->
 								<button type="button" id="botao_gerar_subtitulo" class="btn btn-primary" aria-label="Generate button">
 									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 									<span class="l_botao_gerar">&nbsp;</span>
@@ -389,19 +484,33 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<form class="form_descricao_prova">
+								<!-- Texto da descrição da prova / perfil -->
 								<div class="form-group">
 									<label for="texto_descricao" class="control-label l_rotulo_texto_descricao_prova">&nbsp;</label>
 									<textarea name="texto_descricao" id="texto_descricao" class="form-control p_texto" rows="3"></textarea>
 								</div>
-								<div class="form-group">
-									<label for="escala_descricao" class="control-label l_rotulo_escala">&nbsp;</label>
-									<input type="text" id="escala_descricao" class="slider escala" data-slider-min="0.500" data-slider-max="1.075"
-										data-slider-step="0.005" data-slider-value="1.075" data-imagem="conteiner_descricao" />
+								<!-- Plataforma -->
+								<div class="form-inline">
+									<label for="plataforma_descricao" class="control-label l_rotulo_plataforma">&nbsp;</label>
+									<select id="plataforma_descricao" name="plataforma_descricao" class="form-control">
+										<option value="ds">Nintendo DS</option>
+										<option value="3ds" selected>Nintendo 3DS</option>
+									</select>
 								</div>
+								<!-- Escala -->
+								<div class="form-inline" style="margin-bottom: 5px;">
+									<label for="escala_descricao" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="escala_descricao" class="slider escala" data-slider-min="0.500" data-slider-max="1.075"
+										data-slider-step="0.005" data-slider-value="1.075" data-imagem="conteiner_descricao"
+										data-slider-tooltip="hide" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+								</div>
+								<!-- Fonte -->
 								<div class="form-inline" style="margin-bottom: 5px">
 									<label for="fonte_descricao" class="control-label l_rotulo_fonte">&nbsp;</label>
 									<select id="fonte_descricao" name="fonte_descricao" class="form-control"></select>
 									<input type="text" id="outra_fonte_descricao" class="form-control p_outra_fonte" style="display: none" />
+									<select id="tamanho_fonte_descricao" name="tamanho_fonte_descricao" class="form-control tamanho_fonte"></select>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default t_botao_negrito">
 											<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_descricao" />
@@ -413,18 +522,31 @@
 										</label>
 									</div>
 								</div>
-								<div class="form-group">
-									<label for="margem_superior_botao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_superior_botao" class="slider margem_superior"
+								<!-- Altura da Linha -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="altura_linha_descricao" class="control-label l_rotulo_altura_linha" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="altura_linha_descricao" class="slider altura_linha"
+										data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
+										data-slider-tooltip="hide" data-imagem="conteiner_descricao" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+								</div>
+								<!-- Margem Superior -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_superior_descricao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_superior_descricao" class="slider margem_superior"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="3"
-										data-slider-tooltip-position="top" data-imagem="conteiner_descricao" />
+										data-slider-tooltip="hide" data-imagem="conteiner_descricao" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
-								<div class="form-group">
-									<label for="margem_esquerdo_botao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
-									<input type="text" id="margem_esquerdo_botao" class="slider margem_esquerda"
+								<!-- Margem Esquerda -->
+								<div class="form-inline" style="margin-bottom: 5px">
+									<label for="margem_esquerdo_descricao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
+									<input type="text" id="margem_esquerdo_descricao" class="slider margem_esquerda"
 										data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="23"
-										data-slider-tooltip-position="bottom" data-imagem="conteiner_descricao" />
+										data-slider-tooltip="hide" data-imagem="conteiner_descricao" />
+									<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 								</div>
+								<!-- Botões Gerar / Resetar -->
 								<button type="button" id="botao_gerar_descricao" class="btn btn-primary" aria-label="Gerar">
 									<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 									<span class="l_botao_gerar">&nbsp;</span>

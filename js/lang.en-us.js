@@ -21,6 +21,7 @@ var LANGUAGE = {
 		'opcao_outra_fonte': 'Another',
 		'botao_negrito': 'Bold',
 		'botao_italico': 'Italic',
+		'rotulo_altura_linha': 'Line Height:',
 		'rotulo_margem_superior': 'Margin Top:',
 		'rotulo_margem_esquerda': 'Margin Left:',
 		

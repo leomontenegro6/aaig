@@ -21,8 +21,9 @@ var LANGUAGE = {
 		'opcao_outra_fonte': 'Otra',
 		'botao_negrito': 'Negrita',
 		'botao_italico': 'Itálico',
+		'rotulo_altura_linha': 'Altura de la línea:',
 		'rotulo_margem_superior': 'Margen superior:',
-		'rotulo_margem_esquerda': 'Margen izquierdo:',
+		'rotulo_margem_esquerda': 'Margen izquierda:',
 		
 		'botao_gerar': 'Generar',
 		'botao_resetar': 'Resetear',

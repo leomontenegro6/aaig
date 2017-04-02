@@ -2,3 +2,18 @@
     font-family: "Vald Book";
     src: url('../fonts/Vaud-Book.ttf');
 }
+@font-face {
+	font-family: 'Ace Attorney US';
+	src: url('../fonts/AceAttorneyUS.eot');
+	src: local('☺'), url('../fonts/AceAttorneyUS.woff') format('woff'), url('../fonts/AceAttorneyUS.ttf') format('truetype'), url('../fonts/AceAttorneyUS.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: "Ace Attorney EU";
+    src: url('../fonts/AceAttorneyEU.ttf');
+}
+@font-face {
+    font-family: "Nintendo DS Bios";
+    src: url('../fonts/NintendoDSBIOS.ttf');
+}

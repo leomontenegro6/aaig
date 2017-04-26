@@ -3,6 +3,9 @@
 *.sh
 *.bat
 
+# Arquivos de configuração privados do projeto do netbeans
+/nbproject/private/
+
 # Fontes proprietárias
 fonts/AlteHaasGroteskRegular.eot
 fonts/AlteHaasGroteskRegular.otf

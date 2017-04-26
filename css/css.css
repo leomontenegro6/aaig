@@ -9,6 +9,9 @@ a[aria-controls="subtitulo_prova"] span.glyphicon{
 	background: #383838;
 	color: #99C291;
 }
+a[aria-controls="sandbox"] span.glyphicon{
+	color: #cc8819;
+}
 #conteiner_botao{
 	display: inline-block;
 	vertical-align: top;
@@ -165,6 +168,100 @@ a[aria-controls="subtitulo_prova"] span.glyphicon{
 	font-family: "Ace Attorney US";
 	color: #fff;
 	line-height: 1.35;
+}
+
+/* Estilizações da aba "Sandbox" */
+#conteiner_botoes_sandbox, #conteiner_botao_menor_sandbox, #conteiner_provas_subtitulos_sandbox{
+	width: 320px;
+	height: 240px;
+	position: relative;
+}
+
+#conteiner_botoes_sandbox{
+	background-image: url('../img/sandbox_1.png');
+}
+
+#conteiner_botao_menor_sandbox{
+	background-image: url('../img/sandbox_2.png');
+}
+
+#conteiner_provas_subtitulos_sandbox{
+	background-image: url('../img/sandbox_3.png');
+}
+
+#conteiner_botoes_sandbox div.botao1,
+#conteiner_botoes_sandbox div.botao2,
+#conteiner_botoes_sandbox div.botao3{
+	width: 280px;
+	font-family: Arial;
+	font-size: 23px;
+	text-align: center;
+	color: #802B00;
+	position: absolute;
+}
+
+#conteiner_botoes_sandbox div.botao1{
+	top: 59px;
+	left: 20px;
+}
+
+#conteiner_botoes_sandbox div.botao2{
+	top: 114px;
+	left: 20px;
+}
+
+#conteiner_botoes_sandbox div.botao3{
+	top: 169px;
+	left: 20px;
+}
+
+#conteiner_botao_menor_sandbox div.botao{
+	width: 213.333px;
+	font-family: Arial;
+	font-size: 23px;
+	text-align: center;
+	color: #802B00;
+	transform: scaleX(0.75);
+	transform-origin: 0 0;
+	position: absolute;
+	top: 104px;
+	left: 147px;
+}
+
+#conteiner_provas_subtitulos_sandbox div.nome{
+	width: 153.11px;
+	transform: scaleX(1.045);
+	font-family: "Vald Book";
+	font-size: 18px;
+	text-align: center;
+	color: #E4A018;
+	transform-origin: 0 0;
+	position: absolute;
+	top: 51px;
+	left: 125px;
+}
+
+#conteiner_provas_subtitulos_sandbox div.subtitulo{
+	width: 160px;
+	font-family: "Vald Book";
+	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
+	color: #444;
+	line-height: 1.35;
+	position: absolute;
+	top: 77px;
+	left: 121px;
+}
+
+#conteiner_provas_subtitulos_sandbox div.descricao{
+	width: 238.139534884px;
+	font-family: "Vald Book";
+	color: #eee;
+	line-height: 1.35;
+	transform: scaleX(1.075);
+	transform-origin: 0 0;
+	position: absolute;
+	top: 146px;
+	left: 23px;
 }
 
 select.form-control option.recomendada{

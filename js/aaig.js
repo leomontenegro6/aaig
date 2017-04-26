@@ -125,6 +125,28 @@ $(function(){
 	var $divDescricao = $('#conteiner_descricao');
 	var $divTextoDescricao = $divDescricao.children('div.texto');
 	
+	// Campos de sandbox
+	var $inputTextoBotaoSandbox1 = $('#texto_botoes_sandbox1');
+	var $inputTextoBotaoSandbox2 = $('#texto_botoes_sandbox2');
+	var $inputTextoBotaoSandbox3 = $('#texto_botoes_sandbox3');
+	var $inputTextoBotaoMenorSandbox = $('#texto_botoes_menores_sandbox');
+	var $inputTextoNomeSandbox = $('#texto_nome_sandbox');
+	var $textareaSubtituloSandbox = $('#texto_subtitulo_sandbox');
+	var $textareaDescricaoSandbox = $('#texto_descricao_sandbox');
+	var $divBotoesSandbox = $('#conteiner_botoes_sandbox');
+	var $divTextoBotoesSandbox1 = $divBotoesSandbox.children('div.botao1');
+	var $divTextoBotoesSandbox2 = $divBotoesSandbox.children('div.botao2');
+	var $divTextoBotoesSandbox3 = $divBotoesSandbox.children('div.botao3');
+	var $divBotaoMenorSandbox = $('#conteiner_botao_menor_sandbox');
+	var $divTextoBotaoMenorSandbox = $divBotaoMenorSandbox.children('div.botao');
+	var $divProvaSubtituloSandbox = $('#conteiner_provas_subtitulos_sandbox');
+	var $divTextoNomeSandbox = $divProvaSubtituloSandbox.children('div.nome');
+	var $divTextoSubtituloSandbox = $divProvaSubtituloSandbox.children('div.subtitulo');
+	var $divTextoDescricaoSandbox = $divProvaSubtituloSandbox.children('div.descricao');
+	var $botaoGerarSandbox1 = $('#botao_gerar_sandbox_1');
+	var $botaoGerarSandbox2 = $('#botao_gerar_sandbox_2');
+	var $botaoGerarSandbox3 = $('#botao_gerar_sandbox_3');
+	
 	// Evento dos campos de seleção de idiomas
 	$ulListaIdiomas.find('a').on('click', function(e){
 		var $a = $(this);
@@ -150,6 +172,13 @@ $(function(){
 	$inputTextoNome.attr('value', 'Fingerprinting Set');
 	$textareaSubtitulo.html('Age: 27\nGender: Female');
 	$textareaDescricao.html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
+	$inputTextoBotaoSandbox1.attr('value', 'Amélia Ayasato');
+	$inputTextoBotaoSandbox2.attr('value', 'Sêntia Pedra');
+	$inputTextoBotaoSandbox3.attr('value', 'Cíntia Rocha');
+	$inputTextoBotaoMenorSandbox.attr('value', 'Centro de detenção');
+	$inputTextoNomeSandbox.attr('value', 'Amélia Ayasato');
+	$textareaSubtituloSandbox.html('Idade: 27\nGênero: Feminino');
+	$textareaDescricaoSandbox.html('Advogada-chefe da Ayasato &\nassociados. Minha chefe, e uma\nexcelente advogada de defesa.');
 	
 	// Evento do botão "Sobre este programa"
 	$ancoraSobrePrograma.on('click', function(){
@@ -184,6 +213,34 @@ $(function(){
 	$textareaDescricao.on('keyup', function(){
 		var texto = (this.value).replace(/\n/g, '<br />');
 		$divTextoDescricao.html(texto);
+	});
+	$inputTextoBotaoSandbox1.on('keyup', function(){
+		var texto = this.value;
+		$divTextoBotoesSandbox1.html(texto);
+	});
+	$inputTextoBotaoSandbox2.on('keyup', function(){
+		var texto = this.value;
+		$divTextoBotoesSandbox2.html(texto);
+	});
+	$inputTextoBotaoSandbox3.on('keyup', function(){
+		var texto = this.value;
+		$divTextoBotoesSandbox3.html(texto);
+	});
+	$inputTextoBotaoMenorSandbox.on('keyup', function(){
+		var texto = this.value;
+		$divTextoBotaoMenorSandbox.html(texto);
+	});
+	$inputTextoNomeSandbox.on('keyup', function(){
+		var texto = this.value;
+		$divTextoNomeSandbox.html(texto);
+	});
+	$textareaSubtituloSandbox.on('keyup', function(){
+		var texto = (this.value).replace(/\n/g, '<br />');
+		$divTextoSubtituloSandbox.html(texto);
+	});
+	$textareaDescricaoSandbox.on('keyup', function(){
+		var texto = (this.value).replace(/\n/g, '<br />');
+		$divTextoDescricaoSandbox.html(texto);
 	});
 	
 	// Eventos dos campos de plataforma
@@ -538,6 +595,30 @@ $(function(){
 			$divDescricao.addClass('fundo_cinza_escuro');
 		});
 	});
+	$botaoGerarSandbox1.on('click', function(){
+		var data = new Date();
+		data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toJSON()
+		data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
+		
+		var texto = 'sandbox1-' + data;
+		renderizarImagemNavegador($divBotoesSandbox, texto);
+	});
+	$botaoGerarSandbox2.on('click', function(){
+		var data = new Date();
+		data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toJSON()
+		data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
+		
+		var texto = 'sandbox2-' + data;
+		renderizarImagemNavegador($divBotaoMenorSandbox, texto);
+	});
+	$botaoGerarSandbox3.on('click', function(){
+		var data = new Date();
+		data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toJSON()
+		data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
+		
+		var texto = 'sandbox3-' + data;
+		renderizarImagemNavegador($divProvaSubtituloSandbox, texto);
+	});
 	
 	// Ação dos botões "resetar"
 	$formularios.on('reset', function(){
@@ -561,4 +642,6 @@ $(function(){
 	
 	// Chamadas de eventos padrões
 	$inputTextoBotoes.add($inputTextoBotoesMenores).add($inputTextoNome).add($textareaSubtitulo).add($textareaDescricao).trigger('keyup');
+	$inputTextoBotaoSandbox1.add($inputTextoBotaoSandbox2).add($inputTextoBotaoSandbox3).add($inputTextoBotaoMenorSandbox).trigger('keyup');
+	$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
 });

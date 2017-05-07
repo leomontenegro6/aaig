@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import url('fontes.css');
+@import url('fontes_proprietarias.css');
 body{
 	font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
 }

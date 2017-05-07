@@ -1,0 +1,35 @@
+@font-face {
+	font-family: 'Univers Light Normal';
+	src: url('../fonts/univers-light-normal.eot');
+	src: local('☺'), url('../fonts/univers-light-normal.woff') format('woff'), url('../fonts/univers-light-normal.ttf') format('truetype'), url('../fonts/univers-light-normal.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Helvetica Normal';
+	src: url('../fonts/helvetica-normal.eot');
+	src: local('☺'), url('../fonts/helvetica-normal.woff') format('woff'), url('../fonts/helvetica-normal.ttf') format('truetype'), url('../fonts/helvetica-normal.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Helvetica Neue';
+	src: url('../fonts/helvetica-neue.eot');
+	src: local('☺'), url('../fonts/helvetica-neue.woff') format('woff'), url('../fonts/helvetica-neue.ttf') format('truetype'), url('../fonts/helvetica-neue.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Alte Haas Grotesk';
+	src: url('../fonts/AlteHaasGroteskRegular.eot');
+	src: local('☺'), url('../fonts/AlteHaasGroteskRegular.woff') format('woff'), url('../fonts/AlteHaasGroteskRegular.ttf') format('truetype'), url('../fonts/AlteHaasGroteskRegular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Whitney Medium';
+	src: url('../fonts/whitney-medium.eot');
+	src: local('☺'), url('../fonts/whitney-medium.woff') format('woff'), url('../fonts/whitney-medium.ttf') format('truetype'), url('../fonts/whitney-medium.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

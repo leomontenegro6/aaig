@@ -1,0 +1,80 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form class="form_botoes_menores">
+			<!-- Texto do Botão Menor -->
+			<div class="form-group">
+				<label for="texto_botoes_menores" class="control-label l_rotulo_texto_botao_menor">&nbsp;</label>
+				<input type="text" name="texto_botoes_menores" id="texto_botoes_menores" class="form-control p_texto_botoes" />
+			</div>
+			<!-- Plataforma -->
+			<div class="form-inline">
+				<label for="plataforma_botao_menor" class="control-label l_rotulo_plataforma">&nbsp;</label>
+				<select id="plataforma_botao_menor" name="plataforma_botao_menor" class="form-control">
+					<option value="ds">Nintendo DS</option>
+					<option value="3ds" selected>Nintendo 3DS</option>
+				</select>
+			</div>
+			<!-- Escala -->
+			<div class="form-inline" style="margin-bottom: 5px;">
+				<label for="escala_botao_menor" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+				<input type="text" id="escala_botao_menor" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
+					data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao_menor"
+					data-slider-tooltip="hide" />
+				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+			</div>
+			<!-- Fonte -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="fonte_botao_menor" class="control-label l_rotulo_fonte">&nbsp;</label>
+				<select id="fonte_botao_menor" name="fonte_botao_menor" class="form-control"></select>
+				<input type="text" id="outra_fonte_botao_menor" class="form-control p_outra_fonte" style="display: none" />
+				<select id="tamanho_fonte_botao_menor" name="tamanho_fonte_botao_menor" class="form-control tamanho_fonte"></select>
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-default t_botao_negrito">
+						<input type="checkbox" class="estilos" value="n" data-imagem="conteiner_botao_menor" />
+						<b class="l_botao_negrito">&nbsp;</b>
+					</label>
+					<label class="btn btn-default t_botao_italico">
+						<input type="checkbox" class="estilos" value="i" data-imagem="conteiner_botao_menor" />
+						<i class="l_botao_italico">&nbsp;</i>
+					</label>
+				</div>
+			</div>
+			<!-- Margem Superior -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="margem_superior_botao_menor" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
+				<input type="text" id="margem_superior_botao_menor" class="slider margem_superior"
+					data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+					data-slider-tooltip="hide" data-imagem="conteiner_botao_menor" />
+				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+			</div>
+			<!-- Margem Esquerda -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="margem_esquerdo_botao_menor" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
+				<input type="text" id="margem_esquerdo_botao_menor" class="slider margem_esquerda"
+					data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+					data-slider-tooltip="hide" data-imagem="conteiner_botao_menor" />
+				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+			</div>
+			<!-- Botões Gerar e Resetar -->
+			<button type="button" id="botao_gerar_botoes_menores" class="btn btn-primary" aria-label="Generate Button">
+				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+				<span class="l_botao_gerar">&nbsp;</span>
+			</button>
+			<button type="reset" class="btn btn-default" aria-label="Reset button">
+				<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+				<span class="l_botao_resetar">&nbsp;</span>
+			</button>
+		</form>
+	</div>
+
+	<div id="previa_botoes_menores" class="panel panel-default">
+		<div class="panel-heading l_previa">&nbsp;</div>
+		<div class="panel-body">
+			<div id="conteiner_botao_menor">
+				<div class="texto" data-largura="160"></div>
+			</div>
+			<br /><br />
+			<img src="img/background_botoes_menores_preenchido.png" class="botao_template" />
+		</div>
+	</div>
+</div>

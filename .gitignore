@@ -6,7 +6,9 @@
 # Arquivos de configuração privados do projeto do netbeans
 /nbproject/private/
 
-# Fontes proprietárias
+# Arquivos referentes às fontes proprietárias
+fontes_proprietarias.html
+css/fontes_proprietarias.css
 fonts/AlteHaasGroteskRegular.eot
 fonts/AlteHaasGroteskRegular.otf
 fonts/AlteHaasGroteskRegular.svg

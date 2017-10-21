@@ -6,6 +6,7 @@
 				<label for="texto_botoes" class="control-label l_rotulo_texto_botao">&nbsp;</label>
 				<input type="text" name="texto_botoes" id="texto_botoes" class="form-control p_texto_botoes" />
 			</div>
+			
 			<!-- Plataforma -->
 			<div class="form-inline">
 				<label for="plataforma_botao" class="control-label l_rotulo_plataforma">&nbsp;</label>
@@ -14,6 +15,7 @@
 					<option value="3ds" selected>Nintendo 3DS</option>
 				</select>
 			</div>
+			
 			<!-- Escala -->
 			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="escala_botao" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
@@ -22,6 +24,7 @@
 					data-slider-tooltip="hide" />
 				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 			</div>
+			
 			<!-- Fonte -->
 			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="fonte_botao" class="control-label l_rotulo_fonte">&nbsp;</label>
@@ -39,6 +42,16 @@
 					</label>
 				</div>
 			</div>
+			
+			<!-- Claridade -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="claridade_botao" class="control-label l_rotulo_claridade" style="margin-right: 7.5px">&nbsp;</label>
+				<input type="text" id="claridade_botao" class="slider claridade"
+					data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="25"
+					data-slider-tooltip="hide" data-imagem="conteiner_botao" />
+				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
+			</div>
+			
 			<!-- Margem Superior -->
 			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="margem_superior_botao" class="control-label l_rotulo_margem_superior" style="margin-right: 7.5px">&nbsp;</label>
@@ -47,6 +60,7 @@
 					data-slider-tooltip="hide" data-imagem="conteiner_botao" />
 				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 			</div>
+			
 			<!-- Margem Esquerda -->
 			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="margem_esquerdo_botao" class="control-label l_rotulo_margem_esquerda" style="margin-right: 7.5px">&nbsp;</label>
@@ -55,6 +69,7 @@
 					data-slider-tooltip="hide" data-imagem="conteiner_botao" />
 				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 			</div>
+			
 			<!-- Botões Gerar e Resetar -->
 			<button type="button" id="botao_gerar_botoes" class="btn btn-primary" aria-label="Generate button">
 				<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>

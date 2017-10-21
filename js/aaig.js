@@ -85,6 +85,11 @@ $(function(){
 	var $divAbaDescricoesProvas = $('#descricao_prova');
 	var $divAbaSandbox = $('#sandbox');
 	
+	// Desativando cache para requisições ajax
+	$.ajaxSetup ({
+		cache: false
+	});
+	
 	// Carregando conteúdos de cada aba
 	$divAbaBotoes.load('aba_botoes.html', function(){
 		$divAbaBotoesMenores.load('aba_botoes_menores.html', function(){
@@ -309,7 +314,7 @@ $(function(){
 
 			if(plataforma == 'ds'){
 				$campoTamanhoFonte.val(18);
-				$campoMargemSuperior.slider('setValue', 3);
+				$campoMargemSuperior.slider('setValue', 4);
 				$divConteiner.attr('id', 'conteiner_botao_menor_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_botoes_menores_preenchido_ds.png');
@@ -338,7 +343,7 @@ $(function(){
 				//$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Ace Attorney US');
 				$campoTamanhoFonte.val(15);
-				$campoMargemSuperior.slider('setValue', -5);
+				$campoMargemSuperior.slider('setValue', -3);
 				$divConteiner.attr('id', 'conteiner_nome_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
@@ -403,8 +408,8 @@ $(function(){
 				$campoFonte.val('Ace Attorney US');
 				$campoTamanhoFonte.val(16);
 				$campoAlturaLinha.slider('setValue', 1);
-				$campoMargemSuperior.slider('setValue', -3);
-				$campoMargemEsquerda.slider('setValue', 2);
+				$campoMargemSuperior.slider('setValue', -2);
+				$campoMargemEsquerda.slider('setValue', 18);
 				$divConteiner.attr('id', 'conteiner_descricao_ds');
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
@@ -456,6 +461,21 @@ $(function(){
 					$inputMostraValor.val(altura_linha);
 				});
 
+				$input.trigger('change');
+			} else if($input.hasClass('claridade')){
+				$input.on('change', function(){
+					var porcentagem = this.value;
+					var cor = 'hsla(20, 100%, ' + porcentagem + '%, 1)';
+
+					$inputMostraValor.val(porcentagem + '%').css('backgroundColor', cor);
+					if(porcentagem > 50){
+						$inputMostraValor.css('color', '#333');
+					} else {
+						$inputMostraValor.css('color', 'white');
+					}
+					$divTexto.css('color', cor);
+				});
+				
 				$input.trigger('change');
 			} else if($input.hasClass('margem_superior')){
 				$input.on('change', function(){

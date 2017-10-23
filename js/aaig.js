@@ -5,11 +5,17 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	
 	html2canvas($elemento, {
 		onrendered: function(canvas) {
+			// Criando âncora temporária para receber dados da imagem gerada
 			var a = document.createElement('a');
 			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 			a.download = nome_arquivo + '.png';
+			
+			// Adicionando âncora no corpo da página
 			var $a = $(a);
 			$('body').append($a);
+			
+			// Acionando evento de clique no âncora, para assim iniciar
+			// o download da imagem. Ao término da geração, remover âncora
 			a.click();
 			$a.remove();
 			

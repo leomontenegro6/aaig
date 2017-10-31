@@ -1,14 +1,19 @@
 function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	var $elemento = $(elemento);
+	var $divPrevias = $elemento.closest('div.previas');
+	var $divUltimosCanvas = $divPrevias.find('div.ultimos_canvas');
 	
 	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
-	
 	html2canvas($elemento, {
 		onrendered: function(canvas) {
 			// Criando âncora temporária para receber dados da imagem gerada
 			var a = document.createElement('a');
 			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 			a.download = nome_arquivo + '.png';
+			
+			// Adicionando últimos canvas gerados no contêiner à direita do rodapé.
+			// Útil para fins de depuração
+			$divUltimosCanvas.children('div.panel-body').append(canvas);
 			
 			// Adicionando âncora no corpo da página
 			var $a = $(a);
@@ -242,7 +247,15 @@ $(function(){
 		});
 		$textareaSubtitulo.on('keyup', function(){
 			var texto = (this.value).replace(/\n/g, '<br />');
-			$divTextoSubtitulo.html(texto);
+			var plataforma = $selectPlataformaSubtitulo.val();
+			
+			if(plataforma = '3ds'){
+				$divTextoSubtitulo.html(texto);
+			} else {
+				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
+					var caractere = texto[i];
+				}
+			}
 		});
 		$textareaDescricao.on('keyup', function(){
 			var texto = (this.value).replace(/\n/g, '<br />');

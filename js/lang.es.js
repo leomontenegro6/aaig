@@ -3,7 +3,7 @@ var LANGUAGE = {
 		'titulo_principal': 'Generador de imágenes Ace Attorney',
 		'titulo_navbar': 'Generador de imágenes Ace Attorney',
 		'titulo_navbar_mobile': 'GIAA',
-		'versao': 'v0.4a',
+		'versao': 'v0.4b',
 		'aba_botoes': 'Botones',
 		'aba_botoes_menores': 'Botones menores',
 		'aba_nome_prova': 'Nombre de la prueba / Perfil',

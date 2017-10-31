@@ -130,8 +130,8 @@ a[aria-controls="sandbox"] span.glyphicon{
 #conteiner_subtitulo_ds div.texto{
 	width: 128px;
 	font-family: "Arial";
-	text-shadow: 1px 1px 0px rgba(152, 152, 152, 0.5);
-	color: #393939;
+	text-shadow: 0px 1px 0px #6C946C;
+	color: #3C3C3C;
 	line-height: 1.35;
 	transform-origin: 0 0;
 }

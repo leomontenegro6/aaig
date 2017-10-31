@@ -369,7 +369,7 @@ $(function(){
 			var $campoEscala = $('#escala_subtitulo');
 			var $campoFonte = $('#fonte_subtitulo');
 			var $campoTamanhoFonte = $('#tamanho_fonte_subtitulo');
-			var $campoMargemSuperior = $('#margem_superior_subtitulo');
+			var $campoAlturaLinha = $('#altura_linha_subtitulo');
 			var $previa = $('#previa_subtitulos');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
@@ -377,10 +377,10 @@ $(function(){
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
-				$campoEscala.slider('setValue', 0.975);
-				$campoFonte.val('Arial');
-				$campoTamanhoFonte.val(11);
-				$campoMargemSuperior.slider('setValue', 2);
+				$campoEscala.slider('setValue', 1);
+				$campoFonte.val('Pixel Arial');
+				$campoTamanhoFonte.val(8);
+				$campoAlturaLinha.slider('setValue', 1.95);
 				$divConteiner.attr('id', 'conteiner_subtitulo_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido_ds.png');
@@ -388,12 +388,12 @@ $(function(){
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Vald Book');
 				$campoTamanhoFonte.val(14);
-				$campoMargemSuperior.slider('setValue', 4);
+				$campoAlturaLinha.slider('setValue', 1.35);
 				$divConteiner.attr('id', 'conteiner_subtitulo');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido.png');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoMargemSuperior).trigger('change');
+			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoAlturaLinha).trigger('change');
 		});
 		/* Descrições de Provas / Perfis */
 		$selectPlataformaDescricao.on('change', function(){
@@ -586,7 +586,13 @@ $(function(){
 							$inputOutraFonte.show();
 						} else {
 							$inputOutraFonte.val('').hide();
-							$divTexto.css('fontFamily', fonte);
+							
+							var regex_numeros = /\d/g;
+							if(regex_numeros.test(fonte)){
+								$divTexto.css({'fontFamily': '"' + fonte + '"'});
+							} else {
+								$divTexto.css('fontFamily', fonte);
+							}
 						}
 					});
 
@@ -601,7 +607,13 @@ $(function(){
 					// Setando evento dos campos de digitação de outras fontes
 					$inputOutraFonte.on('keyup', function(){
 						var fonte = this.value;
-						$divTexto.css('fontFamily', fonte);
+						
+						var regex_numeros = /\d/g;
+						if(regex_numeros.test(fonte)){
+							$divTexto.css({'fontFamily': '"' + fonte + '"'});
+						} else {
+							$divTexto.css('fontFamily', fonte);
+						}
 					});
 
 					// Setando evento de mudança do campo de tamanho da fonte

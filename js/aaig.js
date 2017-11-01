@@ -65,7 +65,7 @@ function formatarCaractere(caractere){
 		"(": 'abre-parenteses', ")": 'fecha-parenteses', '*': 'asterisco',
 		'+': 'mais', ',': 'virgula', '-': 'menos', '.': 'ponto', '/': 'barra',
 		':': 'dois-pontos', ';': 'ponto-e-virgula', '<': 'menor-que', '=': 'igual',
-		'>': 'maior-que', '?': 'interrogacao', '©': 'direitos-autorais',
+		'>': 'maior-que', '?': 'interrogacao', '@': 'arroba',
 		'[': 'abre-colchetes', ']': 'fecha-colchetes',
 		'_': 'sublinhado', '¡': 'exclamacao-invertida',
 		'¿': 'interrogacao-invertida', 'º': 'o-ordinal', 'ª': 'a-ordinal',
@@ -78,18 +78,18 @@ function formatarCaractere(caractere){
 		'À': 'A-craseado', 'Á': 'A-agudo', 'Â': 'A-circunflexo', 'Ã': 'A-til',
 		'Ä': 'A-tremado', 'Ç': 'C-cedilha', 'È': 'E-craseado', 'É': 'E-agudo', 
 		'Ê': 'E-circunflexo', 'Ë': 'E-tremado', 'Ẽ': 'E-til', 'Ì': 'I-craseado',
-		'Í': 'I-agudo', 'Ï': 'I-tremado', 'Î': 'I-circunflexo', 'Ò': 'O-grave',
+		'Í': 'I-agudo', 'Ï': 'I-tremado', 'Î': 'I-circunflexo', 'Ò': 'O-craseado',
 		'Ó': 'O-agudo', 'Ô': 'O-circunflexo', 'Õ': 'O-til', 'Ö': 'O-tremado',
-		'Ù': 'U-grave', 'Ú': 'U-agudo', 'Û': 'U-circunflexo', 'Ü': 'U-tremado',
+		'Ù': 'U-craseado', 'Ú': 'U-agudo', 'Û': 'U-circunflexo', 'Ü': 'U-tremado',
 		'Ñ': 'N-circunflexo', 'Ÿ': 'Y-tremado',
 
 		// Caracteres acentuados minúsculos
-		'à': 'a-grave', 'á': 'a-agudo', 'â': 'a-circunflexo', 'ã': 'a-til',
-		'ä': 'a-tremado', 'ç': 'c-cedilla', 'è': 'e-grave', 'é': 'e-agudo', 
-		'ê': 'e-circunflexo', 'ẽ': 'e-til', 'ë': 'e-tremado', 'ì': 'i-grave',
-		'í': 'i-agudo', 'ï': 'i-tremado', 'î': 'i-circunflexo', 'ò': 'o-grave',
+		'à': 'a-craseado', 'á': 'a-agudo', 'â': 'a-circunflexo', 'ã': 'a-til',
+		'ä': 'a-tremado', 'ç': 'c-cedilha', 'è': 'e-craseado', 'é': 'e-agudo', 
+		'ê': 'e-circunflexo', 'ẽ': 'e-til', 'ë': 'e-tremado', 'ì': 'i-craseado',
+		'í': 'i-agudo', 'ï': 'i-tremado', 'î': 'i-circunflexo', 'ò': 'o-craseado',
 		'ó': 'o-agudo', 'ô': 'o-circunflexo', 'õ': 'o-til', 'ö': 'o-tremado',
-		'ù': 'u-grave', 'ú': 'u-agudo', 'û': 'u-circunflexo', 'ü': 'u-tremado',
+		'ù': 'u-craseado', 'ú': 'u-agudo', 'û': 'u-circunflexo', 'ü': 'u-tremado',
 		'ñ': 'n-circunflexo', 'ÿ': 'y-tremado'
 
 	}
@@ -112,7 +112,7 @@ function formatarCaractere(caractere){
 	if(typeof novoCaractere == 'string'){
 		return novoCaractere;
 	} else {
-		return 'unknown';
+		return 'desconhecida';
 	}
 }
 
@@ -453,6 +453,8 @@ $(function(){
 			var $campoEscala = $('#escala_subtitulo');
 			var $campoFonte = $('#fonte_subtitulo');
 			var $campoTamanhoFonte = $('#tamanho_fonte_subtitulo');
+			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
+			var $campoMargemSuperior = $('#margem_superior_subtitulo');
 			var $campoAlturaLinha = $('#altura_linha_subtitulo');
 			var $previa = $('#previa_subtitulos');
 			var $divTexto = $previa.find('div.texto');
@@ -464,20 +466,29 @@ $(function(){
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Pixel Arial');
 				$campoTamanhoFonte.val(8);
+				$campoMargemSuperior.slider('setValue', 2);
 				$campoAlturaLinha.slider('setValue', 1.95);
 				$divConteiner.attr('id', 'conteiner_subtitulo_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido_ds.png');
+				
+				// Ocultando campo de fonte
+				$conteinerCampoFonte.hide('fast');
 			} else {
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Vald Book');
 				$campoTamanhoFonte.val(14);
+				$campoMargemSuperior.slider('setValue', 4);
 				$campoAlturaLinha.slider('setValue', 1.35);
 				$divConteiner.attr('id', 'conteiner_subtitulo');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido.png');
+				
+				// Desocultando campo de fonte
+				$conteinerCampoFonte.show('fast');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoAlturaLinha).trigger('change');
+			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoMargemSuperior).add($campoAlturaLinha).trigger('change');
+			$textareaSubtitulo.trigger('keyup');
 		});
 		/* Descrições de Provas / Perfis */
 		$selectPlataformaDescricao.on('change', function(){

@@ -6,10 +6,20 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
 	html2canvas($elemento, {
 		onrendered: function(canvas) {
+			var bmpBlob = CanvasToBMP.toBlob(canvas);
+			var url = URL.createObjectURL(bmpBlob);
+			console.log( CanvasToBMP.toDataURL(canvas) );
+			console.log(url);
+			
 			// Criando âncora temporária para receber dados da imagem gerada
 			var a = document.createElement('a');
-			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-			a.download = nome_arquivo + '.png';
+			if(true){
+				a.href = CanvasToBMP.toDataURL(canvas).replace("image/bmp", "image/octet-stream");
+				a.download = nome_arquivo + '.bmp';
+			} else {
+				a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+				a.download = nome_arquivo + '.png';
+			}
 			
 			// Adicionando últimos canvas gerados no contêiner à direita do rodapé.
 			// Útil para fins de depuração

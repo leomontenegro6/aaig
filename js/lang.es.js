@@ -26,6 +26,7 @@ var LANGUAGE = {
 		'rotulo_claridade': 'Claridad:',
 		'rotulo_margem_superior': 'Margen superior:',
 		'rotulo_margem_esquerda': 'Margen izquierda:',
+		'rotulo_formato': 'Formato:',
 		
 		'botao_gerar': 'Generar',
 		'botao_resetar': 'Resetear',

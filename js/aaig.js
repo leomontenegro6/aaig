@@ -57,6 +57,65 @@ function atualizarIdioma(){
 	}
 }
 
+function formatarCaractere(caractere){
+	var tabelaCaracteres = {
+		// Símbolos
+		' ': 'espaco', '!': 'exclamacao', '"': 'aspas-duplas', '#': 'cerquilha',
+		'$': 'cifrao', '%': 'porcento', '&': 'e-comercial', "'": 'aspas',
+		"(": 'abre-parenteses', ")": 'fecha-parenteses', '*': 'asterisco',
+		'+': 'mais', ',': 'virgula', '-': 'menos', '.': 'ponto', '/': 'barra',
+		':': 'dois-pontos', ';': 'ponto-e-virgula', '<': 'menor-que', '=': 'igual',
+		'>': 'maior-que', '?': 'interrogacao', '©': 'direitos-autorais',
+		'[': 'abre-colchetes', ']': 'fecha-colchetes',
+		'_': 'sublinhado', '¡': 'exclamacao-invertida',
+		'¿': 'interrogacao-invertida', 'º': 'o-ordinal', 'ª': 'a-ordinal',
+
+		// Números
+		'0': 'n0', '1': 'n1', '2': 'n2', '3': 'n3', '4': 'n4', '5': 'n5',
+		'6': 'n6', '7': 'n7', '8': 'n8', '9': 'n9',
+
+		// Caracteres acentuados maiúsculos
+		'À': 'A-craseado', 'Á': 'A-agudo', 'Â': 'A-circunflexo', 'Ã': 'A-til',
+		'Ä': 'A-tremado', 'Ç': 'C-cedilha', 'È': 'E-craseado', 'É': 'E-agudo', 
+		'Ê': 'E-circunflexo', 'Ë': 'E-tremado', 'Ẽ': 'E-til', 'Ì': 'I-craseado',
+		'Í': 'I-agudo', 'Ï': 'I-tremado', 'Î': 'I-circunflexo', 'Ò': 'O-grave',
+		'Ó': 'O-agudo', 'Ô': 'O-circunflexo', 'Õ': 'O-til', 'Ö': 'O-tremado',
+		'Ù': 'U-grave', 'Ú': 'U-agudo', 'Û': 'U-circunflexo', 'Ü': 'U-tremado',
+		'Ñ': 'N-circunflexo', 'Ÿ': 'Y-tremado',
+
+		// Caracteres acentuados minúsculos
+		'à': 'a-grave', 'á': 'a-agudo', 'â': 'a-circunflexo', 'ã': 'a-til',
+		'ä': 'a-tremado', 'ç': 'c-cedilla', 'è': 'e-grave', 'é': 'e-agudo', 
+		'ê': 'e-circunflexo', 'ẽ': 'e-til', 'ë': 'e-tremado', 'ì': 'i-grave',
+		'í': 'i-agudo', 'ï': 'i-tremado', 'î': 'i-circunflexo', 'ò': 'o-grave',
+		'ó': 'o-agudo', 'ô': 'o-circunflexo', 'õ': 'o-til', 'ö': 'o-tremado',
+		'ù': 'u-grave', 'ú': 'u-agudo', 'û': 'u-circunflexo', 'ü': 'u-tremado',
+		'ñ': 'n-circunflexo', 'ÿ': 'y-tremado'
+
+	}
+
+	var alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
+	for(var i in alfabeto){
+		var letra = alfabeto[i];
+
+		tabelaCaracteres[letra] = letra;
+	}
+
+	var chave, novoCaractere;
+	for (chave in tabelaCaracteres) {
+		if(chave == caractere){
+			var novoValor = tabelaCaracteres[chave];
+			novoCaractere = caractere.replace(chave, novoValor);
+			break;
+		}
+	}
+	if(typeof novoCaractere == 'string'){
+		return novoCaractere;
+	} else {
+		return 'unknown';
+	}
+}
+
 /* Função que retorna o dispositivo utilizado pelo usuário, para acessar o sistema
  * Valores possíveis de retorno:
  *	- xs: Extra small (Celulares, com largura de tela menor que 768px);
@@ -246,14 +305,26 @@ $(function(){
 			$divTextoNome.html(texto);
 		});
 		$textareaSubtitulo.on('keyup', function(){
-			var texto = (this.value).replace(/\n/g, '<br />');
+			var texto = this.value;
 			var plataforma = $selectPlataformaSubtitulo.val();
 			
-			if(plataforma = '3ds'){
+			if(plataforma == '3ds'){
+				texto = texto.replace(/\n/g, '<br />');
 				$divTextoSubtitulo.html(texto);
 			} else {
+				$divTextoSubtitulo.html('').css('fontFamily', '');
 				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
 					var caractere = texto[i];
+					
+					if(caractere == "\n"){
+						$divTextoSubtitulo.append('<br />');
+					} else {
+						var novoCaractere = formatarCaractere(caractere);
+
+						$divTextoSubtitulo.append(
+							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
+						);
+					}
 				}
 			}
 		});

@@ -19,7 +19,7 @@ Leer en otros idiomas: [Português do Brasil](README.pt-br.md), [English](README
 ![alt tag](img/background_subtitulos_preenchido.png)
 *   Descripciones de pruebas / perfiles, con fondo gris oscuro y texto en color blanco;
 
-![alt tag](img/background_descricao_fundo_cinza.png)
+![alt tag](img/background_descricao_fundo_marrom.png)
 
 La manera tradicional de editar estas imágenes es a través de archivos .PSD en Adobe Photoshop, que acaba siendo una tarea muy pesada y repetitiva. Esa es la principal razón por la que este software fue creado.
 

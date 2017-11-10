@@ -19,7 +19,7 @@
 ![alt tag](img/background_subtitulos_preenchido.png)
 *   Proof / Profile descriptions, with dark gray background and texts in white color;
 
-![alt tag](img/background_descricao_fundo_cinza.png)
+![alt tag](img/background_descricao_fundo_marrom.png)
 
 The traditional way of editing those graphics is through .PSD files in Adobe Photoshop, which ends up being an extremely repetitive and tiresome task for romhackers. This was the main reason why I created this software.
 

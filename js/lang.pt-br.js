@@ -3,7 +3,7 @@ var LANGUAGE = {
 		'titulo_principal': 'Gerador de Imagens do Ace Attorney',
 		'titulo_navbar': 'Gerador de Imagens do Ace Attorney',
 		'titulo_navbar_mobile': 'GIAA',
-		'versao': 'v0.4d',
+		'versao': 'v0.5',
 		'aba_botoes': 'Botões',
 		'aba_botoes_menores': 'Botões Menores',
 		'aba_nome_prova': 'Nome da Prova / Perfil',
@@ -26,7 +26,6 @@ var LANGUAGE = {
 		'rotulo_claridade': 'Claridade:',
 		'rotulo_margem_superior': 'Margem superior:',
 		'rotulo_margem_esquerda': 'Margem esquerda:',
-		'rotulo_formato': 'Formato:',
 		
 		'botao_gerar': 'Gerar',
 		'botao_resetar': 'Resetar',

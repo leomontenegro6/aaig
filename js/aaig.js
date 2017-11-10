@@ -5,21 +5,11 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	
 	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
 	html2canvas($elemento, {
-		onrendered: function(canvas) {
-			var bmpBlob = CanvasToBMP.toBlob(canvas);
-			var url = URL.createObjectURL(bmpBlob);
-			console.log( CanvasToBMP.toDataURL(canvas) );
-			console.log(url);
-			
+		onrendered: function(canvas) {			
 			// Criando âncora temporária para receber dados da imagem gerada
 			var a = document.createElement('a');
-			if(true){
-				a.href = CanvasToBMP.toDataURL(canvas).replace("image/bmp", "image/octet-stream");
-				a.download = nome_arquivo + '.bmp';
-			} else {
-				a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-				a.download = nome_arquivo + '.png';
-			}
+			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+			a.download = nome_arquivo + '.png';
 			
 			// Adicionando últimos canvas gerados no contêiner à direita do rodapé.
 			// Útil para fins de depuração
@@ -312,7 +302,27 @@ $(function(){
 		});
 		$inputTextoNome.on('keyup', function(){
 			var texto = this.value;
-			$divTextoNome.html(texto);
+			var plataforma = $selectPlataformaNome.val();
+			
+			if(plataforma == '3ds'){
+				texto = texto.replace(/\n/g, '<br />');
+				$divTextoNome.html(texto);
+			} else {
+				$divTextoNome.html('').css('fontFamily', '');
+				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
+					var caractere = texto[i];
+					
+					if(caractere == "\n"){
+						$divTextoNome.append('<br />');
+					} else {
+						var novoCaractere = formatarCaractere(caractere);
+
+						$divTextoNome.append(
+							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
+						);
+					}
+				}
+			}
 		});
 		$textareaSubtitulo.on('keyup', function(){
 			var texto = this.value;
@@ -339,8 +349,28 @@ $(function(){
 			}
 		});
 		$textareaDescricao.on('keyup', function(){
-			var texto = (this.value).replace(/\n/g, '<br />');
-			$divTextoDescricao.html(texto);
+			var texto = this.value;
+			var plataforma = $selectPlataformaDescricao.val();
+			
+			if(plataforma == '3ds'){
+				texto = texto.replace(/\n/g, '<br />');
+				$divTextoDescricao.html(texto);
+			} else {
+				$divTextoDescricao.html('').css('fontFamily', '');
+				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
+					var caractere = texto[i];
+					
+					if(caractere == "\n"){
+						$divTextoDescricao.append('<br />');
+					} else {
+						var novoCaractere = formatarCaractere(caractere);
+
+						$divTextoDescricao.append(
+							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
+						);
+					}
+				}
+			}
 		});
 		$inputTextoBotaoSandbox1.on('keyup', function(){
 			var texto = this.value;
@@ -432,6 +462,7 @@ $(function(){
 			var $campoEscala = $('#escala_nome');
 			var $campoFonte = $('#fonte_nome');
 			var $campoTamanhoFonte = $('#tamanho_fonte_nome');
+			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
 			var $campoMargemSuperior = $('#margem_superior_nome');
 			var $previa = $('#previa_nomes');
 			var $divTexto = $previa.find('div.texto');
@@ -440,23 +471,30 @@ $(function(){
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
-				//$campoEscala.slider('setValue', 1);
+				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Ace Attorney US');
 				$campoTamanhoFonte.val(15);
-				$campoMargemSuperior.slider('setValue', -3);
+				$campoMargemSuperior.slider('setValue', 1);
 				$divConteiner.attr('id', 'conteiner_nome_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
+				
+				// Ocultando campo de fonte
+				$conteinerCampoFonte.hide('fast');
 			} else {
-				//$campoEscala.slider('setValue', 1.045);
+				$campoEscala.slider('setValue', 1.045);
 				$campoFonte.val('Vald Book');
 				$campoTamanhoFonte.val(18);
 				$campoMargemSuperior.slider('setValue', 0);
 				$divConteiner.attr('id', 'conteiner_nome');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
+				
+				// Desocultando campo de fonte
+				$conteinerCampoFonte.show('fast');
 			}
 			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoMargemSuperior).trigger('change');
+			$inputTextoNome.trigger('keyup');
 		});
 		/* Subtítulos de Provas / Perfis */
 		$selectPlataformaSubtitulo.on('change', function(){
@@ -505,6 +543,7 @@ $(function(){
 			var $campoEscala = $('#escala_descricao');
 			var $campoFonte = $('#fonte_descricao');
 			var $campoTamanhoFonte = $('#tamanho_fonte_descricao');
+			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
 			var $campoAlturaLinha = $('#altura_linha_descricao');
 			var $campoMargemSuperior = $('#margem_superior_descricao');
 			var $campoMargemEsquerda = $('#margem_esquerdo_descricao');
@@ -519,11 +558,14 @@ $(function(){
 				$campoFonte.val('Ace Attorney US');
 				$campoTamanhoFonte.val(16);
 				$campoAlturaLinha.slider('setValue', 1);
-				$campoMargemSuperior.slider('setValue', -2);
+				$campoMargemSuperior.slider('setValue', 0);
 				$campoMargemEsquerda.slider('setValue', 18);
 				$divConteiner.attr('id', 'conteiner_descricao_ds');
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
+				
+				// Ocultando campo de fonte
+				$conteinerCampoFonte.hide('fast');
 			} else {
 				$campoEscala.slider('setValue', 1.075);
 				$campoFonte.val('Vald Book');
@@ -534,8 +576,12 @@ $(function(){
 				$divConteiner.attr('id', 'conteiner_descricao');
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido.png');
+				
+				// Desocultando campo de fonte
+				$conteinerCampoFonte.show('fast');
 			}
 			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoAlturaLinha).add($campoMargemSuperior).add($campoMargemEsquerda).trigger('change');
+			$textareaDescricao.trigger('keyup');
 		});
 
 		// Instanciando campos de escala, bem como seus eventos
@@ -781,9 +827,9 @@ $(function(){
 		});
 		$botaoGerarDescricao.on('click', function(){
 			var texto = $textareaDescricao.val();
-			$divDescricao.removeClass('fundo_cinza_escuro');
+			$divDescricao.removeClass('fundo_marrom');
 			renderizarImagemNavegador($divDescricao, texto, function(){
-				$divDescricao.addClass('fundo_cinza_escuro');
+				$divDescricao.addClass('fundo_marrom');
 			});
 		});
 		$botaoGerarSandbox1.on('click', function(){

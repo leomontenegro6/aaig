@@ -17,7 +17,7 @@
 ![alt tag](img/background_subtitulos_preenchido.png)
 *   Descrições de provas, com fundo cinza escuro e textos em cor branca;
 
-![alt tag](img/background_descricao_fundo_cinza.png)
+![alt tag](img/background_descricao_fundo_marrom.png)
 
 A maneira tradicional de editar esses gráficos é através de arquivos .PSD via Adobe Photoshop, o que acaba sendo um trabalho extremamente repetitivo e cansativo para os romhackers. Foi justamente pensando em otimizar estes processos que eu criei este software.
 

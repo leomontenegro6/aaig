@@ -203,6 +203,7 @@ $(function(){
 		var $inputTextoNome = $('#texto_nome');
 		var $selectPlataformaNome = $('#plataforma_nome');
 		var $selectFonteNome = $('#fonte_nome');
+		var $selectFonteNomeDS = $('#fonte_nome_ds');
 		var $botaoGerarNome = $('#botao_gerar_nome');
 		var $divNome = $('#conteiner_nome');
 		var $divTextoNome = $divNome.children('div.texto');
@@ -460,9 +461,12 @@ $(function(){
 		/* Nomes de Provas / Perfis */
 		$selectPlataformaNome.on('change', function(){
 			var $campoEscala = $('#escala_nome');
+			var $conteinerCampoEscala = $campoEscala.closest('div.form-inline');
 			var $campoFonte = $('#fonte_nome');
 			var $campoTamanhoFonte = $('#tamanho_fonte_nome');
 			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
+			var $campoFonteDS = $('#fonte_nome_ds');
+			var $conteinerCampoFonteDS = $campoFonteDS.closest('div.form-inline');
 			var $campoMargemSuperior = $('#margem_superior_nome');
 			var $previa = $('#previa_nomes');
 			var $divTexto = $previa.find('div.texto');
@@ -473,14 +477,19 @@ $(function(){
 			if(plataforma == 'ds'){
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Ace Attorney US');
+				$campoFonteDS.val('n');
 				$campoTamanhoFonte.val(15);
 				$campoMargemSuperior.slider('setValue', 1);
 				$divConteiner.attr('id', 'conteiner_nome_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
 				
-				// Ocultando campo de fonte
-				$conteinerCampoFonte.hide('fast');
+				// Alternando campo de fonte para a versão de DS
+				$conteinerCampoFonte.hide();
+				$conteinerCampoFonteDS.show();
+				
+				// Ocultando campo de escala
+				$conteinerCampoEscala.hide();
 			} else {
 				$campoEscala.slider('setValue', 1.045);
 				$campoFonte.val('Vald Book');
@@ -490,10 +499,14 @@ $(function(){
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
 				
-				// Desocultando campo de fonte
-				$conteinerCampoFonte.show('fast');
+				// Alternando campo de fonte para a versão de 3DS
+				$conteinerCampoFonte.show();
+				$conteinerCampoFonteDS.hide();
+				
+				// Exibindo campo de escala
+				$conteinerCampoEscala.show();
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoMargemSuperior).trigger('change');
+			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoFonteDS).add($campoMargemSuperior).trigger('change');
 			$inputTextoNome.trigger('keyup');
 		});
 		/* Subtítulos de Provas / Perfis */
@@ -779,6 +792,26 @@ $(function(){
 				// Definindo textos das opções "Outra", dos campos de fonte
 				$('.l_opcao_outra_fonte').html(LANGUAGE.l.opcao_outra_fonte);
 			});
+		});
+		
+		// Configurando campos de alteração de estilo de fonte via sprites (DS)
+		$selectFonteNomeDS.on('change', function(){
+			var $selectFonte = $(this);
+			var $divTexto;
+			
+			var fonte = $selectFonte.val();
+			
+			var name = $selectFonte.attr('name');
+			
+			if(name == 'fonte_nome_ds'){
+				$divNome = $('#conteiner_nome_ds');
+				
+				if(fonte == 'c'){
+					$divNome.addClass('condensada');
+				} else {
+					$divNome.removeClass('condensada');
+				}
+			}
 		});
 
 		// Evento dos checkboxes de mudança de estilo (negrito e itálico)

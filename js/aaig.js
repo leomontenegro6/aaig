@@ -5,7 +5,7 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback){
 	
 	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
 	html2canvas($elemento, {
-		onrendered: function(canvas) {			
+		onrendered: function(canvas) {
 			// Criando âncora temporária para receber dados da imagem gerada
 			var a = document.createElement('a');
 			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
@@ -220,6 +220,7 @@ $(function(){
 		var $textareaDescricao = $('#texto_descricao');
 		var $selectPlataformaDescricao = $('#plataforma_descricao');
 		var $selectFonteDescricao = $('#fonte_descricao');
+		var $selectFonteDescricaoDS = $('#fonte_descricao_ds');
 		var $botaoGerarDescricao = $('#botao_gerar_descricao');
 		var $divDescricao = $('#conteiner_descricao');
 		var $divTextoDescricao = $divDescricao.children('div.texto');
@@ -485,11 +486,11 @@ $(function(){
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
 				
 				// Alternando campo de fonte para a versão de DS
-				$conteinerCampoFonte.hide();
-				$conteinerCampoFonteDS.show();
+				$conteinerCampoFonte.hide('fast');
+				$conteinerCampoFonteDS.show('fast');
 				
 				// Ocultando campo de escala
-				$conteinerCampoEscala.hide();
+				$conteinerCampoEscala.hide('fast');
 			} else {
 				$campoEscala.slider('setValue', 1.045);
 				$campoFonte.val('Vald Book');
@@ -500,11 +501,11 @@ $(function(){
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
 				
 				// Alternando campo de fonte para a versão de 3DS
-				$conteinerCampoFonte.show();
-				$conteinerCampoFonteDS.hide();
+				$conteinerCampoFonte.show('fast');
+				$conteinerCampoFonteDS.hide('fast');
 				
 				// Exibindo campo de escala
-				$conteinerCampoEscala.show();
+				$conteinerCampoEscala.show('fast');
 			}
 			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoFonteDS).add($campoMargemSuperior).trigger('change');
 			$inputTextoNome.trigger('keyup');
@@ -554,9 +555,12 @@ $(function(){
 		/* Descrições de Provas / Perfis */
 		$selectPlataformaDescricao.on('change', function(){
 			var $campoEscala = $('#escala_descricao');
+			var $conteinerCampoEscala = $campoEscala.closest('div.form-inline');
 			var $campoFonte = $('#fonte_descricao');
 			var $campoTamanhoFonte = $('#tamanho_fonte_descricao');
 			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
+			var $campoFonteDS = $('#fonte_descricao_ds');
+			var $conteinerCampoFonteDS = $campoFonteDS.closest('div.form-inline');
 			var $campoAlturaLinha = $('#altura_linha_descricao');
 			var $campoMargemSuperior = $('#margem_superior_descricao');
 			var $campoMargemEsquerda = $('#margem_esquerdo_descricao');
@@ -577,8 +581,12 @@ $(function(){
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
 				
-				// Ocultando campo de fonte
+				// Alternando campo de fonte para a versão de DS
 				$conteinerCampoFonte.hide('fast');
+				$conteinerCampoFonteDS.show('fast');
+				
+				// Ocultando campo de escala
+				$conteinerCampoEscala.hide('fast');
 			} else {
 				$campoEscala.slider('setValue', 1.075);
 				$campoFonte.val('Vald Book');
@@ -590,10 +598,14 @@ $(function(){
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido.png');
 				
-				// Desocultando campo de fonte
+				// Alternando campo de fonte para a versão de 3DS
 				$conteinerCampoFonte.show('fast');
+				$conteinerCampoFonteDS.hide('fast');
+				
+				// Exibindo campo de escala
+				$conteinerCampoEscala.show('fast');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoAlturaLinha).add($campoMargemSuperior).add($campoMargemEsquerda).trigger('change');
+			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoFonteDS).add($campoAlturaLinha).add($campoMargemSuperior).add($campoMargemEsquerda).trigger('change');
 			$textareaDescricao.trigger('keyup');
 		});
 
@@ -797,19 +809,33 @@ $(function(){
 		// Configurando campos de alteração de estilo de fonte via sprites (DS)
 		$selectFonteNomeDS.on('change', function(){
 			var $selectFonte = $(this);
-			var $divTexto;
 			
 			var fonte = $selectFonte.val();
-			
 			var name = $selectFonte.attr('name');
 			
 			if(name == 'fonte_nome_ds'){
-				$divNome = $('#conteiner_nome_ds');
+				var $divConteiner = $('#conteiner_nome_ds');
 				
 				if(fonte == 'c'){
-					$divNome.addClass('condensada');
+					$divConteiner.addClass('condensada');
 				} else {
-					$divNome.removeClass('condensada');
+					$divConteiner.removeClass('condensada');
+				}
+			}
+		});
+		$selectFonteDescricaoDS.on('change', function(){
+			var $selectFonte = $(this);
+			
+			var fonte = $selectFonte.val();
+			var name = $selectFonte.attr('name');
+			
+			if(name == 'fonte_descricao_ds'){
+				var $divConteiner = $('#conteiner_descricao_ds');
+				
+				if(fonte == 'c'){
+					$divConteiner.addClass('condensada');
+				} else {
+					$divConteiner.removeClass('condensada');
 				}
 			}
 		});

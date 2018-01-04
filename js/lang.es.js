@@ -3,7 +3,7 @@ var LANGUAGE = {
 		'titulo_principal': 'Generador de imágenes Ace Attorney',
 		'titulo_navbar': 'Generador de imágenes Ace Attorney',
 		'titulo_navbar_mobile': 'GIAA',
-		'versao': 'v0.5b',
+		'versao': 'v0.5c',
 		'aba_botoes': 'Botones',
 		'aba_botoes_menores': 'Botones menores',
 		'aba_nome_prova': 'Nombre de la prueba / Perfil',
@@ -16,6 +16,7 @@ var LANGUAGE = {
 		'rotulo_texto_subtitulo_prova': 'Texto del subtítulo de la prueba / perfil:',
 		'rotulo_texto_descricao_prova': 'Texto de la descripción de la prueba / perfil:',
 		
+		'rotulo_lote': 'En Lote:',
 		'rotulo_plataforma': 'Plataforma:',
 		'rotulo_escala': 'Escala:',
 		'rotulo_fonte': 'Fuente:',
@@ -41,6 +42,7 @@ var LANGUAGE = {
 	},
 	'p': { // Placeholders
 		'texto_botoes': 'Escribe para ver el resultado en la previsualización',
+		'texto_lote': 'Escribe textos separados por quebras de linha',
 		'texto_sandbox': 'Escribe para ver el resultado en la previsualización',
 		'outra_fonte': 'Escribe aquí el nombre de la fuente'
 	},

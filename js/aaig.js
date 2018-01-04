@@ -1,32 +1,107 @@
-function renderizarImagemNavegador(elemento, nome_arquivo, callback){
+function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDownload){
 	var $elemento = $(elemento);
 	var $divPrevias = $elemento.closest('div.previas');
-	var $divUltimosCanvas = $divPrevias.find('div.ultimos_canvas');
+	var $divUltimosCanvas = $divPrevias.find('div.ultimos_canvas').children('div.panel-body');
+	
+	if(typeof efetuarDownload == 'undefined') efetuarDownload = true;
 	
 	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
 	html2canvas($elemento, {
 		onrendered: function(canvas) {
-			// Criando âncora temporária para receber dados da imagem gerada
-			var a = document.createElement('a');
-			a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-			a.download = nome_arquivo + '.png';
-			
 			// Adicionando últimos canvas gerados no contêiner à direita do rodapé.
-			// Útil para fins de depuração
-			$divUltimosCanvas.children('div.panel-body').append(canvas);
+			// Útil para fins de depuração. Apenas os 50 primeiros são mantidos
+			$divUltimosCanvas.append(canvas);
+			var total_canvas = $divUltimosCanvas.children('canvas').length;
+			if(total_canvas > 50){
+				for(var i = total_canvas; i > 50; i--){
+					$divUltimosCanvas.children('canvas').first().remove();
+				}
+			}
 			
-			// Adicionando âncora no corpo da página
-			var $a = $(a);
-			$('body').append($a);
+			if(efetuarDownload){
+				// Criando âncora temporária para receber dados da imagem gerada
+				var a = document.createElement('a');
+				a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+				a.download = nome_arquivo + '.png';
+				
+				// Adicionando âncora no corpo da página
+				var $a = $(a);
+				$('body').append($a);
+
+				// Acionando evento de clique no âncora, para assim iniciar
+				// o download da imagem. Ao término da geração, remover âncora
+				a.click();
+				$a.remove();
+			}
 			
-			// Acionando evento de clique no âncora, para assim iniciar
-			// o download da imagem. Ao término da geração, remover âncora
-			a.click();
-			$a.remove();
-			
-			if(callback) callback();
+			if(callback) callback(canvas);
 		}
 	});
+}
+
+function renderizarImagensLote(elemento, textos){
+	var $elemento = $(elemento);
+	var $divTexto = $elemento.children('div.texto');
+	
+	var i = 0;
+	var canvases = [];
+	
+	mostraCarregando();
+	
+	var renderizar = function(){
+		var texto = textos.shift();
+		var nome_arquivo = i + '.png';
+		
+		atualizarPreviaBotoes($divTexto, texto);
+		renderizarImagemNavegador($elemento, nome_arquivo, function(canvas){
+			canvases.push(canvas);
+			
+			if(textos.length){
+				// Renderizar imagem da linha seguinte
+				i++;
+				renderizar();
+			} else {
+				// Gerar arquivo zipado contendo as imagens geradas em lote
+				var data = new Date();
+				data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toJSON();
+				data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
+				var nome_arquivo_final = 'imagens-' + data + '.zip';
+				
+				var zip = new JSZip();
+				
+				// Adicionando imagens no zip
+				for(var j in canvases){
+					var nome_arquivo = j + '.png';
+					var imagem = canvases[j].toDataURL();
+					var indice_cabecalho = imagem.indexOf(",");
+					var imagem_base64 = imagem.slice(indice_cabecalho + 1);
+					
+					zip.file(nome_arquivo, imagem_base64, {base64: true});
+				}
+				
+				// Gerando zip e oferecendo-o ao usuário
+				zip.generateAsync({type:"blob"}).then(function(conteudo){
+					ocultaCarregando();
+					saveAs(conteudo, nome_arquivo_final);
+				});
+			}
+		}, false);
+	}
+	renderizar();
+}
+
+function atualizarPreviaBotoes(divPreviaBotoes, texto){
+	var $divPreviaBotoes = $(divPreviaBotoes);
+	
+	$divPreviaBotoes.html(texto);
+}
+
+function mostraCarregando(){
+	$('#indicador_carregamento').modal('show');
+}
+
+function ocultaCarregando(){
+	$('#indicador_carregamento').modal('hide');
 }
 
 function adicionarScriptIdioma(idioma, callback){
@@ -185,6 +260,8 @@ $(function(){
 
 		// Campos de botões
 		var $inputTextoBotoes = $('#texto_botoes');
+		var $checkboxLoteBotoes = $('#lote_botao');
+		var $textareaTextoBotoesLote = $('#texto_botoes_lote');
 		var $selectPlataformaBotoes = $('#plataforma_botao');
 		var $selectFonteBotoes = $('#fonte_botao');
 		var $botaoGerarBotoes = $('#botao_gerar_botoes');
@@ -268,6 +345,7 @@ $(function(){
 
 		// Definindo texto padrão para os campos
 		$inputTextoBotoes.attr('value', 'Phoenix Wright');
+		$textareaTextoBotoesLote.html('Phoenix Wright\nLarry Butz\nMia Fey');
 		$inputTextoBotoesMenores.attr('value', "Chief's Office");
 		$inputTextoNome.attr('value', 'Fingerprinting Set');
 		$textareaSubtitulo.html('Age: 27\nGender: Female');
@@ -296,11 +374,11 @@ $(function(){
 		// Eventos dos campos de texto
 		$inputTextoBotoes.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotao.html(texto);
+			atualizarPreviaBotoes($divTextoBotao, texto);
 		});
 		$inputTextoBotoesMenores.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotaoMenor.html(texto);
+			atualizarPreviaBotoes($divTextoBotaoMenor, texto);
 		});
 		$inputTextoNome.on('keyup', function(){
 			var texto = this.value;
@@ -401,6 +479,36 @@ $(function(){
 		$textareaDescricaoSandbox.on('keyup', function(){
 			var texto = (this.value).replace(/\n/g, '<br />');
 			$divTextoDescricaoSandbox.html(texto);
+		});
+		
+		// Eventos dos campos referentes a geração de imagens em lote
+		$checkboxLoteBotoes.on('change', function(){
+			var $checkbox = $(this);
+			
+			if($checkbox.is(':checked')){
+				$inputTextoBotoes.hide();
+				$textareaTextoBotoesLote.show().trigger('keyup');
+			} else {
+				$inputTextoBotoes.show().trigger('keyup');
+				$textareaTextoBotoesLote.hide();
+			}
+		});
+		$textareaTextoBotoesLote.on({
+			'keyup': function(){
+				var texto = this.value;
+				var inicio_selecao = this.selectionStart;
+				var numero_linha = (texto.substr(0, inicio_selecao).split(/\n/).length) - 1;
+
+				// Separando texto por quebras-de-linha
+				var linhas = texto.split(/\n/);
+				var linha_atual = linhas[numero_linha];
+
+				// Atualizando prévia de botões da linha atual
+				atualizarPreviaBotoes($divTextoBotao, linha_atual);
+			},
+			'click': function(){
+				$textareaTextoBotoesLote.trigger('keyup');
+			}
 		});
 
 		// Eventos dos campos de plataforma
@@ -869,8 +977,14 @@ $(function(){
 
 		// Evento dos botões "Gerar"
 		$botaoGerarBotoes.on('click', function(){
-			var texto = $inputTextoBotoes.val();
-			renderizarImagemNavegador($divBotao, texto);
+			if($checkboxLoteBotoes.is(':checked')){
+				var texto = $textareaTextoBotoesLote.val();
+				var linhas = texto.split(/\n/);
+				renderizarImagensLote($divBotao, linhas);
+			} else {
+				var texto = $inputTextoBotoes.val();
+				renderizarImagemNavegador($divBotao, texto);
+			}
 		});
 		$botaoGerarBotoesMenores.on('click', function(){
 			var texto = $inputTextoBotoesMenores.val();

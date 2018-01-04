@@ -3,7 +3,7 @@ var LANGUAGE = {
 		'titulo_principal': 'Ace Attorney Image Generator',
 		'titulo_navbar': 'Ace Attorney Image Generator',
 		'titulo_navbar_mobile': 'AAIG',
-		'versao': 'v0.5b',
+		'versao': 'v0.5c',
 		'aba_botoes': 'Buttons',
 		'aba_botoes_menores': 'Smaller Buttons',
 		'aba_nome_prova': 'Proof / Profile Name',
@@ -16,6 +16,7 @@ var LANGUAGE = {
 		'rotulo_texto_subtitulo_prova': 'Proof / Profile Subtitle:',
 		'rotulo_texto_descricao_prova': 'Proof / Profile Description:',
 		
+		'rotulo_lote': 'Batch Mode:',
 		'rotulo_plataforma': 'Platform:',
 		'rotulo_escala': 'Scale:',
 		'rotulo_fonte': 'Font:',
@@ -41,6 +42,7 @@ var LANGUAGE = {
 	},
 	'p': { // Placeholders
 		'texto_botoes': 'Type text to be shown on preview below',
+		'texto_lote': 'Type texts separated by line breaks',
 		'texto_sandbox': 'Type text to be shown on preview on the right',
 		'outra_fonte': 'Type font name here'
 	},

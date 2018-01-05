@@ -16,7 +16,7 @@
 			</div>
 			
 			<!-- Plataforma -->
-			<div class="form-inline">
+			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="plataforma_botao" class="control-label l_rotulo_plataforma">&nbsp;</label>
 				<select id="plataforma_botao" name="plataforma_botao" class="form-control">
 					<option value="ds">Nintendo DS</option>
@@ -26,7 +26,10 @@
 			
 			<!-- Escala -->
 			<div class="form-inline" style="margin-bottom: 5px">
-				<label for="escala_botao" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+				<label for="escala_automatica_botao" class="control-label l_rotulo_escala">&nbsp;</label>
+					<input type="checkbox" name="escala_automatica_botao" id="escala_automatica_botao" class="form-control" />
+				<label for="escala_automatica_botao" class="control-label l_rotulo_escala_automatica"
+					style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 				<input type="text" id="escala_botao" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
 					data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao"
 					data-slider-tooltip="hide" />

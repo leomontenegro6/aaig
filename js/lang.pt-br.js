@@ -19,6 +19,7 @@ var LANGUAGE = {
 		'rotulo_lote': 'Em Lote:',
 		'rotulo_plataforma': 'Plataforma:',
 		'rotulo_escala': 'Escala:',
+		'rotulo_escala_automatica': 'Automática',
 		'rotulo_fonte': 'Fonte:',
 		'opcao_outra_fonte': 'Outra',
 		'botao_negrito': 'Negrito',
@@ -38,7 +39,9 @@ var LANGUAGE = {
 		'ultimos_canvas': 'Últimos Canvas Gerados',
 		'sandbox_botoes_grandes': 'Botões Grandes',
 		'sandbox_botoes_menores': 'Botões Menores',
-		'sandbox_provas_perfis': 'Provas / Perfis'
+		'sandbox_provas_perfis': 'Provas / Perfis',
+		
+		'carregando': 'Carregando...'
 	},
 	'p': { // Placeholders
 		'texto_botoes': 'Digite o texto a aparecer na prévia abaixo',

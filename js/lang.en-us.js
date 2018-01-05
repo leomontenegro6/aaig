@@ -19,6 +19,7 @@ var LANGUAGE = {
 		'rotulo_lote': 'Batch Mode:',
 		'rotulo_plataforma': 'Platform:',
 		'rotulo_escala': 'Scale:',
+		'rotulo_escala_automatica': 'Automatic',
 		'rotulo_fonte': 'Font:',
 		'opcao_outra_fonte': 'Another',
 		'botao_negrito': 'Bold',
@@ -38,7 +39,9 @@ var LANGUAGE = {
 		'ultimos_canvas': 'Últimos Canvas Gerados',
 		'sandbox_botoes_grandes': 'Large Buttons',
 		'sandbox_botoes_menores': 'Smaller Buttons',
-		'sandbox_provas_perfis': 'Proofs / Profiles'
+		'sandbox_provas_perfis': 'Proofs / Profiles',
+		
+		'carregando': 'Loading...'
 	},
 	'p': { // Placeholders
 		'texto_botoes': 'Type text to be shown on preview below',

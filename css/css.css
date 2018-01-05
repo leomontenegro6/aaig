@@ -41,6 +41,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 #conteiner_botao_ds{
@@ -55,6 +56,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 #conteiner_botao_menor{

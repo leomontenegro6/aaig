@@ -90,10 +90,44 @@ function renderizarImagensLote(elemento, textos){
 	renderizar();
 }
 
-function atualizarPreviaBotoes(divPreviaBotoes, texto){
+function calcularLarguraTexto(elemento){
+	var $elemento = $(elemento);
+	var html_org = $elemento.html();
+	var html_calc = '<span>' + html_org + '</span>';
+	$elemento.html(html_calc);
+	var largura = $elemento.find('span:first').width();
+	$elemento.html(html_org);
+	return largura;
+}
+
+function definirEscalaPrevia(elemento, escala){
+	var $elemento = $(elemento);
+	
+	var largura = parseFloat($elemento.attr('data-largura'));
+	var nova_largura = largura / escala;
+
+	$elemento.css({
+		'width': nova_largura + 'px',
+		'transform': 'scaleX(' + escala + ')'
+	});
+}
+
+function atualizarPreviaBotoes(divPreviaBotoes, texto, checkEscalaAutomatica){
 	var $divPreviaBotoes = $(divPreviaBotoes);
 	
 	$divPreviaBotoes.html(texto);
+	
+	if(checkEscalaAutomatica){
+		definirEscalaPrevia($divPreviaBotoes, 1);
+		var largura_texto = calcularLarguraTexto($divPreviaBotoes);
+		var largura_previa = $divPreviaBotoes.width();
+		
+		if(largura_texto > largura_previa){
+			var escala = (largura_previa * 0.95 / largura_texto);
+			
+			definirEscalaPrevia($divPreviaBotoes, escala);
+		}
+	}
 }
 
 function mostraCarregando(){
@@ -263,6 +297,7 @@ $(function(){
 		var $checkboxLoteBotoes = $('#lote_botao');
 		var $textareaTextoBotoesLote = $('#texto_botoes_lote');
 		var $selectPlataformaBotoes = $('#plataforma_botao');
+		var $checkboxEscalaAutomaticaBotoes = $('#escala_automatica_botao');
 		var $selectFonteBotoes = $('#fonte_botao');
 		var $botaoGerarBotoes = $('#botao_gerar_botoes');
 		var $divBotao = $('#conteiner_botao');
@@ -374,7 +409,8 @@ $(function(){
 		// Eventos dos campos de texto
 		$inputTextoBotoes.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaBotoes($divTextoBotao, texto);
+			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
+			atualizarPreviaBotoes($divTextoBotao, texto, checkEscalaAutomatica);
 		});
 		$inputTextoBotoesMenores.on('keyup', function(){
 			var texto = this.value;
@@ -514,6 +550,7 @@ $(function(){
 		// Eventos dos campos de plataforma
 		/* Botões */
 		$selectPlataformaBotoes.on('change', function(){
+			var $checkboxEscalaAutomatica = $('#escala_automatica_botao');
 			var $campoEscala = $('#escala_botao');
 			var $campoTamanhoFonte = $('#tamanho_fonte_botao');
 			var $campoMargemSuperior = $('#margem_superior_botao');
@@ -539,7 +576,15 @@ $(function(){
 				$divTexto.attr('data-largura', '280');
 				$imgPreenchida.attr('src', 'img/background_botoes_preenchido.png');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoMargemSuperior).add($campoMargemEsquerdo).trigger('change');
+			
+			// Atualizando outros campos de formulário, após a mudança de plataforma
+			$campoTamanhoFonte.add($campoMargemSuperior).add($campoMargemEsquerdo).trigger('change');
+			if($checkboxEscalaAutomatica.is(':checked')){
+				$checkboxEscalaAutomatica.trigger('change');
+			} else {
+				$campoEscala.trigger('change');
+			}
+			
 		})
 		/* Botões Menores */
 		$selectPlataformaBotoesMenores.on('change', function(){
@@ -603,7 +648,7 @@ $(function(){
 				$campoEscala.slider('setValue', 1.045);
 				$campoFonte.val('Vald Book');
 				$campoTamanhoFonte.val(18);
-				$campoMargemSuperior.slider('setValue', 0);
+				$campoMargemSuperior.slider('setValue', -2);
 				$divConteiner.attr('id', 'conteiner_nome');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
@@ -717,6 +762,19 @@ $(function(){
 			$textareaDescricao.trigger('keyup');
 		});
 
+		// Instanciando checkboxes de escala automática
+		$checkboxEscalaAutomaticaBotoes.on('change', function(){
+			var $checkbox = $(this);
+			var $campoEscala = $('#escala_botao');
+			
+			if($checkbox.is(':checked')){
+				$campoEscala.slider('setValue', 1).slider("disable");
+				$inputTextoBotoes.trigger('keyup');
+			} else {
+				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
+			}
+		});
+		
 		// Instanciando campos de escala, bem como seus eventos
 		$('input.slider').each(function(){
 			var $input = $(this);
@@ -730,13 +788,8 @@ $(function(){
 			if($input.hasClass('escala')){
 				$input.on('change', function(){
 					var escala = this.value;
-					var largura = parseFloat($divTexto.attr('data-largura'));
-					var nova_largura = largura / escala;
-
-					$divTexto.css({
-						'width': nova_largura + 'px',
-						'transform': 'scaleX(' + escala + ')'
-					})
+					
+					definirEscalaPrevia($divTexto, escala);
 
 					$inputMostraValor.val(escala);
 				});

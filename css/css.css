@@ -71,6 +71,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 #conteiner_botao_menor_ds{
@@ -85,6 +86,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 #conteiner_nome{
@@ -100,6 +102,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-align: center;
 	color: #E4A018;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 #conteiner_nome_ds{
@@ -118,6 +121,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 	font-smooth: never;
 	-webkit-font-smoothing : none;
+	white-space: nowrap;
 }
 
 #conteiner_subtitulo{
@@ -183,6 +187,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: "Ace Attorney US";
 	color: #fff;
 	line-height: 1.35;
+	white-space: nowrap;
 }
 
 /* Estilizações da aba "Sandbox" */

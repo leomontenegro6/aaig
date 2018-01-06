@@ -39,9 +39,12 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDown
 	});
 }
 
-function renderizarImagensLote(elemento, textos){
+function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
 	var $elemento = $(elemento);
 	var $divTexto = $elemento.children('div.texto');
+	
+	var plataforma = $elemento.closest('div.tab-pane').find("select[name^='plataforma']").val();
+	if(typeof checkEscalaAutomatica == 'undefined') checkEscalaAutomatica = false;
 	
 	var i = 0;
 	var canvases = [];
@@ -52,7 +55,12 @@ function renderizarImagensLote(elemento, textos){
 		var texto = textos.shift();
 		var nome_arquivo = i + '.png';
 		
-		atualizarPreviaBotoes($divTexto, texto);
+		if(plataforma == 'ds'){
+			atualizarPreviaSprites($divTexto, texto);
+		} else {
+			atualizarPreviaTexto($divTexto, texto, checkEscalaAutomatica);
+		}
+		
 		renderizarImagemNavegador($elemento, nome_arquivo, function(canvas){
 			canvases.push(canvas);
 			
@@ -112,20 +120,58 @@ function definirEscalaPrevia(elemento, escala){
 	});
 }
 
-function atualizarPreviaBotoes(divPreviaBotoes, texto, checkEscalaAutomatica){
-	var $divPreviaBotoes = $(divPreviaBotoes);
+function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica){
+	var $divPrevia = $(divPrevia);
 	
-	$divPreviaBotoes.html(texto);
+	$divPrevia.html(texto);
 	
 	if(checkEscalaAutomatica){
-		definirEscalaPrevia($divPreviaBotoes, 1);
-		var largura_texto = calcularLarguraTexto($divPreviaBotoes);
-		var largura_previa = $divPreviaBotoes.width();
+		definirEscalaPrevia($divPrevia, 1);
+		var largura_texto = calcularLarguraTexto($divPrevia);
+		var largura_previa = $divPrevia.width();
 		
 		if(largura_texto > largura_previa){
 			var escala = (largura_previa * 0.95 / largura_texto);
 			
-			definirEscalaPrevia($divPreviaBotoes, escala);
+			definirEscalaPrevia($divPrevia, escala);
+		}
+	}
+}
+
+function atualizarPreviaSprites(divPrevia, texto){
+	var $divPrevia = $(divPrevia);
+	var $conteinerDivPrevia = $divPrevia.parent();
+	var fonte = $divPrevia.closest('div.tab-pane').find("select.fonte_ds").val();
+	
+	// Desfazendo efeito de fonte condensada, para o caso do campo estar na opção "automática".
+	// Necessário para descobrir automaticamente se a fonte é condensada ou não
+	if(fonte == 'a'){
+		$conteinerDivPrevia.removeClass('condensada');
+	}
+	
+	// Adicionando sprites de letras na prévia
+	$divPrevia.html('').css('fontFamily', '');
+	for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
+		var caractere = texto[i];
+
+		if(caractere == "\n"){
+			$divPrevia.append('<br />');
+		} else {
+			var novoCaractere = formatarCaractere(caractere);
+
+			$divPrevia.append(
+				$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
+			);
+		}
+	}
+	
+	// Verificando se a fonte condensada deve ser usada ou não
+	if(fonte == 'a'){
+		var largura_texto = calcularLarguraTexto( $divPrevia );
+		var largura_previa = $divPrevia.width();
+		
+		if(largura_texto > largura_previa){
+			$conteinerDivPrevia.addClass('condensada');
 		}
 	}
 }
@@ -305,7 +351,10 @@ $(function(){
 
 		// Campos de botões menores
 		var $inputTextoBotoesMenores = $('#texto_botoes_menores');
+		var $checkboxLoteBotoesMenores = $('#lote_botao_menor');
+		var $textareaTextoBotoesMenoresLote = $('#texto_botoes_menores_lote');
 		var $selectPlataformaBotoesMenores = $('#plataforma_botao_menor');
+		var $checkboxEscalaAutomaticaBotoesMenores = $('#escala_automatica_botao_menor');
 		var $selectFonteBotoesMenores = $('#fonte_botao_menor');
 		var $botaoGerarBotoesMenores = $('#botao_gerar_botoes_menores');
 		var $divBotaoMenor = $('#conteiner_botao_menor');
@@ -313,7 +362,10 @@ $(function(){
 
 		// Campos de nomes de prova / perfil
 		var $inputTextoNome = $('#texto_nome');
+		var $checkboxLoteNome = $('#lote_nome');
+		var $textareaTextoNomeLote = $('#texto_nome_lote');
 		var $selectPlataformaNome = $('#plataforma_nome');
+		var $checkboxEscalaAutomaticaNomes = $('#escala_automatica_nome');
 		var $selectFonteNome = $('#fonte_nome');
 		var $selectFonteNomeDS = $('#fonte_nome_ds');
 		var $botaoGerarNome = $('#botao_gerar_nome');
@@ -382,7 +434,9 @@ $(function(){
 		$inputTextoBotoes.attr('value', 'Phoenix Wright');
 		$textareaTextoBotoesLote.html('Phoenix Wright\nLarry Butz\nMia Fey');
 		$inputTextoBotoesMenores.attr('value', "Chief's Office");
+		$textareaTextoBotoesMenoresLote.html('Detention Center\nFey & Co. Law Offices\nGrossberg Law Offices\nGatewater Hotel');
 		$inputTextoNome.attr('value', 'Fingerprinting Set');
+		$textareaTextoNomeLote.html('Attorney\'s Badge\nCindy\'s Autopsy Report\nStatue / The Thinker\nPassport');
 		$textareaSubtitulo.html('Age: 27\nGender: Female');
 		$textareaDescricao.html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
 		$inputTextoBotaoSandbox1.attr('value', 'Amélia Ayasato');
@@ -410,34 +464,24 @@ $(function(){
 		$inputTextoBotoes.on('keyup', function(){
 			var texto = this.value;
 			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
-			atualizarPreviaBotoes($divTextoBotao, texto, checkEscalaAutomatica);
+			atualizarPreviaTexto($divTextoBotao, texto, checkEscalaAutomatica);
 		});
 		$inputTextoBotoesMenores.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaBotoes($divTextoBotaoMenor, texto);
+			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+			atualizarPreviaTexto($divTextoBotaoMenor, texto, checkEscalaAutomatica);
 		});
 		$inputTextoNome.on('keyup', function(){
 			var texto = this.value;
 			var plataforma = $selectPlataformaNome.val();
 			
 			if(plataforma == '3ds'){
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaNomes.is(':checked');
+				
 				texto = texto.replace(/\n/g, '<br />');
-				$divTextoNome.html(texto);
+				atualizarPreviaTexto($divTextoNome, texto, checkEscalaAutomatica);
 			} else {
-				$divTextoNome.html('').css('fontFamily', '');
-				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
-					var caractere = texto[i];
-					
-					if(caractere == "\n"){
-						$divTextoNome.append('<br />');
-					} else {
-						var novoCaractere = formatarCaractere(caractere);
-
-						$divTextoNome.append(
-							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
-						);
-					}
-				}
+				atualizarPreviaSprites($divTextoNome, texto);
 			}
 		});
 		$textareaSubtitulo.on('keyup', function(){
@@ -448,20 +492,7 @@ $(function(){
 				texto = texto.replace(/\n/g, '<br />');
 				$divTextoSubtitulo.html(texto);
 			} else {
-				$divTextoSubtitulo.html('').css('fontFamily', '');
-				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
-					var caractere = texto[i];
-					
-					if(caractere == "\n"){
-						$divTextoSubtitulo.append('<br />');
-					} else {
-						var novoCaractere = formatarCaractere(caractere);
-
-						$divTextoSubtitulo.append(
-							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
-						);
-					}
-				}
+				atualizarPreviaSprites($divTextoSubtitulo, texto);
 			}
 		});
 		$textareaDescricao.on('keyup', function(){
@@ -472,20 +503,7 @@ $(function(){
 				texto = texto.replace(/\n/g, '<br />');
 				$divTextoDescricao.html(texto);
 			} else {
-				$divTextoDescricao.html('').css('fontFamily', '');
-				for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
-					var caractere = texto[i];
-					
-					if(caractere == "\n"){
-						$divTextoDescricao.append('<br />');
-					} else {
-						var novoCaractere = formatarCaractere(caractere);
-
-						$divTextoDescricao.append(
-							$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
-						);
-					}
-				}
+				atualizarPreviaSprites($divTextoDescricao, texto);
 			}
 		});
 		$inputTextoBotaoSandbox1.on('keyup', function(){
@@ -518,6 +536,7 @@ $(function(){
 		});
 		
 		// Eventos dos campos referentes a geração de imagens em lote
+		/* Botões */
 		$checkboxLoteBotoes.on('change', function(){
 			var $checkbox = $(this);
 			
@@ -538,12 +557,78 @@ $(function(){
 				// Separando texto por quebras-de-linha
 				var linhas = texto.split(/\n/);
 				var linha_atual = linhas[numero_linha];
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
 
 				// Atualizando prévia de botões da linha atual
-				atualizarPreviaBotoes($divTextoBotao, linha_atual);
+				atualizarPreviaTexto($divTextoBotao, linha_atual, checkEscalaAutomatica);
 			},
 			'click': function(){
 				$textareaTextoBotoesLote.trigger('keyup');
+			}
+		});
+		/* Botões Menores */
+		$checkboxLoteBotoesMenores.on('change', function(){
+			var $checkbox = $(this);
+			
+			if($checkbox.is(':checked')){
+				$inputTextoBotoesMenores.hide();
+				$textareaTextoBotoesMenoresLote.show().trigger('keyup');
+			} else {
+				$inputTextoBotoesMenores.show().trigger('keyup');
+				$textareaTextoBotoesMenoresLote.hide();
+			}
+		});
+		$textareaTextoBotoesMenoresLote.on({
+			'keyup': function(){
+				var texto = this.value;
+				var inicio_selecao = this.selectionStart;
+				var numero_linha = (texto.substr(0, inicio_selecao).split(/\n/).length) - 1;
+
+				// Separando texto por quebras-de-linha
+				var linhas = texto.split(/\n/);
+				var linha_atual = linhas[numero_linha];
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+
+				// Atualizando prévia de botões da linha atual
+				atualizarPreviaTexto($divTextoBotaoMenor, linha_atual, checkEscalaAutomatica);
+			},
+			'click': function(){
+				$textareaTextoBotoesMenoresLote.trigger('keyup');
+			}
+		});
+		/* Nomes de Provas / Perfis*/
+		$checkboxLoteNome.on('change', function(){
+			var $checkbox = $(this);
+			
+			if($checkbox.is(':checked')){
+				$inputTextoNome.hide();
+				$textareaTextoNomeLote.show().trigger('keyup');
+			} else {
+				$inputTextoNome.show().trigger('keyup');
+				$textareaTextoNomeLote.hide();
+			}
+		});
+		$textareaTextoNomeLote.on({
+			'keyup': function(){
+				var texto = this.value;
+				var inicio_selecao = this.selectionStart;
+				var numero_linha = (texto.substr(0, inicio_selecao).split(/\n/).length) - 1;
+
+				// Separando texto por quebras-de-linha
+				var linhas = texto.split(/\n/);
+				var linha_atual = linhas[numero_linha];
+				var plataforma = $selectPlataformaNome.val();
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaNomes.is(':checked');
+
+				// Atualizando prévia de botões da linha atual
+				if(plataforma == 'ds'){
+					atualizarPreviaSprites($divTextoNome, linha_atual);
+				} else {
+					atualizarPreviaTexto($divTextoNome, linha_atual, checkEscalaAutomatica);
+				}
+			},
+			'click': function(){
+				$textareaTextoNomeLote.trigger('keyup');
 			}
 		});
 
@@ -588,6 +673,7 @@ $(function(){
 		})
 		/* Botões Menores */
 		$selectPlataformaBotoesMenores.on('change', function(){
+			var $checkboxEscalaAutomatica = $('#escala_automatica_botao_menor');
 			var $campoEscala = $('#escala_botao_menor');
 			var $campoTamanhoFonte = $('#tamanho_fonte_botao_menor');
 			var $campoMargemSuperior = $('#margem_superior_botao_menor');
@@ -610,10 +696,18 @@ $(function(){
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_botoes_menores_preenchido.png');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoMargemSuperior).trigger('change');
+			
+			// Atualizando outros campos de formulário, após a mudança de plataforma
+			$campoTamanhoFonte.add($campoMargemSuperior).trigger('change');
+			if($checkboxEscalaAutomatica.is(':checked')){
+				$checkboxEscalaAutomatica.trigger('change');
+			} else {
+				$campoEscala.trigger('change');
+			}
 		})
 		/* Nomes de Provas / Perfis */
 		$selectPlataformaNome.on('change', function(){
+			var $checkboxEscalaAutomatica = $('#escala_automatica_nome');
 			var $campoEscala = $('#escala_nome');
 			var $conteinerCampoEscala = $campoEscala.closest('div.form-inline');
 			var $campoFonte = $('#fonte_nome');
@@ -631,7 +725,7 @@ $(function(){
 			if(plataforma == 'ds'){
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Ace Attorney US');
-				$campoFonteDS.val('n');
+				$campoFonteDS.val('a');
 				$campoTamanhoFonte.val(15);
 				$campoMargemSuperior.slider('setValue', 1);
 				$divConteiner.attr('id', 'conteiner_nome_ds');
@@ -660,7 +754,12 @@ $(function(){
 				// Exibindo campo de escala
 				$conteinerCampoEscala.show('fast');
 			}
-			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoFonteDS).add($campoMargemSuperior).trigger('change');
+			$campoTamanhoFonte.add($campoFonte).add($campoFonteDS).add($campoMargemSuperior).trigger('change');
+			if($checkboxEscalaAutomatica.is(':checked') && (plataforma != 'ds')){
+				$checkboxEscalaAutomatica.trigger('change');
+			} else {
+				$campoEscala.trigger('change');
+			}
 			$inputTextoNome.trigger('keyup');
 		});
 		/* Subtítulos de Provas / Perfis */
@@ -731,7 +830,7 @@ $(function(){
 				$campoMargemSuperior.slider('setValue', 0);
 				$campoMargemEsquerda.slider('setValue', 18);
 				$divConteiner.attr('id', 'conteiner_descricao_ds');
-				$divTexto.attr('data-largura', '256');
+				$divTexto.attr('data-largura', '238');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
 				
 				// Alternando campo de fonte para a versão de DS
@@ -763,6 +862,7 @@ $(function(){
 		});
 
 		// Instanciando checkboxes de escala automática
+		/* Botões */
 		$checkboxEscalaAutomaticaBotoes.on('change', function(){
 			var $checkbox = $(this);
 			var $campoEscala = $('#escala_botao');
@@ -770,6 +870,30 @@ $(function(){
 			if($checkbox.is(':checked')){
 				$campoEscala.slider('setValue', 1).slider("disable");
 				$inputTextoBotoes.trigger('keyup');
+			} else {
+				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
+			}
+		});
+		/* Botões Menores */
+		$checkboxEscalaAutomaticaBotoesMenores.on('change', function(){
+			var $checkbox = $(this);
+			var $campoEscala = $('#escala_botao_menor');
+			
+			if($checkbox.is(':checked')){
+				$campoEscala.slider('setValue', 1).slider("disable");
+				$inputTextoBotoesMenores.trigger('keyup');
+			} else {
+				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
+			}
+		});
+		/* Nomes de Provas / Perfis */
+		$checkboxEscalaAutomaticaNomes.on('change', function(){
+			var $checkbox = $(this);
+			var $campoEscala = $('#escala_nome');
+			
+			if($checkbox.is(':checked')){
+				$campoEscala.slider('setValue', 1).slider("disable");
+				$inputTextoNome.trigger('keyup');
 			} else {
 				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
 			}
@@ -1030,22 +1154,44 @@ $(function(){
 
 		// Evento dos botões "Gerar"
 		$botaoGerarBotoes.on('click', function(){
+			var texto;
+			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
+			
 			if($checkboxLoteBotoes.is(':checked')){
-				var texto = $textareaTextoBotoesLote.val();
+				texto = $textareaTextoBotoesLote.val();
 				var linhas = texto.split(/\n/);
-				renderizarImagensLote($divBotao, linhas);
+				renderizarImagensLote($divBotao, linhas, checkEscalaAutomatica);
 			} else {
-				var texto = $inputTextoBotoes.val();
+				texto = $inputTextoBotoes.val();
 				renderizarImagemNavegador($divBotao, texto);
 			}
 		});
 		$botaoGerarBotoesMenores.on('click', function(){
-			var texto = $inputTextoBotoesMenores.val();
-			renderizarImagemNavegador($divBotaoMenor, texto);
+			var texto;
+			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+			
+			if($checkboxLoteBotoesMenores.is(':checked')){
+				texto = $textareaTextoBotoesMenoresLote.val();
+				var linhas = texto.split(/\n/);
+				renderizarImagensLote($divBotaoMenor, linhas, checkEscalaAutomatica);
+			} else {
+				texto = $inputTextoBotoesMenores.val();
+				renderizarImagemNavegador($divBotaoMenor, texto);
+			}
 		});
 		$botaoGerarNome.on('click', function(){
-			var texto = $inputTextoNome.val();
-			renderizarImagemNavegador($divNome, texto);
+			var texto;
+			var plataforma = $selectPlataformaNome.val();
+			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaNomes.is(':checked') && (plataforma != 'ds'));
+			
+			if($checkboxLoteNome.is(':checked')){
+				texto = $textareaTextoNomeLote.val();
+				var linhas = texto.split(/\n/);
+				renderizarImagensLote($divNome, linhas, checkEscalaAutomatica);
+			} else {
+				texto = $inputTextoNome.val();
+				renderizarImagemNavegador($divNome, texto);
+			}
 		});
 		$botaoGerarSubtitulo.on('click', function(){
 			var texto = $textareaSubtitulo.val();

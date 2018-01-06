@@ -5,10 +5,12 @@
 			<div class="form-group">
 				<label for="texto_botoes_menores" class="control-label l_rotulo_texto_botao_menor">&nbsp;</label>
 				<input type="text" name="texto_botoes_menores" id="texto_botoes_menores" class="form-control p_texto_botoes" />
+				<textarea name="texto_botoes_menores_lote" id="texto_botoes_menores_lote" class="form-control p_texto_lote"
+					rows="5" style="display: none"></textarea>
 			</div>
 			
 			<!-- Plataforma -->
-			<div class="form-inline">
+			<div class="form-inline" style="margin-bottom: 5px">
 				<label for="plataforma_botao_menor" class="control-label l_rotulo_plataforma">&nbsp;</label>
 				<select id="plataforma_botao_menor" name="plataforma_botao_menor" class="form-control">
 					<option value="ds">Nintendo DS</option>
@@ -16,12 +18,21 @@
 				</select>
 			</div>
 			
+			<!-- Lote -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="lote_botao_menor" class="control-label l_rotulo_lote">&nbsp;</label>
+				<input type="checkbox" name="lote_botao_menor" id="lote_botao_menor" class="form-control" />
+			</div>
+			
 			<!-- Escala -->
-			<div class="form-inline" style="margin-bottom: 5px;">
-				<label for="escala_botao_menor" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="escala_automatica_botao_menor" class="control-label l_rotulo_escala">&nbsp;</label>
+				<input type="checkbox" name="escala_automatica_botao_menor" id="escala_automatica_botao_menor" class="form-control" checked />
+				<label for="escala_automatica_botao_menor" class="control-label l_rotulo_escala_automatica"
+					style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 				<input type="text" id="escala_botao_menor" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
 					data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_botao_menor"
-					data-slider-tooltip="hide" />
+					data-slider-tooltip="hide" data-slider-enabled="false" />
 				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 			</div>
 			

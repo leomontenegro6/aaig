@@ -146,7 +146,7 @@ function atualizarPreviaSprites(divPrevia, texto){
 	// Desfazendo efeito de fonte condensada, para o caso do campo estar na opção "automática".
 	// Necessário para descobrir automaticamente se a fonte é condensada ou não
 	if(fonte == 'a'){
-		$conteinerDivPrevia.removeClass('condensada');
+		$conteinerDivPrevia.removeClass('condensada extra_condensada');
 	}
 	
 	// Adicionando sprites de letras na prévia
@@ -172,6 +172,13 @@ function atualizarPreviaSprites(divPrevia, texto){
 		
 		if(largura_texto > largura_previa){
 			$conteinerDivPrevia.addClass('condensada');
+			
+			var largura_texto_condensado = calcularLarguraTexto( $divPrevia );
+			var largura_previa_condensada = $divPrevia.width();
+
+			if(largura_texto_condensado > largura_previa_condensada){
+				$conteinerDivPrevia.addClass('extra_condensada');
+			}
 		}
 	}
 }
@@ -393,10 +400,13 @@ $(function(){
 		var $inputTextoBotaoSandbox1 = $('#texto_botoes_sandbox1');
 		var $inputTextoBotaoSandbox2 = $('#texto_botoes_sandbox2');
 		var $inputTextoBotaoSandbox3 = $('#texto_botoes_sandbox3');
+		var $selectPlataformaBotaoSandbox = $('#plataforma_botoes_sandbox');
 		var $inputTextoBotaoMenorSandbox = $('#texto_botoes_menores_sandbox');
+		var $selectPlataformaBotaoMenorSandbox = $('#plataforma_botoes_menores_sandbox');
 		var $inputTextoNomeSandbox = $('#texto_nome_sandbox');
 		var $textareaSubtituloSandbox = $('#texto_subtitulo_sandbox');
 		var $textareaDescricaoSandbox = $('#texto_descricao_sandbox');
+		var $selectPlataformaProvasPerfisSandbox = $('#plataforma_provas_perfis_sandbox');
 		var $divBotoesSandbox = $('#conteiner_botoes_sandbox');
 		var $divTextoBotoesSandbox1 = $divBotoesSandbox.children('div.botao1');
 		var $divTextoBotoesSandbox2 = $divBotoesSandbox.children('div.botao2');
@@ -860,6 +870,37 @@ $(function(){
 			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoFonteDS).add($campoAlturaLinha).add($campoMargemSuperior).add($campoMargemEsquerda).trigger('change');
 			$textareaDescricao.trigger('keyup');
 		});
+		/* Sandbox */
+		$selectPlataformaBotaoSandbox.on('change', function(){
+			var plataforma = this.value;
+			if(plataforma == 'ds'){
+				$divBotoesSandbox.addClass('ds');
+			} else {
+				$divBotoesSandbox.removeClass('ds');
+			}
+			
+			$inputTextoBotaoSandbox1.add($inputTextoBotaoSandbox2).add($inputTextoBotaoSandbox3).trigger('keyup');
+		});
+		$selectPlataformaBotaoMenorSandbox.on('change', function(){
+			var plataforma = this.value;
+			if(plataforma == 'ds'){
+				$divBotaoMenorSandbox.addClass('ds');
+			} else {
+				$divBotaoMenorSandbox.removeClass('ds');
+			}
+			
+			$inputTextoBotaoMenorSandbox.trigger('keyup');
+		});
+		$selectPlataformaProvasPerfisSandbox.on('change', function(){
+			var plataforma = this.value;
+			if(plataforma == 'ds'){
+				$divProvaSubtituloSandbox.addClass('ds');
+			} else {
+				$divProvaSubtituloSandbox.removeClass('ds');
+			}
+			
+			$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
+		});
 
 		// Instanciando checkboxes de escala automática
 		/* Botões */
@@ -1102,9 +1143,11 @@ $(function(){
 				var $divConteiner = $('#conteiner_nome_ds');
 				
 				if(fonte == 'c'){
-					$divConteiner.addClass('condensada');
+					$divConteiner.addClass('condensada').removeClass('extra_condensada');
+				} else if(fonte == 'ec'){
+					$divConteiner.addClass('extra_condensada').removeClass('condensada');
 				} else {
-					$divConteiner.removeClass('condensada');
+					$divConteiner.removeClass('condensada extra_condensada');
 				}
 			}
 		});
@@ -1118,9 +1161,11 @@ $(function(){
 				var $divConteiner = $('#conteiner_descricao_ds');
 				
 				if(fonte == 'c'){
-					$divConteiner.addClass('condensada');
+					$divConteiner.addClass('condensada').removeClass('extra_condensada');
+				} else if(fonte == 'ec'){
+					$divConteiner.addClass('extra_condensada').removeClass('condensada');
 				} else {
-					$divConteiner.removeClass('condensada');
+					$divConteiner.removeClass('condensada extra_condensada');
 				}
 			}
 		});

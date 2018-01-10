@@ -197,6 +197,11 @@ a[aria-controls="sandbox"] span.glyphicon{
 	position: relative;
 }
 
+#conteiner_botoes_sandbox.ds, #conteiner_botao_menor_sandbox.ds, #conteiner_provas_subtitulos_sandbox.ds{
+	width: 256px;
+	height: 192px;
+}
+
 #conteiner_botoes_sandbox{
 	background-image: url('../img/sandbox_1.png');
 }
@@ -207,6 +212,18 @@ a[aria-controls="sandbox"] span.glyphicon{
 
 #conteiner_provas_subtitulos_sandbox{
 	background-image: url('../img/sandbox_3.png');
+}
+
+#conteiner_botoes_sandbox.ds{
+	background-image: url('../img/sandbox_1_ds.png');
+}
+
+#conteiner_botao_menor_sandbox.ds{
+	background-image: url('../img/sandbox_2_ds.png');
+}
+
+#conteiner_provas_subtitulos_sandbox.ds{
+	background-image: url('../img/sandbox_3_ds.png');
 }
 
 #conteiner_botoes_sandbox div.botao1,

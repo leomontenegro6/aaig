@@ -32,6 +32,7 @@ var LANGUAGE = {
 		'opcao_fonte_automatica': 'Automatic',
 		'opcao_fonte_normal': 'Normal',
 		'opcao_fonte_condensada': 'Condensed',
+		'opcao_fonte_extra_condensada': 'Extra Condensed',
 		
 		'botao_gerar': 'Generate',
 		'botao_resetar': 'Reset',

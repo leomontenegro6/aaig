@@ -105,15 +105,15 @@ a[aria-controls="sandbox"] span.glyphicon{
 	white-space: nowrap;
 }
 
-#conteiner_nome_ds{
-	display: inline-block;
-	vertical-align: top;
-	width: 128px;
-	height: 16px;
-	background-image: url('../img/background_nomes_ds.png');
+.sprites_nomes_ds{
+	display: inline-block !important;
+	vertical-align: top !important;
+	width: 128px !important;
+	height: 16px !important;
+	background-image: url('../img/background_nomes_ds.png') !important;
 	background-color: #383838;
 }
-#conteiner_nome_ds div.texto{
+.sprites_nomes_ds div.texto{
 	width: 128px;
 	font-family: "Ace Attorney US";
 	text-align: center;
@@ -140,14 +140,14 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#conteiner_subtitulo_ds{
-	display: inline-block;
-	vertical-align: top;
-	width: 128px;
-	height: 64px;
-	background-image: url('../img/background_subtitulos_ds.png');
+.sprites_subtitulos_ds{
+	display: inline-block !important;
+	vertical-align: top !important;
+	width: 128px !important;
+	height: 64px !important;
+	background-image: url('../img/background_subtitulos_ds.png') !important;
 }
-#conteiner_subtitulo_ds div.texto{
+.sprites_subtitulos_ds div.texto{
 	width: 128px;
 	font-family: "Arial";
 	text-shadow: 0px 1px 0px #6C946C;
@@ -163,7 +163,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 128px;
 	background-image: url('../img/background_descricao.png');
 }
-#conteiner_descricao.fundo_marrom, #conteiner_descricao_ds.fundo_marrom{
+#conteiner_descricao.fundo_marrom, .sprites_descricoes_ds.fundo_marrom{
 	background-color: #897047;
 }
 #conteiner_descricao div.texto{
@@ -175,14 +175,15 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#conteiner_descricao_ds{
-	display: inline-block;
-	vertical-align: top;
-	width: 256px;
-	height: 64px;
-	background-image: url('../img/background_descricao_ds.png');
+.sprites_descricoes_ds{
+	display: inline-block !important;
+	vertical-align: top !important;
+	width: 240px !important;
+	height: 64px !important;
+	margin-left: 16px !important;
+	background-image: url('../img/background_descricao_ds.png') !important;
 }
-#conteiner_descricao_ds div.texto{
+.sprites_descricoes_ds div.texto{
 	width: 256px;
 	font-family: "Ace Attorney US";
 	color: #fff;
@@ -235,6 +236,15 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-align: center;
 	color: #802B00;
 	position: absolute;
+	transform-origin: 0 0;
+	white-space: nowrap;
+}
+
+#conteiner_botoes_sandbox.ds div.botao1,
+#conteiner_botoes_sandbox.ds div.botao2,
+#conteiner_botoes_sandbox.ds div.botao3{
+	width: 224px;
+	font-size: 18px;
 }
 
 #conteiner_botoes_sandbox div.botao1{
@@ -242,9 +252,19 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 20px;
 }
 
+#conteiner_botoes_sandbox.ds div.botao1{
+	top: 48px;
+	left: 16px;
+}
+
 #conteiner_botoes_sandbox div.botao2{
 	top: 114px;
 	left: 20px;
+}
+
+#conteiner_botoes_sandbox.ds div.botao2{
+	top: 92px;
+	left: 16px;
 }
 
 #conteiner_botoes_sandbox div.botao3{
@@ -252,17 +272,67 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 20px;
 }
 
-#conteiner_botao_menor_sandbox div.botao{
-	width: 213.333px;
+#conteiner_botoes_sandbox.ds div.botao3{
+	top: 135px;
+	left: 16px;
+}
+
+#conteiner_botao_menor_sandbox div.botao1, #conteiner_botao_menor_sandbox div.botao2,
+#conteiner_botao_menor_sandbox div.botao3, #conteiner_botao_menor_sandbox div.botao4{
+	width: 180px;
 	font-family: Arial;
 	font-size: 23px;
 	text-align: center;
 	color: #802B00;
-	transform: scaleX(0.75);
 	transform-origin: 0 0;
 	position: absolute;
-	top: 104px;
-	left: 147px;
+	white-space: nowrap;
+}
+
+#conteiner_botao_menor_sandbox.ds div.botao1, #conteiner_botao_menor_sandbox.ds div.botao2,
+#conteiner_botao_menor_sandbox.ds div.botao3, #conteiner_botao_menor_sandbox.ds div.botao4{
+	width: 140px;
+	font-size: 18px;
+}
+
+#conteiner_botao_menor_sandbox div.botao1{
+	top: 44px;
+	left: 138px;
+}
+
+#conteiner_botao_menor_sandbox.ds div.botao1{
+	top: 35px;
+	left: 110px;
+}
+
+#conteiner_botao_menor_sandbox div.botao2{
+	top: 84px;
+	left: 138px;
+}
+
+#conteiner_botao_menor_sandbox.ds div.botao2{
+	top: 68px;
+	left: 110px;
+}
+
+#conteiner_botao_menor_sandbox div.botao3{
+	top: 124px;
+	left: 138px;
+}
+
+#conteiner_botao_menor_sandbox.ds div.botao3{
+	top: 100px;
+	left: 110px;
+}
+
+#conteiner_botao_menor_sandbox div.botao4{
+	top: 164px;
+	left: 138px;
+}
+
+#conteiner_botao_menor_sandbox.ds div.botao4{
+	top: 132px;
+	left: 110px;
 }
 
 #conteiner_provas_subtitulos_sandbox div.nome{
@@ -273,6 +343,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-align: center;
 	color: #E4A018;
 	transform-origin: 0 0;
+	white-space: nowrap;
 	position: absolute;
 	top: 51px;
 	left: 125px;
@@ -284,21 +355,52 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
 	color: #444;
 	line-height: 1.35;
+	transform-origin: 0 0;
+	white-space: nowrap;
 	position: absolute;
 	top: 77px;
 	left: 121px;
 }
 
 #conteiner_provas_subtitulos_sandbox div.descricao{
-	width: 238.139534884px;
+	width: 272px;
 	font-family: "Vald Book";
 	color: #eee;
 	line-height: 1.35;
-	transform: scaleX(1.075);
 	transform-origin: 0 0;
+	white-space: nowrap;
 	position: absolute;
 	top: 146px;
 	left: 23px;
+}
+
+#conteiner_provas_subtitulos_sandbox.ds div.nome{
+	top: 41px;
+	left: 91px;
+	background: transparent !important;
+}
+
+#conteiner_provas_subtitulos_sandbox.ds div.subtitulo{
+	top: 58px;
+	left: 98px;
+	background: transparent !important;
+	height: 48px !important;
+}
+
+#conteiner_provas_subtitulos_sandbox.ds div.descricao{
+	top: 114px;
+	left: 0;
+	background: transparent !important;
+	height: 48px !important;
+}
+
+#conteiner_provas_subtitulos_sandbox.ds div.subtitulo div.texto{
+	line-height: 0;
+}
+
+#conteiner_provas_subtitulos_sandbox.ds div.descricao div.texto{
+	width: 232px !important;
+	line-height: 0;
 }
 
 select.form-control option.recomendada{

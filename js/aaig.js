@@ -42,9 +42,12 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDown
 function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
 	var $elemento = $(elemento);
 	var $divTexto = $elemento.children('div.texto');
+	var $aba = $elemento.closest('div.tab-pane');
+	var $selectPlataforma = $aba.find("select[name^='plataforma']");
 	
-	var plataforma = $elemento.closest('div.tab-pane').find("select[name^='plataforma']").val();
+	var plataforma = $selectPlataforma.val();
 	if(typeof checkEscalaAutomatica == 'undefined') checkEscalaAutomatica = false;
+	var checkUsaSprites = (plataforma == 'ds') && ($aba.is("[id='nome_prova'], [id='subtitulo_prova'], [id='descricao_prova']"));
 	
 	var i = 0;
 	var canvases = [];
@@ -55,7 +58,7 @@ function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
 		var texto = textos.shift();
 		var nome_arquivo = i + '.png';
 		
-		if(plataforma == 'ds'){
+		if(checkUsaSprites){
 			atualizarPreviaSprites($divTexto, texto);
 		} else {
 			atualizarPreviaTexto($divTexto, texto, checkEscalaAutomatica);
@@ -120,7 +123,9 @@ function definirEscalaPrevia(elemento, escala){
 	});
 }
 
-function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica){
+function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica, aproximacao){
+	if(typeof aproximacao == 'undefined') aproximacao = 0.95;
+	
 	var $divPrevia = $(divPrevia);
 	
 	$divPrevia.html(texto);
@@ -131,17 +136,21 @@ function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica){
 		var largura_previa = $divPrevia.width();
 		
 		if(largura_texto > largura_previa){
-			var escala = (largura_previa * 0.95 / largura_texto);
+			var escala = (largura_previa * aproximacao / largura_texto);
 			
 			definirEscalaPrevia($divPrevia, escala);
 		}
 	}
 }
 
-function atualizarPreviaSprites(divPrevia, texto){
+function atualizarPreviaSprites(divPrevia, texto, fonte){
 	var $divPrevia = $(divPrevia);
 	var $conteinerDivPrevia = $divPrevia.parent();
-	var fonte = $divPrevia.closest('div.tab-pane').find("select.fonte_ds").val();
+	
+	var fonte;
+	if(typeof fonte == 'undefined'){
+		fonte = $divPrevia.closest('div.tab-pane').find("select.fonte_ds").val();
+	}
 	
 	// Desfazendo efeito de fonte condensada, para o caso do campo estar na opção "automática".
 	// Necessário para descobrir automaticamente se a fonte é condensada ou não
@@ -155,7 +164,9 @@ function atualizarPreviaSprites(divPrevia, texto){
 		var caractere = texto[i];
 
 		if(caractere == "\n"){
-			$divPrevia.append('<br />');
+			$divPrevia.append(
+				$('<br />')
+			);
 		} else {
 			var novoCaractere = formatarCaractere(caractere);
 
@@ -316,6 +327,7 @@ $(function(){
 	var $divAbaSubtitulosProvas = $('#subtitulo_prova');
 	var $divAbaDescricoesProvas = $('#descricao_prova');
 	var $divAbaSandbox = $('#sandbox');
+	var $botaoAbaSandbox = $('a[aria-controls="sandbox"]');
 	
 	// Desativando cache para requisições ajax
 	$.ajaxSetup ({
@@ -401,7 +413,10 @@ $(function(){
 		var $inputTextoBotaoSandbox2 = $('#texto_botoes_sandbox2');
 		var $inputTextoBotaoSandbox3 = $('#texto_botoes_sandbox3');
 		var $selectPlataformaBotaoSandbox = $('#plataforma_botoes_sandbox');
-		var $inputTextoBotaoMenorSandbox = $('#texto_botoes_menores_sandbox');
+		var $inputTextoBotaoMenorSandbox1 = $('#texto_botoes_menores_sandbox1');
+		var $inputTextoBotaoMenorSandbox2 = $('#texto_botoes_menores_sandbox2');
+		var $inputTextoBotaoMenorSandbox3 = $('#texto_botoes_menores_sandbox3');
+		var $inputTextoBotaoMenorSandbox4 = $('#texto_botoes_menores_sandbox4');
 		var $selectPlataformaBotaoMenorSandbox = $('#plataforma_botoes_menores_sandbox');
 		var $inputTextoNomeSandbox = $('#texto_nome_sandbox');
 		var $textareaSubtituloSandbox = $('#texto_subtitulo_sandbox');
@@ -411,8 +426,11 @@ $(function(){
 		var $divTextoBotoesSandbox1 = $divBotoesSandbox.children('div.botao1');
 		var $divTextoBotoesSandbox2 = $divBotoesSandbox.children('div.botao2');
 		var $divTextoBotoesSandbox3 = $divBotoesSandbox.children('div.botao3');
-		var $divBotaoMenorSandbox = $('#conteiner_botao_menor_sandbox');
-		var $divTextoBotaoMenorSandbox = $divBotaoMenorSandbox.children('div.botao');
+		var $divBotoesMenoresSandbox = $('#conteiner_botao_menor_sandbox');
+		var $divTextoBotoesMenoresSandbox1 = $divBotoesMenoresSandbox.children('div.botao1');
+		var $divTextoBotoesMenoresSandbox2 = $divBotoesMenoresSandbox.children('div.botao2');
+		var $divTextoBotoesMenoresSandbox3 = $divBotoesMenoresSandbox.children('div.botao3');
+		var $divTextoBotoesMenoresSandbox4 = $divBotoesMenoresSandbox.children('div.botao4');
 		var $divProvaSubtituloSandbox = $('#conteiner_provas_subtitulos_sandbox');
 		var $divTextoNomeSandbox = $divProvaSubtituloSandbox.children('div.nome');
 		var $divTextoSubtituloSandbox = $divProvaSubtituloSandbox.children('div.subtitulo');
@@ -449,13 +467,16 @@ $(function(){
 		$textareaTextoNomeLote.html('Attorney\'s Badge\nCindy\'s Autopsy Report\nStatue / The Thinker\nPassport');
 		$textareaSubtitulo.html('Age: 27\nGender: Female');
 		$textareaDescricao.html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
-		$inputTextoBotaoSandbox1.attr('value', 'Amélia Ayasato');
-		$inputTextoBotaoSandbox2.attr('value', 'Sêntia Pedra');
+		$inputTextoBotaoSandbox1.attr('value', 'Aline Sato');
+		$inputTextoBotaoSandbox2.attr('value', 'Cíntia Muito');
 		$inputTextoBotaoSandbox3.attr('value', 'Cíntia Rocha');
-		$inputTextoBotaoMenorSandbox.attr('value', 'Centro de detenção');
-		$inputTextoNomeSandbox.attr('value', 'Amélia Ayasato');
+		$inputTextoBotaoMenorSandbox1.attr('value', 'Sato Advogados');
+		$inputTextoBotaoMenorSandbox2.attr('value', 'Hotel Aguajarú');
+		$inputTextoBotaoMenorSandbox3.attr('value', 'Massafera Advocacia');
+		$inputTextoBotaoMenorSandbox4.attr('value', 'Zulcorp');
+		$inputTextoNomeSandbox.attr('value', 'Aline Sato');
 		$textareaSubtituloSandbox.html('Idade: 27\nGênero: Feminino');
-		$textareaDescricaoSandbox.html('Advogada-chefe da Ayasato &\nassociados. Minha chefe, e uma\nexcelente advogada de defesa.');
+		$textareaDescricaoSandbox.html('Advogada-chefe de Sato Advogados.\nMinha chefe e uma excelente\nadvogada de defesa.');
 
 		// Evento do botão "Sobre este programa"
 		$ancoraSobrePrograma.on('click', function(){
@@ -518,31 +539,72 @@ $(function(){
 		});
 		$inputTextoBotaoSandbox1.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotoesSandbox1.html(texto);
+			atualizarPreviaTexto($divTextoBotoesSandbox1, texto, true, 1);
 		});
 		$inputTextoBotaoSandbox2.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotoesSandbox2.html(texto);
+			atualizarPreviaTexto($divTextoBotoesSandbox2, texto, true, 1);
 		});
 		$inputTextoBotaoSandbox3.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotoesSandbox3.html(texto);
+			atualizarPreviaTexto($divTextoBotoesSandbox3, texto, true, 1);
 		});
-		$inputTextoBotaoMenorSandbox.on('keyup', function(){
+		$inputTextoBotaoMenorSandbox1.on('keyup', function(){
 			var texto = this.value;
-			$divTextoBotaoMenorSandbox.html(texto);
+			atualizarPreviaTexto($divTextoBotoesMenoresSandbox1, texto, true, 0.99);
+		});
+		$inputTextoBotaoMenorSandbox2.on('keyup', function(){
+			var texto = this.value;
+			atualizarPreviaTexto($divTextoBotoesMenoresSandbox2, texto, true, 0.99);
+		});
+		$inputTextoBotaoMenorSandbox3.on('keyup', function(){
+			var texto = this.value;
+			atualizarPreviaTexto($divTextoBotoesMenoresSandbox3, texto, true, 0.99);
+		});
+		$inputTextoBotaoMenorSandbox4.on('keyup', function(){
+			var texto = this.value;
+			atualizarPreviaTexto($divTextoBotoesMenoresSandbox4, texto, true, 0.99);
 		});
 		$inputTextoNomeSandbox.on('keyup', function(){
 			var texto = this.value;
-			$divTextoNomeSandbox.html(texto);
+			var plataforma = $selectPlataformaProvasPerfisSandbox.val();
+			
+			if(plataforma == 'ds'){
+				var $divTexto = $('<div />').addClass('texto');
+				$divTextoNomeSandbox.html($divTexto);
+				
+				atualizarPreviaSprites($divTexto, texto, 'a');
+			} else {
+				atualizarPreviaTexto($divTextoNomeSandbox, texto, true, 1);
+			}
 		});
 		$textareaSubtituloSandbox.on('keyup', function(){
-			var texto = (this.value).replace(/\n/g, '<br />');
-			$divTextoSubtituloSandbox.html(texto);
+			var texto = this.value;
+			var plataforma = $selectPlataformaProvasPerfisSandbox.val();
+			
+			if(plataforma == 'ds'){
+				var $divTexto = $('<div />').addClass('texto');
+				$divTextoSubtituloSandbox.html($divTexto);
+				
+				atualizarPreviaSprites($divTexto, texto);
+			} else {
+				texto = texto.replace(/\n/g, '<br />');
+				atualizarPreviaTexto($divTextoSubtituloSandbox, texto, true, 1);
+			}
 		});
 		$textareaDescricaoSandbox.on('keyup', function(){
-			var texto = (this.value).replace(/\n/g, '<br />');
-			$divTextoDescricaoSandbox.html(texto);
+			var texto = this.value;
+			var plataforma = $selectPlataformaProvasPerfisSandbox.val();
+			
+			if(plataforma == 'ds'){
+				var $divTexto = $('<div />').addClass('texto');
+				$divTextoDescricaoSandbox.html($divTexto);
+				
+				atualizarPreviaSprites($divTexto, texto, 'a');
+			} else {
+				texto = texto.replace(/\n/g, '<br />');
+				atualizarPreviaTexto($divTextoDescricaoSandbox, texto, true, 1);
+			}
 		});
 		
 		// Eventos dos campos referentes a geração de imagens em lote
@@ -738,7 +800,7 @@ $(function(){
 				$campoFonteDS.val('a');
 				$campoTamanhoFonte.val(15);
 				$campoMargemSuperior.slider('setValue', 1);
-				$divConteiner.attr('id', 'conteiner_nome_ds');
+				$divConteiner.addClass('sprites_nomes_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
 				
@@ -753,7 +815,7 @@ $(function(){
 				$campoFonte.val('Vald Book');
 				$campoTamanhoFonte.val(18);
 				$campoMargemSuperior.slider('setValue', -2);
-				$divConteiner.attr('id', 'conteiner_nome');
+				$divConteiner.removeClass('sprites_nomes_ds');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
 				
@@ -792,7 +854,7 @@ $(function(){
 				$campoTamanhoFonte.val(8);
 				$campoMargemSuperior.slider('setValue', 2);
 				$campoAlturaLinha.slider('setValue', 1.95);
-				$divConteiner.attr('id', 'conteiner_subtitulo_ds');
+				$divConteiner.addClass('sprites_subtitulos_ds');
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido_ds.png');
 				
@@ -804,7 +866,7 @@ $(function(){
 				$campoTamanhoFonte.val(14);
 				$campoMargemSuperior.slider('setValue', 4);
 				$campoAlturaLinha.slider('setValue', 1.35);
-				$divConteiner.attr('id', 'conteiner_subtitulo');
+				$divConteiner.removeClass('sprites_subtitulos_ds');
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido.png');
 				
@@ -839,7 +901,7 @@ $(function(){
 				$campoAlturaLinha.slider('setValue', 1);
 				$campoMargemSuperior.slider('setValue', 0);
 				$campoMargemEsquerda.slider('setValue', 18);
-				$divConteiner.attr('id', 'conteiner_descricao_ds');
+				$divConteiner.addClass('sprites_descricoes_ds');
 				$divTexto.attr('data-largura', '238');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
 				
@@ -856,7 +918,7 @@ $(function(){
 				$campoAlturaLinha.slider('setValue', 1.35);
 				$campoMargemSuperior.slider('setValue', 3);
 				$campoMargemEsquerda.slider('setValue', 23);
-				$divConteiner.attr('id', 'conteiner_descricao');
+				$divConteiner.removeClass('sprites_descricoes_ds');
 				$divTexto.attr('data-largura', '256');
 				$imgPreenchida.attr('src', 'img/background_descricao_preenchido.png');
 				
@@ -884,19 +946,25 @@ $(function(){
 		$selectPlataformaBotaoMenorSandbox.on('change', function(){
 			var plataforma = this.value;
 			if(plataforma == 'ds'){
-				$divBotaoMenorSandbox.addClass('ds');
+				$divBotoesMenoresSandbox.addClass('ds');
 			} else {
-				$divBotaoMenorSandbox.removeClass('ds');
+				$divBotoesMenoresSandbox.removeClass('ds');
 			}
 			
-			$inputTextoBotaoMenorSandbox.trigger('keyup');
+			$inputTextoBotaoMenorSandbox1.add($inputTextoBotaoMenorSandbox2).add($inputTextoBotaoMenorSandbox3).add($inputTextoBotaoMenorSandbox4).trigger('keyup');
 		});
 		$selectPlataformaProvasPerfisSandbox.on('change', function(){
 			var plataforma = this.value;
 			if(plataforma == 'ds'){
 				$divProvaSubtituloSandbox.addClass('ds');
+				$divTextoNomeSandbox.addClass('sprites_nomes_ds');
+				$divTextoSubtituloSandbox.addClass('sprites_subtitulos_ds');
+				$divTextoDescricaoSandbox.addClass('sprites_descricoes_ds');
 			} else {
 				$divProvaSubtituloSandbox.removeClass('ds');
+				$divTextoNomeSandbox.removeClass('sprites_nomes_ds');
+				$divTextoSubtituloSandbox.removeClass('sprites_subtitulos_ds');
+				$divTextoDescricaoSandbox.removeClass('sprites_descricoes_ds');
 			}
 			
 			$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
@@ -1140,7 +1208,7 @@ $(function(){
 			var name = $selectFonte.attr('name');
 			
 			if(name == 'fonte_nome_ds'){
-				var $divConteiner = $('#conteiner_nome_ds');
+				var $divConteiner = $('.sprites_nomes_ds');
 				
 				if(fonte == 'c'){
 					$divConteiner.addClass('condensada').removeClass('extra_condensada');
@@ -1158,7 +1226,7 @@ $(function(){
 			var name = $selectFonte.attr('name');
 			
 			if(name == 'fonte_descricao_ds'){
-				var $divConteiner = $('#conteiner_descricao_ds');
+				var $divConteiner = $('.sprites_descricoes_ds');
 				
 				if(fonte == 'c'){
 					$divConteiner.addClass('condensada').removeClass('extra_condensada');
@@ -1263,7 +1331,7 @@ $(function(){
 			data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
 
 			var texto = 'sandbox2-' + data;
-			renderizarImagemNavegador($divBotaoMenorSandbox, texto);
+			renderizarImagemNavegador($divBotoesMenoresSandbox, texto);
 		});
 		$botaoGerarSandbox3.on('click', function(){
 			var data = new Date();
@@ -1296,7 +1364,13 @@ $(function(){
 
 		// Chamadas de eventos padrões
 		$inputTextoBotoes.add($inputTextoBotoesMenores).add($inputTextoNome).add($textareaSubtitulo).add($textareaDescricao).trigger('keyup');
-		$inputTextoBotaoSandbox1.add($inputTextoBotaoSandbox2).add($inputTextoBotaoSandbox3).add($inputTextoBotaoMenorSandbox).trigger('keyup');
-		$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
+		
+		// Chamadas de eventos da aba "sandbox", chamados quando o
+		// usuário clica na aba homônima
+		$botaoAbaSandbox.on('shown.bs.tab', function (e) {
+			$inputTextoBotaoSandbox1.add($inputTextoBotaoSandbox2).add($inputTextoBotaoSandbox3).trigger('keyup');
+			$inputTextoBotaoMenorSandbox1.add($inputTextoBotaoMenorSandbox2).add($inputTextoBotaoMenorSandbox3).add($inputTextoBotaoMenorSandbox4).trigger('keyup');
+			$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
+		});
 	}
 });

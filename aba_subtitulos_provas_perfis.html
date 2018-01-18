@@ -16,12 +16,21 @@
 				</select>
 			</div>
 			
+			<!-- Lote -->
+			<div class="form-inline" style="margin-bottom: 5px">
+				<label for="lote_subtitulo" class="control-label l_rotulo_lote">&nbsp;</label>
+				<input type="checkbox" name="lote_subtitulo" id="lote_subtitulo" class="form-control" />
+			</div>
+			
 			<!-- Escala -->
 			<div class="form-inline" style="margin-bottom: 5px;">
-				<label for="escala_subtitulo" class="control-label l_rotulo_escala" style="margin-right: 7.5px">&nbsp;</label>
+				<label for="escala_automatica_subtitulo" class="control-label l_rotulo_escala">&nbsp;</label>
+				<input type="checkbox" name="escala_automatica_subtitulo" id="escala_automatica_subtitulo" class="form-control" checked />
+				<label for="escala_automatica_subtitulo" class="control-label l_rotulo_escala_automatica"
+					style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 				<input type="text" id="escala_subtitulo" class="slider escala" data-slider-min="0.500" data-slider-max="1.000"
 					data-slider-step="0.005" data-slider-value="1" data-imagem="conteiner_subtitulo"
-					data-slider-tooltip="hide" />
+					data-slider-tooltip="hide" data-slider-enabled="false" />
 				<input type="text" class="form-control" disabled style="margin-left: 7.5px; width: 62.5px" />
 			</div>
 			

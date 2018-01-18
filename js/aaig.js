@@ -56,6 +56,8 @@ function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
 	
 	var renderizar = function(){
 		var texto = textos.shift();
+		if(plataforma == '3ds') texto = texto.replace(/\n/g, '<br />');
+		
 		var nome_arquivo = i + '.png';
 		
 		if(checkUsaSprites){
@@ -393,7 +395,9 @@ $(function(){
 
 		// Campos de subtitulos de prova / perfil
 		var $textareaSubtitulo = $('#texto_subtitulo');
+		var $checkboxLoteSubtitulo = $('#lote_subtitulo');
 		var $selectPlataformaSubtitulo = $('#plataforma_subtitulo');
+		var $checkboxEscalaAutomaticaSubtitulos = $('#escala_automatica_subtitulo');
 		var $selectFonteSubtitulo = $('#fonte_subtitulo');
 		var $botaoGerarSubtitulo = $('#botao_gerar_subtitulo');
 		var $divSubtitulo = $('#conteiner_subtitulo');
@@ -515,15 +519,41 @@ $(function(){
 				atualizarPreviaSprites($divTextoNome, texto);
 			}
 		});
-		$textareaSubtitulo.on('keyup', function(){
-			var texto = this.value;
-			var plataforma = $selectPlataformaSubtitulo.val();
-			
-			if(plataforma == '3ds'){
-				texto = texto.replace(/\n/g, '<br />');
-				$divTextoSubtitulo.html(texto);
-			} else {
-				atualizarPreviaSprites($divTextoSubtitulo, texto);
+		$textareaSubtitulo.on({
+			'keyup': function(){
+				var texto = this.value;
+				var plataforma = $selectPlataformaSubtitulo.val();
+				
+				var checkEmLote = $checkboxLoteSubtitulo.is(':checked');
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaSubtitulos.is(':checked');
+				
+				if(checkEmLote){
+					var inicio_selecao = this.selectionStart;
+					var numero_bloco = (texto.substr(0, inicio_selecao).split(/\n\n/).length) - 1;
+
+					// Separando texto por blocos, tomando por base
+					// duas quebras-de-linha consecutivas
+					var blocos = texto.split(/\n\n/);
+					var bloco_atual = blocos[numero_bloco];
+
+					// Atualizando prévia de subtítulos do bloco atual
+					if(plataforma == '3ds'){
+						bloco_atual = blocos[numero_bloco].replace(/\n/g, '<br />');
+						atualizarPreviaTexto($divTextoSubtitulo, bloco_atual, checkEscalaAutomatica);
+					} else {
+						atualizarPreviaSprites($divTextoSubtitulo, bloco_atual, 'n');
+					}
+				} else {
+					if(plataforma == '3ds'){
+						texto = texto.replace(/\n/g, '<br />');
+						atualizarPreviaTexto($divTextoSubtitulo, texto, checkEscalaAutomatica);
+					} else {
+						atualizarPreviaSprites($divTextoSubtitulo, texto);
+					}
+				}
+			},
+			'click': function(){
+				$textareaSubtitulo.trigger('keyup');
 			}
 		});
 		$textareaDescricao.on('keyup', function(){
@@ -661,7 +691,7 @@ $(function(){
 				var linha_atual = linhas[numero_linha];
 				var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
 
-				// Atualizando prévia de botões da linha atual
+				// Atualizando prévia de botões menores da linha atual
 				atualizarPreviaTexto($divTextoBotaoMenor, linha_atual, checkEscalaAutomatica);
 			},
 			'click': function(){
@@ -692,7 +722,7 @@ $(function(){
 				var plataforma = $selectPlataformaNome.val();
 				var checkEscalaAutomatica = $checkboxEscalaAutomaticaNomes.is(':checked');
 
-				// Atualizando prévia de botões da linha atual
+				// Atualizando prévia de nomes da linha atual
 				if(plataforma == 'ds'){
 					atualizarPreviaSprites($divTextoNome, linha_atual);
 				} else {
@@ -702,6 +732,19 @@ $(function(){
 			'click': function(){
 				$textareaTextoNomeLote.trigger('keyup');
 			}
+		});
+		/* Subtítulos de Provas / Perfis*/
+		$checkboxLoteSubtitulo.on('change', function(){
+			var $checkbox = $(this);
+			
+			var linhas;
+			if($checkbox.is(':checked')){
+				linhas = 5;
+			} else {
+				linhas = 3;
+			}
+			
+			$textareaSubtitulo.attr('rows', linhas).trigger('keyup');
 		});
 
 		// Eventos dos campos de plataforma
@@ -837,6 +880,7 @@ $(function(){
 		/* Subtítulos de Provas / Perfis */
 		$selectPlataformaSubtitulo.on('change', function(){
 			var $campoEscala = $('#escala_subtitulo');
+			var $conteinerCampoEscala = $campoEscala.closest('div.form-inline');
 			var $campoFonte = $('#fonte_subtitulo');
 			var $campoTamanhoFonte = $('#tamanho_fonte_subtitulo');
 			var $conteinerCampoFonte = $campoFonte.closest('div.form-inline');
@@ -858,8 +902,8 @@ $(function(){
 				$divTexto.attr('data-largura', '128');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido_ds.png');
 				
-				// Ocultando campo de fonte
-				$conteinerCampoFonte.hide('fast');
+				// Ocultando campos de escala e fonte
+				$conteinerCampoFonte.add($conteinerCampoEscala).hide('fast');
 			} else {
 				$campoEscala.slider('setValue', 1);
 				$campoFonte.val('Vald Book');
@@ -870,8 +914,8 @@ $(function(){
 				$divTexto.attr('data-largura', '160');
 				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido.png');
 				
-				// Desocultando campo de fonte
-				$conteinerCampoFonte.show('fast');
+				// Desocultando campos de escala e fonte
+				$conteinerCampoFonte.add($conteinerCampoEscala).show('fast');
 			}
 			$campoEscala.add($campoTamanhoFonte).add($campoFonte).add($campoMargemSuperior).add($campoAlturaLinha).trigger('change');
 			$textareaSubtitulo.trigger('keyup');
@@ -1308,7 +1352,15 @@ $(function(){
 		});
 		$botaoGerarSubtitulo.on('click', function(){
 			var texto = $textareaSubtitulo.val();
-			renderizarImagemNavegador($divSubtitulo, texto);
+			var plataforma = $selectPlataformaSubtitulo.val();
+			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaSubtitulos.is(':checked') && (plataforma != 'ds'));
+			
+			if($checkboxLoteSubtitulo.is(':checked')){
+				var blocos = texto.split(/\n\n/);
+				renderizarImagensLote($divSubtitulo, blocos, checkEscalaAutomatica);
+			} else {
+				renderizarImagemNavegador($divSubtitulo, texto);
+			}
 		});
 		$botaoGerarDescricao.on('click', function(){
 			var texto = $textareaDescricao.val();

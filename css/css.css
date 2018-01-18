@@ -138,6 +138,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #444;
 	line-height: 1.35;
 	transform-origin: 0 0;
+	white-space: nowrap;
 }
 
 .sprites_subtitulos_ds{

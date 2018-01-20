@@ -39,7 +39,7 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDown
 	});
 }
 
-function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
+function renderizarImagensLote(elemento, textos, checkEscalaAutomatica, callback){
 	var $elemento = $(elemento);
 	var $divTexto = $elemento.children('div.texto');
 	var $aba = $elemento.closest('div.tab-pane');
@@ -96,6 +96,8 @@ function renderizarImagensLote(elemento, textos, checkEscalaAutomatica){
 				zip.generateAsync({type:"blob"}).then(function(conteudo){
 					ocultaCarregando();
 					saveAs(conteudo, nome_arquivo_final);
+					
+					if(callback) callback(canvases);
 				});
 			}
 		}, false);
@@ -405,7 +407,9 @@ $(function(){
 
 		// Campos de descrições de prova / perfil
 		var $textareaDescricao = $('#texto_descricao');
+		var $checkboxLoteDescricao = $('#lote_descricao');
 		var $selectPlataformaDescricao = $('#plataforma_descricao');
+		var $checkboxEscalaAutomaticaDescricoes = $('#escala_automatica_descricao');
 		var $selectFonteDescricao = $('#fonte_descricao');
 		var $selectFonteDescricaoDS = $('#fonte_descricao_ds');
 		var $botaoGerarDescricao = $('#botao_gerar_descricao');
@@ -553,18 +557,44 @@ $(function(){
 				}
 			},
 			'click': function(){
-				$textareaSubtitulo.trigger('keyup');
+				$(this).trigger('keyup');
 			}
 		});
-		$textareaDescricao.on('keyup', function(){
-			var texto = this.value;
-			var plataforma = $selectPlataformaDescricao.val();
-			
-			if(plataforma == '3ds'){
-				texto = texto.replace(/\n/g, '<br />');
-				$divTextoDescricao.html(texto);
-			} else {
-				atualizarPreviaSprites($divTextoDescricao, texto);
+		$textareaDescricao.on({
+			'keyup': function(){
+				var texto = this.value;
+				var plataforma = $selectPlataformaDescricao.val();
+				
+				var checkEmLote = $checkboxLoteDescricao.is(':checked');
+				var checkEscalaAutomatica = $checkboxEscalaAutomaticaDescricoes.is(':checked');
+				
+				if(checkEmLote){
+					var inicio_selecao = this.selectionStart;
+					var numero_bloco = (texto.substr(0, inicio_selecao).split(/\n\n/).length) - 1;
+
+					// Separando texto por blocos, tomando por base
+					// duas quebras-de-linha consecutivas
+					var blocos = texto.split(/\n\n/);
+					var bloco_atual = blocos[numero_bloco];
+
+					// Atualizando prévia de descrições do bloco atual
+					if(plataforma == '3ds'){
+						bloco_atual = blocos[numero_bloco].replace(/\n/g, '<br />');
+						atualizarPreviaTexto($divTextoDescricao, bloco_atual, checkEscalaAutomatica);
+					} else {
+						atualizarPreviaSprites($divTextoDescricao, bloco_atual);
+					}
+				} else {
+					if(plataforma == '3ds'){
+						texto = texto.replace(/\n/g, '<br />');
+						atualizarPreviaTexto($divTextoDescricao, texto, checkEscalaAutomatica);
+					} else {
+						atualizarPreviaSprites($divTextoDescricao, texto);
+					}
+				}
+			},
+			'click': function(){
+				$(this).trigger('keyup');
 			}
 		});
 		$inputTextoBotaoSandbox1.on('keyup', function(){
@@ -745,6 +775,20 @@ $(function(){
 			}
 			
 			$textareaSubtitulo.attr('rows', linhas).trigger('keyup');
+		});
+		
+		/* Descrições de Provas / Perfis*/
+		$checkboxLoteDescricao.on('change', function(){
+			var $checkbox = $(this);
+			
+			var linhas;
+			if($checkbox.is(':checked')){
+				linhas = 5;
+			} else {
+				linhas = 3;
+			}
+			
+			$textareaDescricao.attr('rows', linhas).trigger('keyup');
 		});
 
 		// Eventos dos campos de plataforma
@@ -1047,6 +1091,19 @@ $(function(){
 			if($checkbox.is(':checked')){
 				$campoEscala.slider('setValue', 1).slider("disable");
 				$inputTextoNome.trigger('keyup');
+			} else {
+				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
+			}
+		});
+		
+		/* Descrições de Provas / Perfis */
+		$checkboxEscalaAutomaticaDescricoes.on('change', function(){
+			var $checkbox = $(this);
+			var $campoEscala = $('#escala_descricao');
+			
+			if($checkbox.is(':checked')){
+				$campoEscala.slider('setValue', 1).slider("disable");
+				$textareaDescricao.trigger('keyup');
 			} else {
 				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
 			}
@@ -1364,10 +1421,22 @@ $(function(){
 		});
 		$botaoGerarDescricao.on('click', function(){
 			var texto = $textareaDescricao.val();
-			$divDescricao.removeClass('fundo_marrom');
-			renderizarImagemNavegador($divDescricao, texto, function(){
-				$divDescricao.addClass('fundo_marrom');
-			});
+			var plataforma = $selectPlataformaDescricao.val();
+			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaDescricoes.is(':checked') && (plataforma != 'ds'));
+			
+			if($checkboxLoteDescricao.is(':checked')){
+				var blocos = texto.split(/\n\n/);
+				
+				$divDescricao.removeClass('fundo_marrom');
+				renderizarImagensLote($divDescricao, blocos, checkEscalaAutomatica, function(){
+					$divDescricao.addClass('fundo_marrom');
+				});
+			} else {
+				$divDescricao.removeClass('fundo_marrom');
+				renderizarImagemNavegador($divDescricao, texto, function(){
+					$divDescricao.addClass('fundo_marrom');
+				});
+			}
 		});
 		$botaoGerarSandbox1.on('click', function(){
 			var data = new Date();

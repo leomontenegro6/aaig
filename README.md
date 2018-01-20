@@ -31,6 +31,7 @@ The "Ace Attorney Image Generator" is a program that can generate imagens on the
 *   [Html2canvas](http://html2canvas.hertzen.com/), for converting HTML elements to PNG images;
 *   [Bootstrap](http://getbootstrap.com/), to become this page responsive;
 *   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), for scale and margin fields;
+*   [JSZip](https://stuk.github.io/jszip/), for batch image generation, creating zipped files with images.
 
 #### Prerequisites
 

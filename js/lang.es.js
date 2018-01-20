@@ -16,7 +16,7 @@ var LANGUAGE = {
 		'rotulo_texto_subtitulo_prova': 'Texto del subtítulo de la prueba / perfil:',
 		'rotulo_texto_descricao_prova': 'Texto de la descripción de la prueba / perfil:',
 		
-		'rotulo_lote': 'En Lote:',
+		'rotulo_lote': 'Por Lotes:',
 		'rotulo_plataforma': 'Plataforma:',
 		'rotulo_escala': 'Escala:',
 		'rotulo_escala_automatica': 'Automatica',

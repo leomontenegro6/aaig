@@ -29,6 +29,7 @@ O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imag
 *   [Html2canvas](http://html2canvas.hertzen.com/), para conversão de elementos HTML para imagens em PNG;
 *   [Bootstrap](http://getbootstrap.com/), para tornar esta página responsiva;
 *   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), para os campos de escala;
+*   [JSZip](https://stuk.github.io/jszip/), para geração de imagens em lote, criando arquivos zipados contendo imagens.
 
 #### Pré-Requisitos
 

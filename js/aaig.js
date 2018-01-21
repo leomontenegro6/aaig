@@ -1176,6 +1176,19 @@ $(function(){
 				$input.trigger('change');
 			}
 		});
+		
+		// Configurando campos de exibir / ocultar a imagem comparativa na prévia
+		$("input[type='checkbox'][name^='mostrar_comparativo']").on('change', function(){
+			var $checkbox = $(this);
+			var $divConteiner = $('#' + $checkbox.attr('data-imagem'));
+			var $imgComparativo = $divConteiner.siblings('img.botao_template');
+			
+			if($checkbox.is(':checked')){
+				$imgComparativo.show();
+			} else {
+				$imgComparativo.hide();
+			}
+		});
 
 		// Configurando campos de seleção de fonte
 		$selectFonteBotoes.add($selectFonteBotoesMenores).add($selectFonteNome).add($selectFonteSubtitulo).add($selectFonteDescricao).html(

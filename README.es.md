@@ -31,7 +31,8 @@ La manera tradicional de editar estas imágenes es a través de archivos .PSD en
 *   [Html2canvas](http://html2canvas.hertzen.com/), para la conversión de elementos HTML a PNG;
 *   [Bootstrap](http://getbootstrap.com/), para hacer la web adaptativa;
 *   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), para los campos de margen;
-*   [JSZip](https://stuk.github.io/jszip/), para generar de imágenes por lotes, creando archivos comprimidos con imágenes.
+*   [JSZip](https://stuk.github.io/jszip/), para crear archivos comprimidos con imágenes;
+*   [FileSaver.js](https://github.com/eligrey/FileSaver.js/), para guardar archivos en el lado del cliente, necesarios para la generación de imágenes por lotes.
 
 #### Requisitos
 

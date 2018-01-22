@@ -147,11 +147,11 @@ function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica, aproximac
 	}
 }
 
-function atualizarPreviaSprites(divPrevia, texto, fonte){
+function atualizarPreviaSprites(divPrevia, texto, fonte, callback){
 	var $divPrevia = $(divPrevia);
 	var $conteinerDivPrevia = $divPrevia.parent();
+	var passouLimite = false;
 	
-	var fonte;
 	if(typeof fonte == 'undefined'){
 		fonte = $divPrevia.closest('div.tab-pane').find("select.fonte_ds").val();
 	}
@@ -185,17 +185,32 @@ function atualizarPreviaSprites(divPrevia, texto, fonte){
 		var largura_texto = calcularLarguraTexto( $divPrevia );
 		var largura_previa = $divPrevia.width();
 		
+		// Verificando se largura do texto passou da largura máxima da prévia
 		if(largura_texto > largura_previa){
+			// Passou da largura máxima, mudando fonte para condensada
 			$conteinerDivPrevia.addClass('condensada');
 			
 			var largura_texto_condensado = calcularLarguraTexto( $divPrevia );
 			var largura_previa_condensada = $divPrevia.width();
-
+			
+			// Verificando se largura do texto condensado passou da largura máxima da prévia
 			if(largura_texto_condensado > largura_previa_condensada){
+				// Passou da largura condensada máxima, mudando fonte para extra-condensada
 				$conteinerDivPrevia.addClass('extra_condensada');
+				
+				var largura_texto_extra_condensado = calcularLarguraTexto( $divPrevia );
+				var largura_previa_extra_condensada = $divPrevia.width();
+				
+				// Verificando se largura do texto extra-condensado passou da largura máxima da prévia
+				if(largura_texto_extra_condensado > largura_previa_extra_condensada){
+					// Passou da largura extra-condensada máxima, retornar parâmetro no callback
+					passouLimite = true;
+				}
 			}
 		}
 	}
+	
+	if(callback) callback(passouLimite);
 }
 
 function mostraCarregando(){
@@ -538,11 +553,11 @@ $(function(){
 					// Separando texto por blocos, tomando por base
 					// duas quebras-de-linha consecutivas
 					var blocos = texto.split(/\n\n/);
-					var bloco_atual = blocos[numero_bloco];
+					var bloco_atual = $.trim( blocos[numero_bloco] );
 
 					// Atualizando prévia de subtítulos do bloco atual
 					if(plataforma == '3ds'){
-						bloco_atual = blocos[numero_bloco].replace(/\n/g, '<br />');
+						bloco_atual = bloco_atual.replace(/\n/g, '<br />');
 						atualizarPreviaTexto($divTextoSubtitulo, bloco_atual, checkEscalaAutomatica);
 					} else {
 						atualizarPreviaSprites($divTextoSubtitulo, bloco_atual, 'n');
@@ -575,11 +590,11 @@ $(function(){
 					// Separando texto por blocos, tomando por base
 					// duas quebras-de-linha consecutivas
 					var blocos = texto.split(/\n\n/);
-					var bloco_atual = blocos[numero_bloco];
+					var bloco_atual = $.trim( blocos[numero_bloco] );
 
 					// Atualizando prévia de descrições do bloco atual
 					if(plataforma == '3ds'){
-						bloco_atual = blocos[numero_bloco].replace(/\n/g, '<br />');
+						bloco_atual = bloco_atual.replace(/\n/g, '<br />');
 						atualizarPreviaTexto($divTextoDescricao, bloco_atual, checkEscalaAutomatica);
 					} else {
 						atualizarPreviaSprites($divTextoDescricao, bloco_atual);
@@ -631,9 +646,15 @@ $(function(){
 			
 			if(plataforma == 'ds'){
 				var $divTexto = $('<div />').addClass('texto');
-				$divTextoNomeSandbox.html($divTexto);
+				$divTextoNomeSandbox.html($divTexto).css('transform', 'none');
 				
-				atualizarPreviaSprites($divTexto, texto, 'a');
+				atualizarPreviaSprites($divTexto, texto, 'a', function(passouLimite){
+					if(passouLimite){
+						$divTexto.addClass('vermelho');
+					} else {
+						$divTexto.removeClass('vermelho');
+					}
+				});
 			} else {
 				atualizarPreviaTexto($divTextoNomeSandbox, texto, true, 1);
 			}
@@ -644,7 +665,7 @@ $(function(){
 			
 			if(plataforma == 'ds'){
 				var $divTexto = $('<div />').addClass('texto');
-				$divTextoSubtituloSandbox.html($divTexto);
+				$divTextoSubtituloSandbox.html($divTexto).css('transform', 'none');
 				
 				atualizarPreviaSprites($divTexto, texto);
 			} else {
@@ -658,7 +679,7 @@ $(function(){
 			
 			if(plataforma == 'ds'){
 				var $divTexto = $('<div />').addClass('texto');
-				$divTextoDescricaoSandbox.html($divTexto);
+				$divTextoDescricaoSandbox.html($divTexto).css('transform', 'none');
 				
 				atualizarPreviaSprites($divTexto, texto, 'a');
 			} else {
@@ -769,7 +790,7 @@ $(function(){
 			
 			var linhas;
 			if($checkbox.is(':checked')){
-				linhas = 5;
+				linhas = 10;
 			} else {
 				linhas = 3;
 			}
@@ -783,7 +804,7 @@ $(function(){
 			
 			var linhas;
 			if($checkbox.is(':checked')){
-				linhas = 5;
+				linhas = 10;
 			} else {
 				linhas = 3;
 			}
@@ -1095,7 +1116,6 @@ $(function(){
 				$campoEscala.slider("enable").slider('setValue', 1).trigger('change');
 			}
 		});
-		
 		/* Descrições de Provas / Perfis */
 		$checkboxEscalaAutomaticaDescricoes.on('change', function(){
 			var $checkbox = $(this);
@@ -1180,7 +1200,7 @@ $(function(){
 		// Configurando campos de exibir / ocultar a imagem comparativa na prévia
 		$("input[type='checkbox'][name^='mostrar_comparativo']").on('change', function(){
 			var $checkbox = $(this);
-			var $divConteiner = $('#' + $checkbox.attr('data-imagem'));
+			var $divConteiner = $("[id^='" + $checkbox.attr('data-imagem') + "']");
 			var $imgComparativo = $divConteiner.siblings('img.botao_template');
 			
 			if($checkbox.is(':checked')){

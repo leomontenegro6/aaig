@@ -123,6 +123,10 @@ a[aria-controls="sandbox"] span.glyphicon{
 	-webkit-font-smoothing : none;
 	white-space: nowrap;
 }
+.sprites_nomes_ds div.texto.vermelho{
+	background: rgba(255, 0, 0, 0.7) !important;
+	height: 16px;
+}	
 
 #conteiner_subtitulo{
 	display: inline-block;

@@ -131,18 +131,75 @@ function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica, aproximac
 	if(typeof aproximacao == 'undefined') aproximacao = 0.95;
 	
 	var $divPrevia = $(divPrevia);
+	var $aba = $divPrevia.closest('div.tab-pane');
 	
-	$divPrevia.html(texto);
+	var largura_texto = 0;
+	var largura_previa = 0;
+	var checkMultiplasLinhas = ($aba.is("[id='subtitulo_prova'], [id='descricao_prova']"));
 	
-	if(checkEscalaAutomatica){
-		definirEscalaPrevia($divPrevia, 1);
-		var largura_texto = calcularLarguraTexto($divPrevia);
-		var largura_previa = $divPrevia.width();
+	if(checkMultiplasLinhas){
+		var linhas = texto.split('<br />');
+		var numero_linha = 1;
+		var total_linhas = 3;
 		
-		if(largura_texto > largura_previa){
-			var escala = (largura_previa * aproximacao / largura_texto);
+		$divPrevia.html('');
+		
+		// Iterando por cada linha do texto
+		for(var i in linhas){
+			var linha = $.trim( linhas[i] );
 			
-			definirEscalaPrevia($divPrevia, escala);
+			// Iterando por cada caractere da linha
+			for(var j in linha){
+				var caractere = linha[j];
+				var checkUltimaLinha = (numero_linha >= total_linhas);
+				var checkUltimoCaractere = (j == (linha.length - 1));
+				
+				$divPrevia.append(caractere);
+				
+				if(checkUltimaLinha){
+					if(checkUltimoCaractere && checkEscalaAutomatica){
+						definirEscalaPrevia($divPrevia, 1);
+						largura_texto = calcularLarguraTexto($divPrevia);
+						largura_previa = $divPrevia.width();
+						if(largura_texto > largura_previa){
+							var escala = (largura_previa * aproximacao / largura_texto);
+
+							definirEscalaPrevia($divPrevia, escala);
+						}
+					}
+				} else {
+					// TODO: Ver se é viável a quebra automática
+					if(checkUltimoCaractere){
+						largura_texto = calcularLarguraTexto($divPrevia);
+						largura_previa = $divPrevia.width();
+						console.log(largura_texto + ' > ' + largura_previa);
+						if(largura_texto > largura_previa){
+							var texto_previa = $divPrevia.html();
+							texto_previa = texto_previa.replace(/ ([^ ]*)$/, '<br />$1');
+							$divPrevia.html(texto_previa);
+							
+							numero_linha++;
+						}
+						
+						$divPrevia.append('<br />');
+					}
+				}
+			}
+			
+			numero_linha++;
+		}
+	} else {
+		$divPrevia.html(texto);
+		
+		if(checkEscalaAutomatica){
+			definirEscalaPrevia($divPrevia, 1);
+			largura_texto = calcularLarguraTexto($divPrevia);
+			largura_previa = $divPrevia.width();
+			if(largura_texto > largura_previa){
+				var escala = (largura_previa * aproximacao / largura_texto);
+
+				definirEscalaPrevia($divPrevia, escala);
+			}
 		}
 	}
 }
@@ -336,6 +393,10 @@ function getDispositivo(onresize) {
 			return env;
 		}
 	};
+}
+
+function toggleIconeAccordion(e) {
+    $(e.target).prev('.panel-heading').find(".mais-menos").toggleClass('glyphicon-plus glyphicon-minus');
 }
 
 $(function(){
@@ -1078,6 +1139,9 @@ $(function(){
 			
 			$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');
 		});
+		
+		// Implementando troca de botões + e - nos accordions de personalizações visuais
+		$('.panel-group').on('hide.bs.collapse show.bs.collapse', toggleIconeAccordion);
 
 		// Instanciando checkboxes de escala automática
 		/* Botões */

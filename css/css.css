@@ -41,7 +41,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 #conteiner_botao_ds{
@@ -56,7 +55,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 #conteiner_botao_menor{
@@ -71,7 +69,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 #conteiner_botao_menor_ds{
@@ -86,7 +83,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 #conteiner_nome{
@@ -102,7 +98,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-align: center;
 	color: #E4A018;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 .sprites_nomes_ds{
@@ -121,7 +116,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 	font-smooth: never;
 	-webkit-font-smoothing : none;
-	white-space: nowrap;
 }
 .sprites_nomes_ds div.texto.vermelho{
 	background: rgba(255, 0, 0, 0.7) !important;
@@ -142,7 +136,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #444;
 	line-height: 1.35;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 .sprites_subtitulos_ds{
@@ -178,7 +171,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	line-height: 1.35;
 	transform: scaleX(1.075);
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 .sprites_descricoes_ds{
@@ -194,7 +186,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-family: "Ace Attorney US";
 	color: #fff;
 	line-height: 1.35;
-	white-space: nowrap;
 }
 #conteiner_descricao.sprites_descricoes_ds{
 	width: 256px !important;
@@ -247,7 +238,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #802B00;
 	position: absolute;
 	transform-origin: 0 0;
-	white-space: nowrap;
 }
 
 #conteiner_botoes_sandbox.ds div.botao1,
@@ -296,7 +286,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #802B00;
 	transform-origin: 0 0;
 	position: absolute;
-	white-space: nowrap;
 }
 
 #conteiner_botao_menor_sandbox.ds div.botao1, #conteiner_botao_menor_sandbox.ds div.botao2,
@@ -353,7 +342,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	text-align: center;
 	color: #E4A018;
 	transform-origin: 0 0;
-	white-space: nowrap;
 	position: absolute;
 	top: 51px;
 	left: 125px;
@@ -366,7 +354,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #444;
 	line-height: 1.35;
 	transform-origin: 0 0;
-	white-space: nowrap;
 	position: absolute;
 	top: 77px;
 	left: 121px;
@@ -378,7 +365,6 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #eee;
 	line-height: 1.35;
 	transform-origin: 0 0;
-	white-space: nowrap;
 	position: absolute;
 	top: 146px;
 	left: 23px;
@@ -423,6 +409,10 @@ select.form-control option.recomendada{
 
 .italico{
 	font-style: italic;
+}
+
+.semquebra{
+	white-space: nowrap;
 }
 
 /* Regras para dispositivos mobile */

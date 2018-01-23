@@ -49,7 +49,7 @@ var LANGUAGE = {
 		'carregando': 'Carregando...'
 	},
 	'p': { // Placeholders
-		'texto_botoes': 'Digite o texto a aparecer na prévia abaixo',
+		'texto_botoes': 'Digite o texto a aparecer na prévia ao lado',
 		'texto_lote': 'Digite textos separados por quebras de linha',
 		'texto_sandbox': 'Digite o texto a aparecer na prévia ao lado',
 		'outra_fonte': 'Digite o nome da fonte'

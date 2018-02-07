@@ -514,8 +514,16 @@ $(function(){
 			} else {
 				readme_page = 'README.md';
 			}
-
-			window.open('https://github.com/leomontenegro6/aaig/blob/master/' + readme_page);
+			var url_github = 'https://github.com/leomontenegro6/aaig/blob/master/' + readme_page;
+			
+			var checkAcessandoViaElectron = (typeof process == 'object');
+			
+			if(checkAcessandoViaElectron){
+				var shell = require('electron').shell;
+				shell.openExternal(url_github);
+			} else {
+				window.open(url_github);
+			}
 		});
 
 		// Eventos dos campos de texto

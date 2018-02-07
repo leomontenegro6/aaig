@@ -38,6 +38,13 @@
 		<link rel="stylesheet" href="css/sprites_nomes.css?v=0.6a">
 		<link rel="stylesheet" href="css/sprites_subtitulos.css?v=0.6a">
 		<link rel="stylesheet" href="css/sprites_descricoes.css?v=0.6a">
+		
+		<!--
+		Electron - Linha necessária para que as importações de scripts js funcionem.
+		Adicionada antes das importações.
+		-->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		
 		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
@@ -46,6 +53,12 @@
 		<script type="text/javascript" src="js/html2canvas.js?v=0.6a"></script>
 		<script type="text/javascript" src="js/aaig.js?v=0.6a"></script>
 		<script type="text/javascript" src="js/lang.pt-br.js?v=0.6a"></script>
+		
+		<!--
+		Electron - Linha necessária para que as importações de scripts js funcionem.
+		Adicionada depois das importações.
+		-->
+		<script>if (window.module) module = window.module;</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-static-top">

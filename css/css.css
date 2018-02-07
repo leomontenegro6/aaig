@@ -399,8 +399,17 @@ a[aria-controls="sandbox"] span.glyphicon{
 	line-height: 0;
 }
 
+select.fonte_3ds{
+	width: 200px !important;
+}
+
 select.form-control option.recomendada{
 	background: #ddd;
+}
+
+input.slider-value{
+	margin-left: 7.5px;
+	width: 62.5px !important;
 }
 
 .negrito{
@@ -415,7 +424,46 @@ select.form-control option.recomendada{
 	white-space: nowrap;
 }
 
-/* Regras para dispositivos mobile */
+/* Regras para dispositivos intermédiários, como desktops com monitores menores (md) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	.container {
+		width: 100%;
+	}
+	select.fonte_3ds{
+		width: 100px !important;
+	}
+	div.slider{
+		width: 150px !important;
+	}
+	input.slider-value{
+		width: 40px !important;
+		padding: 4px;
+	}
+}
+
+/* Regras para dispositivos pequenos, como tablets (sm) */
+@media (min-width: 768px) and (max-width: 991px) {
+	.container {
+		width: 100%;
+	}
+	select.fonte_3ds{
+		width: 80px !important;
+		padding: 4px;
+	}
+	select.tamanho_fonte{
+		width: 66px !important;
+		padding: 4px;
+	}
+	div.slider{
+		width: 75px !important;
+	}
+	input.slider-value{
+		width: 40px !important;
+		padding: 4px;
+	}
+}
+
+/* Regras para dispositivos extra-pequenos, tipicamente celulares (sm) */
 @media (max-width: 480px) {
 	#header ul.title, #header ul.title>li{
 		display: inline-block;

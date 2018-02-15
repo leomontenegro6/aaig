@@ -1555,3 +1555,10 @@ $(function(){
 		});
 	}
 });
+
+$(document).ready(function() {
+	$("#lista_temas  a").click(function(e) {
+		console.log("change theme");
+		$("body").attr("class", $(this).attr("data-theme"));
+	});
+}); 

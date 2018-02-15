@@ -38,6 +38,7 @@
 		<link rel="stylesheet" href="css/sprites_nomes.css?v=0.6a">
 		<link rel="stylesheet" href="css/sprites_subtitulos.css?v=0.6a">
 		<link rel="stylesheet" href="css/sprites_descricoes.css?v=0.6a">
+		<link rel="stylesheet" href="css/theme-dark.css">
 		
 		<!--
 		Electron - Linha necessária para que as importações de scripts js funcionem.
@@ -95,6 +96,26 @@
 		</nav>
 		
 		<!-- Campo de seleção de idioma -->
+		<div class="dropdown pull-right" style="margin-right: 5px">
+			<button class="btn btn-default dropdown-toggle" type="button" id="botao_tema"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<i class="glyphicon glyphicon-text-background"> </i>
+				<span class="nome_idioma" data-valor="pt-br">Tema</span>
+				<span class="caret"></span>
+			</button>
+			<ul id="lista_temas" class="dropdown-menu" aria-labelledby="botao_tema">
+				<li>
+					<a href="#" data-theme="light">
+						<span>Light</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" data-theme="dark">
+						<span>Dark</span>
+					</a>
+				</li>
+			</ul>
+		</div>
 		<div class="dropdown pull-right" style="margin-right: 5px">
 			<button class="btn btn-default dropdown-toggle" type="button" id="botao_idioma"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

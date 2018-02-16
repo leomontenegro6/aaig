@@ -97,26 +97,6 @@
 		
 		<!-- Campo de seleção de idioma -->
 		<div class="dropdown pull-right" style="margin-right: 5px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="botao_tema"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<i class="glyphicon glyphicon-text-background"> </i>
-				<span class="nome_idioma" data-valor="pt-br">Tema</span>
-				<span class="caret"></span>
-			</button>
-			<ul id="lista_temas" class="dropdown-menu" aria-labelledby="botao_tema">
-				<li>
-					<a href="#" data-theme="light">
-						<span>Light</span>
-					</a>
-				</li>
-				<li>
-					<a href="#" data-theme="dark">
-						<span>Dark</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="dropdown pull-right" style="margin-right: 5px">
 			<button class="btn btn-default dropdown-toggle" type="button" id="botao_idioma"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				<img class="bandeira" src="img/flag_brazil.png" />
@@ -141,6 +121,23 @@
 						<img src="img/flag_brazil.png" />
 						<span>Português</span>
 					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- Campo de seleção de tema -->
+		<div class="dropdown pull-right" style="margin-right: 5px">
+			<button class="btn btn-default dropdown-toggle" type="button" id="botao_tema"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				<i class="glyphicon glyphicon-text-background"></i>
+				<span class="l_tema">Tema</span>
+				<span class="caret"></span>
+			</button>
+			<ul id="lista_temas" class="dropdown-menu" aria-labelledby="botao_tema">
+				<li>
+					<a href="#light" class="l_tema_claro">Claro</a>
+				</li>
+				<li>
+					<a href="#dark" class="l_tema_escuro">Escuro</a>
 				</li>
 			</ul>
 		</div>

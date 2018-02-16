@@ -378,6 +378,7 @@ $(function(){
 		var $imgBandeira = $botaoIdioma.children('img.bandeira');
 		var $spanNomeIdioma = $botaoIdioma.children('span.nome_idioma');
 		var $ulListaIdiomas = $('#lista_idiomas');
+		var $ulListaTemas = $('#lista_temas');
 		var $formularios = $('form');
 
 		// Campos de botões
@@ -480,6 +481,14 @@ $(function(){
 			adicionarScriptIdioma(idioma, atualizarIdioma);
 
 			e.preventDefault();
+		});
+		
+		// Evento dos campos de seleção de temas
+		$ulListaTemas.find('a').on('click', function(e){
+			var $a = $(this);
+			var tema = ( $a.attr('href') ).replace('#', '');
+			
+			$("body").removeClass('light dark').addClass(tema);
 		});
 
 		// Definindo textos do idioma padrão (Português)
@@ -1555,10 +1564,3 @@ $(function(){
 		});
 	}
 });
-
-$(document).ready(function() {
-	$("#lista_temas  a").click(function(e) {
-		console.log("change theme");
-		$("body").attr("class", $(this).attr("data-theme"));
-	});
-}); 

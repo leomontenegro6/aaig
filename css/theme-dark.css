@@ -50,7 +50,8 @@ body.dark {
 .dark .nav-tabs > li a:hover {
     color: #886021;
     background-color: #2d2d2d;
-    border: none;
+    border-color: transparent;
+	border-bottom: 1px dashed #f7af3e80;
 }
 
 .dark .nav-tabs > li.active {
@@ -62,7 +63,7 @@ body.dark {
     color: #f7af3e;
     text-decoration: none;
     background-color: transparent;
-    border: none;
+    border-color: transparent;
 }
 
 .dark .btn-primary {

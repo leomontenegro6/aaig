@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title class="l_titulo_principal">Ace Attorney Image Generator</title>
+		<title class="l-main-title">Ace Attorney Image Generator</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 		
@@ -34,15 +34,15 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-slider.min.css">
-		<link rel="stylesheet" href="css/css.css?v=0.6a">
-		<link rel="stylesheet" href="css/sprites_nomes.css?v=0.6a">
-		<link rel="stylesheet" href="css/sprites_subtitulos.css?v=0.6a">
-		<link rel="stylesheet" href="css/sprites_descricoes.css?v=0.6a">
+		<link rel="stylesheet" href="css/css.css?v=0.6b">
+		<link rel="stylesheet" href="css/sprites-titles.css?v=0.6b">
+		<link rel="stylesheet" href="css/sprites-subtitles.css?v=0.6b">
+		<link rel="stylesheet" href="css/sprites-descriptions.css?v=0.6b">
 		<link rel="stylesheet" href="css/theme-dark.css">
 		
 		<!--
-		Electron - Linha necessária para que as importações de scripts js funcionem.
-		Adicionada antes das importações.
+		Electron - Line needed in order to make the imports of JS files to work.
+		Need to be added before the imports.
 		-->
 		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 		
@@ -51,13 +51,13 @@
 		<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
 		<script type="text/javascript" src="js/jszip.min.js"></script>
 		<script type="text/javascript" src="js/FileSaver.min.js"></script>
-		<script type="text/javascript" src="js/html2canvas.js?v=0.6a"></script>
-		<script type="text/javascript" src="js/aaig.js?v=0.6a"></script>
-		<script type="text/javascript" src="js/lang.pt-br.js?v=0.6a"></script>
+		<script type="text/javascript" src="js/html2canvas.js?v=0.6b"></script>
+		<script type="text/javascript" src="js/aaig.js?v=0.6b"></script>
+		<script type="text/javascript" src="js/lang.pt-br.js?v=0.6b"></script>
 		
 		<!--
-		Electron - Linha necessária para que as importações de scripts js funcionem.
-		Adicionada depois das importações.
+		Electron - Line needed in order to make the imports of JS files to work.
+		Need to be added afterthe imports.
 		-->
 		<script>if (window.module) module = window.module;</script>
 	</head>
@@ -74,19 +74,19 @@
 						<li>
 							<a class="navbar-brand" href="#">
 								<span class="hidden-xs">
-									<span class="l_titulo_navbar">&nbsp;</span>
-									<span class="l_versao">&nbsp;</span>
+									<span class="l-navbar-title">&nbsp;</span>
+									<span class="l-version">&nbsp;</span>
 								</span>
 								<span class="visible-xs">
-									<span class="l_titulo_navbar_mobile">&nbsp;</span>
-									<span class="l_versao">&nbsp;</span>
+									<span class="l-navbar-title-mobile">&nbsp;</span>
+									<span class="l-version">&nbsp;</span>
 								</span>
 							</a>
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right about">
 						<li>
-							<a class="navbar-brand t_about" href="#" title="" id="sobre_programa">
+							<a class="navbar-brand t-about" href="#" title="" id="about-program">
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 							</a>
 						</li>
@@ -95,130 +95,132 @@
 			</div>
 		</nav>
 		
-		<!-- Campo de seleção de idioma -->
+		<!-- Language selection field -->
 		<div class="dropdown pull-right" style="margin-right: 5px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="botao_idioma"
+			<button class="btn btn-default dropdown-toggle" type="button" id="language-button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<img class="bandeira" src="img/flag_brazil.png" />
-				<span class="nome_idioma" data-valor="pt-br">Português</span>
+				<img class="flag" src="images/flag_brazil.png" />
+				<span class="language-name" data-value="pt-br">Português</span>
 				<span class="caret"></span>
 			</button>
-			<ul id="lista_idiomas" class="dropdown-menu" aria-labelledby="botao_idioma">
+			<ul id="languages-list" class="dropdown-menu" aria-labelledby="language-button">
 				<li>
 					<a href="#en-us">
-						<img src="img/flag_usa.png" />
+						<img src="images/flag_usa.png" />
 						<span>English</span>
 					</a>
 				</li>
 				<li>
 					<a href="#es">
-						<img src="img/flag_spain.png" />
+						<img src="images/flag_spain.png" />
 						<span>Español</span>
 					</a>
 				</li>
 				<li>
 					<a href="#pt-br">
-						<img src="img/flag_brazil.png" />
+						<img src="images/flag_brazil.png" />
 						<span>Português</span>
 					</a>
 				</li>
 			</ul>
 		</div>
-		<!-- Campo de seleção de tema -->
+		
+		<!-- Theme selection field -->
 		<div class="dropdown pull-right" style="margin-right: 5px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="botao_tema"
+			<button class="btn btn-default dropdown-toggle" type="button" id="theme-button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				<i class="glyphicon glyphicon-text-background"></i>
-				<span class="l_tema">Tema</span>
+				<span class="l-theme">Tema</span>
 				<span class="caret"></span>
 			</button>
-			<ul id="lista_temas" class="dropdown-menu" aria-labelledby="botao_tema">
+			<ul id="themes-list" class="dropdown-menu" aria-labelledby="theme-button">
 				<li>
-					<a href="#light" class="l_tema_claro">Claro</a>
+					<a href="#light" class="l-light-theme">Claro</a>
 				</li>
 				<li>
-					<a href="#dark" class="l_tema_escuro">Escuro</a>
+					<a href="#dark" class="l-dark-theme">Escuro</a>
 				</li>
 			</ul>
 		</div>
 		<br /><br />
 		
 		<div class="container">
-			<!-- Abas -->
+			<!-- Tabs -->
 			<ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active">
-					<a href="#botoes" aria-controls="botoes" role="tab" data-toggle="tab">
+					<a href="#buttons" aria-controls="buttons" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-align-justify"></span>
-						<span class="l_aba_botoes">&nbsp;</span>
+						<span class="l-tab-buttons">&nbsp;</span>
 					</a>
 				</li>
 				<li role="presentation">
-					<a href="#botoes_menores" aria-controls="botoes_menores" role="tab" data-toggle="tab">
+					<a href="#smaller-buttons" aria-controls="smaller-buttons" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-th-list"></span>
-						<span class="l_aba_botoes_menores">&nbsp;</span>
+						<span class="l-tab-smaller-buttons">&nbsp;</span>
 					</a>
 				</li>
 				<li role="presentation">
-					<a href="#nome_prova" aria-controls="nome_prova" role="tab" data-toggle="tab">
+					<a href="#proof-profile-titles" aria-controls="proof-profile-titles" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-text-background"></span>
-						<span class="l_aba_nome_prova">&nbsp;</span>
+						<span class="l-tab-proof-profile-titles">&nbsp;</span>
 					</a>
 				</li>
 				<li role="presentation">
-					<a href="#subtitulo_prova" aria-controls="subtitulo_prova" role="tab" data-toggle="tab">
+					<a href="#proof-profile-subtitles" aria-controls="proof-profile-subtitles" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-text-background"></span>
-						<span class="l_aba_subtitulo_prova">&nbsp;</span>
+						<span class="l-tab-proof-profile-subtitles">&nbsp;</span>
 					</a>
 				</li>
 				<li role="presentation">
-					<a href="#descricao_prova" aria-controls="descricao_prova" role="tab" data-toggle="tab">
+					<a href="#proof-profile-descriptions" aria-controls="proof-profile-descriptions" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-list-alt"></span>
-						<span class="l_aba_descricao_prova">&nbsp;</span>
+						<span class="l-tab-proof-profile-descriptions">&nbsp;</span>
 					</a>
 				</li>
 				<li role="presentation">
 					<a href="#sandbox" aria-controls="sandbox" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-inbox"></span>
-						<span class="l_aba_sandbox">&nbsp;</span>
+						<span class="l-tab-sandbox">&nbsp;</span>
 					</a>
 				</li>
 			</ul>
 
-			<!-- Contêiners das abas -->
+			<!-- Tab conteiners -->
 			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="botoes">
-					<!-- incluir "aba_botoes.html" -->
-					<span class="l_carregando">&nbsp;</span>
+				<div role="tabpanel" class="tab-pane active" id="buttons">
+					<!-- include "tab-buttons.html" -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="botoes_menores">
-					<!-- incluir "aba_botoes_menores.html -->
-					<span class="l_carregando">&nbsp;</span>
+				<div role="tabpanel" class="tab-pane" id="smaller-buttons">
+					<!-- include "tab-smaller-buttons.html -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="nome_prova">
-					<!-- incluir "aba_nomes_provas_perfis.html" -->
-					<span class="l_carregando">&nbsp;</span>
+				<div role="tabpanel" class="tab-pane" id="proof-profile-titles">
+					<!-- include "tab-proof-profile-titles.html" -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="subtitulo_prova">
-					<!-- incluir "aba_subtitulos_provas_perfis.html" -->
-					<span class="l_carregando">&nbsp;</span>
+				<div role="tabpanel" class="tab-pane" id="proof-profile-subtitles">
+					<!-- include "tab-proof-profile-subtitles.html" -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
-				<div role="tabpanel" class="tab-pane" id="descricao_prova">
-					<!-- incluir "aba_descricoes_provas_perfis.html" -->
-					<span class="l_carregando">&nbsp;</span>
+				<div role="tabpanel" class="tab-pane" id="proof-profile-descriptions">
+					<!-- include "tab-proof-profile-descriptions.html" -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="sandbox">
-					<!-- incluir "aba_sandbox.html" -->
-					<span class="l_carregando">&nbsp;</span>
+					<!-- include "tab-sandbox.html" -->
+					<span class="l-loading">&nbsp;</span>
 				</div>
 			</div>
 		</div>
 		
-		<div class="modal" id="indicador_carregamento" tabindex="-1" role="dialog" aria-labelledby="loadingIndicator" data-backdrop="static" data-keyboard="false">
+		<div class="modal" id="loading-indicator" tabindex="-1" role="dialog"
+			aria-labelledby="loadingIndicator" data-backdrop="static" data-keyboard="false">
 			<div class="modal-dialog modal-sm" role="document">
 				<div class="modal-content">
 					<div class="modal-body text-center">
 						<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-						<span class="l_carregando">&nbsp;</span>
+						<span class="l-loading">&nbsp;</span>
 					</div>
 				</div>
 			</div>

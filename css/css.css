@@ -1,6 +1,6 @@
 @charset "UTF-8";
-@import url('fontes.css');
-@import url('fontes_proprietarias.css');
+@import url('fonts.css');
+@import url('proprietary-fonts.css');
 body{
 	font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
@@ -18,11 +18,11 @@ body{
 	from { transform: scale(1) rotate(0deg);}
 	to { transform: scale(1) rotate(360deg);}
 }
-a[aria-controls="nome_prova"] span.glyphicon{
+a[aria-controls="proof-profile-titles"] span.glyphicon{
 	background: #E49924;
 	color: #383838;
 }
-a[aria-controls="subtitulo_prova"] span.glyphicon{
+a[aria-controls="proof-profile-subtitles"] span.glyphicon{
 	background: #383838;
 	color: #99C291;
 }
@@ -34,7 +34,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	vertical-align: top;
 	width: 512px;
 	height: 32px;
-	background-image: url('../img/background_botoes.png');
+	background-image: url('../images/button_bg.png');
 }
 #conteiner_botao div.texto{
 	width: 280px;
@@ -48,7 +48,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	vertical-align: top;
 	width: 256px;
 	height: 32px;
-	background-image: url('../img/background_botoes_ds.png');
+	background-image: url('../images/button_bg_ds.png');
 }
 #conteiner_botao_ds div.texto{
 	width: 224px;
@@ -57,42 +57,42 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#conteiner_botao_menor{
+#smaller-button-conteiner{
 	display: inline-block;
 	vertical-align: top;
 	width: 256px;
 	height: 32px;
-	background-image: url('../img/background_botoes_menores.png');
+	background-image: url('../images/smaller_button_bg.png');
 }
-#conteiner_botao_menor div.texto{
+#smaller-button-conteiner div.texto{
 	width: 160px;
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
 }
 
-#conteiner_botao_menor_ds{
+#smaller-button-conteiner_ds{
 	display: inline-block;
 	vertical-align: top;
 	width: 128px;
 	height: 32px;
-	background-image: url('../img/background_botoes_menores_ds.png');
+	background-image: url('../images/smaller_button_bg_ds.png');
 }
-#conteiner_botao_menor_ds div.texto{
+#smaller-button-conteiner_ds div.texto{
 	width: 128px;
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
 }
 
-#conteiner_nome{
+#proof-profile-title-conteiner{
 	display: inline-block;
 	vertical-align: top;
 	width: 256px;
 	height: 32px;
-	background-image: url('../img/background_nomes.png');
+	background-image: url('../images/proof_profile_title_bg.png');
 }
-#conteiner_nome div.texto{
+#proof-profile-title-conteiner div.texto{
 	width: 160px;
 	font-family: "Vald Book";
 	text-align: center;
@@ -105,7 +105,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	vertical-align: top !important;
 	width: 128px !important;
 	height: 16px !important;
-	background-image: url('../img/background_nomes_ds.png') !important;
+	background-image: url('../images/proof_profile_title_bg_ds.png') !important;
 	background-color: #383838;
 }
 .sprites_nomes_ds div.texto{
@@ -122,14 +122,14 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 16px;
 }	
 
-#conteiner_subtitulo{
+#proof-profile-subtitle-conteiner{
 	display: inline-block;
 	vertical-align: top;
 	width: 256px;
 	height: 64px;
-	background-image: url('../img/background_subtitulos.png');
+	background-image: url('../images/proof_profile_subtitle_bg.png');
 }
-#conteiner_subtitulo div.texto{
+#proof-profile-subtitle-conteiner div.texto{
 	width: 160px;
 	font-family: "Vald Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
@@ -143,7 +143,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	vertical-align: top !important;
 	width: 128px !important;
 	height: 64px !important;
-	background-image: url('../img/background_subtitulos_ds.png') !important;
+	background-image: url('../images/proof_profile_subtitle_bg_ds.png') !important;
 }
 .sprites_subtitulos_ds div.texto{
 	width: 128px;
@@ -154,17 +154,17 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#conteiner_descricao{
+#proof-profile-description-conteiner{
 	display: inline-block;
 	vertical-align: top;
 	width: 512px;
 	height: 128px;
-	background-image: url('../img/background_descricao.png');
+	background-image: url('../images/proof_profile_description_bg.png');
 }
-#conteiner_descricao.fundo_marrom, .sprites_descricoes_ds.fundo_marrom{
+#proof-profile-description-conteiner.brown-background, .sprites_descricoes_ds.brown-background{
 	background-color: #897047;
 }
-#conteiner_descricao div.texto{
+#proof-profile-description-conteiner div.texto{
 	width: 238.139534884px; /* 256 dividido por (scaleX) */
 	font-family: "Vald Book";
 	color: #eee;
@@ -179,7 +179,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	width: 240px !important;
 	height: 64px !important;
 	margin-left: 16px !important;
-	background-image: url('../img/background_descricao_ds.png') !important;
+	background-image: url('../images/proof_profile_description_bg_ds.png') !important;
 }
 .sprites_descricoes_ds div.texto{
 	width: 256px;
@@ -187,50 +187,50 @@ a[aria-controls="sandbox"] span.glyphicon{
 	color: #fff;
 	line-height: 1.35;
 }
-#conteiner_descricao.sprites_descricoes_ds{
+#proof-profile-description-conteiner.sprites_descricoes_ds{
 	width: 256px !important;
 	margin-left: 0 !important;
 }
 
 /* Estilizações da aba "Sandbox" */
-#conteiner_botoes_sandbox, #conteiner_botao_menor_sandbox, #conteiner_provas_subtitulos_sandbox{
+#button-conteiner-sandbox, #smaller-button-conteiner-sandbox, #proof-profile-subtitle-conteiner-sandbox{
 	width: 320px;
 	height: 240px;
 	position: relative;
 }
 
-#conteiner_botoes_sandbox.ds, #conteiner_botao_menor_sandbox.ds, #conteiner_provas_subtitulos_sandbox.ds{
+#button-conteiner-sandbox.ds, #smaller-button-conteiner-sandbox.ds, #proof-profile-subtitle-conteiner-sandbox.ds{
 	width: 256px;
 	height: 192px;
 }
 
-#conteiner_botoes_sandbox{
-	background-image: url('../img/sandbox_1.png');
+#button-conteiner-sandbox{
+	background-image: url('../images/sandbox_1.png');
 }
 
-#conteiner_botao_menor_sandbox{
-	background-image: url('../img/sandbox_2.png');
+#smaller-button-conteiner-sandbox{
+	background-image: url('../images/sandbox_2.png');
 }
 
-#conteiner_provas_subtitulos_sandbox{
-	background-image: url('../img/sandbox_3.png');
+#proof-profile-subtitle-conteiner-sandbox{
+	background-image: url('../images/sandbox_3.png');
 }
 
-#conteiner_botoes_sandbox.ds{
-	background-image: url('../img/sandbox_1_ds.png');
+#button-conteiner-sandbox.ds{
+	background-image: url('../images/sandbox_1_ds.png');
 }
 
-#conteiner_botao_menor_sandbox.ds{
-	background-image: url('../img/sandbox_2_ds.png');
+#smaller-button-conteiner-sandbox.ds{
+	background-image: url('../images/sandbox_2_ds.png');
 }
 
-#conteiner_provas_subtitulos_sandbox.ds{
-	background-image: url('../img/sandbox_3_ds.png');
+#proof-profile-subtitle-conteiner-sandbox.ds{
+	background-image: url('../images/sandbox_3_ds.png');
 }
 
-#conteiner_botoes_sandbox div.botao1,
-#conteiner_botoes_sandbox div.botao2,
-#conteiner_botoes_sandbox div.botao3{
+#button-conteiner-sandbox div.botao1,
+#button-conteiner-sandbox div.botao2,
+#button-conteiner-sandbox div.botao3{
 	width: 280px;
 	font-family: Arial;
 	font-size: 23px;
@@ -240,45 +240,45 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#conteiner_botoes_sandbox.ds div.botao1,
-#conteiner_botoes_sandbox.ds div.botao2,
-#conteiner_botoes_sandbox.ds div.botao3{
+#button-conteiner-sandbox.ds div.botao1,
+#button-conteiner-sandbox.ds div.botao2,
+#button-conteiner-sandbox.ds div.botao3{
 	width: 224px;
 	font-size: 18px;
 }
 
-#conteiner_botoes_sandbox div.botao1{
+#button-conteiner-sandbox div.botao1{
 	top: 59px;
 	left: 20px;
 }
 
-#conteiner_botoes_sandbox.ds div.botao1{
+#button-conteiner-sandbox.ds div.botao1{
 	top: 48px;
 	left: 16px;
 }
 
-#conteiner_botoes_sandbox div.botao2{
+#button-conteiner-sandbox div.botao2{
 	top: 114px;
 	left: 20px;
 }
 
-#conteiner_botoes_sandbox.ds div.botao2{
+#button-conteiner-sandbox.ds div.botao2{
 	top: 92px;
 	left: 16px;
 }
 
-#conteiner_botoes_sandbox div.botao3{
+#button-conteiner-sandbox div.botao3{
 	top: 169px;
 	left: 20px;
 }
 
-#conteiner_botoes_sandbox.ds div.botao3{
+#button-conteiner-sandbox.ds div.botao3{
 	top: 135px;
 	left: 16px;
 }
 
-#conteiner_botao_menor_sandbox div.botao1, #conteiner_botao_menor_sandbox div.botao2,
-#conteiner_botao_menor_sandbox div.botao3, #conteiner_botao_menor_sandbox div.botao4{
+#smaller-button-conteiner-sandbox div.botao1, #smaller-button-conteiner-sandbox div.botao2,
+#smaller-button-conteiner-sandbox div.botao3, #smaller-button-conteiner-sandbox div.botao4{
 	width: 180px;
 	font-family: Arial;
 	font-size: 23px;
@@ -288,53 +288,53 @@ a[aria-controls="sandbox"] span.glyphicon{
 	position: absolute;
 }
 
-#conteiner_botao_menor_sandbox.ds div.botao1, #conteiner_botao_menor_sandbox.ds div.botao2,
-#conteiner_botao_menor_sandbox.ds div.botao3, #conteiner_botao_menor_sandbox.ds div.botao4{
+#smaller-button-conteiner-sandbox.ds div.botao1, #smaller-button-conteiner-sandbox.ds div.botao2,
+#smaller-button-conteiner-sandbox.ds div.botao3, #smaller-button-conteiner-sandbox.ds div.botao4{
 	width: 140px;
 	font-size: 18px;
 }
 
-#conteiner_botao_menor_sandbox div.botao1{
+#smaller-button-conteiner-sandbox div.botao1{
 	top: 44px;
 	left: 138px;
 }
 
-#conteiner_botao_menor_sandbox.ds div.botao1{
+#smaller-button-conteiner-sandbox.ds div.botao1{
 	top: 35px;
 	left: 110px;
 }
 
-#conteiner_botao_menor_sandbox div.botao2{
+#smaller-button-conteiner-sandbox div.botao2{
 	top: 84px;
 	left: 138px;
 }
 
-#conteiner_botao_menor_sandbox.ds div.botao2{
+#smaller-button-conteiner-sandbox.ds div.botao2{
 	top: 68px;
 	left: 110px;
 }
 
-#conteiner_botao_menor_sandbox div.botao3{
+#smaller-button-conteiner-sandbox div.botao3{
 	top: 124px;
 	left: 138px;
 }
 
-#conteiner_botao_menor_sandbox.ds div.botao3{
+#smaller-button-conteiner-sandbox.ds div.botao3{
 	top: 100px;
 	left: 110px;
 }
 
-#conteiner_botao_menor_sandbox div.botao4{
+#smaller-button-conteiner-sandbox div.botao4{
 	top: 164px;
 	left: 138px;
 }
 
-#conteiner_botao_menor_sandbox.ds div.botao4{
+#smaller-button-conteiner-sandbox.ds div.botao4{
 	top: 132px;
 	left: 110px;
 }
 
-#conteiner_provas_subtitulos_sandbox div.nome{
+#proof-profile-subtitle-conteiner-sandbox div.nome{
 	width: 153.11px;
 	transform: scaleX(1.045);
 	font-family: "Vald Book";
@@ -347,7 +347,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 125px;
 }
 
-#conteiner_provas_subtitulos_sandbox div.subtitulo{
+#proof-profile-subtitle-conteiner-sandbox div.subtitulo{
 	width: 160px;
 	font-family: "Vald Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
@@ -359,7 +359,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 121px;
 }
 
-#conteiner_provas_subtitulos_sandbox div.descricao{
+#proof-profile-subtitle-conteiner-sandbox div.descricao{
 	width: 272px;
 	font-family: "Vald Book";
 	color: #eee;
@@ -370,36 +370,36 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 23px;
 }
 
-#conteiner_provas_subtitulos_sandbox.ds div.nome{
+#proof-profile-subtitle-conteiner-sandbox.ds div.nome{
 	top: 41px;
 	left: 91px;
 	background: transparent !important;
 }
 
-#conteiner_provas_subtitulos_sandbox.ds div.subtitulo{
+#proof-profile-subtitle-conteiner-sandbox.ds div.subtitulo{
 	top: 58px;
 	left: 98px;
 	background: transparent !important;
 	height: 48px !important;
 }
 
-#conteiner_provas_subtitulos_sandbox.ds div.descricao{
+#proof-profile-subtitle-conteiner-sandbox.ds div.descricao{
 	top: 114px;
 	left: 0;
 	background: transparent !important;
 	height: 48px !important;
 }
 
-#conteiner_provas_subtitulos_sandbox.ds div.subtitulo div.texto{
+#proof-profile-subtitle-conteiner-sandbox.ds div.subtitulo div.texto{
 	line-height: 0;
 }
 
-#conteiner_provas_subtitulos_sandbox.ds div.descricao div.texto{
+#proof-profile-subtitle-conteiner-sandbox.ds div.descricao div.texto{
 	width: 232px !important;
 	line-height: 0;
 }
 
-select.fonte_3ds{
+select.font-3ds{
 	width: 200px !important;
 }
 
@@ -420,7 +420,7 @@ input.slider-value{
 	font-style: italic;
 }
 
-.semquebra{
+.nowrap{
 	white-space: nowrap;
 }
 
@@ -429,7 +429,7 @@ input.slider-value{
 	.container {
 		width: 100%;
 	}
-	select.fonte_3ds{
+	select.font-3ds{
 		width: 100px !important;
 	}
 	div.slider{
@@ -446,7 +446,7 @@ input.slider-value{
 	.container {
 		width: 100%;
 	}
-	select.fonte_3ds{
+	select.font-3ds{
 		width: 80px !important;
 		padding: 4px;
 	}

@@ -1,0 +1,410 @@
+.sprites_nomes_ds div.texto span.letter{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../images/fonte_nome_ds.png');
+	background-position: 0 0;
+}
+
+.sprites_nomes_ds.condensed div.texto span.letter{
+	background: url('../images/fonte_nome_ds_condensed.png');
+}
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter{
+	background: url('../images/fonte_nome_ds_extracondensed.png');
+}
+
+/* Tamanhos e dimensões de caracteres normais */
+.sprites_nomes_ds div.texto span.letter.espaco{ width: 5px; background-position: 0 0; }
+.sprites_nomes_ds div.texto span.letter.exclamacao{ width: 2px; background-position: -32px 0; }
+.sprites_nomes_ds div.texto span.letter.aspas-duplas{ width: 6px; background-position: -48px 0; }
+.sprites_nomes_ds div.texto span.letter.cerquilha{ width: 12px; background-position: -64px 0; }
+.sprites_nomes_ds div.texto span.letter.cifrao{ width: 8px; background-position: -80px 0; }
+.sprites_nomes_ds div.texto span.letter.porcento{ width: 11px; background-position: -96px 0; }
+.sprites_nomes_ds div.texto span.letter.e-comercial{ width: 10px; background-position: -112px 0; }
+.sprites_nomes_ds div.texto span.letter.aspas{ width: 3px; background-position: -128px 0; }
+.sprites_nomes_ds div.texto span.letter.abre-parenteses{ width: 4px; background-position: -144px 0; }
+.sprites_nomes_ds div.texto span.letter.fecha-parenteses{ width: 4px; background-position: -160px 0; }
+.sprites_nomes_ds div.texto span.letter.asterisco{ width: 8px; background-position: -176px 0; }
+.sprites_nomes_ds div.texto span.letter.mais{ width: 10px; background-position: -192px 0; }
+.sprites_nomes_ds div.texto span.letter.virgula{ width: 3px; background-position: -208px 0; }
+
+.sprites_nomes_ds div.texto span.letter.menos{ width: 6px; background-position: 0 -16px; }
+.sprites_nomes_ds div.texto span.letter.ponto{ width: 3px; background-position: -16px -16px; }
+.sprites_nomes_ds div.texto span.letter.barra{ width: 6px; background-position: -32px -16px; }
+.sprites_nomes_ds div.texto span.letter.n0{ width: 6px; background-position: -48px -16px; }
+.sprites_nomes_ds div.texto span.letter.n1{ width: 4px; background-position: -64px -16px; }
+.sprites_nomes_ds div.texto span.letter.n2{ width: 6px; background-position: -80px -16px; }
+.sprites_nomes_ds div.texto span.letter.n3{ width: 6px; background-position: -96px -16px; }
+.sprites_nomes_ds div.texto span.letter.n4{ width: 6px; background-position: -112px -16px; }
+.sprites_nomes_ds div.texto span.letter.n5{ width: 6px; background-position: -128px -16px; }
+.sprites_nomes_ds div.texto span.letter.n6{ width: 6px; background-position: -144px -16px; }
+.sprites_nomes_ds div.texto span.letter.n7{ width: 6px; background-position: -160px -16px; }
+.sprites_nomes_ds div.texto span.letter.n8{ width: 6px; background-position: -176px -16px; }
+.sprites_nomes_ds div.texto span.letter.n9{ width: 6px; background-position: -192px -16px; }
+.sprites_nomes_ds div.texto span.letter.dois-pontos{ width: 3px; background-position: -208px -16px; }
+
+.sprites_nomes_ds div.texto span.letter.ponto-e-virgula{ width: 3px; background-position: 0 -32px; }
+.sprites_nomes_ds div.texto span.letter.menor-que{ width: 13px; background-position: -16px -32px; }
+.sprites_nomes_ds div.texto span.letter.igual{ width: 12px; background-position: -32px -32px; }
+.sprites_nomes_ds div.texto span.letter.maior-que{ width: 13px; background-position: -48px -32px; }
+.sprites_nomes_ds div.texto span.letter.interrogacao{ width: 8px; background-position: -64px -32px; }
+.sprites_nomes_ds div.texto span.letter.arroba{ width: 15px; background-position: -80px -32px; }
+.sprites_nomes_ds div.texto span.letter.A{ width: 9px; background-position: -96px -32px; }
+.sprites_nomes_ds div.texto span.letter.B{ width: 8px; background-position: -112px -32px; }
+.sprites_nomes_ds div.texto span.letter.C{ width: 9px; background-position: -128px -32px; }
+.sprites_nomes_ds div.texto span.letter.D{ width: 8px; background-position: -144px -32px; }
+.sprites_nomes_ds div.texto span.letter.E{ width: 7px; background-position: -160px -32px; }
+.sprites_nomes_ds div.texto span.letter.F{ width: 7px; background-position: -176px -32px; }
+.sprites_nomes_ds div.texto span.letter.G{ width: 9px; background-position: -192px -32px; }
+.sprites_nomes_ds div.texto span.letter.H{ width: 8px; background-position: -208px -32px; }
+
+.sprites_nomes_ds div.texto span.letter.I{ width: 4px; background-position: 0 -48px; }
+.sprites_nomes_ds div.texto span.letter.J{ width: 6px; background-position: -16px -48px; }
+.sprites_nomes_ds div.texto span.letter.K{ width: 8px; background-position: -32px -48px; }
+.sprites_nomes_ds div.texto span.letter.L{ width: 8px; background-position: -48px -48px; }
+.sprites_nomes_ds div.texto span.letter.M{ width: 10px; background-position: -64px -48px; }
+.sprites_nomes_ds div.texto span.letter.N{ width: 8px; background-position: -80px -48px; }
+.sprites_nomes_ds div.texto span.letter.O{ width: 11px; background-position: -96px -48px; }
+.sprites_nomes_ds div.texto span.letter.P{ width: 8px; background-position: -112px -48px; }
+.sprites_nomes_ds div.texto span.letter.Q{ width: 11px; background-position: -128px -48px; }
+.sprites_nomes_ds div.texto span.letter.R{ width: 8px; background-position: -144px -48px; }
+.sprites_nomes_ds div.texto span.letter.S{ width: 8px; background-position: -160px -48px; }
+.sprites_nomes_ds div.texto span.letter.T{ width: 8px; background-position: -176px -48px; }
+.sprites_nomes_ds div.texto span.letter.U{ width: 8px; background-position: -192px -48px; }
+.sprites_nomes_ds div.texto span.letter.V{ width: 8px; background-position: -208px -48px; }
+
+.sprites_nomes_ds div.texto span.letter.W{ width: 14px; background-position: 0 -64px; }
+.sprites_nomes_ds div.texto span.letter.X{ width: 7px; background-position: -16px -64px; }
+.sprites_nomes_ds div.texto span.letter.Y{ width: 8px; background-position: -32px -64px; }
+.sprites_nomes_ds div.texto span.letter.Z{ width: 8px; background-position: -48px -64px; }
+.sprites_nomes_ds div.texto span.letter.abre-colchetes{ width: 5px; background-position: -64px -64px; }
+.sprites_nomes_ds div.texto span.letter.barra-invertida{ width: 7px; background-position: -80px -64px; }
+.sprites_nomes_ds div.texto span.letter.fecha-colchetes{ width: 5px; background-position: -96px -64px; }
+.sprites_nomes_ds div.texto span.letter.circunflexo{ width: 8px; background-position: -112px -64px; }
+.sprites_nomes_ds div.texto span.letter.sublinhado{ width: 10px; background-position: -128px -64px; }
+.sprites_nomes_ds div.texto span.letter.crase{ width: 7px; background-position: -144px -64px; }
+.sprites_nomes_ds div.texto span.letter.a{ width: 7px; background-position: -160px -64px; }
+.sprites_nomes_ds div.texto span.letter.b{ width: 7px; background-position: -176px -64px; }
+.sprites_nomes_ds div.texto span.letter.c{ width: 7px; background-position: -192px -64px; }
+.sprites_nomes_ds div.texto span.letter.d{ width: 7px; background-position: -208px -64px; }
+
+.sprites_nomes_ds div.texto span.letter.e{ width: 7px; background-position: 0 -80px; }
+.sprites_nomes_ds div.texto span.letter.f{ width: 5px; background-position: -16px -80px; }
+.sprites_nomes_ds div.texto span.letter.g{ width: 7px; background-position: -32px -80px; }
+.sprites_nomes_ds div.texto span.letter.h{ width: 7px; background-position: -48px -80px; }
+.sprites_nomes_ds div.texto span.letter.i{ width: 2px; background-position: -64px -80px; }
+.sprites_nomes_ds div.texto span.letter.j{ width: 3px; background-position: -80px -80px; }
+.sprites_nomes_ds div.texto span.letter.k{ width: 7px; background-position: -96px -80px; }
+.sprites_nomes_ds div.texto span.letter.l{ width: 2px; background-position: -112px -80px; }
+.sprites_nomes_ds div.texto span.letter.m{ width: 10px; background-position: -128px -80px; }
+.sprites_nomes_ds div.texto span.letter.n{ width: 7px; background-position: -144px -80px; }
+.sprites_nomes_ds div.texto span.letter.o{ width: 8px; background-position: -160px -80px; }
+.sprites_nomes_ds div.texto span.letter.p{ width: 7px; background-position: -176px -80px; }
+.sprites_nomes_ds div.texto span.letter.q{ width: 7px; background-position: -192px -80px; }
+.sprites_nomes_ds div.texto span.letter.r{ width: 5px; background-position: -208px -80px; }
+
+.sprites_nomes_ds div.texto span.letter.s{ width: 7px; background-position: 0 -96px; }
+.sprites_nomes_ds div.texto span.letter.t{ width: 5px; background-position: -16px -96px; }
+.sprites_nomes_ds div.texto span.letter.u{ width: 7px; background-position: -32px -96px; }
+.sprites_nomes_ds div.texto span.letter.v{ width: 8px; background-position: -48px -96px; }
+.sprites_nomes_ds div.texto span.letter.w{ width: 10px; background-position: -64px -96px; }
+.sprites_nomes_ds div.texto span.letter.x{ width: 8px; background-position: -80px -96px; }
+.sprites_nomes_ds div.texto span.letter.y{ width: 8px; background-position: -96px -96px; }
+.sprites_nomes_ds div.texto span.letter.z{ width: 7px; background-position: -112px -96px; }
+.sprites_nomes_ds div.texto span.letter.abre-chaves{ width: 5px; background-position: -128px -96px; }
+.sprites_nomes_ds div.texto span.letter.barra-vertical{ width: 2px; background-position: -144px -96px; }
+.sprites_nomes_ds div.texto span.letter.fecha-chaves{ width: 5px; background-position: -160px -96px; }
+.sprites_nomes_ds div.texto span.letter.til{ width: 10px; background-position: -176px -96px; }
+.sprites_nomes_ds div.texto span.letter.A-craseado{ width: 8px; background-position: -192px -96px; }
+.sprites_nomes_ds div.texto span.letter.A-agudo{ width: 8px; background-position: -208px -96px; }
+
+.sprites_nomes_ds div.texto span.letter.A-circunflexo{ width: 8px; background-position: 0 -112px; }
+.sprites_nomes_ds div.texto span.letter.A-til{ width: 8px; background-position: -16px -112px; }
+.sprites_nomes_ds div.texto span.letter.C-cedilha{ width: 9px; background-position: -32px -112px; }
+.sprites_nomes_ds div.texto span.letter.E-agudo{ width: 8px; background-position: -48px -112px; }
+.sprites_nomes_ds div.texto span.letter.E-circunflexo{ width: 8px; background-position: -64px -112px; }
+.sprites_nomes_ds div.texto span.letter.I-agudo{ width: 3px; background-position: -80px -112px; }
+.sprites_nomes_ds div.texto span.letter.O-agudo{ width: 9px; background-position: -96px -112px; }
+.sprites_nomes_ds div.texto span.letter.O-circunflexo{ width: 9px; background-position: -112px -112px; }
+.sprites_nomes_ds div.texto span.letter.O-til{ width: 9px; background-position: -128px -112px; }
+.sprites_nomes_ds div.texto span.letter.U-agudo{ width: 8px; background-position: -144px -112px; }
+.sprites_nomes_ds div.texto span.letter.U-tremado{ width: 8px; background-position: -160px -112px; }
+.sprites_nomes_ds div.texto span.letter.a-craseado{ width: 7px; background-position: -176px -112px; }
+.sprites_nomes_ds div.texto span.letter.a-agudo{ width: 7px; background-position: -192px -112px; }
+.sprites_nomes_ds div.texto span.letter.a-circunflexo{ width: 7px; background-position: -208px -112px; }
+
+.sprites_nomes_ds div.texto span.letter.a-til{ width: 7px; background-position: 0 -128px; }
+.sprites_nomes_ds div.texto span.letter.c-cedilha{ width: 7px; background-position: -16px -128px; }
+.sprites_nomes_ds div.texto span.letter.e-agudo{ width: 7px; background-position: -32px -128px; }
+.sprites_nomes_ds div.texto span.letter.e-circunflexo{ width: 7px; background-position: -48px -128px; }
+.sprites_nomes_ds div.texto span.letter.i-agudo{ width: 2px; background-position: -64px -128px; }
+.sprites_nomes_ds div.texto span.letter.o-agudo{ width: 8px; background-position: -80px -128px; }
+.sprites_nomes_ds div.texto span.letter.o-circunflexo{ width: 8px; background-position: -96px -128px; }
+.sprites_nomes_ds div.texto span.letter.o-til{ width: 8px; background-position: -112px -128px; }
+.sprites_nomes_ds div.texto span.letter.u-agudo{ width: 7px; background-position: -128px -128px; }
+.sprites_nomes_ds div.texto span.letter.u-tremado{ width: 7px; background-position: -144px -128px; }
+
+.sprites_nomes_ds div.texto span.letter.unknown{ width: 11px !important; background-position: -16px 0 !important; }
+
+/* Tamanhos e dimensões de caracteres condensados */
+.sprites_nomes_ds.condensed div.texto span.letter.espaco{ width: 3px; }
+.sprites_nomes_ds.condensed div.texto span.letter.exclamacao{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.aspas-duplas{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.cerquilha{ width: 9px; }
+.sprites_nomes_ds.condensed div.texto span.letter.cifrao{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.porcento{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.e-comercial{ width: 7px; }
+.sprites_nomes_ds.condensed div.texto span.letter.aspas{ width: 3px; }
+.sprites_nomes_ds.condensed div.texto span.letter.abre-parenteses{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.fecha-parenteses{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.asterisco{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.mais{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.virgula{ width: 3px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.menos{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.ponto{ width: 3px; }
+.sprites_nomes_ds.condensed div.texto span.letter.barra{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n0{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n1{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n2{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n3{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n4{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n5{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n6{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n7{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n8{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n9{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.dois-pontos{ width: 3px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.ponto-e-virgula{ width: 3px; }
+.sprites_nomes_ds.condensed div.texto span.letter.menor-que{ width: 9px; }
+.sprites_nomes_ds.condensed div.texto span.letter.igual{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.maior-que{ width: 9px; }
+.sprites_nomes_ds.condensed div.texto span.letter.interrogacao{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.arroba{ width: 13px; }
+.sprites_nomes_ds.condensed div.texto span.letter.A{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.B{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.C{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.D{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.E{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.F{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.G{ width: 7px; }
+.sprites_nomes_ds.condensed div.texto span.letter.H{ width: 6px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.I{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.J{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.K{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.L{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.M{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.N{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.O{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.P{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.Q{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.R{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.S{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.T{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.U{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.V{ width: 6px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.W{ width: 10px; }
+.sprites_nomes_ds.condensed div.texto span.letter.X{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.Y{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.Z{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.abre-colchetes{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.barra-invertida{ width: 7px; }
+.sprites_nomes_ds.condensed div.texto span.letter.fecha-colchetes{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.circunflexo{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.sublinhado{ width: 10px; }
+.sprites_nomes_ds.condensed div.texto span.letter.crase{ width: 7px; }
+.sprites_nomes_ds.condensed div.texto span.letter.a{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.b{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.c{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.d{ width: 6px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.e{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.f{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.g{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.h{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.i{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.j{ width: 3px; }
+.sprites_nomes_ds.condensed div.texto span.letter.k{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.l{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.m{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.n{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.o{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.p{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.q{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.r{ width: 4px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.s{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.t{ width: 4px; }
+.sprites_nomes_ds.condensed div.texto span.letter.u{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.v{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.w{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.x{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.y{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.z{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.abre-chaves{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.barra-vertical{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.fecha-chaves{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.til{ width: 8px; }
+.sprites_nomes_ds.condensed div.texto span.letter.A-craseado{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.A-agudo{ width: 6px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.A-circunflexo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.A-til{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.C-cedilha{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.E-agudo{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.E-circunflexo{ width: 5px; }
+.sprites_nomes_ds.condensed div.texto span.letter.I-agudo{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.O-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.O-circunflexo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.O-til{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.U-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.U-tremado{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.a-craseado{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.a-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.a-circunflexo{ width: 6px; }
+
+.sprites_nomes_ds.condensed div.texto span.letter.a-til{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.c-cedilha{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.e-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.e-circunflexo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.i-agudo{ width: 2px; }
+.sprites_nomes_ds.condensed div.texto span.letter.o-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.o-circunflexo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.o-til{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.u-agudo{ width: 6px; }
+.sprites_nomes_ds.condensed div.texto span.letter.u-tremado{ width: 6px; }
+
+/* Tamanhos e dimensões de caracteres extra-condensados */
+.sprites_nomes_ds.extra-condensed div.texto span.letter.espaco{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.exclamacao{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.aspas-duplas{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.cerquilha{ width: 8px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.cifrao{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.porcento{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.e-comercial{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.aspas{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.abre-parenteses{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.fecha-parenteses{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.asterisco{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.mais{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.virgula{ width: 3px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.menos{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.ponto{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.barra{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n0{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n1{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n2{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n3{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n4{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n5{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n6{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n7{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n8{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n9{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.dois-pontos{ width: 3px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.ponto-e-virgula{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.menor-que{ width: 7px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.igual{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.maior-que{ width: 7px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.interrogacao{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.arroba{ width: 11px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.A{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.B{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.C{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.D{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.E{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.F{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.G{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.H{ width: 4px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.I{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.J{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.K{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.L{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.M{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.N{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.O{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.P{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.Q{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.R{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.S{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.T{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.U{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.V{ width: 4px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.W{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.X{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.Y{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.Z{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.abre-colchetes{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.barra-invertida{ width: 7px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.fecha-colchetes{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.circunflexo{ width: 7px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.sublinhado{ width: 8px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.crase{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.a{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.b{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.c{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.d{ width: 5px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.e{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.f{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.g{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.h{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.i{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.j{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.k{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.l{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.m{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.n{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.o{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.p{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.q{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.r{ width: 4px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.s{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.t{ width: 3px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.u{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.v{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.w{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.x{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.y{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.z{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.abre-chaves{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.barra-vertical{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.fecha-chaves{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.til{ width: 6px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.A-craseado{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.A-agudo{ width: 4px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.A-circunflexo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.A-til{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.C-cedilha{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.E-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.E-circunflexo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.I-agudo{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.O-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.O-circunflexo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.O-til{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.U-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.U-tremado{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.a-craseado{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.a-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.a-circunflexo{ width: 4px; }
+
+.sprites_nomes_ds.extra-condensed div.texto span.letter.a-til{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.c-cedilha{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.e-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.e-circunflexo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.i-agudo{ width: 2px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.o-agudo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.o-circunflexo{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.o-til{ width: 4px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.u-agudo{ width: 5px; }
+.sprites_nomes_ds.extra-condensed div.texto span.letter.u-tremado{ width: 5px; }

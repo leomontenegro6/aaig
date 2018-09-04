@@ -1,0 +1,154 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading l-filters">&nbsp;</div>
+					<div class="panel-body">
+						
+						<form class="form_subtitulo_prova">
+							<!-- Proof / profile subtitle text -->
+							<div class="form-group">
+								<label for="texto_subtitulo" class="control-label l_rotulo_texto_subtitulo_prova">&nbsp;</label>
+								<textarea name="texto_subtitulo" id="texto_subtitulo" class="form-control p-text-buttons" rows="3"></textarea>
+							</div>
+
+							<!-- Platform -->
+							<div class="form-inline">
+								<label for="plataforma_subtitulo" class="control-label l-label-platform">&nbsp;</label>
+								<select id="plataforma_subtitulo" name="plataforma_subtitulo" class="form-control">
+									<option value="ds">Nintendo DS</option>
+									<option value="3ds" selected>Nintendo 3DS</option>
+								</select>
+							</div>
+
+							<!-- Batch mode -->
+							<div class="form-inline" style="margin-bottom: 5px">
+								<label for="lote_subtitulo" class="control-label l-label-batch-mode">&nbsp;</label>
+								<input type="checkbox" name="lote_subtitulo" id="lote_subtitulo" class="form-control" />
+							</div>
+							
+							<!-- Visual customization fields -->
+							<div class="panel-group" id="visual-customization_subtitulos" role="tablist">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="visual-customization_subtitulos_heading">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#visual-customization_subtitulos"
+												href="#visual-customization_subtitulos_collapse" aria-expanded="true"
+												aria-controls="visual-customization_subtitulos_collapse">
+												<span class="plus-minus glyphicon glyphicon-plus"></span>
+												<span class="l-accordion-visual-customizations">&nbsp;</span>
+											</a>
+										</h4>
+									</div>
+									<div id="visual-customization_subtitulos_collapse" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="visual-customization_subtitulos_heading">
+										<div class="panel-body">
+											<!-- Scale -->
+											<div class="form-inline" style="margin-bottom: 5px;">
+												<label for="escala_automatica_subtitulo" class="control-label l-label-scale">&nbsp;</label>
+												<input type="checkbox" name="escala_automatica_subtitulo" id="escala_automatica_subtitulo" class="form-control" checked />
+												<label for="escala_automatica_subtitulo" class="control-label l-label-automatic-scale"
+													   style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
+												<input type="text" id="escala_subtitulo" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
+													   data-slider-step="0.005" data-slider-value="1" data-image="proof-profile-subtitle-conteiner"
+													   data-slider-tooltip="hide" data-slider-enabled="false" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Font -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="fonte_subtitulo" class="control-label l-label-font">&nbsp;</label>
+												<select id="fonte_subtitulo" name="fonte_subtitulo" class="form-control font-3ds"></select>
+												<input type="text" id="outra_fonte_subtitulo" class="form-control p-another-font" style="display: none" />
+												<select id="tamanho_fonte_subtitulo" name="tamanho_fonte_subtitulo" class="form-control font-size"></select>
+												<div class="btn-group" data-toggle="buttons">
+													<label class="btn btn-default t_botao_negrito">
+														<input type="checkbox" class="estilos" value="n" data-image="proof-profile-subtitle-conteiner" />
+														<b class="l_botao_negrito">&nbsp;</b>
+													</label>
+													<label class="btn btn-default t_botao_italico">
+														<input type="checkbox" class="estilos" value="i" data-image="proof-profile-subtitle-conteiner" />
+														<i class="l_botao_italico">&nbsp;</i>
+													</label>
+												</div>
+											</div>
+
+											<!-- Line Height -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="altura_linha_subtitulo" class="control-label l-label-line-height" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="altura_linha_subtitulo" class="slider line-height"
+													   data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
+													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Margin Top -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="margem_superior_subtitulo" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="margem_superior_subtitulo" class="slider margin-top"
+													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="4"
+													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Margin Left -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="margem_esquerdo_subtitulo" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="margem_esquerdo_subtitulo" class="slider margin-left"
+													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="2"
+													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Show Comparative -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="mostrar_comparativo_subtitulo" class="control-label l-label-show-comparative">&nbsp;</label>
+												<input type="checkbox" name="mostrar_comparativo_subtitulo" id="mostrar_comparativo_subtitulo"
+													   class="form-control" data-image="proof-profile-subtitle-conteiner" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Generate image and reset form buttons -->
+							<button type="button" id="botao_gerar_subtitulo" class="btn btn-primary" aria-label="Generate button">
+								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+								<span class="l_botao_gerar">&nbsp;</span>
+							</button>
+							<button type="reset" class="btn btn-danger" aria-label="Reset button">
+								<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+								<span class="l_botao_resetar">&nbsp;</span>
+							</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="previews row">
+					<div class="col-xs-12">
+						<div id="previa_subtitulos" class="panel panel-default">
+							<div class="panel-heading l-preview">&nbsp;</div>
+							<div class="panel-body">
+								<div id="proof-profile-subtitle-conteiner">
+									<div class="text nowrap" data-width="160"></div>
+								</div>
+								<br /><br />
+								<img src="images/proof_profile_subtitle_bg_filled.png" class="button-template" style="display: none" />
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="panel panel-default last-canvases">
+							<div class="panel-heading l-last-canvases">&nbsp;</div>
+							<div class="panel-body"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

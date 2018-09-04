@@ -10,16 +10,16 @@ Leer en otros idiomas: [Português do Brasil](README.pt-br.md), [English](README
 
 *   Botones blancos con texto en color rojo vino;
 
-![alt tag](img/background_botoes_preenchido.png)
+![alt tag](images/background_botoes_preenchido.png)
 *   Nombres de pruebas / perfiles, con fondo gris oscuro y texto en color naranja;
 
-![alt tag](img/background_nomes_preenchido.png)
+![alt tag](images/proof_profile_title_bg_filled.png)
 *   Subtítulos de pruebas / perfiles, con fondo verde y texto en color gris oscuro;
 
-![alt tag](img/background_subtitulos_preenchido.png)
+![alt tag](images/proof_profile_subtitle_bg_filled.png)
 *   Descripciones de pruebas / perfiles, con fondo gris oscuro y texto en color blanco;
 
-![alt tag](img/background_descricao_fundo_marrom.png)
+![alt tag](images/background_descricao_fundo_marrom.png)
 
 La manera tradicional de editar estas imágenes es a través de archivos .PSD en Adobe Photoshop, que acaba siendo una tarea muy pesada y repetitiva. Esa es la principal razón por la que este software fue creado.
 
@@ -59,9 +59,9 @@ La manera tradicional de editar estas imágenes es a través de archivos .PSD en
 
 #### Imágenes Generadas
 
-![alt tag](img/amostra_1.png)
-![alt tag](img/amostra_2.png)
-![alt tag](img/amostra_3.png)
+![alt tag](images/amostra_1.png)
+![alt tag](images/amostra_2.png)
+![alt tag](images/amostra_3.png)
 
 #### Feedback
 

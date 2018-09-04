@@ -1,35 +1,35 @@
-function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDownload){
-	var $elemento = $(elemento);
-	var $divPrevias = $elemento.closest('div.previas');
-	var $divUltimosCanvas = $divPrevias.find('div.ultimos_canvas').children('div.panel-body');
+function renderImageOnBrowser(element, filename, callback, triggerDownload){
+	var $element = $(element);
+	var $divPreviews = $element.closest('div.previews');
+	var $divLastCanvases = $divPreviews.find('div.last-canvases').children('div.panel-body');
 	
-	if(typeof efetuarDownload == 'undefined') efetuarDownload = true;
+	if(typeof triggerDownload == 'undefined') triggerDownload = true;
 	
-	nome_arquivo = nome_arquivo.replace(/\n/g, ' ');
-	html2canvas($elemento, {
+	filename = filename.replace(/\n/g, ' ');
+	html2canvas($element, {
 		onrendered: function(canvas) {
-			// Adicionando últimos canvas gerados no contêiner à direita do rodapé.
-			// Útil para fins de depuração. Apenas os 50 primeiros são mantidos
-			$divUltimosCanvas.append(canvas);
-			var total_canvas = $divUltimosCanvas.children('canvas').length;
+			// Adding last generated canvases in the container on the right of the footer.
+			// Useful for debugging purposes. Only the first 50 are maintained.
+			$divLastCanvases.append(canvas);
+			var total_canvas = $divLastCanvases.children('canvas').length;
 			if(total_canvas > 50){
 				for(var i = total_canvas; i > 50; i--){
-					$divUltimosCanvas.children('canvas').first().remove();
+					$divLastCanvases.children('canvas').first().remove();
 				}
 			}
 			
-			if(efetuarDownload){
-				// Criando âncora temporária para receber dados da imagem gerada
+			if(triggerDownload){
+				// Creating temporary anchor for receiving data of the image generated
 				var a = document.createElement('a');
 				a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-				a.download = nome_arquivo + '.png';
+				a.download = filename + '.png';
 				
-				// Adicionando âncora no corpo da página
+				// Adding anchor inside <body> tag
 				var $a = $(a);
 				$('body').append($a);
 
-				// Acionando evento de clique no âncora, para assim iniciar
-				// o download da imagem. Ao término da geração, remover âncora
+				// Triggering anchor click event, in order to start the download
+				// of the image. After doing so, the anchor is removed.
 				a.click();
 				$a.remove();
 			}
@@ -39,287 +39,287 @@ function renderizarImagemNavegador(elemento, nome_arquivo, callback, efetuarDown
 	});
 }
 
-function renderizarImagensLote(elemento, textos, checkEscalaAutomatica, callback){
-	var $elemento = $(elemento);
-	var $divTexto = $elemento.children('div.texto');
-	var $aba = $elemento.closest('div.tab-pane');
-	var $selectPlataforma = $aba.find("select[name^='plataforma']");
+function batchRenderImages(element, texts, checkAutomaticScale, callback){
+	var $element = $(element);
+	var $divText = $element.children('div.text');
+	var $tab = $element.closest('div.tab-pane');
+	var $selectPlatform = $tab.find("select[name^='platform']");
 	
-	var plataforma = $selectPlataforma.val();
-	if(typeof checkEscalaAutomatica == 'undefined') checkEscalaAutomatica = false;
-	var checkUsaSprites = (plataforma == 'ds') && ($aba.is("[id='nome_prova'], [id='subtitulo_prova'], [id='descricao_prova']"));
+	var platform = $selectPlatform.val();
+	if(typeof checkAutomaticScale == 'undefined') checkAutomaticScale = false;
+	var checkUsingSprites = (platform == 'ds') && ($tab.is("[id='proof-profile-titles'], [id='proof-profile-subtitles'], [id='proof-profile-descriptions']"));
 	
 	var i = 0;
 	var canvases = [];
 	
-	mostraCarregando();
+	showLoadingIndicator();
 	
-	var renderizar = function(){
-		var texto = textos.shift();
-		if(plataforma == '3ds') texto = texto.replace(/\n/g, '<br />');
+	var renderImage = function(){
+		var text = texts.shift();
+		if(platform == '3ds') text = text.replace(/\n/g, '<br />');
 		
-		var nome_arquivo = i + '.png';
+		var filename = i + '.png';
 		
-		if(checkUsaSprites){
-			atualizarPreviaSprites($divTexto, texto);
+		if(checkUsingSprites){
+			updatePreviewSprites($divText, text);
 		} else {
-			atualizarPreviaTexto($divTexto, texto, checkEscalaAutomatica);
+			updatePreviewText($divText, text, checkAutomaticScale);
 		}
 		
-		renderizarImagemNavegador($elemento, nome_arquivo, function(canvas){
+		renderImageOnBrowser($element, filename, function(canvas){
 			canvases.push(canvas);
 			
-			if(textos.length){
-				// Renderizar imagem da linha seguinte
+			if(texts.length){
+				// Render image of the next line
 				i++;
-				renderizar();
+				renderImage();
 			} else {
-				// Gerar arquivo zipado contendo as imagens geradas em lote
-				var data = new Date();
-				data = new Date(data.getTime() - (data.getTimezoneOffset() * 60000)).toJSON();
-				data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
-				var nome_arquivo_final = 'imagens-' + data + '.zip';
+				// Generate zipped file containing the batch generated images
+				var date = new Date();
+				date = new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toJSON();
+				date = date.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
+				var final_filename = 'images-' + date + '.zip';
 				
 				var zip = new JSZip();
 				
-				// Adicionando imagens no zip
+				// Adding images in the zip file
 				for(var j in canvases){
-					var nome_arquivo = j + '.png';
-					var imagem = canvases[j].toDataURL();
-					var indice_cabecalho = imagem.indexOf(",");
-					var imagem_base64 = imagem.slice(indice_cabecalho + 1);
+					var filename = j + '.png';
+					var image = canvases[j].toDataURL();
+					var header_index = image.indexOf(",");
+					var base64_image = image.slice(header_index + 1);
 					
-					zip.file(nome_arquivo, imagem_base64, {base64: true});
+					zip.file(filename, base64_image, {base64: true});
 				}
 				
-				// Gerando zip e oferecendo-o ao usuário
-				zip.generateAsync({type:"blob"}).then(function(conteudo){
-					ocultaCarregando();
-					saveAs(conteudo, nome_arquivo_final);
+				// Generating zip and offering it to the user
+				zip.generateAsync({type:"blob"}).then(function(content){
+					hideLoadingIndicator();
+					saveAs(content, final_filename);
 					
 					if(callback) callback(canvases);
 				});
 			}
 		}, false);
 	}
-	renderizar();
+	renderImage();
 }
 
-function calcularLarguraTexto(elemento){
-	var $elemento = $(elemento);
-	var html_org = $elemento.html();
+function calculateTextWidth(element){
+	var $element = $(element);
+	var html_org = $element.html();
 	var html_calc = '<span>' + html_org + '</span>';
-	$elemento.html(html_calc);
-	var largura = $elemento.find('span:first').width();
-	$elemento.html(html_org);
-	return largura;
+	$element.html(html_calc);
+	var width = $element.find('span:first').width();
+	$element.html(html_org);
+	return width;
 }
 
-function definirEscalaPrevia(elemento, escala){
-	var $elemento = $(elemento);
+function definePreviewScale(element, scale){
+	var $element = $(element);
 	
-	var largura = parseFloat($elemento.attr('data-largura'));
-	var nova_largura = largura / escala;
+	var width = parseFloat($element.attr('data-width'));
+	var new_width = width / scale;
 
-	$elemento.css({
-		'width': nova_largura + 'px',
-		'transform': 'scaleX(' + escala + ')'
+	$element.css({
+		'width': new_width + 'px',
+		'transform': 'scaleX(' + scale + ')'
 	});
 }
 
-function atualizarPreviaTexto(divPrevia, texto, checkEscalaAutomatica, aproximacao){
-	if(typeof aproximacao == 'undefined') aproximacao = 0.95;
+function updatePreviewText(divPreview, text, checkAutomaticScale, approximation){
+	if(typeof approximation == 'undefined') approximation = 0.95;
 	
-	var $divPrevia = $(divPrevia);
+	var $divPreview = $(divPreview);
 	
-	$divPrevia.html(texto);
+	$divPreview.html(text);
 	
-	if(checkEscalaAutomatica){
-		definirEscalaPrevia($divPrevia, 1);
-		var largura_texto = calcularLarguraTexto($divPrevia);
-		var largura_previa = $divPrevia.width();
+	if(checkAutomaticScale){
+		definePreviewScale($divPreview, 1);
+		var text_width = calculateTextWidth($divPreview);
+		var preview_width = $divPreview.width();
 		
-		if(largura_texto > largura_previa){
-			var escala = (largura_previa * aproximacao / largura_texto);
+		if(text_width > preview_width){
+			var scale = (preview_width * approximation / text_width);
 			
-			definirEscalaPrevia($divPrevia, escala);
+			definePreviewScale($divPreview, scale);
 		}
 	}
 }
 
-function atualizarPreviaSprites(divPrevia, texto, fonte, callback){
-	var $divPrevia = $(divPrevia);
-	var $conteinerDivPrevia = $divPrevia.parent();
-	var passouLimite = false;
+function updatePreviewSprites(divPreview, text, font, callback){
+	var $divPreview = $(divPreview);
+	var $divPreviewConteiner = $divPreview.parent();
+	var checkLimitExceeded = false;
 	
-	if(typeof fonte == 'undefined'){
-		fonte = $divPrevia.closest('div.tab-pane').find("select.fonte_ds").val();
+	if(typeof font == 'undefined'){
+		font = $divPreview.closest('div.tab-pane').find("select.font-ds").val();
 	}
 	
-	// Desfazendo efeito de fonte condensada, para o caso do campo estar na opção "automática".
-	// Necessário para descobrir automaticamente se a fonte é condensada ou não
-	if(fonte == 'a'){
-		$conteinerDivPrevia.removeClass('condensada extra_condensada');
+	// Undoing condensed font effect, in case of the field's "automatic" option is activated.
+	// Needed to check automatically if the font is condensed or not
+	if(font == 'a'){
+		$divPreviewConteiner.removeClass('condensed extra-condensed');
 	}
 	
-	// Adicionando sprites de letras na prévia
-	$divPrevia.html('').css('fontFamily', '');
-	for (var i = 0, tamanho = texto.length; i < tamanho; i++) {
-		var caractere = texto[i];
+	// Adding sprite letters in the preview
+	$divPreview.html('').css('fontFamily', '');
+	for (var i = 0, size = text.length; i < size; i++) {
+		var character = text[i];
 
-		if(caractere == "\n"){
-			$divPrevia.append(
+		if(character == "\n"){
+			$divPreview.append(
 				$('<br />')
 			);
 		} else {
-			var novoCaractere = formatarCaractere(caractere);
+			var new_character = formatCharacter(character);
 
-			$divPrevia.append(
-				$('<span />').addClass('letra ' + novoCaractere + ' ').html('&nbsp;')
+			$divPreview.append(
+				$('<span />').addClass('letter ' + new_character + ' ').html('&nbsp;')
 			);
 		}
 	}
 	
-	// Verificando se a fonte condensada deve ser usada ou não
-	if(fonte == 'a'){
-		var largura_texto = calcularLarguraTexto( $divPrevia );
-		var largura_previa = $divPrevia.width();
+	// Checking if condensed font must be used or not
+	if(font == 'a'){
+		var text_width = calculateTextWidth( $divPreview );
+		var preview_width = $divPreview.width();
 		
-		// Verificando se largura do texto passou da largura máxima da prévia
-		if(largura_texto > largura_previa){
-			// Passou da largura máxima, mudando fonte para condensada
-			$conteinerDivPrevia.addClass('condensada');
+		// Checking if text width exceeded the maximum width of the preview
+		if(text_width > preview_width){
+			// Exceeded the maximum width, so changing font to condensed
+			$divPreviewConteiner.addClass('condensed');
 			
-			var largura_texto_condensado = calcularLarguraTexto( $divPrevia );
-			var largura_previa_condensada = $divPrevia.width();
+			var condensed_text_width = calculateTextWidth( $divPreview );
+			var condensed_preview_width = $divPreview.width();
 			
-			// Verificando se largura do texto condensado passou da largura máxima da prévia
-			if(largura_texto_condensado > largura_previa_condensada){
-				// Passou da largura condensada máxima, mudando fonte para extra-condensada
-				$conteinerDivPrevia.addClass('extra_condensada');
+			// Checking if condensed text width exceeded the maximum width of the condensed preview
+			if(condensed_text_width > condensed_preview_width){
+				// Exceeded the maximum condensed width, so changing font to extra-condensed
+				$divPreviewConteiner.addClass('extra-condensed');
 				
-				var largura_texto_extra_condensado = calcularLarguraTexto( $divPrevia );
-				var largura_previa_extra_condensada = $divPrevia.width();
+				var extra_condensed_text_width = calculateTextWidth( $divPreview );
+				var extra_condensed_preview_width = $divPreview.width();
 				
-				// Verificando se largura do texto extra-condensado passou da largura máxima da prévia
-				if(largura_texto_extra_condensado > largura_previa_extra_condensada){
-					// Passou da largura extra-condensada máxima, retornar parâmetro no callback
-					passouLimite = true;
+				// Checking if extra-condensed text width exceeded the maximum width of the extra-condensed preview
+				if(extra_condensed_text_width > extra_condensed_preview_width){
+					// Exceeded the maximum extra-condensed width, so returning the limit exceed flag as callback
+					checkLimitExceeded = true;
 				}
 			}
 		}
 	}
 	
-	if(callback) callback(passouLimite);
+	if(callback) callback(checkLimitExceeded);
 }
 
-function mostraCarregando(){
-	$('#indicador_carregamento').modal('show');
+function showLoadingIndicator(){
+	$('#loading-indicator').modal('show');
 }
 
-function ocultaCarregando(){
-	$('#indicador_carregamento').modal('hide');
+function hideLoadingIndicator(){
+	$('#loading-indicator').modal('hide');
 }
 
-function adicionarScriptIdioma(idioma, callback){
+function addLanguageScript(idioma, callback){
 	$.getScript('js/lang.' + idioma + '.js', function(){
 		if(callback) callback();
 	})
 }
 
-function removerScriptsIdiomas(){
+function removeAllLanguageScripts(){
 	$('head').find("script[src^='lang']").remove();
 }
 
-function atualizarIdioma(){
-	for(var tipo in LANGUAGE){
-		var tipos = LANGUAGE[tipo];
-		for(var subtipo in tipos){
-			var texto = tipos[subtipo];
-			var seletor = '.' + tipo + '_' + subtipo;
+function updateLanguage(){
+	for(var textType in LANGUAGE){
+		var textTypes = LANGUAGE[textType];
+		for(var subtype in textTypes){
+			var text = textTypes[subtype];
+			var selector = '.' + textType + '-' + subtype;
 			
-			if(tipo == 'l'){
-				$(seletor).html(texto);
-			} else if(tipo == 't'){
-				$(seletor).attr('title', texto);
-			} else if(tipo == 'p'){
-				$(seletor).attr('placeholder', texto);
+			if(textType == 'l'){
+				$(selector).html(text);
+			} else if(textType == 't'){
+				$(selector).attr('title', text);
+			} else if(textType == 'p'){
+				$(selector).attr('placeholder', text);
 			}
 		}
 	}
 }
 
-function formatarCaractere(caractere){
-	var tabelaCaracteres = {
-		// Símbolos
-		' ': 'espaco', '!': 'exclamacao', '"': 'aspas-duplas', '#': 'cerquilha',
-		'$': 'cifrao', '%': 'porcento', '&': 'e-comercial', "'": 'aspas',
-		"(": 'abre-parenteses', ")": 'fecha-parenteses', '*': 'asterisco',
-		'+': 'mais', ',': 'virgula', '-': 'menos', '.': 'ponto', '/': 'barra',
-		':': 'dois-pontos', ';': 'ponto-e-virgula', '<': 'menor-que', '=': 'igual',
-		'>': 'maior-que', '?': 'interrogacao', '@': 'arroba',
-		'[': 'abre-colchetes', ']': 'fecha-colchetes',
-		'_': 'sublinhado', '¡': 'exclamacao-invertida',
-		'¿': 'interrogacao-invertida', 'º': 'o-ordinal', 'ª': 'a-ordinal',
+function formatCharacter(character){
+	var characterTable = {
+		// Symbols
+		' ': 'space', '!': 'exclamation', '"': 'double-quotes', '#': 'cerquilha',
+		'$': 'money-sign', '%': 'percent', '&': 'ampersand', "'": 'quotes',
+		"(": 'open-parenthesis', ")": 'close-parenthesis', '*': 'asterisk',
+		'+': 'plus', ',': 'comma', '-': 'minus', '.': 'dot', '/': 'slash',
+		':': 'colon', ';': 'semicolon', '<': 'less-than', '=': 'equal',
+		'>': 'greater-than', '?': 'interrogation', '@': 'at-sign',
+		'[': 'open-square-brackets', ']': 'close-square-brackets',
+		'_': 'underscore', '¡': 'inverted-exclamation',
+		'¿': 'inverted-interrogation', 'º': 'o-ordinal', 'ª': 'a-ordinal',
 
-		// Números
+		// Numbers
 		'0': 'n0', '1': 'n1', '2': 'n2', '3': 'n3', '4': 'n4', '5': 'n5',
 		'6': 'n6', '7': 'n7', '8': 'n8', '9': 'n9',
 
-		// Caracteres acentuados maiúsculos
-		'À': 'A-craseado', 'Á': 'A-agudo', 'Â': 'A-circunflexo', 'Ã': 'A-til',
-		'Ä': 'A-tremado', 'Ç': 'C-cedilha', 'È': 'E-craseado', 'É': 'E-agudo', 
-		'Ê': 'E-circunflexo', 'Ë': 'E-tremado', 'Ẽ': 'E-til', 'Ì': 'I-craseado',
-		'Í': 'I-agudo', 'Ï': 'I-tremado', 'Î': 'I-circunflexo', 'Ò': 'O-craseado',
-		'Ó': 'O-agudo', 'Ô': 'O-circunflexo', 'Õ': 'O-til', 'Ö': 'O-tremado',
-		'Ù': 'U-craseado', 'Ú': 'U-agudo', 'Û': 'U-circunflexo', 'Ü': 'U-tremado',
-		'Ñ': 'N-circunflexo', 'Ÿ': 'Y-tremado',
+		// Uppercase accents
+		'À': 'A-grave', 'Á': 'A-acute', 'Â': 'A-circumflex', 'Ã': 'A-tilde',
+		'Ä': 'A-diaeresis', 'Ç': 'C-cedilla', 'È': 'E-grave', 'É': 'E-acute',
+		'Ê': 'E-circumflex', 'Ë': 'E-diaeresis', 'Ẽ': 'E-tilde', 'Ì': 'I-grave',
+		'Í': 'I-acute', 'Ï': 'I-diaeresis', 'Î': 'I-circumflex', 'Ò': 'O-grave',
+		'Ó': 'O-acute', 'Ô': 'O-circumflex', 'Õ': 'O-tilde', 'Ö': 'O-diaeresis',
+		'Ù': 'U-grave', 'Ú': 'U-acute', 'Û': 'U-circumflex', 'Ü': 'U-diaeresis',
+		'Ñ': 'N-tilde', 'Ÿ': 'Y-diaeresis',
 
-		// Caracteres acentuados minúsculos
-		'à': 'a-craseado', 'á': 'a-agudo', 'â': 'a-circunflexo', 'ã': 'a-til',
-		'ä': 'a-tremado', 'ç': 'c-cedilha', 'è': 'e-craseado', 'é': 'e-agudo', 
-		'ê': 'e-circunflexo', 'ẽ': 'e-til', 'ë': 'e-tremado', 'ì': 'i-craseado',
-		'í': 'i-agudo', 'ï': 'i-tremado', 'î': 'i-circunflexo', 'ò': 'o-craseado',
-		'ó': 'o-agudo', 'ô': 'o-circunflexo', 'õ': 'o-til', 'ö': 'o-tremado',
-		'ù': 'u-craseado', 'ú': 'u-agudo', 'û': 'u-circunflexo', 'ü': 'u-tremado',
-		'ñ': 'n-circunflexo', 'ÿ': 'y-tremado'
+		// Lowercase accents
+		'à': 'a-grave', 'á': 'a-acute', 'â': 'a-circumflex', 'ã': 'a-tilde',
+		'ä': 'a-diaeresis', 'ç': 'c-cedilla', 'è': 'e-grave', 'é': 'e-acute', 
+		'ê': 'e-circumflex', 'ẽ': 'e-tilde', 'ë': 'e-diaeresis', 'ì': 'i-grave',
+		'í': 'i-acute', 'ï': 'i-diaeresis', 'î': 'i-circumflex', 'ò': 'o-grave',
+		'ó': 'o-acute', 'ô': 'o-circumflex', 'õ': 'o-tilde', 'ö': 'o-diaeresis',
+		'ù': 'u-grave', 'ú': 'u-acute', 'û': 'u-circumflex', 'ü': 'u-diaeresis',
+		'ñ': 'n-tilde', 'ÿ': 'y-diaeresis'
 
 	}
 
-	var alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
-	for(var i in alfabeto){
-		var letra = alfabeto[i];
+	var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
+	for(var i in alphabet){
+		var letter = alphabet[i];
 
-		tabelaCaracteres[letra] = letra;
+		characterTable[letter] = letter;
 	}
 
-	var chave, novoCaractere;
-	for (chave in tabelaCaracteres) {
-		if(chave == caractere){
-			var novoValor = tabelaCaracteres[chave];
-			novoCaractere = caractere.replace(chave, novoValor);
+	var key, newCharacter;
+	for (key in characterTable) {
+		if(key == character){
+			var newValue = characterTable[key];
+			newCharacter = character.replace(key, newValue);
 			break;
 		}
 	}
-	if(typeof novoCaractere == 'string'){
-		return novoCaractere;
+	if(typeof newCharacter == 'string'){
+		return newCharacter;
 	} else {
-		return 'desconhecida';
+		return 'unknown';
 	}
 }
 
-/* Função que retorna o dispositivo utilizado pelo usuário, para acessar o sistema
- * Valores possíveis de retorno:
- *	- xs: Extra small (Celulares, com largura de tela menor que 768px);
- *	- sm: Small (Tablets, com largura de tela maior ou igual a 768px);
- *	- md: Medium (Desktops de monitor antigo, com largura maior ou igual a 992px);
- *	- lg: Large (Desktops de monitor widescreen, com largura maior ou igual a 1200px).
+/* Function that returns de device used by the user, when acessing the app
+ * Possible return values:
+ *	- xs: Extra small (Cellphones, with screen width smaller than 768px);
+ *	- sm: Small (Tablets, with screen width equal or greater than 768px);
+ *	- md: Medium (Smaller Desktops, with screen width equal or greater than 992px);
+ *	- lg: Large (Widescreen Desktops, with screen width equal or greater than 1200px).
  * */
-function getDispositivo(onresize) {
+function getDevice(onresize) {
 	if(typeof onresize == 'undefined') onresize = false;
 	if(onresize){
-		$(window).off('resize.atualizaVariavelGlobal').on('resize.atualizaVariavelGlobal', function(){
-			window.dispositivo = getDispositivo(false);
+		$(window).off('resize.updateGlobalVariable').on('resize.updateGlobalVariable', function(){
+			window.device = getDevice(false);
 		});
 	}
 	var envs = ['xs', 'sm', 'md', 'lg'];
@@ -338,72 +338,72 @@ function getDispositivo(onresize) {
 	};
 }
 
-function toggleIconeAccordion(e) {
-    $(e.target).prev('.panel-heading').find(".mais-menos").toggleClass('glyphicon-plus glyphicon-minus');
+function toggleAccordionIcon(e) {
+    $(e.target).prev('.panel-heading').find(".plus-minus").toggleClass('glyphicon-plus glyphicon-minus');
 }
 
 $(function(){
 	// Abas
-	var $divAbaBotoes = $('#botoes');
-	var $divAbaBotoesMenores = $('#botoes_menores');
-	var $divAbaNomesProvas = $('#nome_prova');
-	var $divAbaSubtitulosProvas = $('#subtitulo_prova');
-	var $divAbaDescricoesProvas = $('#descricao_prova');
-	var $divAbaSandbox = $('#sandbox');
-	var $botaoAbaSandbox = $('a[aria-controls="sandbox"]');
+	var $divTabButtons = $('#buttons');
+	var $divTabSmallerButtons = $('#smaller-buttons');
+	var $divTabProofProfileTitles = $('#proof-profile-titles');
+	var $divTabProofProfileSubtitles = $('#proof-profile-subtitles');
+	var $divTabProofProfileDescriptions = $('#proof-profile-descriptions');
+	var $divTabSandbox = $('#sandbox');
+	var $buttonTabSandbox = $('a[aria-controls="sandbox"]');
 	
-	// Desativando cache para requisições ajax
+	// Disabling cache for ajax requests
 	$.ajaxSetup ({
 		cache: false
 	});
 	
-	// Carregando conteúdos de cada aba
-	$divAbaBotoes.load('aba_botoes.html', function(){
-		$divAbaBotoesMenores.load('aba_botoes_menores.html', function(){
-			$divAbaNomesProvas.load('aba_nomes_provas_perfis.html', function(){
-				$divAbaSubtitulosProvas.load('aba_subtitulos_provas_perfis.html', function(){
-					$divAbaDescricoesProvas.load('aba_descricoes_provas_perfis.html', function(){
-						$divAbaSandbox.load('aba_sandbox.html', instanciarCampos);
+	// Loading contents of each tab
+	$divTabButtons.load('tab-buttons.html', function(){
+		$divTabSmallerButtons.load('tab-smaller-buttons.html', function(){
+			$divTabProofProfileTitles.load('tab-proof-profile-titles.html', function(){
+				$divTabProofProfileSubtitles.load('tab-proof-profile-subtitles.html', function(){
+					$divTabProofProfileDescriptions.load('tab-proof-profile-descriptions.html', function(){
+						$divTabSandbox.load('tab-sandbox.html', instantiateFields);
 					});
 				});
 			});
 		});
 	});
 	
-	// Método de instanciar campos, chamado após carregar o conteúdo de todas as abas
-	var instanciarCampos = function(){
-		// Campos diversos
-		var $ancoraSobrePrograma = $('#sobre_programa');
-		var $botaoIdioma = $('#botao_idioma');
+	// Method for instantiating fields. Called after all tabs are loaded
+	var instantiateFields = function(){
+		// Miscellaneous fields
+		var $ancoraSobrePrograma = $('#about-program');
+		var $botaoIdioma = $('#language-button');
 		var $imgBandeira = $botaoIdioma.children('img.bandeira');
 		var $spanNomeIdioma = $botaoIdioma.children('span.nome_idioma');
-		var $ulListaIdiomas = $('#lista_idiomas');
-		var $ulListaTemas = $('#lista_temas');
+		var $ulListaIdiomas = $('#languages-list');
+		var $ulListaTemas = $('#themes-list');
 		var $formularios = $('form');
 
-		// Campos de botões
+		// Button fields
 		var $inputTextoBotoes = $('#texto_botoes');
 		var $checkboxLoteBotoes = $('#lote_botao');
 		var $textareaTextoBotoesLote = $('#texto_botoes_lote');
 		var $selectPlataformaBotoes = $('#plataforma_botao');
-		var $checkboxEscalaAutomaticaBotoes = $('#escala_automatica_botao');
+		var $checkboxEscalaAutomaticaBotoes = $('#automatic-scale-button');
 		var $selectFonteBotoes = $('#fonte_botao');
 		var $botaoGerarBotoes = $('#botao_gerar_botoes');
 		var $divBotao = $('#conteiner_botao');
 		var $divTextoBotao = $divBotao.children('div.texto');
 
-		// Campos de botões menores
+		// Smaller button fields
 		var $inputTextoBotoesMenores = $('#texto_botoes_menores');
 		var $checkboxLoteBotoesMenores = $('#lote_botao_menor');
 		var $textareaTextoBotoesMenoresLote = $('#texto_botoes_menores_lote');
 		var $selectPlataformaBotoesMenores = $('#plataforma_botao_menor');
-		var $checkboxEscalaAutomaticaBotoesMenores = $('#escala_automatica_botao_menor');
+		var $checkboxEscalaAutomaticaBotoesMenores = $('#automatic-scale-smaller-button');
 		var $selectFonteBotoesMenores = $('#fonte_botao_menor');
 		var $botaoGerarBotoesMenores = $('#botao_gerar_botoes_menores');
-		var $divBotaoMenor = $('#conteiner_botao_menor');
+		var $divBotaoMenor = $('#smaller-button-conteiner');
 		var $divTextoBotaoMenor = $divBotaoMenor.children('div.texto');
 
-		// Campos de nomes de prova / perfil
+		// Proof / profile title fields
 		var $inputTextoNome = $('#texto_nome');
 		var $checkboxLoteNome = $('#lote_nome');
 		var $textareaTextoNomeLote = $('#texto_nome_lote');
@@ -412,20 +412,20 @@ $(function(){
 		var $selectFonteNome = $('#fonte_nome');
 		var $selectFonteNomeDS = $('#fonte_nome_ds');
 		var $botaoGerarNome = $('#botao_gerar_nome');
-		var $divNome = $('#conteiner_nome');
+		var $divNome = $('#proof-profile-title-conteiner');
 		var $divTextoNome = $divNome.children('div.texto');
 
-		// Campos de subtitulos de prova / perfil
+		// Proof / profile subtitle fields
 		var $textareaSubtitulo = $('#texto_subtitulo');
 		var $checkboxLoteSubtitulo = $('#lote_subtitulo');
 		var $selectPlataformaSubtitulo = $('#plataforma_subtitulo');
 		var $checkboxEscalaAutomaticaSubtitulos = $('#escala_automatica_subtitulo');
 		var $selectFonteSubtitulo = $('#fonte_subtitulo');
 		var $botaoGerarSubtitulo = $('#botao_gerar_subtitulo');
-		var $divSubtitulo = $('#conteiner_subtitulo');
+		var $divSubtitulo = $('#proof-profile-subtitle-conteiner');
 		var $divTextoSubtitulo = $divSubtitulo.children('div.texto');
 
-		// Campos de descrições de prova / perfil
+		// Proof / profile description fields
 		var $textareaDescricao = $('#texto_descricao');
 		var $checkboxLoteDescricao = $('#lote_descricao');
 		var $selectPlataformaDescricao = $('#plataforma_descricao');
@@ -433,10 +433,10 @@ $(function(){
 		var $selectFonteDescricao = $('#fonte_descricao');
 		var $selectFonteDescricaoDS = $('#fonte_descricao_ds');
 		var $botaoGerarDescricao = $('#botao_gerar_descricao');
-		var $divDescricao = $('#conteiner_descricao');
+		var $divDescricao = $('#proof-profile-description-conteiner');
 		var $divTextoDescricao = $divDescricao.children('div.texto');
 
-		// Campos de sandbox
+		// Sandbox fields
 		var $inputTextoBotaoSandbox1 = $('#texto_botoes_sandbox1');
 		var $inputTextoBotaoSandbox2 = $('#texto_botoes_sandbox2');
 		var $inputTextoBotaoSandbox3 = $('#texto_botoes_sandbox3');
@@ -450,16 +450,16 @@ $(function(){
 		var $textareaSubtituloSandbox = $('#texto_subtitulo_sandbox');
 		var $textareaDescricaoSandbox = $('#texto_descricao_sandbox');
 		var $selectPlataformaProvasPerfisSandbox = $('#plataforma_provas_perfis_sandbox');
-		var $divBotoesSandbox = $('#conteiner_botoes_sandbox');
+		var $divBotoesSandbox = $('#button-conteiner-sandbox');
 		var $divTextoBotoesSandbox1 = $divBotoesSandbox.children('div.botao1');
 		var $divTextoBotoesSandbox2 = $divBotoesSandbox.children('div.botao2');
 		var $divTextoBotoesSandbox3 = $divBotoesSandbox.children('div.botao3');
-		var $divBotoesMenoresSandbox = $('#conteiner_botao_menor_sandbox');
+		var $divBotoesMenoresSandbox = $('#smaller-button-conteiner-sandbox');
 		var $divTextoBotoesMenoresSandbox1 = $divBotoesMenoresSandbox.children('div.botao1');
 		var $divTextoBotoesMenoresSandbox2 = $divBotoesMenoresSandbox.children('div.botao2');
 		var $divTextoBotoesMenoresSandbox3 = $divBotoesMenoresSandbox.children('div.botao3');
 		var $divTextoBotoesMenoresSandbox4 = $divBotoesMenoresSandbox.children('div.botao4');
-		var $divProvaSubtituloSandbox = $('#conteiner_provas_subtitulos_sandbox');
+		var $divProvaSubtituloSandbox = $('#proof-profile-subtitle-conteiner-sandbox');
 		var $divTextoNomeSandbox = $divProvaSubtituloSandbox.children('div.nome');
 		var $divTextoSubtituloSandbox = $divProvaSubtituloSandbox.children('div.subtitulo');
 		var $divTextoDescricaoSandbox = $divProvaSubtituloSandbox.children('div.descricao');
@@ -467,7 +467,7 @@ $(function(){
 		var $botaoGerarSandbox2 = $('#botao_gerar_sandbox_2');
 		var $botaoGerarSandbox3 = $('#botao_gerar_sandbox_3');
 
-		// Evento dos campos de seleção de idiomas
+		// Events from language selection fields
 		$ulListaIdiomas.find('a').on('click', function(e){
 			var $a = $(this);
 			var idioma = ( $a.attr('href') ).replace('#', '');
@@ -477,8 +477,8 @@ $(function(){
 			$imgBandeira.attr('src', imagem);
 			$spanNomeIdioma.attr('data-valor', idioma).html(nome_idioma);
 
-			removerScriptsIdiomas();
-			adicionarScriptIdioma(idioma, atualizarIdioma);
+			removeAllLanguageScripts();
+			addLanguageScript(idioma, updateLanguage);
 
 			e.preventDefault();
 		});
@@ -492,7 +492,7 @@ $(function(){
 		});
 
 		// Definindo textos do idioma padrão (Português)
-		atualizarIdioma();
+		updateLanguage();
 
 		// Definindo texto padrão para os campos
 		$inputTextoBotoes.attr('value', 'Phoenix Wright');
@@ -538,25 +538,25 @@ $(function(){
 		// Eventos dos campos de texto
 		$inputTextoBotoes.on('keyup', function(){
 			var texto = this.value;
-			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
-			atualizarPreviaTexto($divTextoBotao, texto, checkEscalaAutomatica);
+			var checkAutomaticScale = $checkboxEscalaAutomaticaBotoes.is(':checked');
+			updatePreviewText($divTextoBotao, texto, checkAutomaticScale);
 		});
 		$inputTextoBotoesMenores.on('keyup', function(){
 			var texto = this.value;
-			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
-			atualizarPreviaTexto($divTextoBotaoMenor, texto, checkEscalaAutomatica);
+			var checkAutomaticScale = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+			updatePreviewText($divTextoBotaoMenor, texto, checkAutomaticScale);
 		});
 		$inputTextoNome.on('keyup', function(){
 			var texto = this.value;
 			var plataforma = $selectPlataformaNome.val();
 			
 			if(plataforma == '3ds'){
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaNomes.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaNomes.is(':checked');
 				
 				texto = texto.replace(/\n/g, '<br />');
-				atualizarPreviaTexto($divTextoNome, texto, checkEscalaAutomatica);
+				updatePreviewText($divTextoNome, texto, checkAutomaticScale);
 			} else {
-				atualizarPreviaSprites($divTextoNome, texto);
+				updatePreviewSprites($divTextoNome, texto);
 			}
 		});
 		$textareaSubtitulo.on({
@@ -565,7 +565,7 @@ $(function(){
 				var plataforma = $selectPlataformaSubtitulo.val();
 				
 				var checkEmLote = $checkboxLoteSubtitulo.is(':checked');
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaSubtitulos.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaSubtitulos.is(':checked');
 				
 				if(checkEmLote){
 					var inicio_selecao = this.selectionStart;
@@ -579,16 +579,16 @@ $(function(){
 					// Atualizando prévia de subtítulos do bloco atual
 					if(plataforma == '3ds'){
 						bloco_atual = bloco_atual.replace(/\n/g, '<br />');
-						atualizarPreviaTexto($divTextoSubtitulo, bloco_atual, checkEscalaAutomatica);
+						updatePreviewText($divTextoSubtitulo, bloco_atual, checkAutomaticScale);
 					} else {
-						atualizarPreviaSprites($divTextoSubtitulo, bloco_atual, 'n');
+						updatePreviewSprites($divTextoSubtitulo, bloco_atual, 'n');
 					}
 				} else {
 					if(plataforma == '3ds'){
 						texto = texto.replace(/\n/g, '<br />');
-						atualizarPreviaTexto($divTextoSubtitulo, texto, checkEscalaAutomatica);
+						updatePreviewText($divTextoSubtitulo, texto, checkAutomaticScale);
 					} else {
-						atualizarPreviaSprites($divTextoSubtitulo, texto);
+						updatePreviewSprites($divTextoSubtitulo, texto);
 					}
 				}
 			},
@@ -602,7 +602,7 @@ $(function(){
 				var plataforma = $selectPlataformaDescricao.val();
 				
 				var checkEmLote = $checkboxLoteDescricao.is(':checked');
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaDescricoes.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaDescricoes.is(':checked');
 				
 				if(checkEmLote){
 					var inicio_selecao = this.selectionStart;
@@ -616,16 +616,16 @@ $(function(){
 					// Atualizando prévia de descrições do bloco atual
 					if(plataforma == '3ds'){
 						bloco_atual = bloco_atual.replace(/\n/g, '<br />');
-						atualizarPreviaTexto($divTextoDescricao, bloco_atual, checkEscalaAutomatica);
+						updatePreviewText($divTextoDescricao, bloco_atual, checkAutomaticScale);
 					} else {
-						atualizarPreviaSprites($divTextoDescricao, bloco_atual);
+						updatePreviewSprites($divTextoDescricao, bloco_atual);
 					}
 				} else {
 					if(plataforma == '3ds'){
 						texto = texto.replace(/\n/g, '<br />');
-						atualizarPreviaTexto($divTextoDescricao, texto, checkEscalaAutomatica);
+						updatePreviewText($divTextoDescricao, texto, checkAutomaticScale);
 					} else {
-						atualizarPreviaSprites($divTextoDescricao, texto);
+						updatePreviewSprites($divTextoDescricao, texto);
 					}
 				}
 			},
@@ -635,31 +635,31 @@ $(function(){
 		});
 		$inputTextoBotaoSandbox1.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesSandbox1, texto, true, 1);
+			updatePreviewText($divTextoBotoesSandbox1, texto, true, 1);
 		});
 		$inputTextoBotaoSandbox2.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesSandbox2, texto, true, 1);
+			updatePreviewText($divTextoBotoesSandbox2, texto, true, 1);
 		});
 		$inputTextoBotaoSandbox3.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesSandbox3, texto, true, 1);
+			updatePreviewText($divTextoBotoesSandbox3, texto, true, 1);
 		});
 		$inputTextoBotaoMenorSandbox1.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesMenoresSandbox1, texto, true, 0.99);
+			updatePreviewText($divTextoBotoesMenoresSandbox1, texto, true, 0.99);
 		});
 		$inputTextoBotaoMenorSandbox2.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesMenoresSandbox2, texto, true, 0.99);
+			updatePreviewText($divTextoBotoesMenoresSandbox2, texto, true, 0.99);
 		});
 		$inputTextoBotaoMenorSandbox3.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesMenoresSandbox3, texto, true, 0.99);
+			updatePreviewText($divTextoBotoesMenoresSandbox3, texto, true, 0.99);
 		});
 		$inputTextoBotaoMenorSandbox4.on('keyup', function(){
 			var texto = this.value;
-			atualizarPreviaTexto($divTextoBotoesMenoresSandbox4, texto, true, 0.99);
+			updatePreviewText($divTextoBotoesMenoresSandbox4, texto, true, 0.99);
 		});
 		$inputTextoNomeSandbox.on('keyup', function(){
 			var texto = this.value;
@@ -669,15 +669,15 @@ $(function(){
 				var $divTexto = $('<div />').addClass('texto');
 				$divTextoNomeSandbox.html($divTexto).css('transform', 'none');
 				
-				atualizarPreviaSprites($divTexto, texto, 'a', function(passouLimite){
-					if(passouLimite){
+				updatePreviewSprites($divTexto, texto, 'a', function(checkLimitExceeded){
+					if(checkLimitExceeded){
 						$divTexto.addClass('vermelho');
 					} else {
 						$divTexto.removeClass('vermelho');
 					}
 				});
 			} else {
-				atualizarPreviaTexto($divTextoNomeSandbox, texto, true, 1);
+				updatePreviewText($divTextoNomeSandbox, texto, true, 1);
 			}
 		});
 		$textareaSubtituloSandbox.on('keyup', function(){
@@ -688,10 +688,10 @@ $(function(){
 				var $divTexto = $('<div />').addClass('texto');
 				$divTextoSubtituloSandbox.html($divTexto).css('transform', 'none');
 				
-				atualizarPreviaSprites($divTexto, texto);
+				updatePreviewSprites($divTexto, texto);
 			} else {
 				texto = texto.replace(/\n/g, '<br />');
-				atualizarPreviaTexto($divTextoSubtituloSandbox, texto, true, 1);
+				updatePreviewText($divTextoSubtituloSandbox, texto, true, 1);
 			}
 		});
 		$textareaDescricaoSandbox.on('keyup', function(){
@@ -702,10 +702,10 @@ $(function(){
 				var $divTexto = $('<div />').addClass('texto');
 				$divTextoDescricaoSandbox.html($divTexto).css('transform', 'none');
 				
-				atualizarPreviaSprites($divTexto, texto, 'a');
+				updatePreviewSprites($divTexto, texto, 'a');
 			} else {
 				texto = texto.replace(/\n/g, '<br />');
-				atualizarPreviaTexto($divTextoDescricaoSandbox, texto, true, 1);
+				updatePreviewText($divTextoDescricaoSandbox, texto, true, 1);
 			}
 		});
 		
@@ -731,10 +731,10 @@ $(function(){
 				// Separando texto por quebras-de-linha
 				var linhas = texto.split(/\n/);
 				var linha_atual = linhas[numero_linha];
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaBotoes.is(':checked');
 
 				// Atualizando prévia de botões da linha atual
-				atualizarPreviaTexto($divTextoBotao, linha_atual, checkEscalaAutomatica);
+				updatePreviewText($divTextoBotao, linha_atual, checkAutomaticScale);
 			},
 			'click': function(){
 				$textareaTextoBotoesLote.trigger('keyup');
@@ -761,10 +761,10 @@ $(function(){
 				// Separando texto por quebras-de-linha
 				var linhas = texto.split(/\n/);
 				var linha_atual = linhas[numero_linha];
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
 
 				// Atualizando prévia de botões menores da linha atual
-				atualizarPreviaTexto($divTextoBotaoMenor, linha_atual, checkEscalaAutomatica);
+				updatePreviewText($divTextoBotaoMenor, linha_atual, checkAutomaticScale);
 			},
 			'click': function(){
 				$textareaTextoBotoesMenoresLote.trigger('keyup');
@@ -792,13 +792,13 @@ $(function(){
 				var linhas = texto.split(/\n/);
 				var linha_atual = linhas[numero_linha];
 				var plataforma = $selectPlataformaNome.val();
-				var checkEscalaAutomatica = $checkboxEscalaAutomaticaNomes.is(':checked');
+				var checkAutomaticScale = $checkboxEscalaAutomaticaNomes.is(':checked');
 
 				// Atualizando prévia de nomes da linha atual
 				if(plataforma == 'ds'){
-					atualizarPreviaSprites($divTextoNome, linha_atual);
+					updatePreviewSprites($divTextoNome, linha_atual);
 				} else {
-					atualizarPreviaTexto($divTextoNome, linha_atual, checkEscalaAutomatica);
+					updatePreviewText($divTextoNome, linha_atual, checkAutomaticScale);
 				}
 			},
 			'click': function(){
@@ -836,7 +836,7 @@ $(function(){
 		// Eventos dos campos de plataforma
 		/* Botões */
 		$selectPlataformaBotoes.on('change', function(){
-			var $checkboxEscalaAutomatica = $('#escala_automatica_botao');
+			var $checkboxEscalaAutomatica = $('#automatic-scale-button');
 			var $campoEscala = $('#escala_botao');
 			var $campoTamanhoFonte = $('#tamanho_fonte_botao');
 			var $campoMargemSuperior = $('#margem_superior_botao');
@@ -844,7 +844,7 @@ $(function(){
 			var $previa = $('#previa_botoes');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
-			var $imgPreenchida = $previa.find('img.botao_template');
+			var $imgPreenchida = $previa.find('img.button-template');
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
@@ -852,15 +852,15 @@ $(function(){
 				$campoMargemSuperior.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 4);
 				$campoMargemEsquerdo.slider('setAttribute', 'min', -30).slider('setAttribute', 'max', 60).slider('setValue', 16);
 				$divConteiner.attr('id', 'conteiner_botao_ds');
-				$divTexto.attr('data-largura', '224');
-				$imgPreenchida.attr('src', 'img/background_botoes_preenchido_ds.png');
+				$divTexto.attr('data-width', '224');
+				$imgPreenchida.attr('src', 'images/background_botoes_preenchido_ds.png');
 			} else {
 				$campoTamanhoFonte.val(23);
 				$campoMargemSuperior.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
 				$campoMargemEsquerdo.slider('setAttribute', 'min', -5).slider('setAttribute', 'max', 30).slider('setValue', 0);
 				$divConteiner.attr('id', 'conteiner_botao');
-				$divTexto.attr('data-largura', '280');
-				$imgPreenchida.attr('src', 'img/background_botoes_preenchido.png');
+				$divTexto.attr('data-width', '280');
+				$imgPreenchida.attr('src', 'images/background_botoes_preenchido.png');
 			}
 			
 			// Atualizando outros campos de formulário, após a mudança de plataforma
@@ -874,28 +874,28 @@ $(function(){
 		})
 		/* Botões Menores */
 		$selectPlataformaBotoesMenores.on('change', function(){
-			var $checkboxEscalaAutomatica = $('#escala_automatica_botao_menor');
+			var $checkboxEscalaAutomatica = $('#automatic-scale-smaller-button');
 			var $campoEscala = $('#escala_botao_menor');
 			var $campoTamanhoFonte = $('#tamanho_fonte_botao_menor');
 			var $campoMargemSuperior = $('#margem_superior_botao_menor');
 			var $previa = $('#previa_botoes_menores');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
-			var $imgPreenchida = $previa.find('img.botao_template');
+			var $imgPreenchida = $previa.find('img.button-template');
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
 				$campoTamanhoFonte.val(18);
 				$campoMargemSuperior.slider('setValue', 4);
-				$divConteiner.attr('id', 'conteiner_botao_menor_ds');
-				$divTexto.attr('data-largura', '128');
-				$imgPreenchida.attr('src', 'img/background_botoes_menores_preenchido_ds.png');
+				$divConteiner.attr('id', 'smaller-button-conteiner_ds');
+				$divTexto.attr('data-width', '128');
+				$imgPreenchida.attr('src', 'images/background_botoes_menores_preenchido_ds.png');
 			} else {
 				$campoTamanhoFonte.val(23);
 				$campoMargemSuperior.slider('setValue', 0);
-				$divConteiner.attr('id', 'conteiner_botao_menor');
-				$divTexto.attr('data-largura', '160');
-				$imgPreenchida.attr('src', 'img/background_botoes_menores_preenchido.png');
+				$divConteiner.attr('id', 'smaller-button-conteiner');
+				$divTexto.attr('data-width', '160');
+				$imgPreenchida.attr('src', 'images/background_botoes_menores_preenchido.png');
 			}
 			
 			// Atualizando outros campos de formulário, após a mudança de plataforma
@@ -920,7 +920,7 @@ $(function(){
 			var $previa = $('#previa_nomes');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
-			var $imgPreenchida = $previa.find('img.botao_template');
+			var $imgPreenchida = $previa.find('img.button-template');
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
@@ -930,8 +930,8 @@ $(function(){
 				$campoTamanhoFonte.val(15);
 				$campoMargemSuperior.slider('setValue', 1);
 				$divConteiner.addClass('sprites_nomes_ds');
-				$divTexto.attr('data-largura', '128');
-				$imgPreenchida.attr('src', 'img/background_nomes_preenchido_ds.png');
+				$divTexto.attr('data-width', '128');
+				$imgPreenchida.attr('src', 'images/background_nomes_preenchido_ds.png');
 				
 				// Alternando campo de fonte para a versão de DS
 				$conteinerCampoFonte.hide('fast');
@@ -945,8 +945,8 @@ $(function(){
 				$campoTamanhoFonte.val(18);
 				$campoMargemSuperior.slider('setValue', -2);
 				$divConteiner.removeClass('sprites_nomes_ds');
-				$divTexto.attr('data-largura', '160');
-				$imgPreenchida.attr('src', 'img/background_nomes_preenchido.png');
+				$divTexto.attr('data-width', '160');
+				$imgPreenchida.attr('src', 'images/proof_profile_title_bg_filled.png');
 				
 				// Alternando campo de fonte para a versão de 3DS
 				$conteinerCampoFonte.show('fast');
@@ -975,7 +975,7 @@ $(function(){
 			var $previa = $('#previa_subtitulos');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
-			var $imgPreenchida = $previa.find('img.botao_template');
+			var $imgPreenchida = $previa.find('img.button-template');
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
@@ -985,8 +985,8 @@ $(function(){
 				$campoMargemSuperior.slider('setValue', 2);
 				$campoAlturaLinha.slider('setValue', 1.95);
 				$divConteiner.addClass('sprites_subtitulos_ds');
-				$divTexto.attr('data-largura', '128');
-				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido_ds.png');
+				$divTexto.attr('data-width', '128');
+				$imgPreenchida.attr('src', 'images/background_subtitulos_preenchido_ds.png');
 				
 				// Ocultando campos de escala e fonte
 				$conteinerCampoFonte.add($conteinerCampoEscala).hide('fast');
@@ -997,8 +997,8 @@ $(function(){
 				$campoMargemSuperior.slider('setValue', 4);
 				$campoAlturaLinha.slider('setValue', 1.35);
 				$divConteiner.removeClass('sprites_subtitulos_ds');
-				$divTexto.attr('data-largura', '160');
-				$imgPreenchida.attr('src', 'img/background_subtitulos_preenchido.png');
+				$divTexto.attr('data-width', '160');
+				$imgPreenchida.attr('src', 'images/proof_profile_subtitle_bg_filled.png');
 				
 				// Desocultando campos de escala e fonte
 				$conteinerCampoFonte.add($conteinerCampoEscala).show('fast');
@@ -1021,7 +1021,7 @@ $(function(){
 			var $previa = $('#previa_descricoes');
 			var $divTexto = $previa.find('div.texto');
 			var $divConteiner = $divTexto.parent();
-			var $imgPreenchida = $previa.find('img.botao_template');
+			var $imgPreenchida = $previa.find('img.button-template');
 			var plataforma = this.value;
 
 			if(plataforma == 'ds'){
@@ -1032,8 +1032,8 @@ $(function(){
 				$campoMargemSuperior.slider('setValue', 0);
 				$campoMargemEsquerda.slider('setValue', 18);
 				$divConteiner.addClass('sprites_descricoes_ds');
-				$divTexto.attr('data-largura', '238');
-				$imgPreenchida.attr('src', 'img/background_descricao_preenchido_ds.png');
+				$divTexto.attr('data-width', '238');
+				$imgPreenchida.attr('src', 'images/background_descricao_preenchido_ds.png');
 				
 				// Alternando campo de fonte para a versão de DS
 				$conteinerCampoFonte.hide('fast');
@@ -1049,8 +1049,8 @@ $(function(){
 				$campoMargemSuperior.slider('setValue', 3);
 				$campoMargemEsquerda.slider('setValue', 23);
 				$divConteiner.removeClass('sprites_descricoes_ds');
-				$divTexto.attr('data-largura', '256');
-				$imgPreenchida.attr('src', 'img/background_descricao_preenchido.png');
+				$divTexto.attr('data-width', '256');
+				$imgPreenchida.attr('src', 'images/background_descricao_preenchido.png');
 				
 				// Alternando campo de fonte para a versão de 3DS
 				$conteinerCampoFonte.show('fast');
@@ -1101,7 +1101,7 @@ $(function(){
 		});
 		
 		// Implementando troca de botões + e - nos accordions de personalizações visuais
-		$('.panel-group').on('hide.bs.collapse show.bs.collapse', toggleIconeAccordion);
+		$('.panel-group').on('hide.bs.collapse show.bs.collapse', toggleAccordionIcon);
 
 		// Instanciando checkboxes de escala automática
 		/* Botões */
@@ -1179,7 +1179,7 @@ $(function(){
 				$input.on('change', function(){
 					var escala = this.value;
 					
-					definirEscalaPrevia($divTexto, escala);
+					definePreviewScale($divTexto, escala);
 
 					$inputMostraValor.val(escala);
 				});
@@ -1237,7 +1237,7 @@ $(function(){
 		$("input[type='checkbox'][name^='mostrar_comparativo']").on('change', function(){
 			var $checkbox = $(this);
 			var $divConteiner = $("[id^='" + $checkbox.attr('data-imagem') + "']");
-			var $imgComparativo = $divConteiner.siblings('img.botao_template');
+			var $imgComparativo = $divConteiner.siblings('img.button-template');
 			
 			if($checkbox.is(':checked')){
 				$imgComparativo.show();
@@ -1254,8 +1254,8 @@ $(function(){
 				'disabled': 'disabled'
 			})
 		);
-		$.get('fontes.html', function(f){
-			$.get('fontes_proprietarias.html').always(function(fp) {
+		$.get('fonts.html', function(f){
+			$.get('proprietary-fonts.html').always(function(fp) {
 				var $selectsFontes = $selectFonteBotoes.add($selectFonteBotoesMenores).add($selectFonteNome).add($selectFonteSubtitulo).add($selectFonteDescricao);
 
 				$selectsFontes.each(function(){
@@ -1381,11 +1381,11 @@ $(function(){
 				var $divConteiner = $('.sprites_nomes_ds');
 				
 				if(fonte == 'c'){
-					$divConteiner.addClass('condensada').removeClass('extra_condensada');
+					$divConteiner.addClass('condensed').removeClass('extra-condensed');
 				} else if(fonte == 'ec'){
-					$divConteiner.addClass('extra_condensada').removeClass('condensada');
+					$divConteiner.addClass('extra-condensed').removeClass('condensed');
 				} else {
-					$divConteiner.removeClass('condensada extra_condensada');
+					$divConteiner.removeClass('condensed extra-condensed');
 				}
 			}
 		});
@@ -1399,11 +1399,11 @@ $(function(){
 				var $divConteiner = $('.sprites_descricoes_ds');
 				
 				if(fonte == 'c'){
-					$divConteiner.addClass('condensada').removeClass('extra_condensada');
+					$divConteiner.addClass('condensed').removeClass('extra-condensed');
 				} else if(fonte == 'ec'){
-					$divConteiner.addClass('extra_condensada').removeClass('condensada');
+					$divConteiner.addClass('extra-condensed').removeClass('condensed');
 				} else {
-					$divConteiner.removeClass('condensada extra_condensada');
+					$divConteiner.removeClass('condensed extra-condensed');
 				}
 			}
 		});
@@ -1438,72 +1438,72 @@ $(function(){
 		// Evento dos botões "Gerar"
 		$botaoGerarBotoes.on('click', function(){
 			var texto;
-			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoes.is(':checked');
+			var checkAutomaticScale = $checkboxEscalaAutomaticaBotoes.is(':checked');
 			
 			if($checkboxLoteBotoes.is(':checked')){
 				texto = $textareaTextoBotoesLote.val();
 				var linhas = texto.split(/\n/);
-				renderizarImagensLote($divBotao, linhas, checkEscalaAutomatica);
+				batchRenderImages($divBotao, linhas, checkAutomaticScale);
 			} else {
 				texto = $inputTextoBotoes.val();
-				renderizarImagemNavegador($divBotao, texto);
+				renderImageOnBrowser($divBotao, texto);
 			}
 		});
 		$botaoGerarBotoesMenores.on('click', function(){
 			var texto;
-			var checkEscalaAutomatica = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
+			var checkAutomaticScale = $checkboxEscalaAutomaticaBotoesMenores.is(':checked');
 			
 			if($checkboxLoteBotoesMenores.is(':checked')){
 				texto = $textareaTextoBotoesMenoresLote.val();
 				var linhas = texto.split(/\n/);
-				renderizarImagensLote($divBotaoMenor, linhas, checkEscalaAutomatica);
+				batchRenderImages($divBotaoMenor, linhas, checkAutomaticScale);
 			} else {
 				texto = $inputTextoBotoesMenores.val();
-				renderizarImagemNavegador($divBotaoMenor, texto);
+				renderImageOnBrowser($divBotaoMenor, texto);
 			}
 		});
 		$botaoGerarNome.on('click', function(){
 			var texto;
 			var plataforma = $selectPlataformaNome.val();
-			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaNomes.is(':checked') && (plataforma != 'ds'));
+			var checkAutomaticScale = ($checkboxEscalaAutomaticaNomes.is(':checked') && (plataforma != 'ds'));
 			
 			if($checkboxLoteNome.is(':checked')){
 				texto = $textareaTextoNomeLote.val();
 				var linhas = texto.split(/\n/);
-				renderizarImagensLote($divNome, linhas, checkEscalaAutomatica);
+				batchRenderImages($divNome, linhas, checkAutomaticScale);
 			} else {
 				texto = $inputTextoNome.val();
-				renderizarImagemNavegador($divNome, texto);
+				renderImageOnBrowser($divNome, texto);
 			}
 		});
 		$botaoGerarSubtitulo.on('click', function(){
 			var texto = $textareaSubtitulo.val();
 			var plataforma = $selectPlataformaSubtitulo.val();
-			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaSubtitulos.is(':checked') && (plataforma != 'ds'));
+			var checkAutomaticScale = ($checkboxEscalaAutomaticaSubtitulos.is(':checked') && (plataforma != 'ds'));
 			
 			if($checkboxLoteSubtitulo.is(':checked')){
 				var blocos = texto.split(/\n\n/);
-				renderizarImagensLote($divSubtitulo, blocos, checkEscalaAutomatica);
+				batchRenderImages($divSubtitulo, blocos, checkAutomaticScale);
 			} else {
-				renderizarImagemNavegador($divSubtitulo, texto);
+				renderImageOnBrowser($divSubtitulo, texto);
 			}
 		});
 		$botaoGerarDescricao.on('click', function(){
 			var texto = $textareaDescricao.val();
 			var plataforma = $selectPlataformaDescricao.val();
-			var checkEscalaAutomatica = ($checkboxEscalaAutomaticaDescricoes.is(':checked') && (plataforma != 'ds'));
+			var checkAutomaticScale = ($checkboxEscalaAutomaticaDescricoes.is(':checked') && (plataforma != 'ds'));
 			
 			if($checkboxLoteDescricao.is(':checked')){
 				var blocos = texto.split(/\n\n/);
 				
-				$divDescricao.removeClass('fundo_marrom');
-				renderizarImagensLote($divDescricao, blocos, checkEscalaAutomatica, function(){
-					$divDescricao.addClass('fundo_marrom');
+				$divDescricao.removeClass('brown-background');
+				batchRenderImages($divDescricao, blocos, checkAutomaticScale, function(){
+					$divDescricao.addClass('brown-background');
 				});
 			} else {
-				$divDescricao.removeClass('fundo_marrom');
-				renderizarImagemNavegador($divDescricao, texto, function(){
-					$divDescricao.addClass('fundo_marrom');
+				$divDescricao.removeClass('brown-background');
+				renderImageOnBrowser($divDescricao, texto, function(){
+					$divDescricao.addClass('brown-background');
 				});
 			}
 		});
@@ -1513,7 +1513,7 @@ $(function(){
 			data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
 
 			var texto = 'sandbox1-' + data;
-			renderizarImagemNavegador($divBotoesSandbox, texto);
+			renderImageOnBrowser($divBotoesSandbox, texto);
 		});
 		$botaoGerarSandbox2.on('click', function(){
 			var data = new Date();
@@ -1521,7 +1521,7 @@ $(function(){
 			data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
 
 			var texto = 'sandbox2-' + data;
-			renderizarImagemNavegador($divBotoesMenoresSandbox, texto);
+			renderImageOnBrowser($divBotoesMenoresSandbox, texto);
 		});
 		$botaoGerarSandbox3.on('click', function(){
 			var data = new Date();
@@ -1529,7 +1529,7 @@ $(function(){
 			data = data.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
 
 			var texto = 'sandbox3-' + data;
-			renderizarImagemNavegador($divProvaSubtituloSandbox, texto);
+			renderImageOnBrowser($divProvaSubtituloSandbox, texto);
 		});
 
 		// Ação dos botões "resetar"
@@ -1557,7 +1557,7 @@ $(function(){
 		
 		// Chamadas de eventos da aba "sandbox", chamados quando o
 		// usuário clica na aba homônima
-		$botaoAbaSandbox.on('shown.bs.tab', function (e) {
+		$buttonTabSandbox.on('shown.bs.tab', function (e) {
 			$inputTextoBotaoSandbox1.add($inputTextoBotaoSandbox2).add($inputTextoBotaoSandbox3).trigger('keyup');
 			$inputTextoBotaoMenorSandbox1.add($inputTextoBotaoMenorSandbox2).add($inputTextoBotaoMenorSandbox3).add($inputTextoBotaoMenorSandbox4).trigger('keyup');
 			$inputTextoNomeSandbox.add($textareaSubtituloSandbox).add($textareaDescricaoSandbox).trigger('keyup');

@@ -1,0 +1,168 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		
+		<div class="row">
+			<div class="col-md-5 col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading l-filters">&nbsp;</div>
+					<div class="panel-body">
+						
+						<form class="form-proof-profile-description">
+							<!-- Proof / profile description text -->
+							<div class="form-group">
+								<label for="proof-profile-description" class="control-label l-label-proof-profile-descriptions">&nbsp;</label>
+								<textarea name="proof-profile-description" id="proof-profile-description" class="form-control p-text-buttons" rows="3"></textarea>
+							</div>
+
+							<!-- Platform -->
+							<div class="form-inline">
+								<label for="proof-profile-description-platform" class="control-label l-label-platform">&nbsp;</label>
+								<select id="proof-profile-description-platform" name="proof-profile-description-platform" class="form-control">
+									<option value="ds">Nintendo DS</option>
+									<option value="3ds" selected>Nintendo 3DS</option>
+								</select>
+							</div>
+
+							<!-- Batch mode -->
+							<div class="form-inline" style="margin-bottom: 5px">
+								<label for="proof-profile-description-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
+								<input type="checkbox" name="proof-profile-description-batch-mode" id="proof-profile-description-batch-mode" class="form-control" />
+							</div>
+							
+							<!-- Visual customization fields -->
+							<div class="panel-group" id="visual-customization-proof-profile-descriptions" role="tablist">
+								<div class="panel panel-default">
+									<div class="panel-heading" role="tab" id="visual-customization-proof-profile-descriptions-heading">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#visual-customization-proof-profile-descriptions"
+												href="#visual-customization-proof-profile-descriptions-collapse" aria-expanded="true"
+												aria-controls="visual-customization-proof-profile-descriptions-collapse">
+												<span class="plus-minus glyphicon glyphicon-plus"></span>
+												<span class="l-accordion-visual-customizations">&nbsp;</span>
+											</a>
+										</h4>
+									</div>
+									<div id="visual-customization-proof-profile-descriptions-collapse" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="visual-customization-proof-profile-descriptions-heading">
+										<div class="panel-body">
+											<!-- Scale -->
+											<div class="form-inline" style="margin-bottom: 5px;">
+												<label for="automatic-scale-proof-profile-description" class="control-label l-label-scale">&nbsp;</label>
+												<input type="checkbox" name="automatic-scale-proof-profile-description"
+													id="automatic-scale-proof-profile-description" class="form-control" checked />
+												<label for="scale-proof-profile-description" class="control-label l-label-automatic-scale"
+													style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
+												<input type="text" id="scale-proof-profile-description" class="slider scale"
+													data-slider-min="0.500" data-slider-max="1.075" data-slider-step="0.005"
+													data-slider-value="1.075" data-image="proof-profile-description-conteiner"
+													data-slider-tooltip="hide" data-slider-enabled="false" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Font (3DS) -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-font" class="control-label l-label-font">&nbsp;</label>
+												<select id="proof-profile-description-font" name="proof-profile-description-font" class="form-control font-3ds"></select>
+												<input type="text" id="proof-profile-description-another-font" class="form-control p-another-font" style="display: none" />
+												<select id="proof-profile-description-font-size" name="proof-profile-description-font-size" class="form-control font-size"></select>
+												<div class="btn-group" data-toggle="buttons">
+													<label class="btn btn-default t-button-bold">
+														<input type="checkbox" class="styles" value="n" data-image="proof-profile-description-conteiner" />
+														<b class="l-button-bold">&nbsp;</b>
+													</label>
+													<label class="btn btn-default t-button-italic">
+														<input type="checkbox" class="styles" value="i" data-image="proof-profile-description-conteiner" />
+														<i class="l-button-italic">&nbsp;</i>
+													</label>
+												</div>
+											</div>
+
+											<!-- Font (DS) -->
+											<div class="form-inline" style="margin-bottom: 5px; margin-top: 5px; display: none">
+												<label for="proof-profile-description-font-ds" class="control-label l-label-font">&nbsp;</label>
+												<select id="proof-profile-description-font-ds" name="proof-profile-description-font-ds" class="form-control font-ds">
+													<option value="a" class="l-option-ds-font-automatica" selected>&nbsp;</option>
+													<option value="n" class="l-option-ds-font-normal">&nbsp;</option>
+													<option value="c" class="l-option-ds-font-condensed">&nbsp;</option>
+													<option value="ec" class="l-option-ds-font-extra-condensed">&nbsp;</option>
+												</select>
+											</div>
+
+											<!-- Line Height -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-line-height" class="control-label l-label-line-height"
+													style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-description-line-height" class="slider line-height"
+													data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
+													data-slider-tooltip="hide" data-image="proof-profile-description-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Margin Top -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-description-margin-top" class="slider margin-top"
+													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="3"
+													data-slider-tooltip="hide" data-image="proof-profile-description-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Margin Left -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-description-margin-left" class="slider margin-left"
+													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="23"
+													data-slider-tooltip="hide" data-image="proof-profile-description-conteiner" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+
+											<!-- Show Comparative -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
+												<input type="checkbox" name="proof-profile-description-show-comparative" id="proof-profile-description-show-comparative"
+													class="form-control" data-image="proof-profile-description-conteiner" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Generate image and reset form buttons -->
+							<button type="button" id="button-generate-proof-profile-description" class="btn btn-primary" aria-label="Gerar">
+								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+								<span class="l-button-generate-image">&nbsp;</span>
+							</button>
+							<button type="reset" class="btn btn-danger" aria-label="Resetar">
+								<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+								<span class="l-button-reset-form">&nbsp;</span>
+							</button>
+						</form>
+						
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7 col-lg-6">
+				<div class="previews row">
+					<div class="col-xs-12">
+						<div id="proof-profile-description-preview" class="panel panel-default">
+							<div class="panel-heading l-preview">&nbsp;</div>
+							<div class="panel-body">
+								<div id="proof-profile-description-conteiner" class="brown-background">
+									<div class="text nowrap" data-width="256"></div>
+								</div>
+								<br /><br />
+								<img src="images/proof_profile_description_bg_filled.png" class="button-template" style="display: none; background: #897047" />
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="panel panel-default last-canvases">
+							<div class="panel-heading l-last-canvases">&nbsp;</div>
+							<div class="panel-body"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

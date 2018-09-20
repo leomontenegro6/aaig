@@ -4,7 +4,8 @@
 
 *Read this in other languages: [Português do Brasil](README.pt-br.md), [Español](README.es.md).*
 
-[Live preview](http://www.romhacking.net.br/tools/aaig/)
+[Live preview](https://leomontenegro6.github.io/aaig/)
+[Live preview - Mirror](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" is a very big game, with lots of text images to be edited:
 

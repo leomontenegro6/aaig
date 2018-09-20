@@ -4,7 +4,8 @@
 
 Leer en otros idiomas: [Português do Brasil](README.pt-br.md), [English](README.md).*
 
-[Enlace](http://www.romhacking.net.br/tools/aaig/)
+[Enlace](https://leomontenegro6.github.io/aaig/)
+[Enlace - Mirror](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" es un juego muy grande, con muchas imágenes a editar:
 

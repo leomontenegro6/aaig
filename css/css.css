@@ -29,31 +29,27 @@ a[aria-controls="proof-profile-subtitles"] span.glyphicon{
 a[aria-controls="sandbox"] span.glyphicon{
 	color: #cc8819;
 }
-#conteiner_botao{
+#button-conteiner{
 	display: inline-block;
 	vertical-align: top;
 	width: 512px;
 	height: 32px;
 	background-image: url('../images/button_bg.png');
 }
-#conteiner_botao div.texto{
+#button-conteiner div.text{
 	width: 280px;
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
 }
 
-#conteiner_botao_ds{
-	display: inline-block;
-	vertical-align: top;
+#button-conteiner.ds{
 	width: 256px;
 	height: 32px;
 	background-image: url('../images/button_bg_ds.png');
 }
-#conteiner_botao_ds div.texto{
+#button-conteiner.ds div.text{
 	width: 224px;
-	font-family: Arial;
-	text-align: center;
 	transform-origin: 0 0;
 }
 
@@ -64,24 +60,20 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 32px;
 	background-image: url('../images/smaller_button_bg.png');
 }
-#smaller-button-conteiner div.texto{
+#smaller-button-conteiner div.text{
 	width: 160px;
 	font-family: Arial;
 	text-align: center;
 	transform-origin: 0 0;
 }
 
-#smaller-button-conteiner_ds{
-	display: inline-block;
-	vertical-align: top;
+#smaller-button-conteiner.ds{
 	width: 128px;
 	height: 32px;
 	background-image: url('../images/smaller_button_bg_ds.png');
 }
-#smaller-button-conteiner_ds div.texto{
+#smaller-button-conteiner.ds div.text{
 	width: 128px;
-	font-family: Arial;
-	text-align: center;
 	transform-origin: 0 0;
 }
 
@@ -92,7 +84,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 32px;
 	background-image: url('../images/proof_profile_title_bg.png');
 }
-#proof-profile-title-conteiner div.texto{
+#proof-profile-title-conteiner div.text{
 	width: 160px;
 	font-family: "Vald Book";
 	text-align: center;
@@ -100,7 +92,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-.sprites_nomes_ds{
+.proof-profile-title-sprites-ds{
 	display: inline-block !important;
 	vertical-align: top !important;
 	width: 128px !important;
@@ -108,7 +100,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	background-image: url('../images/proof_profile_title_bg_ds.png') !important;
 	background-color: #383838;
 }
-.sprites_nomes_ds div.texto{
+.proof-profile-title-sprites-ds div.text{
 	width: 128px;
 	font-family: "Ace Attorney US";
 	text-align: center;
@@ -117,7 +109,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	font-smooth: never;
 	-webkit-font-smoothing : none;
 }
-.sprites_nomes_ds div.texto.vermelho{
+.proof-profile-title-sprites-ds div.text.red{
 	background: rgba(255, 0, 0, 0.7) !important;
 	height: 16px;
 }	
@@ -129,7 +121,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 64px;
 	background-image: url('../images/proof_profile_subtitle_bg.png');
 }
-#proof-profile-subtitle-conteiner div.texto{
+#proof-profile-subtitle-conteiner div.text{
 	width: 160px;
 	font-family: "Vald Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
@@ -138,14 +130,14 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-.sprites_subtitulos_ds{
+.proof-profile-subtitle-sprites-ds{
 	display: inline-block !important;
 	vertical-align: top !important;
 	width: 128px !important;
 	height: 64px !important;
 	background-image: url('../images/proof_profile_subtitle_bg_ds.png') !important;
 }
-.sprites_subtitulos_ds div.texto{
+.proof-profile-subtitle-sprites-ds div.text{
 	width: 128px;
 	font-family: "Arial";
 	text-shadow: 0px 1px 0px #6C946C;
@@ -161,11 +153,11 @@ a[aria-controls="sandbox"] span.glyphicon{
 	height: 128px;
 	background-image: url('../images/proof_profile_description_bg.png');
 }
-#proof-profile-description-conteiner.brown-background, .sprites_descricoes_ds.brown-background{
+#proof-profile-description-conteiner.brown-background, .proof-profile-description-sprites-ds.brown-background{
 	background-color: #897047;
 }
-#proof-profile-description-conteiner div.texto{
-	width: 238.139534884px; /* 256 dividido por (scaleX) */
+#proof-profile-description-conteiner div.text{
+	width: 238.139534884px; /* 256 divided by (scaleX) */
 	font-family: "Vald Book";
 	color: #eee;
 	line-height: 1.35;
@@ -173,7 +165,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-.sprites_descricoes_ds{
+.proof-profile-description-sprites-ds{
 	display: inline-block !important;
 	vertical-align: top !important;
 	width: 240px !important;
@@ -181,25 +173,25 @@ a[aria-controls="sandbox"] span.glyphicon{
 	margin-left: 16px !important;
 	background-image: url('../images/proof_profile_description_bg_ds.png') !important;
 }
-.sprites_descricoes_ds div.texto{
+.proof-profile-description-sprites-ds div.text{
 	width: 256px;
 	font-family: "Ace Attorney US";
 	color: #fff;
 	line-height: 1.35;
 }
-#proof-profile-description-conteiner.sprites_descricoes_ds{
+#proof-profile-description-conteiner.proof-profile-description-sprites-ds{
 	width: 256px !important;
 	margin-left: 0 !important;
 }
 
-/* Estilizações da aba "Sandbox" */
-#button-conteiner-sandbox, #smaller-button-conteiner-sandbox, #proof-profile-subtitle-conteiner-sandbox{
+/* Styles for "Sandbox" tab */
+#button-conteiner-sandbox, #smaller-button-conteiner-sandbox, #proof-profile-conteiner-sandbox{
 	width: 320px;
 	height: 240px;
 	position: relative;
 }
 
-#button-conteiner-sandbox.ds, #smaller-button-conteiner-sandbox.ds, #proof-profile-subtitle-conteiner-sandbox.ds{
+#button-conteiner-sandbox.ds, #smaller-button-conteiner-sandbox.ds, #proof-profile-conteiner-sandbox.ds{
 	width: 256px;
 	height: 192px;
 }
@@ -212,7 +204,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	background-image: url('../images/sandbox_2.png');
 }
 
-#proof-profile-subtitle-conteiner-sandbox{
+#proof-profile-conteiner-sandbox{
 	background-image: url('../images/sandbox_3.png');
 }
 
@@ -224,13 +216,13 @@ a[aria-controls="sandbox"] span.glyphicon{
 	background-image: url('../images/sandbox_2_ds.png');
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds{
+#proof-profile-conteiner-sandbox.ds{
 	background-image: url('../images/sandbox_3_ds.png');
 }
 
-#button-conteiner-sandbox div.botao1,
-#button-conteiner-sandbox div.botao2,
-#button-conteiner-sandbox div.botao3{
+#button-conteiner-sandbox div.button1,
+#button-conteiner-sandbox div.button2,
+#button-conteiner-sandbox div.button3{
 	width: 280px;
 	font-family: Arial;
 	font-size: 23px;
@@ -240,45 +232,45 @@ a[aria-controls="sandbox"] span.glyphicon{
 	transform-origin: 0 0;
 }
 
-#button-conteiner-sandbox.ds div.botao1,
-#button-conteiner-sandbox.ds div.botao2,
-#button-conteiner-sandbox.ds div.botao3{
+#button-conteiner-sandbox.ds div.button1,
+#button-conteiner-sandbox.ds div.button2,
+#button-conteiner-sandbox.ds div.button3{
 	width: 224px;
 	font-size: 18px;
 }
 
-#button-conteiner-sandbox div.botao1{
+#button-conteiner-sandbox div.button1{
 	top: 59px;
 	left: 20px;
 }
 
-#button-conteiner-sandbox.ds div.botao1{
+#button-conteiner-sandbox.ds div.button1{
 	top: 48px;
 	left: 16px;
 }
 
-#button-conteiner-sandbox div.botao2{
+#button-conteiner-sandbox div.button2{
 	top: 114px;
 	left: 20px;
 }
 
-#button-conteiner-sandbox.ds div.botao2{
+#button-conteiner-sandbox.ds div.button2{
 	top: 92px;
 	left: 16px;
 }
 
-#button-conteiner-sandbox div.botao3{
+#button-conteiner-sandbox div.button3{
 	top: 169px;
 	left: 20px;
 }
 
-#button-conteiner-sandbox.ds div.botao3{
+#button-conteiner-sandbox.ds div.button3{
 	top: 135px;
 	left: 16px;
 }
 
-#smaller-button-conteiner-sandbox div.botao1, #smaller-button-conteiner-sandbox div.botao2,
-#smaller-button-conteiner-sandbox div.botao3, #smaller-button-conteiner-sandbox div.botao4{
+#smaller-button-conteiner-sandbox div.button1, #smaller-button-conteiner-sandbox div.button2,
+#smaller-button-conteiner-sandbox div.button3, #smaller-button-conteiner-sandbox div.button4{
 	width: 180px;
 	font-family: Arial;
 	font-size: 23px;
@@ -288,53 +280,53 @@ a[aria-controls="sandbox"] span.glyphicon{
 	position: absolute;
 }
 
-#smaller-button-conteiner-sandbox.ds div.botao1, #smaller-button-conteiner-sandbox.ds div.botao2,
-#smaller-button-conteiner-sandbox.ds div.botao3, #smaller-button-conteiner-sandbox.ds div.botao4{
+#smaller-button-conteiner-sandbox.ds div.button1, #smaller-button-conteiner-sandbox.ds div.button2,
+#smaller-button-conteiner-sandbox.ds div.button3, #smaller-button-conteiner-sandbox.ds div.button4{
 	width: 140px;
 	font-size: 18px;
 }
 
-#smaller-button-conteiner-sandbox div.botao1{
+#smaller-button-conteiner-sandbox div.button1{
 	top: 44px;
 	left: 138px;
 }
 
-#smaller-button-conteiner-sandbox.ds div.botao1{
+#smaller-button-conteiner-sandbox.ds div.button1{
 	top: 35px;
 	left: 110px;
 }
 
-#smaller-button-conteiner-sandbox div.botao2{
+#smaller-button-conteiner-sandbox div.button2{
 	top: 84px;
 	left: 138px;
 }
 
-#smaller-button-conteiner-sandbox.ds div.botao2{
+#smaller-button-conteiner-sandbox.ds div.button2{
 	top: 68px;
 	left: 110px;
 }
 
-#smaller-button-conteiner-sandbox div.botao3{
+#smaller-button-conteiner-sandbox div.button3{
 	top: 124px;
 	left: 138px;
 }
 
-#smaller-button-conteiner-sandbox.ds div.botao3{
+#smaller-button-conteiner-sandbox.ds div.button3{
 	top: 100px;
 	left: 110px;
 }
 
-#smaller-button-conteiner-sandbox div.botao4{
+#smaller-button-conteiner-sandbox div.button4{
 	top: 164px;
 	left: 138px;
 }
 
-#smaller-button-conteiner-sandbox.ds div.botao4{
+#smaller-button-conteiner-sandbox.ds div.button4{
 	top: 132px;
 	left: 110px;
 }
 
-#proof-profile-subtitle-conteiner-sandbox div.nome{
+#proof-profile-conteiner-sandbox div.proof-profile-title{
 	width: 153.11px;
 	transform: scaleX(1.045);
 	font-family: "Vald Book";
@@ -347,7 +339,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 125px;
 }
 
-#proof-profile-subtitle-conteiner-sandbox div.subtitulo{
+#proof-profile-conteiner-sandbox div.proof-profile-subtitle{
 	width: 160px;
 	font-family: "Vald Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
@@ -359,7 +351,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 121px;
 }
 
-#proof-profile-subtitle-conteiner-sandbox div.descricao{
+#proof-profile-conteiner-sandbox div.proof-profile-description{
 	width: 272px;
 	font-family: "Vald Book";
 	color: #eee;
@@ -370,31 +362,31 @@ a[aria-controls="sandbox"] span.glyphicon{
 	left: 23px;
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds div.nome{
+#proof-profile-conteiner-sandbox.ds div.proof-profile-title{
 	top: 41px;
 	left: 91px;
 	background: transparent !important;
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds div.subtitulo{
+#proof-profile-conteiner-sandbox.ds div.proof-profile-subtitle{
 	top: 58px;
 	left: 98px;
 	background: transparent !important;
 	height: 48px !important;
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds div.descricao{
+#proof-profile-conteiner-sandbox.ds div.proof-profile-description{
 	top: 114px;
 	left: 0;
 	background: transparent !important;
 	height: 48px !important;
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds div.subtitulo div.texto{
+#proof-profile-conteiner-sandbox.ds div.proof-profile-subtitle div.text{
 	line-height: 0;
 }
 
-#proof-profile-subtitle-conteiner-sandbox.ds div.descricao div.texto{
+#proof-profile-conteiner-sandbox.ds div.proof-profile-description div.text{
 	width: 232px !important;
 	line-height: 0;
 }
@@ -403,7 +395,7 @@ select.font-3ds{
 	width: 200px !important;
 }
 
-select.form-control option.recomendada{
+select.form-control option.recommended{
 	background: #ddd;
 }
 
@@ -412,11 +404,15 @@ input.slider-value{
 	width: 62.5px !important;
 }
 
-.negrito{
+input.batch-mode-left-zeroes{
+	width: 95px !important;
+}
+
+.bold{
 	font-weight: bold;
 }
 
-.italico{
+.italic{
 	font-style: italic;
 }
 
@@ -424,7 +420,68 @@ input.slider-value{
 	white-space: nowrap;
 }
 
-/* Regras para dispositivos intermédiários, como desktops com monitores menores (md) */
+.resizable-vertical{
+	resize: vertical;
+}
+
+.noresizable{
+	resize: none;
+}
+
+/* Light radiobuttons and checkboxes */
+input[type="checkbox"] {
+	display: none !important;
+}
+
+input[type="checkbox"] + label {
+	color: #0D0D0D;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding-left: 0;
+}
+
+input[type="checkbox"] + label::before {
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	margin: -1px 4px 0 0;
+	vertical-align: middle;
+	background: url(../images/radio_check.png) left top no-repeat;
+	cursor: pointer;
+	content: "";
+}
+
+input[type="checkbox"]:checked + label::before {
+	background: url(../images/radio_check.png) -19px top no-repeat;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+input[type="radio"] + label {
+	color: #0D0D0D;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding-left: 0;
+}
+
+input[type="radio"] + label::before {
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	margin: -1px 4px 0 0;
+	vertical-align: middle;
+	background: url(../images/radio_check.png) -38px top no-repeat;
+	cursor: pointer;
+	content: "";
+}
+
+input[type="radio"]:checked + label::before {
+	background: url(../images/radio_check.png) -57px top no-repeat;
+}
+
+/* Rules for medium devices, according to bootstrap (md) */
 @media (min-width: 992px) and (max-width: 1199px) {
 	.container {
 		width: 100%;
@@ -441,7 +498,7 @@ input.slider-value{
 	}
 }
 
-/* Regras para dispositivos pequenos, como tablets (sm) */
+/* Rules for small devices, according to bootstrap (sm) */
 @media (min-width: 768px) and (max-width: 991px) {
 	.container {
 		width: 100%;
@@ -450,7 +507,7 @@ input.slider-value{
 		width: 80px !important;
 		padding: 4px;
 	}
-	select.tamanho_fonte{
+	select.font-size{
 		width: 66px !important;
 		padding: 4px;
 	}
@@ -463,7 +520,7 @@ input.slider-value{
 	}
 }
 
-/* Regras para dispositivos extra-pequenos, tipicamente celulares (sm) */
+/* Rules for extra-small devices, according to bootstrap (xs) */
 @media (max-width: 480px) {
 	#header ul.title, #header ul.title>li{
 		display: inline-block;

@@ -7,28 +7,44 @@
 					<div class="panel-heading l-filters">&nbsp;</div>
 					<div class="panel-body">
 						
-						<form class="form-smaller-buttons">
+						<form class="form-smaller-buttons" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
+							data-image="smaller-button-conteiner">
 							<!-- Smaller button text -->
 							<div class="form-group">
 								<label for="smaller-button-text" class="control-label l-label-smaller-buttons">&nbsp;</label>
-								<input type="text" name="smaller-button-text" id="smaller-button-text" class="form-control p-text-buttons" />
-								<textarea name="text-smaller-button-batch-mode" id="text-smaller-button-batch-mode" class="form-control p-text-batch-mode"
-									rows="10" style="display: none"></textarea>
+								<input type="text" name="smaller-button-text" id="smaller-button-text" class="form-control p-text-buttons text"
+									onkeyup="aaig.updatePreview(this)" />
+								<textarea name="smaller-button-text-batch-mode" id="smaller-button-text-batch-mode"
+									class="form-control p-text-batch-mode text-batch-mode resizable-vertical" rows="10"
+									onkeyup="aaig.updatePreviewBatchMode(this)" onclick="$(this).trigger('keyup')"
+									style="display: none"></textarea>
 							</div>
 
-							<!-- Platform -->
+							<!-- Platform and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
 								<label for="smaller-button-platform" class="control-label l-label-platform">&nbsp;</label>
-								<select id="smaller-buttom-platform" name="smaller-button-platform" class="form-control">
+								<select id="smaller-button-platform" name="smaller-button-platform" class="form-control platform"
+									onchange="aaig.changePlatform(this)">
 									<option value="ds">Nintendo DS</option>
 									<option value="3ds" selected>Nintendo 3DS</option>
 								</select>
+								<label for="smaller-button-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
+								<div class="checkbox">
+									<input type="checkbox" name="smaller-button-batch-mode" id="smaller-button-batch-mode" class="form-control batch-mode"
+										onchange="aaig.toggleBatchModeFields(this)" />
+									<label for="smaller-button-batch-mode">&nbsp;</label>
+								</div>
 							</div>
 
-							<!-- Batch mode -->
-							<div class="form-inline" style="margin-bottom: 5px">
-								<label for="smaller-button-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
-								<input type="checkbox" name="smaller-button-batch-mode" id="smaller-button-batch-mode" class="form-control" />
+							<!-- Batch mode settings -->
+							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
+								<label for="smaller-button-batch-mode-initial-file-number"
+									class="control-label l-label-batch-mode-initial-file-number">&nbsp;</label>
+								<input type="number" id="smaller-button-batch-mode-initial-file-number" name="smaller-button-batch-mode-initial-file-number"
+									class="form-control batch-mode-initial-file-number" value="0" min="0" max="10000" maxlength="5" />
+								<label for="smaller-button-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
+								<input type="number" id="smaller-button-batch-mode-left-zeroes" name="smaller-button-batch-mode-left-zeroes"
+									class="form-control batch-mode-left-zeroes p-none" min="0" max="8" maxlength="4" />
 							</div>
 							
 							<!-- Visual customization fields -->
@@ -50,12 +66,14 @@
 											<!-- Scale -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="automatic-scale-smaller-button" class="control-label l-label-scale">&nbsp;</label>
-												<input type="checkbox" name="automatic-scale-smaller-button" id="automatic-scale-smaller-button"
-													class="form-control" checked />
-												<label for="automatic-scale-smaller-button" class="control-label l-label-automatic-scale"
-													style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
-												<input type="text" id="smaller-button-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
-													data-slider-step="0.005" data-slider-value="1" data-image="smaller-button-conteiner"
+												<div class="checkbox">
+													<input type="checkbox" name="automatic-scale-smaller-button" id="automatic-scale-smaller-button"
+														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
+													<label for="automatic-scale-smaller-button" class="control-label l-label-automatic-scale"
+														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
+												</div>
+												<input type="text" id="smaller-button-scale" class="slider scale" data-slider-min="0.500"
+													data-slider-max="1.000" data-slider-step="0.005" data-slider-value="1"
 													data-slider-tooltip="hide" data-slider-enabled="false" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
@@ -63,16 +81,19 @@
 											<!-- Font -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="smaller-button-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="smaller-button-font" name="smaller-button-font" class="form-control font-3ds"></select>
-												<input type="text" id="smaller-button-another-font" class="form-control p-another-font" style="display: none" />
-												<select id="smaller-button-font-size" name="smaller-button-font-size" class="form-control font-size"></select>
+												<select id="smaller-button-font" name="smaller-button-font" class="form-control font-3ds"
+													onchange="aaig.changeFont(this)"></select>
+												<input type="text" id="smaller-button-another-font" class="form-control p-another-font" style="display: none"
+													onkeyup="aaig.setCustomFont(this)" />
+												<select id="smaller-button-font-size" name="smaller-button-font-size" class="form-control font-size"
+													onchange="aaig.changeFontSize(this)"></select>
 												<div class="btn-group" data-toggle="buttons">
 													<label class="btn btn-default t-button-bold">
-														<input type="checkbox" class="styles" value="n" data-image="smaller-button-conteiner" />
+														<input type="checkbox" class="styles" value="b" onchange="aaig.changeFontStyle(this)" />
 														<b class="l-button-bold">&nbsp;</b>
 													</label>
 													<label class="btn btn-default t-button-italic">
-														<input type="checkbox" class="styles" value="i" data-image="smaller-button-conteiner" />
+														<input type="checkbox" class="styles" value="i" onchange="aaig.changeFontStyle(this)" />
 														<i class="l-button-italic">&nbsp;</i>
 													</label>
 												</div>
@@ -83,7 +104,7 @@
 												<label for="smaller-button-luminosity" class="control-label l-label-luminosity" style="margin-right: 7.5px">&nbsp;</label>
 												<input type="text" id="smaller-button-luminosity" class="slider luminosity"
 													data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="25"
-													data-slider-tooltip="hide" data-image="smaller-button-conteiner" />
+													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
@@ -92,7 +113,7 @@
 												<label for="smaller-button-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
 												<input type="text" id="smaller-button-margin-top" class="slider margin-top"
 													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-													data-slider-tooltip="hide" data-image="smaller-button-conteiner" />
+													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
@@ -101,15 +122,18 @@
 												<label for="smaller-button-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
 												<input type="text" id="smaller-button-margin-left" class="slider margin-left"
 													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
-													data-slider-tooltip="hide" data-image="smaller-button-conteiner" />
+													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Show Comparative -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="smaller-button-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
-												<input type="checkbox" name="smaller-button-show-comparative" id="smaller-button-show-comparative"
-													class="form-control" data-image="smaller-button-conteiner" />
+												<div class="checkbox">
+													<input type="checkbox" name="smaller-button-show-comparative" id="smaller-button-show-comparative"
+														class="form-control show-comparative" onchange="aaig.toggleComparativeImage(this)" />
+													<label for="smaller-button-show-comparative">&nbsp;</label>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -117,7 +141,7 @@
 							</div>
 
 							<!-- Generate image and reset form buttons -->
-							<button type="button" id="smaller-button-generate-image" class="btn btn-primary" aria-label="Generate Button">
+							<button type="submit" id="smaller-button-generate-image" class="btn btn-primary" aria-label="Generate Button">
 								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 								<span class="l-button-generate-image">&nbsp;</span>
 							</button>

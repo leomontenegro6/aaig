@@ -7,106 +7,130 @@
 					<div class="panel-heading l-filters">&nbsp;</div>
 					<div class="panel-body">
 						
-						<form class="form_subtitulo_prova">
+						<form class="form-proof-profile-subtitle" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
+							data-image="proof-profile-subtitle-conteiner">
 							<!-- Proof / profile subtitle text -->
 							<div class="form-group">
-								<label for="texto_subtitulo" class="control-label l_rotulo_texto_subtitulo_prova">&nbsp;</label>
-								<textarea name="texto_subtitulo" id="texto_subtitulo" class="form-control p-text-buttons" rows="3"></textarea>
+								<label for="proof-profile-subtitle-text" class="control-label l-label-proof-profile-subtitles">&nbsp;</label>
+								<textarea name="proof-profile-subtitle-text" id="proof-profile-subtitle-text" class="form-control p-text-buttons text noresizable"
+									rows="3" onkeyup="aaig.updatePreview(this)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
-							<!-- Platform -->
-							<div class="form-inline">
-								<label for="plataforma_subtitulo" class="control-label l-label-platform">&nbsp;</label>
-								<select id="plataforma_subtitulo" name="plataforma_subtitulo" class="form-control">
+							<!-- Platform and batch mode -->
+							<div class="form-inline" style="margin-bottom: 5px">
+								<label for="proof-profile-subtitle-platform" class="control-label l-label-platform">&nbsp;</label>
+								<select id="proof-profile-subtitle-platform" name="proof-profile-subtitle-platform" class="form-control platform"
+									onchange="aaig.changePlatform(this)">
 									<option value="ds">Nintendo DS</option>
 									<option value="3ds" selected>Nintendo 3DS</option>
 								</select>
+								<label for="proof-profile-subtitle-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
+								<div class="checkbox">
+									<input type="checkbox" name="proof-profile-subtitle-batch-mode" id="proof-profile-subtitle-batch-mode"
+										class="form-control batch-mode" onchange="aaig.toggleBatchModeFields(this)" />
+									<label for="proof-profile-subtitle-batch-mode">&nbsp;</label>
+								</div>
 							</div>
-
-							<!-- Batch mode -->
-							<div class="form-inline" style="margin-bottom: 5px">
-								<label for="lote_subtitulo" class="control-label l-label-batch-mode">&nbsp;</label>
-								<input type="checkbox" name="lote_subtitulo" id="lote_subtitulo" class="form-control" />
+							
+							<!-- Batch mode settings -->
+							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
+								<label for="proof-profile-subtitle-batch-mode-initial-file-number"
+									class="control-label l-label-batch-mode-initial-file-number">&nbsp;</label>
+								<input type="number" id="proof-profile-subtitle-batch-mode-initial-file-number"
+									name="proof-profile-subtitle-batch-mode-initial-file-number" class="form-control batch-mode-initial-file-number"
+									value="0" min="0" max="10000" maxlength="5" />
+								<label for="proof-profile-subtitle-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
+								<input type="number" id="proof-profile-subtitle-batch-mode-left-zeroes" name="proof-profile-subtitle-batch-mode-left-zeroes"
+									class="form-control batch-mode-left-zeroes p-none" min="0" max="8" maxlength="4" />
 							</div>
 							
 							<!-- Visual customization fields -->
-							<div class="panel-group" id="visual-customization_subtitulos" role="tablist">
+							<div class="panel-group" id="visual-customization-proof-profile-subtitle" role="tablist">
 								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="visual-customization_subtitulos_heading">
+									<div class="panel-heading" role="tab" id="visual-customization-proof-profile-subtitle-heading">
 										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse" data-parent="#visual-customization_subtitulos"
-												href="#visual-customization_subtitulos_collapse" aria-expanded="true"
-												aria-controls="visual-customization_subtitulos_collapse">
+											<a role="button" data-toggle="collapse" data-parent="#visual-customization-proof-profile-subtitle"
+												href="#visual-customization-proof-profile-subtitle-collapse" aria-expanded="true"
+												aria-controls="visual-customization-proof-profile-subtitle-collapse">
 												<span class="plus-minus glyphicon glyphicon-plus"></span>
 												<span class="l-accordion-visual-customizations">&nbsp;</span>
 											</a>
 										</h4>
 									</div>
-									<div id="visual-customization_subtitulos_collapse" class="panel-collapse collapse"
-										role="tabpanel" aria-labelledby="visual-customization_subtitulos_heading">
+									<div id="visual-customization-proof-profile-subtitle-collapse" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="visual-customization-proof-profile-subtitle-heading">
 										<div class="panel-body">
 											<!-- Scale -->
 											<div class="form-inline" style="margin-bottom: 5px;">
-												<label for="escala_automatica_subtitulo" class="control-label l-label-scale">&nbsp;</label>
-												<input type="checkbox" name="escala_automatica_subtitulo" id="escala_automatica_subtitulo" class="form-control" checked />
-												<label for="escala_automatica_subtitulo" class="control-label l-label-automatic-scale"
-													   style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
-												<input type="text" id="escala_subtitulo" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
-													   data-slider-step="0.005" data-slider-value="1" data-image="proof-profile-subtitle-conteiner"
-													   data-slider-tooltip="hide" data-slider-enabled="false" />
+												<label for="automatic-scale-proof-profile-subtitle" class="control-label l-label-scale">&nbsp;</label>
+												<div class="checkbox">
+													<input type="checkbox" name="automatic-scale-proof-profile-subtitle" id="automatic-scale-proof-profile-subtitle"
+														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
+													<label for="automatic-scale-proof-profile-subtitle" class="control-label l-label-automatic-scale"
+														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
+												</div>
+												<input type="text" id="proof-profile-subtitle-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
+													data-slider-step="0.005" data-slider-value="1" data-slider-tooltip="hide"
+													data-slider-enabled="false" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Font -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="fonte_subtitulo" class="control-label l-label-font">&nbsp;</label>
-												<select id="fonte_subtitulo" name="fonte_subtitulo" class="form-control font-3ds"></select>
-												<input type="text" id="outra_fonte_subtitulo" class="form-control p-another-font" style="display: none" />
-												<select id="tamanho_fonte_subtitulo" name="tamanho_fonte_subtitulo" class="form-control font-size"></select>
+												<label for="proof-profile-subtitle-font" class="control-label l-label-font">&nbsp;</label>
+												<select id="proof-profile-subtitle-font" name="proof-profile-subtitle-font" class="form-control font-3ds"
+													onchange="aaig.changeFont(this)"></select>
+												<input type="text" id="proof-profile-subtitle-another-font" class="form-control p-another-font"
+													style="display: none" onkeyup="aaig.setCustomFont(this)" />
+												<select id="proof-profile-subtitle-font-size" name="proof-profile-subtitle-font-size"
+													class="form-control font-size" onchange="aaig.changeFontSize(this)"></select>
 												<div class="btn-group" data-toggle="buttons">
-													<label class="btn btn-default t_botao_negrito">
-														<input type="checkbox" class="estilos" value="n" data-image="proof-profile-subtitle-conteiner" />
-														<b class="l_botao_negrito">&nbsp;</b>
+													<label class="btn btn-default t-button-bold">
+														<input type="checkbox" class="estilos" value="b" onchange="aaig.changeFontStyle(this)" />
+														<b class="l-button-bold">&nbsp;</b>
 													</label>
-													<label class="btn btn-default t_botao_italico">
-														<input type="checkbox" class="estilos" value="i" data-image="proof-profile-subtitle-conteiner" />
-														<i class="l_botao_italico">&nbsp;</i>
+													<label class="btn btn-default t-button-italic">
+														<input type="checkbox" class="estilos" value="i" onchange="aaig.changeFontStyle(this)" />
+														<i class="l-button-italic">&nbsp;</i>
 													</label>
 												</div>
 											</div>
 
 											<!-- Line Height -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="altura_linha_subtitulo" class="control-label l-label-line-height" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="altura_linha_subtitulo" class="slider line-height"
-													   data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
-													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+												<label for="proof-profile-subtitle-line-height" class="control-label l-label-line-height" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-subtitle-line-height" class="slider line-height"
+													data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
+													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Margin Top -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="margem_superior_subtitulo" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="margem_superior_subtitulo" class="slider margin-top"
+												<label for="proof-profile-subtitle-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-subtitle-margin-top" class="slider margin-top"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="4"
-													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Margin Left -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="margem_esquerdo_subtitulo" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="margem_esquerdo_subtitulo" class="slider margin-left"
+												<label for="proof-profile-subtitle-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-subtitle-margin-left" class="slider margin-left"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="2"
-													   data-slider-tooltip="hide" data-image="proof-profile-subtitle-conteiner" />
+													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Show Comparative -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="mostrar_comparativo_subtitulo" class="control-label l-label-show-comparative">&nbsp;</label>
-												<input type="checkbox" name="mostrar_comparativo_subtitulo" id="mostrar_comparativo_subtitulo"
-													   class="form-control" data-image="proof-profile-subtitle-conteiner" />
+												<label for="proof-profile-subtitle-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
+												<div class="checkbox">
+													<input type="checkbox" name="proof-profile-subtitle-show-comparative" id="proof-profile-subtitle-show-comparative"
+														class="form-control show-comparative" onchange="aaig.toggleComparativeImage(this)" />
+													<label for="proof-profile-subtitle-show-comparative">&nbsp;</label>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -114,13 +138,13 @@
 							</div>
 
 							<!-- Generate image and reset form buttons -->
-							<button type="button" id="botao_gerar_subtitulo" class="btn btn-primary" aria-label="Generate button">
+							<button type="submit" id="proof-profile-subtitle-generate-image" class="btn btn-primary" aria-label="Generate button">
 								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-								<span class="l_botao_gerar">&nbsp;</span>
+								<span class="l-button-generate-image">&nbsp;</span>
 							</button>
 							<button type="reset" class="btn btn-danger" aria-label="Reset button">
 								<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-								<span class="l_botao_resetar">&nbsp;</span>
+								<span class="l-button-reset-form">&nbsp;</span>
 							</button>
 						</form>
 						
@@ -130,7 +154,7 @@
 			<div class="col-sm-6">
 				<div class="previews row">
 					<div class="col-xs-12">
-						<div id="previa_subtitulos" class="panel panel-default">
+						<div id="proof-profile-subtitle-preview" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
 								<div id="proof-profile-subtitle-conteiner">

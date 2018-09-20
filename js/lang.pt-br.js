@@ -9,18 +9,20 @@ var LANGUAGE = {
 		'dark-theme': 'Escuro',
 		'tab-buttons': 'Botões',
 		'tab-smaller-buttons': 'Botões Menores',
-		'tab-proof-profile-titles': 'Nome da Prova / Perfil',
+		'tab-proof-profile-titles': 'Título da Prova / Perfil',
 		'tab-proof-profile-subtitles': 'Subtítulo da Prova / Perfil',
 		'tab-proof-profile-descriptions': 'Descrição da Prova / Perfil',
 		'tab-sandbox': 'Sandbox',
 		'label-buttons': 'Texto do botão:',
 		'label-smaller-buttons': 'Texto do botão menor:',
-		'label-proof-profile-titles': 'Texto do nome da prova / perfil:',
+		'label-proof-profile-titles': 'Texto do título da prova / perfil:',
 		'label-proof-profile-subtitles': 'Texto do subtítulo da prova / perfil:',
 		'label-proof-profile-descriptions': 'Texto da descrição da prova / perfil:',
 		
 		'accordion-visual-customizations': 'Personalização Visual',
 		'label-batch-mode': 'Em Lote:',
+		'label-batch-mode-initial-file-number': 'Nº do Arquivo Inicial:',
+		'label-batch-mode-left-zeroes': 'Zeros à Esquerda:',
 		'label-platform': 'Plataforma:',
 		'label-scale': 'Escala:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">mática</span>',
@@ -54,12 +56,13 @@ var LANGUAGE = {
 	'p': { // Placeholders
 		'text-buttons': 'Digite o texto a aparecer na prévia ao lado',
 		'text-batch-mode': 'Digite textos separados por quebras de linha',
-		'text-sand-mode': 'Digite o texto a aparecer na prévia ao lado',
-		'another-font': 'Digite o nome da fonte'
+		'text-sandbox-mode': 'Digite o texto a aparecer na prévia ao lado',
+		'another-font': 'Digite o nome da fonte',
+		'none': 'Nenhum'
 	},
 	't': { // Tooltips
 		'about': 'Sobre este programa',
 		'button-bold': 'Negrito',
-		'button-italic': 'Itálico',
+		'button-italic': 'Itálico'
 	}
 }

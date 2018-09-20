@@ -9,18 +9,20 @@ var LANGUAGE = {
 		'dark-theme': 'Dark',
 		'tab-buttons': 'Buttons',
 		'tab-smaller-buttons': 'Smaller Buttons',
-		'tab-proof-profile-titles': 'Proof / Profile Name',
+		'tab-proof-profile-titles': 'Proof / Profile Title',
 		'tab-proof-profile-subtitles': 'Proof / Profile Subtitle',
 		'tab-proof-profile-descriptions': 'Proof / Profile Description',
 		'tab-sandbox': 'Sandbox',
 		'label-buttons': 'Button Text:',
 		'label-smaller-buttons': 'Smaller Button Text:',
-		'label-proof-profile-titles': 'Proof / Profile Name:',
+		'label-proof-profile-titles': 'Proof / Profile Title:',
 		'label-proof-profile-subtitles': 'Proof / Profile Subtitle:',
 		'label-proof-profile-descriptions': 'Proof / Profile Description:',
 		
 		'accordion-visual-customizations': 'Visual Customizations',
 		'label-batch-mode': 'Batch Mode:',
+		'label-batch-mode-initial-file-number': 'Initial File Number:',
+		'label-batch-mode-left-zeroes': 'Left Zeroes:',
 		'label-platform': 'Platform:',
 		'label-scale': 'Scale:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">matic</span>',
@@ -54,8 +56,9 @@ var LANGUAGE = {
 	'p': { // Placeholders
 		'text-buttons': 'Type text to be shown on preview on the right',
 		'text-batch-mode': 'Type texts separated by line breaks',
-		'text-sand-mode': 'Type text to be shown on preview on the right',
-		'another-font': 'Type font name here'
+		'text-sandbox-mode': 'Type text to be shown on preview on the right',
+		'another-font': 'Type font name here',
+		'none': 'None'
 	},
 	't': { // Tooltips
 		'about': 'About this software',

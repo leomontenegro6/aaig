@@ -7,44 +7,49 @@
 				<!-- Button texts -->
 				<div class="row">
 					<div class="col-xs-6">
-						<div id="previa_sandbox_1" class="panel panel-default">
-							<div class="panel-heading l_sandbox_botoes_grandes">&nbsp;</div>
+						<div id="preview-sandbox-1" class="panel panel-default">
+							<div class="panel-heading l-sandbox-bigger-buttons">&nbsp;</div>
 							<div class="panel-body">
-								<form class="form_sandbox_1">
+								<form class="form-sandbox-1" onsubmit="return aaig.generateImages(this)" onreset="aaig.resetForm(this)"
+									data-image="button-conteiner-sandbox">
 									<div class="form-group">
-										<label for="texto_botoes_sandbox1" class="control-label l_rotulo_texto_botao">&nbsp;</label>
-										<input type="text" name="texto_botoes_sandbox1" id="texto_botoes_sandbox1" class="form-control p_texto_sandbox" />
-										<input type="text" name="texto_botoes_sandbox2" id="texto_botoes_sandbox2" class="form-control p_texto_sandbox" />
-										<input type="text" name="texto_botoes_sandbox3" id="texto_botoes_sandbox3" class="form-control p_texto_sandbox" />
+										<label for="sandbox-buttons-text-1" class="control-label l-label-buttons">&nbsp;</label>
+										<input type="text" name="sandbox-buttons-text-1" id="sandbox-buttons-text-1"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
+										<input type="text" name="sandbox-buttons-text-2" id="sandbox-buttons-text-2"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
+										<input type="text" name="sandbox-buttons-text-3" id="sandbox-buttons-text-3"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
 									</div>
 									<div class="form-group">
-										<label for="plataforma_botoes_sandbox" class="control-label l-label-platform">&nbsp;</label>
-										<select id="plataforma_botoes_sandbox" name="plataforma_botoes_sandbox" class="form-control">
+										<label for="sandbox-buttons-platform" class="control-label l-label-platform">&nbsp;</label>
+										<select id="sandbox-buttons-platform" name="sandbox-buttons-platform" class="form-control platform"
+											onchange="aaig.changePlatform(this)">
 											<option value="ds">Nintendo DS</option>
 											<option value="3ds" selected>Nintendo 3DS</option>
 										</select>
 									</div>
 
-									<button type="button" id="botao_gerar_sandbox_1" class="btn btn-primary" aria-label="Gerar">
+									<button type="submit" id="sandbox-generate-image-1" class="btn btn-primary" aria-label="Gerar">
 										<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-										<span class="l_botao_gerar">&nbsp;</span>
+										<span class="l-button-generate-image">&nbsp;</span>
 									</button>
 									<button type="reset" class="btn btn-danger" aria-label="Resetar">
 										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-										<span class="l_botao_resetar">&nbsp;</span>
+										<span class="l-button-reset-form">&nbsp;</span>
 									</button>
 								</form>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-6">
-						<div id="previa_descricoes" class="panel panel-default">
+						<div id="preview-buttons-sandbox" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
 								<div id="button-conteiner-sandbox">
-									<div class="botao1 nowrap"></div>
-									<div class="botao2 nowrap"></div>
-									<div class="botao3 nowrap"></div>
+									<div class="button1 nowrap"></div>
+									<div class="button2 nowrap"></div>
+									<div class="button3 nowrap"></div>
 								</div>
 							</div>
 						</div>
@@ -54,46 +59,52 @@
 				<!-- Smaller button texts -->
 				<div class="row">
 					<div class="col-xs-6">
-						<div id="previa_sandbox_2" class="panel panel-default">
-							<div class="panel-heading l_sandbox_botoes_menores">&nbsp;</div>
+						<div id="preview-sandbox-2" class="panel panel-default">
+							<div class="panel-heading l-sandbox-smaller-buttons">&nbsp;</div>
 							<div class="panel-body">
-								<form class="form_sandbox_2">
+								<form class="form-sandbox-2" onsubmit="return aaig.generateImages(this)" onreset="aaig.resetForm(this)"
+									data-image="smaller-button-conteiner-sandbox">
 									<div class="form-group">
-										<label for="texto_botoes_menores_sandbox1" class="control-label l_rotulo_texto_botao_menor">&nbsp;</label>
-										<input type="text" name="texto_botoes_menores_sandbox1" id="texto_botoes_menores_sandbox1" class="form-control p_texto_sandbox" />
-										<input type="text" name="texto_botoes_menores_sandbox2" id="texto_botoes_menores_sandbox2" class="form-control p_texto_sandbox" />
-										<input type="text" name="texto_botoes_menores_sandbox3" id="texto_botoes_menores_sandbox3" class="form-control p_texto_sandbox" />
-										<input type="text" name="texto_botoes_menores_sandbox4" id="texto_botoes_menores_sandbox4" class="form-control p_texto_sandbox" />
+										<label for="sandbox-smaller-buttons-text-1" class="control-label l-label-smaller-buttons">&nbsp;</label>
+										<input type="text" name="sandbox-smaller-buttons-text-1" id="sandbox-smaller-buttons-text-1"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
+										<input type="text" name="sandbox-smaller-buttons-text-2" id="sandbox-smaller-buttons-text-2"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
+										<input type="text" name="sandbox-smaller-buttons-text-3" id="sandbox-smaller-buttons-text-3"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
+										<input type="text" name="sandbox-smaller-buttons-text-4" id="sandbox-smaller-buttons-text-4"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
 									</div>
 									<div class="form-group">
-										<label for="plataforma_botoes_menores_sandbox" class="control-label l-label-platform">&nbsp;</label>
-										<select id="plataforma_botoes_menores_sandbox" name="plataforma_botoes_menores_sandbox" class="form-control">
+										<label for="sandbox-smaller-buttons-platform" class="control-label l-label-platform">&nbsp;</label>
+										<select id="sandbox-smaller-buttons-platform" name="sandbox-smaller-buttons-platform" class="form-control platform"
+											onchange="aaig.changePlatform(this)">
 											<option value="ds">Nintendo DS</option>
 											<option value="3ds" selected>Nintendo 3DS</option>
 										</select>
 									</div>
 
-									<button type="button" id="botao_gerar_sandbox_2" class="btn btn-primary" aria-label="Gerar">
+									<button type="submit" id="sandbox-generate-image-2" class="btn btn-primary" aria-label="Gerar">
 										<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-										<span class="l_botao_gerar">&nbsp;</span>
+										<span class="l-button-generate-image">&nbsp;</span>
 									</button>
 									<button type="reset" class="btn btn-danger" aria-label="Resetar">
 										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-										<span class="l_botao_resetar">&nbsp;</span>
+										<span class="l-button-reset-form">&nbsp;</span>
 									</button>
 								</form>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-6">
-						<div id="previa_descricoes" class="panel panel-default">
+						<div id="preview-smaller-buttons-sandbox" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
 								<div id="smaller-button-conteiner-sandbox">
-									<div class="botao1 nowrap"></div>
-									<div class="botao2 nowrap"></div>
-									<div class="botao3 nowrap"></div>
-									<div class="botao4 nowrap"></div>
+									<div class="button1 nowrap"></div>
+									<div class="button2 nowrap"></div>
+									<div class="button3 nowrap"></div>
+									<div class="button4 nowrap"></div>
 								</div>
 							</div>
 						</div>
@@ -103,54 +114,59 @@
 				<!-- Proof / profile texts -->
 				<div class="row">
 					<div class="col-xs-6">
-						<div id="previa_sandbox_3" class="panel panel-default">
-							<div class="panel-heading l_sandbox_provas_perfis">&nbsp;</div>
+						<div id="preview-sandbox-3" class="panel panel-default">
+							<div class="panel-heading l-sandbox-proof-profiles">&nbsp;</div>
 							<div class="panel-body">
-								<form class="form_sandbox_3">
-									<!-- Proof / profile title name -->
+								<form class="form-sandbox-3" onsubmit="return aaig.generateImages(this)" onreset="aaig.resetForm(this)"
+									data-image="proof-profile-conteiner-sandbox">
+									<!-- Proof / profile title text -->
 									<div class="form-group">
-										<label for="texto_nome_sandbox" class="control-label l_rotulo_texto_nome_prova">&nbsp;</label>
-										<input type="text" name="texto_nome_sandbox" id="texto_nome_sandbox" class="form-control p_texto_sandbox" />
+										<label for="proof-profile-title-text-sandbox" class="control-label l-label-proof-profile-titles">&nbsp;</label>
+										<input type="text" name="proof-profile-title-text-sandbox" id="proof-profile-title-text-sandbox"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)" />
 									</div>
-									<!-- Proof / profile subtitle name -->
+									<!-- Proof / profile subtitle text -->
 									<div class="form-group">
-										<label for="texto_subtitulo_sandbox" class="control-label l_rotulo_texto_subtitulo_prova">&nbsp;</label>
-										<textarea name="texto_subtitulo_sandbox" id="texto_subtitulo_sandbox" class="form-control p_texto_sandbox" rows="3"></textarea>
+										<label for="proof-profile-subtitle-text-sandbox" class="control-label l-label-proof-profile-subtitles">&nbsp;</label>
+										<textarea name="proof-profile-subtitle-text-sandbox" id="proof-profile-subtitle-text-sandbox" rows="3"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)"></textarea>
 									</div>
-									<!-- Proof / profile description name -->
+									<!-- Proof / profile description text -->
 									<div class="form-group">
-										<label for="texto_descricao_sandbox" class="control-label l_rotulo_texto_descricao_prova">&nbsp;</label>
-										<textarea name="texto_descricao_sandbox" id="texto_descricao_sandbox" class="form-control p_texto_sandbox" rows="3"></textarea>
+										<label for="proof-profile-description-text-sandbox" class="control-label l-label-proof-profile-descriptions">&nbsp;</label>
+										<textarea name="proof-profile-description-text-sandbox" id="proof-profile-description-text-sandbox" rows="3"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this)"></textarea>
 									</div>
 									<!-- Platform -->
 									<div class="form-group">
-										<label for="plataforma_provas_perfis_sandbox" class="control-label l-label-platform">&nbsp;</label>
-										<select id="plataforma_provas_perfis_sandbox" name="plataforma_provas_perfis_sandbox" class="form-control">
+										<label for="sandbox-proof-profiles-platform" class="control-label l-label-platform">&nbsp;</label>
+										<select id="sandbox-proof-profiles-platform" name="sandbox-proof-profiles-platform" class="form-control platform"
+											onchange="aaig.changePlatform(this)">
 											<option value="ds">Nintendo DS</option>
 											<option value="3ds" selected>Nintendo 3DS</option>
 										</select>
 									</div>
 
-									<button type="button" id="botao_gerar_sandbox_3" class="btn btn-primary" aria-label="Gerar">
+									<button type="submit" id="sandbox-generate-image-3" class="btn btn-primary" aria-label="Gerar">
 										<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-										<span class="l_botao_gerar">&nbsp;</span>
+										<span class="l-button-generate-image">&nbsp;</span>
 									</button>
 									<button type="reset" class="btn btn-danger" aria-label="Resetar">
 										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
-										<span class="l_botao_resetar">&nbsp;</span>
+										<span class="l-button-reset-form">&nbsp;</span>
 									</button>
 								</form>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-6">
-						<div id="previa_descricoes" class="panel panel-default">
+						<div id="preview-proof-profiles-sandbox" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
-								<div id="proof-profile-subtitle-conteiner-sandbox">
-									<div class="nome nowrap"></div>
-									<div class="subtitulo nowrap"></div>
-									<div class="descricao nowrap"></div>
+								<div id="proof-profile-conteiner-sandbox">
+									<div class="proof-profile-title nowrap"></div>
+									<div class="proof-profile-subtitle nowrap"></div>
+									<div class="proof-profile-description nowrap"></div>
 								</div>
 							</div>
 						</div>

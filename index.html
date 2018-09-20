@@ -54,12 +54,25 @@
 		<script type="text/javascript" src="js/html2canvas.js?v=0.6b"></script>
 		<script type="text/javascript" src="js/aaig.js?v=0.6b"></script>
 		<script type="text/javascript" src="js/lang.pt-br.js?v=0.6b"></script>
-		
-		<!--
-		Electron - Line needed in order to make the imports of JS files to work.
-		Need to be added afterthe imports.
-		-->
-		<script>if (window.module) module = window.module;</script>
+		<script type="text/javascript">
+			// Electron - Line needed in order to script imports to work.
+			// Need to be added after all JS files are loaded.
+			if (window.module) module = window.module;
+			
+			// Common tool routines
+			var device = aaig.getDevice(true);
+			$(function(){
+				aaig.loadTabContents(function(){
+					aaig.loadLanguageScriptStrings();
+					aaig.setDefaultTextFieldValues();
+					aaig.triggerMainTextFieldEvents();
+					aaig.toggleSandboxFieldEventsOnTabClick();
+					aaig.toggleAccordionIcon();
+					aaig.instantiateSliderFields();
+					aaig.instantiateFontFields();
+				});
+			})
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-static-top">
@@ -86,7 +99,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right about">
 						<li>
-							<a class="navbar-brand t-about" href="#" title="" id="about-program">
+							<a class="navbar-brand t-about" href="#" title="" id="about-this-software" onclick="aaig.openPageAboutThisSoftware()">
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 							</a>
 						</li>
@@ -105,19 +118,19 @@
 			</button>
 			<ul id="languages-list" class="dropdown-menu" aria-labelledby="language-button">
 				<li>
-					<a href="#en-us">
+					<a href="#en-us" onclick="aaig.changeLanguage(this, event)">
 						<img src="images/flag_usa.png" />
 						<span>English</span>
 					</a>
 				</li>
 				<li>
-					<a href="#es">
+					<a href="#es" onclick="aaig.changeLanguage(this, event)">
 						<img src="images/flag_spain.png" />
 						<span>Español</span>
 					</a>
 				</li>
 				<li>
-					<a href="#pt-br">
+					<a href="#pt-br" onclick="aaig.changeLanguage(this, event)">
 						<img src="images/flag_brazil.png" />
 						<span>Português</span>
 					</a>
@@ -135,10 +148,10 @@
 			</button>
 			<ul id="themes-list" class="dropdown-menu" aria-labelledby="theme-button">
 				<li>
-					<a href="#light" class="l-light-theme">Claro</a>
+					<a href="#light" class="l-light-theme" onclick="aaig.changeTheme(this, event)">Claro</a>
 				</li>
 				<li>
-					<a href="#dark" class="l-dark-theme">Escuro</a>
+					<a href="#dark" class="l-dark-theme" onclick="aaig.changeTheme(this, event)">Escuro</a>
 				</li>
 			</ul>
 		</div>

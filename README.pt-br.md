@@ -8,7 +8,7 @@
 
 *   Botões brancos com textos em vermelho cor-de-vinho;
 
-![alt tag](images/background_botoes_preenchido.png)
+![alt tag](images/button_bg_filled.png)
 *   Nomes de provas / perfis, com fundo cinza escuro e textos em cor laranja;
 
 ![alt tag](images/proof_profile_title_bg_filled.png)
@@ -17,7 +17,7 @@
 ![alt tag](images/proof_profile_subtitle_bg_filled.png)
 *   Descrições de provas, com fundo cinza escuro e textos em cor branca;
 
-![alt tag](images/background_descricao_fundo_marrom.png)
+![alt tag](images/proof_profile_description_bg_brown.png)
 
 A maneira tradicional de editar esses gráficos é através de arquivos .PSD via Adobe Photoshop, o que acaba sendo um trabalho extremamente repetitivo e cansativo para os romhackers. Foi justamente pensando em otimizar estes processos que eu criei este software.
 
@@ -56,9 +56,9 @@ O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imag
 
 #### Imagens Geradas
 
-![alt tag](images/amostra_1.png)
-![alt tag](images/amostra_2.png)
-![alt tag](images/amostra_3.png)
+![alt tag](images/sample_1.png)
+![alt tag](images/sample_2.png)
+![alt tag](images/sample_3.png)
 
 #### Considerações gerais
 

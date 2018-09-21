@@ -1,12 +1,20 @@
-var LANGUAGE = {
+aaig.languageStrings = {
 	'l': { // Common texts
 		'main-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v0.6b',
-		'theme': 'Tema',
+		'version': 'v0.6c',
+		
+		'menu-title': 'Arquivo',
+		'open-text-file': 'Abrir arquivo de texto',
+		'configs': 'Configurações',
+		'about': 'Sobre este programa',
+		
+		'theme': 'Tema:',
 		'light-theme': 'Claro',
 		'dark-theme': 'Escuro',
+		'language': 'Idioma:',
+		
 		'tab-buttons': 'Botões',
 		'tab-smaller-buttons': 'Botões Menores',
 		'tab-proof-profile-titles': 'Título da Prova / Perfil',
@@ -19,11 +27,13 @@ var LANGUAGE = {
 		'label-proof-profile-subtitles': 'Texto do subtítulo da prova / perfil:',
 		'label-proof-profile-descriptions': 'Texto da descrição da prova / perfil:',
 		
-		'accordion-visual-customizations': 'Personalização Visual',
+		'label-platform': 'Plataforma:',
 		'label-batch-mode': 'Em Lote:',
 		'label-batch-mode-initial-file-number': 'Nº do Arquivo Inicial:',
 		'label-batch-mode-left-zeroes': 'Zeros à Esquerda:',
-		'label-platform': 'Plataforma:',
+		'label-batch-mode-suffix': 'Sufixo:',
+		
+		'accordion-visual-customizations': 'Personalização Visual',
 		'label-scale': 'Escala:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">mática</span>',
 		'label-font': 'Fonte:',
@@ -41,11 +51,15 @@ var LANGUAGE = {
 		'option-ds-font-condensed': 'Condensada',
 		'option-ds-font-extra-condensed': 'Extra Condensada',
 		
-		'button-generate-image': 'Gerar',
+		'button-cancel-form': 'Cancelar',
 		'button-reset-form': 'Resetar',
+		'button-save-form': 'Salvar',
+		'button-generate-image': 'Gerar',
 		
 		'filters': 'Filtros',
 		'preview': 'Prévia',
+		'batch-filenaming-preview': 'Nomes de arquivo:',
+		'batch-filenaming-preview-other-files': 'outro(s) arquivo(s)',
 		'last-canvases': 'Últimos Canvas Gerados',
 		'sandbox-bigger-buttons': 'Botões Grandes',
 		'sandbox-smaller-buttons': 'Botões Menores',
@@ -56,12 +70,12 @@ var LANGUAGE = {
 	'p': { // Placeholders
 		'text-buttons': 'Digite o texto a aparecer na prévia ao lado',
 		'text-batch-mode': 'Digite textos separados por quebras de linha',
+		'text-batch-mode-suffix': 'Incluído antes da extensão',
 		'text-sandbox-mode': 'Digite o texto a aparecer na prévia ao lado',
 		'another-font': 'Digite o nome da fonte',
 		'none': 'Nenhum'
 	},
 	't': { // Tooltips
-		'about': 'Sobre este programa',
 		'button-bold': 'Negrito',
 		'button-italic': 'Itálico'
 	}

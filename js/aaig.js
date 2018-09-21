@@ -1,5 +1,15 @@
+/* Javascript library containing methods related to Ace Attorney Image Generator
+ * 
+ */
+
 function aaig(){
 	// Properties
+	this.configs = {};
+	this.defaultConfigs = {
+		'theme': 'light',
+		'language': 'pt-br'
+	};
+	this.languageStrings = {}
 	this.platformConfigs = {
 		'button-conteiner': {
 			'ds': {
@@ -83,7 +93,7 @@ function aaig(){
 				'scale': {
 					'value': 1.045
 				},
-				'font-3ds': 'Vald Book',
+				'font-3ds': 'Vaud Book',
 				'font-size': 18,
 				'margin-top': {
 					'value': -2
@@ -122,7 +132,7 @@ function aaig(){
 				'scale': {
 					'value': 1
 				},
-				'font-3ds': 'Vald Book',
+				'font-3ds': 'Vaud Book',
 				'font-size': 14,
 				'margin-top': {
 					'value': 4
@@ -166,7 +176,7 @@ function aaig(){
 				'scale': {
 					'value': 1.075
 				},
-				'font-3ds': 'Vald Book',
+				'font-3ds': 'Vaud Book',
 				'font-size': 14,
 				'margin-top': {
 					'value': 3
@@ -221,11 +231,44 @@ function aaig(){
 	};
 	
 	// Methods
-	this.openPageAboutThisSoftware = function(){
-		var $buttonChangeLanguage = $('#language-button');
-		var $spanLanguageName = $buttonChangeLanguage.children('span.language-name');
+	this.loadConfigs = function(){
+		var theme = stash.get('theme');
+		var language = stash.get('language');
 		
-		var language = $spanLanguageName.attr('data-value');
+		if(typeof theme == 'undefined') theme = this.defaultConfigs.theme;
+		if(typeof language == 'undefined') language = this.defaultConfigs.language;
+		
+		this.configs = {
+			'theme': theme,
+			'language': language
+		}
+	}
+	
+	this.loadTheme = function(){
+		var theme = this.configs.theme;
+		$('body').addClass(theme);
+	}
+	
+	this.changeTheme = function(element){
+		var $element = $(element);
+		var $body = $('body');
+		
+		var theme;
+		if($element.is('a')){
+			theme = ( $element.attr('href') ).replace('#', '');
+		} else {
+			theme = $element.val();
+		}
+		
+		stash.set('theme', theme);
+		$body.removeClass('light dark').addClass(theme);
+		
+		// Reloading configs after saving the new theme
+		this.loadConfigs();
+	}
+	
+	this.openPageAboutThisSoftware = function(){
+		var language = this.configs.language;
 		var readme_page;
 		if(language != 'en-us'){
 			readme_page = 'README.' + language + '.md';
@@ -234,9 +277,7 @@ function aaig(){
 		}
 		var url_github = 'https://github.com/leomontenegro6/aaig/blob/master/' + readme_page;
 
-		var checkAccessingThroughElectron = (typeof process == 'object');
-
-		if(checkAccessingThroughElectron){
+		if( this.checkOnElectron() ){
 			var shell = require('electron').shell;
 			shell.openExternal(url_github);
 		} else {
@@ -244,32 +285,32 @@ function aaig(){
 		}
 	}
 	
-	this.changeTheme = function(a, e){
-		var $a = $(a);
-		var theme = ( $a.attr('href') ).replace('#', '');
-
-		$("body").removeClass('light dark').addClass(theme);
+	this.loadLanguage = function(callback){
+		var language = this.configs.language;
+		var that = this;
 		
-		e.preventDefault();
+		this.removeAllLanguageScripts();
+		this.addLanguageScript(language, function(){
+			that.loadLanguageScriptStrings();
+			if(callback) callback();
+		});
 	}
 	
-	this.changeLanguage = function(a, e){
-		var $a = $(a);
-		var $buttonChangeLanguage = $('#language-button');
-		var $imgFlag = $buttonChangeLanguage.children('img.flag');
-		var $spanLanguageName = $buttonChangeLanguage.children('span.language-name');
+	this.changeLanguage = function(element){
+		var $element = $(element);
 		
-		var language = ( $a.attr('href') ).replace('#', '');
-		var flagImage = $a.children('img').attr('src');
-		var languageName = $a.children('span').html();
-
-		$imgFlag.attr('src', flagImage);
-		$spanLanguageName.attr('data-value', language).html(languageName);
-
-		this.removeAllLanguageScripts();
-		this.addLanguageScript(language, this.loadLanguageScriptStrings);
+		var language;
+		if($element.is('a')){
+			language = ( $element.attr('href') ).replace('#', '');
+		} else {
+			language = $element.val();
+		}
 		
-		e.preventDefault();
+		stash.set('language', language);
+		
+		// Updating config variables and loading language afterwards
+		this.loadConfigs();
+		this.loadLanguage();
 	}
 	
 	this.addLanguageScript = function(language, callback){
@@ -280,6 +321,25 @@ function aaig(){
 	
 	this.removeAllLanguageScripts = function(){
 		$('head').find("script[src^='lang']").remove();
+	}
+	
+	this.loadLanguageScriptStrings = function(){
+		var languageStrings = this.languageStrings;
+		for(var textType in languageStrings){
+			var textTypes = languageStrings[textType];
+			for(var subtype in textTypes){
+				var text = textTypes[subtype];
+				var selector = '.' + textType + '-' + subtype;
+
+				if(textType == 'l'){
+					$(selector).html(text);
+				} else if(textType == 't'){
+					$(selector).attr('title', text);
+				} else if(textType == 'p'){
+					$(selector).attr('placeholder', text);
+				}
+			}
+		}
 	}
 	
 	this.loadTabContents = function(callback){
@@ -309,22 +369,165 @@ function aaig(){
 		});
 	}
 	
-	this.loadLanguageScriptStrings = function(){
-		for(var textType in LANGUAGE){
-			var textTypes = LANGUAGE[textType];
-			for(var subtype in textTypes){
-				var text = textTypes[subtype];
-				var selector = '.' + textType + '-' + subtype;
-
-				if(textType == 'l'){
-					$(selector).html(text);
-				} else if(textType == 't'){
-					$(selector).attr('title', text);
-				} else if(textType == 'p'){
-					$(selector).attr('placeholder', text);
-				}
-			}
+	this.loadModalWindows = function(callback){
+		var $body = $('body');
+		
+		$.get('modal-loading.html').then(function(response){
+			$body.append(response);
+			$.get('modal-config.html').then(function(response){
+				$body.append(response);
+				if(callback) callback();
+			});
+		});
+	}
+	
+	this.triggerClickTab = function(tabNumber){
+		var $ulMainTabs = $('#main-tabs');
+		var $selectedTabButton = $ulMainTabs.children('li').eq(tabNumber - 1).children('a');
+		$selectedTabButton.trigger('click');
+	}
+	
+	this.openTextFile = function(){
+		if(this.checkOnElectron){
+			return this.openTextFileOnElectron();
 		}
+		
+		var $body = $('body');
+		var $activeTab = $('#main-tabs-conteiners').children('div.active').first();
+		var $inputTextBatchMode = $activeTab.find('textarea.text-batch-mode, textarea.text');
+		var $checkboxBatchMode = $activeTab.find('input.batch-mode');
+		var $inputFile;
+		
+		// If the currently active tab is the sandbox, then abort.
+		if($activeTab.is('#sandbox')){
+			alert('Esta funcionalidade não funciona na sandbox!');
+			return;
+		}
+		
+		// If auxiliary input file exists, retrieve it.
+		// Else, create it and retrieve it afterwards
+		if( $('#auxiliary-input-file').length > 0 ){
+			$inputFile = $('#auxiliary-input-file');
+		} else {
+			$inputFile = $('<input />').attr({
+				'id': 'auxiliary-input-file',
+				'type': 'file'
+			}).hide();
+			$body.append($inputFile);
+		}
+		
+		// Adding onchange event on the auxiliary input file, in order to get
+		// data from the file provided by the user
+		$inputFile.one('change', function(){
+			var file = this.files[0];
+			
+			// File is invalid, so remove the input file and abort
+			if(file.type != 'text/plain'){
+				alert('Apenas arquivos .TXT são aceitos!');
+				$inputFile.remove();
+				return;
+			}
+			
+			// File is valid, so doing changes in the fields of the currently
+			// active tab that's non-sandbox
+			var fileReader = new FileReader();
+			fileReader.onload = function(fileLoadedEvent){
+				var textFromFileLoaded = (fileLoadedEvent.target.result).replace(/^\s+|\s+$/g, "");
+				
+				$checkboxBatchMode.prop('checked', true).trigger('change');
+				$inputTextBatchMode.val(textFromFileLoaded).focus();
+			};
+
+			fileReader.readAsText(file, "UTF-8");
+			
+			$inputFile.remove();
+		});
+		
+		// Triggering click event in the auxiliary input field, in order to call
+		// browser's filechooser window, asking for a text file to be selected
+		$inputFile.trigger('click');
+	}
+	
+	this.openTextFileOnElectron = function(){
+		var dialog = require('electron').remote.dialog;
+		var fs = require('fs');
+		
+		var $body = $('body');
+		var $activeTab = $('#main-tabs-conteiners').children('div.active').first();
+		var $inputTextBatchMode = $activeTab.find('textarea.text-batch-mode, textarea.text');
+		var $checkboxBatchMode = $activeTab.find('input.batch-mode');
+		
+		dialog.showOpenDialog({properties: ['openFile']}, function(file){
+			if (file !== undefined) {
+				fs.readFile(file[0], 'utf8', function(err, data){
+					if(err) return console.log(err);
+					
+					var textFromFileLoaded = data.replace(/^\s+|\s+$/g, "");
+					$checkboxBatchMode.prop('checked', true).trigger('change');
+					$inputTextBatchMode.val(textFromFileLoaded).focus();
+				});
+			}
+		})
+	}
+	
+	this.showConfigSettings = function(){
+		var $divConfigSettings = $('#config-settings');
+		
+		// Showing modal
+		$divConfigSettings.modal('show');
+		
+		// Loading configs into form
+		this.loadConfigsForm();
+	}
+	
+	this.loadConfigsForm = function(){
+		var $selectedRadioTheme = $("[name='config-theme'][value='" + this.configs.theme + "']");
+		var $selectedRadioLanguage = $("[name='config-language'][value='" + this.configs.language + "']");
+		
+		// Checking default options for each field
+		$selectedRadioTheme.prop('checked', true);
+		$selectedRadioLanguage.prop('checked', true);
+		
+		// Avoid form resetting default behaviour
+		return false;
+	}
+	
+	this.loadDefaultConfigsForm = function(){
+		var $selectedRadioTheme = $("[name='config-theme'][value='" + this.defaultConfigs.theme + "']");
+		var $selectedRadioLanguage = $("[name='config-language'][value='" + this.defaultConfigs.language + "']");
+		
+		// Checking default options for each field
+		$selectedRadioTheme.prop('checked', true);
+		$selectedRadioLanguage.prop('checked', true);
+		
+		// Avoid form resetting default behaviour
+		return false;
+	}
+	
+	this.hideScriptConfigSettings = function(){
+		$('#config-settings').modal('hide');
+	}
+	
+	this.saveConfigs = function(){
+		var $radioTheme = $("input[name='config-theme']:checked");
+		var $radioLanguage = $("input[name='config-language']:checked");
+		
+		var checkThemeChanged = ($radioTheme.val() != this.configs.theme);
+		var checkLanguageChanged = ($radioLanguage.val() != this.configs.language);
+		
+		this.hideScriptConfigSettings();
+		this.showLoadingIndicator();
+		
+		var that = this;
+		setTimeout(function(){
+			if(checkThemeChanged) that.changeTheme( $radioTheme[0] );
+			if(checkLanguageChanged) that.changeLanguage( $radioLanguage[0] );
+
+			that.hideLoadingIndicator();
+		}, 25);
+		
+		// Needed to avoid form submission
+		return false;
 	}
 	
 	this.setDefaultTextFieldValues = function(){
@@ -350,6 +553,9 @@ function aaig(){
 	
 	this.resetForm = function(form){
 		var $form = $(form);
+		
+		var that = this;
+		
 		setTimeout(function(){
 			$form.find("input[type='text'], input[type='checkbox'], select, textarea").each(function(){
 				var $field = $(this);
@@ -362,7 +568,9 @@ function aaig(){
 				} else {
 					$field.trigger('keyup');
 				}
-			})
+			});
+			
+			that.hidePreviewFilenamesBatchMode( $form.find("input[type='text']").first() );
 		}, 25);
 	}
 	
@@ -481,9 +689,10 @@ function aaig(){
 	
 	this.instantiateFontFields = function(){
 		var $fontFields = $('select.font-3ds');
+		var languageStrings = this.languageStrings;
 		
 		$fontFields.html(
-			$("<option />").html(LANGUAGE.l.loading).attr({
+			$("<option />").html(languageStrings.l.loading).attr({
 				'value': '',
 				'selected': 'selected',
 				'disabled': 'disabled'
@@ -505,13 +714,13 @@ function aaig(){
 						defaultFont = 'Arial';
 						defaultFontSize = 23;
 					} else if(name == 'proof-profile-title-font'){
-						defaultFont = 'Vald Book';
+						defaultFont = 'Vaud Book';
 						defaultFontSize = 18;
 					} else if(name == 'proof-profile-subtitle-font'){
-						defaultFont = 'Vald Book';
+						defaultFont = 'Vaud Book';
 						defaultFontSize = 14;
 					} else if(name == 'proof-profile-description-font'){
-						defaultFont = 'Vald Book';
+						defaultFont = 'Vaud Book';
 						defaultFontSize = 14;
 					}
 
@@ -539,7 +748,7 @@ function aaig(){
 					});
 
 					// Adding option for selecting another fonts
-					$fontField.append('<option value="_o_" class="l-option-another-font">' + LANGUAGE.l['option-another-font'] + '</option>');
+					$fontField.append('<option value="_o_" class="l-option-another-font">' + languageStrings.l['option-another-font'] + '</option>');
 
 					// Setting default font, and fix it in case of the form begin resetted
 					$fontField.val(defaultFont);
@@ -625,6 +834,9 @@ function aaig(){
 				} else {
 					this.updatePreviewSprites($divPreviewConteinerFieldText, current_block, 'n');
 				}
+				
+				// Updating filenames preview
+				this.updatePreviewFilenamesBatchMode(field);
 			} else {
 				if(platform == '3ds'){
 					text = text.replace(/\n/g, '<br />');
@@ -712,11 +924,14 @@ function aaig(){
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 
 		// Updating preview from the current line
-		if(platform == 'ds'){
+		if((platform == 'ds') && (previewConteinerFieldId == 'proof-profile-title-conteiner')){
 			this.updatePreviewSprites($divPreviewConteinerFieldText, current_line);
 		} else {
 			this.updatePreviewText($divPreviewConteinerFieldText, current_line, checkAutomaticScale);
 		}
+		
+		// Updating filenames preview
+		this.updatePreviewFilenamesBatchMode(field);
 	}
 	
 	this.updatePreviewText = function(divPreviewConteiner, text, checkAutomaticScale, approximation){
@@ -923,25 +1138,109 @@ function aaig(){
 				$textfield.hide();
 				$textfieldBatchMode.height(214).slideDown('fast').trigger('keyup');
 				$divBatchModeSettings.show();
+				this.updatePreviewFilenamesBatchMode( $textfield[0] );
 			} else {
 				$textfieldBatchMode.slideUp('fast', function(){
 					$textfield.show().trigger('keyup');
-					$divBatchModeSettings.hide();
+					$divBatchModeSettings.hide().find('input').each(function(){
+						var $input = $(this);
+						if($input.hasClass('batch-mode-initial-file-number')){
+							$input.val('0');
+						} else if($input.hasClass('batch-mode-left-zeroes')){
+							$input.val('8');
+						} else {
+							$input.val('.bch');
+						}
+					});
 				});
+				this.hidePreviewFilenamesBatchMode( $textfield[0] );
 			}
 		} else if( $.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner']) !== -1 ){
 			var height, resizable_class;
 			if($checkbox.is(':checked')){
 				height = 214;
 				resizable_class = 'resizable-vertical';
+				
+				$divBatchModeSettings.show();
 			} else {
 				height = 74;
 				resizable_class = 'noresizable';
+				
+				$divBatchModeSettings.hide().find('input').each(function(){
+					var $input = $(this);
+					if($input.hasClass('batch-mode-initial-file-number')){
+						$input.val('0');
+					} else if($input.hasClass('batch-mode-left-zeroes')){
+						$input.val('8');
+					} else {
+						$input.val('.bch');
+					}
+				});
 			}
 			
 			$textfield.animate({'height': height}, 'fast', function(){
 				$textfield.removeClass('noresizable resizable-vertical').addClass(resizable_class).trigger('keyup');
 			});
+		}
+	}
+	
+	this.hidePreviewFilenamesBatchMode = function(field){
+		var $field = $(field);
+		var $form = $field.closest('form');
+		var previewConteinerFieldId = $form.attr('data-image');
+		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
+		var $ulPreviewFilenames = $divPreviewConteinerField.parent().find('ul.preview-filenames-batch-mode');
+		var $divConteinerPreviewFilenames = $ulPreviewFilenames.closest('div.form-inline');
+		
+		$divConteinerPreviewFilenames.hide();
+	}
+	
+	this.updatePreviewFilenamesBatchMode = function(field){
+		var $field = $(field);
+		var $form = $field.closest('form');
+		var $textarea = $form.find('textarea.text, textarea.text-batch-mode');
+		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
+		var $inputBatchModeLeftZeroes = $form.find('input.batch-mode-left-zeroes');
+		var $inputBatchModeSuffix = $form.find('input.batch-mode-suffix');
+		var previewConteinerFieldId = $form.attr('data-image');
+		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
+		var $ulPreviewFilenames = $divPreviewConteinerField.parent().find('ul.preview-filenames-batch-mode');
+		var $divConteinerPreviewFilenames = $ulPreviewFilenames.closest('div.form-inline');
+		
+		var text = $textarea.val();
+		var blocks;
+		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner', 'proof-profile-title-conteiner']) !== -1 ){
+			blocks = text.split(/\n/);
+		} else {
+			blocks = text.split(/\n\n/);
+		}
+		var totalBlocks = blocks.length;
+		var initialFileNumber = parseInt($inputBatchModeInitialFileNumber.val(), 10);
+		var leftZeroes = parseInt($inputBatchModeLeftZeroes.val(), 10);
+		var suffix = $inputBatchModeSuffix.val();
+		
+		if(isNaN(initialFileNumber)) initialFileNumber = 0;
+		if(isNaN(leftZeroes)) leftZeroes = 0;
+		
+		$divConteinerPreviewFilenames.show();
+		$ulPreviewFilenames.html('');
+		for(var i in blocks){
+			var filename = this.formatFilenameBatchMode(initialFileNumber, leftZeroes, suffix) + '.png';
+			
+			$ulPreviewFilenames.append(
+				$('<li />').html(filename)
+			);
+			
+			initialFileNumber++;
+			
+			if(i >= 9){
+				$ulPreviewFilenames.append(
+					$('<li />').html((totalBlocks - i) + ' ').append(
+						$('<span />').addClass('l-batch-filenaming-preview-other-files').html(this.languageStrings.l['batch-filenaming-preview-other-files'])
+					)
+				);
+				break;
+			}
 		}
 	}
 	
@@ -1093,6 +1392,7 @@ function aaig(){
 		var $checkboxBatchMode = $form.find('input.batch-mode');
 		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
 		var $inputBatchModeLeftZeroes = $form.find('input.batch-mode-left-zeroes');
+		var $inputBatchModeSuffix = $form.find('input.batch-mode-suffix');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		
@@ -1103,6 +1403,7 @@ function aaig(){
 		var filename = previewConteinerFieldId + '-' + date;
 		var initialFileNumber = $inputBatchModeInitialFileNumber.val();
 		var leftZeroes = $inputBatchModeLeftZeroes.val();
+		var suffix = $inputBatchModeSuffix.val();
 		
 		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner']) !== -1 ){
 			// Buttons and small buttons
@@ -1110,7 +1411,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
-				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes);
+				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1120,7 +1421,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
-				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes);
+				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1130,7 +1431,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes);
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1141,7 +1442,7 @@ function aaig(){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
 				$divPreviewConteinerField.removeClass('brown-background');
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, function(){
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, suffix, function(){
 					$divPreviewConteinerField.addClass('brown-background');
 				});
 			} else {
@@ -1200,7 +1501,7 @@ function aaig(){
 		});
 	}
 	
-	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, callback){
+	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, suffix, callback){
 		var $element = $(element);
 		var $divPreviewConteinerFieldText = $element.children('div.text');
 		var $tab = $element.closest('div.tab-pane');
@@ -1256,7 +1557,7 @@ function aaig(){
 
 					// Adding images in the zip file
 					for(var j in canvases){
-						var filename = that.zeroFill(initialFileNumber, leftZeroes) + '.png';
+						var filename = that.formatFilenameBatchMode(initialFileNumber, leftZeroes, suffix) + '.png';
 						var image = canvases[j].toDataURL();
 						var header_index = image.indexOf(",");
 						var base64_image = image.slice(header_index + 1);
@@ -1285,6 +1586,10 @@ function aaig(){
 		date = date.slice(0, 19).replace(/T/g, '-').replace(/:/g, '-');
 		
 		return date;
+	}
+	
+	this.formatFilenameBatchMode = function(initialFileNumber, leftZeroes, suffix){
+		return this.zeroFill(initialFileNumber, leftZeroes) + suffix;
 	}
 	
 	this.zeroFill = function(number, width){
@@ -1361,6 +1666,61 @@ function aaig(){
 			return newCharacter;
 		} else {
 			return 'unknown';
+		}
+	}
+	
+	this.maskFilenameInput = function(event){
+		var keyCode = event.which;
+		
+		var invalidKeycodes = [81, 87, 106, 111, 188, 191, 192, 220, 221];
+		var checkKeycodeInvalid = ($.inArray(keyCode, invalidKeycodes) !== -1);
+		if(checkKeycodeInvalid){
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	this.checkOnElectron = function(){
+		return (typeof process == 'object');
+	}
+	
+	this.getTitle = function(){
+		if( this.checkOnElectron() ){
+			var ipc = require('electron').ipcRenderer;
+			return ipc.sendSync('getTitle');
+		} else {
+			return $('title').html();
+		}
+	}
+	
+	this.setTitle = function(title){
+		if( this.checkOnElectron() ){
+			var ipc = require('electron').ipcRenderer;
+			ipc.send('setTitle', title);
+		} else {
+			$('title').html(title);
+		}
+	}
+	
+	this.removeTitleAttributeOnElectron = function(){
+		if( this.checkOnElectron() ){
+			var $title = $('title');
+			var title = $title.html();
+			
+			$title.remove();
+			this.setTitle(title);
+		}
+	}
+	
+	this.closeAboutWindowOnEscEvent = function(){
+		if( this.checkOnElectron() ){
+			document.addEventListener('keydown', function(e){
+				if(e.which == 27){
+					var ipc = require('electron').ipcRenderer;
+					ipc.send('closeAboutWindow');
+				}
+			});
 		}
 	}
 }

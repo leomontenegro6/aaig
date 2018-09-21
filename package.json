@@ -1,0 +1,26 @@
+{
+	"name": "Ace Attorney Image Generator",
+	"version": "0.6c",
+	"description": "Gerador de imagens para os três primeiros jogos da franquia Ace Attorney",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"repository": "https://github.com/leomontenegro6",
+	"keywords": [
+		"phoenix",
+		"wright",
+		"ace",
+		"attorney",
+		"trilogy",
+		"gyakuten",
+		"saiban",
+		"image",
+		"generator"
+	],
+	"author": "Solid One",
+	"license": "GPL-3.0",
+	"devDependencies": {
+		"electron": "~1.8.4"
+	}
+}

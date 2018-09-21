@@ -1,12 +1,20 @@
-var LANGUAGE = {
-	'l': {
+aaig.languageStrings = {
+	'l': { // Common texts
 		'main-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v0.6b',
-		'theme': 'Tema',
+		'version': 'v0.6c',
+		
+		'menu-title': 'Archivo',
+		'open-text-file': 'Abrir archivo de texto',
+		'configs': 'Configuraciones',
+		'about': 'Sobre el programa',
+		
+		'theme': 'Tema:',
 		'light-theme': 'Claro',
 		'dark-theme': 'Oscuro',
+		'language': 'Idioma:',
+		
 		'tab-buttons': 'Botones',
 		'tab-smaller-buttons': 'Botones menores',
 		'tab-proof-profile-titles': 'Título de la prueba / Perfil',
@@ -19,11 +27,13 @@ var LANGUAGE = {
 		'label-proof-profile-subtitles': 'Texto del subtítulo de la prueba / perfil:',
 		'label-proof-profile-descriptions': 'Texto de la descripción de la prueba / perfil:',
 		
-		'accordion-visual-customizations': 'Personalizacion Visual',
+		'label-platform': 'Plataforma:',
 		'label-batch-mode': 'Por Lotes:',
 		'label-batch-mode-initial-file-number': 'Numero ficheiro inicial:',
 		'label-batch-mode-left-zeroes': 'Ceros a la izquierda:',
-		'label-platform': 'Plataforma:',
+		'label-batch-mode-suffix': 'Sufijo:',
+		
+		'accordion-visual-customizations': 'Personalizacion Visual',
 		'label-scale': 'Escala:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">matica</span>',
 		'label-font': 'Fuente:',
@@ -41,11 +51,15 @@ var LANGUAGE = {
 		'option-ds-font-condensed': 'Condensada',
 		'option-ds-font-extra-condensed': 'Extra Condensada',
 		
-		'button-generate-image': 'Generar',
+		'button-cancel-form': 'Cancelar',
 		'button-reset-form': 'Resetear',
+		'button-save-form': 'Guardar',
+		'button-generate-image': 'Generar',
 		
 		'filters': 'Filtros',
 		'preview': 'Previsualización',
+		'batch-filenaming-preview': 'Nomes de archivos:',
+		'batch-filenaming-preview-other-files': 'otro(s) archivo(s)',
 		'last-canvases': 'Ultimos Canvas Creados',
 		'sandbox-bigger-buttons': 'Botones grandes',
 		'sandbox-smaller-buttons': 'Botones menores',
@@ -56,12 +70,12 @@ var LANGUAGE = {
 	'p': { // Placeholders
 		'text-buttons': 'Escribe para ver el resultado en la previsualización',
 		'text-batch-mode': 'Escribe textos separados por quebras de linha',
+		'text-batch-mode-suffix': 'Incluido antes de la extensión',
 		'text-sandbox-mode': 'Escribe para ver el resultado en la previsualización',
 		'another-font': 'Escribe aquí el nombre de la fuente',
 		'none': 'Ningún'
 	},
 	't': { // Tooltips
-		'about': 'Sobre el programa',
 		'button-bold': 'Negrita',
 		'button-italic': 'Itálico',
 	}

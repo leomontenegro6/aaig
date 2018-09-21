@@ -5,6 +5,7 @@
 Leer en otros idiomas: [Português do Brasil](README.pt-br.md), [English](README.md).*
 
 [Enlace](https://leomontenegro6.github.io/aaig/)
+
 [Enlace - Mirror](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" es un juego muy grande, con muchas imágenes a editar:
@@ -40,7 +41,7 @@ La manera tradicional de editar estas imágenes es a través de archivos .PSD en
 *   Un navegador moderno. Google Chrome es recomendado, ya que hay algunas diferencias en el comportamiento del CSS en algunos navegadores como Firefox, Safari o IE;
 *   La fuente "Arial" instalada en el ordenador. Es necesaria para la correcta creación de imágenes, así como los botones (Si usas algún SO de Windows puedes omitir esto);
 *   La fuente "Vaud Book" instalada en el ordenador. Es necesaria para la correcta creación de imágenes, así como descripciones de pruebas / perfiles;
-*   Un servidro web. El software no funcionará si no se cumple el requisito¹.
+*   APENAS SERVIDRO WEB: Un servidro web. El software no funcionará si no se cumple el requisito¹.
 
 ¹ Si se aloja de manera local, la creación de imágenes (conversión de elementos HTML &lt;canvas&gt; a imágenes PNG) puede desencadenar un [error de seguridad no capturado de cuadros contaminados], rechazando cualquier intento de exportación de datos (http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported) .Por lo tanto, recomendamos ejecutar este software a través de un servidor web (Apache2, por ejemplo), aunque sólo sea para servir archivos a clientes.
 

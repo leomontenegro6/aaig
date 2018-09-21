@@ -3,6 +3,7 @@
 **Programa desenvolvido para agilizar na edição de imagens do jogo "Ace Attorney Trilogy", para Nintendo 3DS.**
 
 [Prévia ao vivo](https://leomontenegro6.github.io/aaig/)
+
 [Prévia ao vivo - Mirror](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" é um jogo bastante extenso, com centenas de imagens com textos a ser editadas:
@@ -37,8 +38,8 @@ O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imag
 
 *   Um navegador moderno atualizado. De preferência o Google Chrome, visto que em outros navegadores, como Mozilla Firefox, Safari ou Internet Explorer, poderão surgir algumas diferenças de comportamento de estilizações CSS;
 *   A fonte "Arial" instalada no seu computador. Necessária para a geração correta das imagens de botões por exemplo (Caso use Windows, desconsidere);
-*   A fonte "Vald Book" instalada no seu computador. Necessária para a geração correta das imagens de descrições de provas por exemplo;
-*   Um servidor web. O programa não funcionará se executado localmente pelo navegador do usuário¹.
+*   A fonte "Vaud Book" instalada no seu computador. Necessária para a geração correta das imagens de descrições de provas por exemplo;
+*   APENAS WEB: Um servidor web. O programa não funcionará se executado localmente pelo navegador do usuário¹.
 
 ¹ Mesmo este programa sendo totalmente local, a forma como as imagens são geradas (conversão de elementos <canvas> para imagem PNG) viola certas [diretrizes de segurança de navegadores web](http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported) . Por isso, recomenda-se executar este programa a partir de um servidor web (Apache2 por exemplo), nem que seja apenas para servir os arquivos para os clientes.
 

@@ -18,6 +18,18 @@ body{
 	from { transform: scale(1) rotate(0deg);}
 	to { transform: scale(1) rotate(360deg);}
 }
+
+a.navbar-brand{
+	padding: 10px 15px;
+}
+a.navbar-brand img.brand{
+	width: 32px;
+}
+a.navbar-brand img.brand, a.navbar-brand span.title{
+	display: inline-block;
+	vertical-align: middle;
+}
+
 a[aria-controls="proof-profile-titles"] span.glyphicon{
 	background: #E49924;
 	color: #383838;
@@ -86,7 +98,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 }
 #proof-profile-title-conteiner div.text{
 	width: 160px;
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	text-align: center;
 	color: #E4A018;
 	transform-origin: 0 0;
@@ -123,7 +135,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 }
 #proof-profile-subtitle-conteiner div.text{
 	width: 160px;
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
 	color: #444;
 	line-height: 1.35;
@@ -158,7 +170,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 }
 #proof-profile-description-conteiner div.text{
 	width: 238.139534884px; /* 256 divided by (scaleX) */
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	color: #eee;
 	line-height: 1.35;
 	transform: scaleX(1.075);
@@ -329,7 +341,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 #proof-profile-conteiner-sandbox div.proof-profile-title{
 	width: 153.11px;
 	transform: scaleX(1.045);
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	font-size: 18px;
 	text-align: center;
 	color: #E4A018;
@@ -341,7 +353,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 
 #proof-profile-conteiner-sandbox div.proof-profile-subtitle{
 	width: 160px;
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
 	color: #444;
 	line-height: 1.35;
@@ -353,7 +365,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 
 #proof-profile-conteiner-sandbox div.proof-profile-description{
 	width: 272px;
-	font-family: "Vald Book";
+	font-family: "Vaud Book";
 	color: #eee;
 	line-height: 1.35;
 	transform-origin: 0 0;
@@ -406,6 +418,10 @@ input.slider-value{
 
 input.batch-mode-left-zeroes{
 	width: 95px !important;
+}
+
+input.batch-mode-suffix{
+	width: 200px !important;
 }
 
 .bold{
@@ -481,7 +497,23 @@ input[type="radio"]:checked + label::before {
 	background: url(../images/radio_check.png) -57px top no-repeat;
 }
 
-/* Rules for medium devices, according to bootstrap (md) */
+/* Sticky footer */
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin-bottom: 30px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background-color: #333;
+}
+
+/* Rules for middle devices (md) */
 @media (min-width: 992px) and (max-width: 1199px) {
 	.container {
 		width: 100%;
@@ -498,7 +530,7 @@ input[type="radio"]:checked + label::before {
 	}
 }
 
-/* Rules for small devices, according to bootstrap (sm) */
+/* Rules for small devices (sm) */
 @media (min-width: 768px) and (max-width: 991px) {
 	.container {
 		width: 100%;
@@ -520,12 +552,9 @@ input[type="radio"]:checked + label::before {
 	}
 }
 
-/* Rules for extra-small devices, according to bootstrap (xs) */
+/* Rules for extra-small devices (xs) */
 @media (max-width: 480px) {
-	#header ul.title, #header ul.title>li{
-		display: inline-block;
-	}
-	#header ul.about{
-		float: right;
+	a.navbar-brand span.title.visible-xs{
+		display: inline-block !important;
 	}
 }

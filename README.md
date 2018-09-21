@@ -5,6 +5,7 @@
 *Read this in other languages: [Português do Brasil](README.pt-br.md), [Español](README.es.md).*
 
 [Live preview](https://leomontenegro6.github.io/aaig/)
+
 [Live preview - Mirror](http://www.romhacking.net.br/tools/aaig/)
 
 "Ace Attorney Trilogy" is a very big game, with lots of text images to be edited:
@@ -40,7 +41,7 @@ The "Ace Attorney Image Generator" is a program that can generate imagens on the
 *   A modern updated web browser. Google Chrome is recommended, since a few CSS behaviour differences can be seen on other browsers such as Firefox, Safari or IE;
 *   The "Arial" font installed on your computer. Needed for the right generation of some kinds of images, such as buttons per example (If you're using any Windows SO, you can ignore this);
 *   The "Vaud Book" font installed on your computer. Needed for the right generation of some kinds of images, such as descriptions of proofs / profiles;
-*   A web server. This software won't work if ran locally by user's web browser¹.
+*   WEB VERSION ONLY: A web server. This software won't work if ran locally by user's web browser¹.
 
 ¹ Even if this software being totally local, the method used for image generation (conversion of HTML &lt;canvas&gt; elements to PNG images) can trigger an [uncaught security error of tainted canvases](http://stackoverflow.com/questions/22710627/tainted-canvases-may-not-be-exported) , denying any attempts of data exporting. Thus, we recommend to run this software through a web server (Apache2, per example), even if it's only to serve files to clients.
 

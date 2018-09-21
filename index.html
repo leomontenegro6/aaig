@@ -34,10 +34,10 @@
 		
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-slider.min.css">
-		<link rel="stylesheet" href="css/css.css?v=0.6b">
-		<link rel="stylesheet" href="css/sprites-titles.css?v=0.6b">
-		<link rel="stylesheet" href="css/sprites-subtitles.css?v=0.6b">
-		<link rel="stylesheet" href="css/sprites-descriptions.css?v=0.6b">
+		<link rel="stylesheet" href="css/css.css?v=0.6c">
+		<link rel="stylesheet" href="css/sprites-titles.css?v=0.6c">
+		<link rel="stylesheet" href="css/sprites-subtitles.css?v=0.6c">
+		<link rel="stylesheet" href="css/sprites-descriptions.css?v=0.6c">
 		<link rel="stylesheet" href="css/theme-dark.css">
 		
 		<!--
@@ -51,9 +51,9 @@
 		<script type="text/javascript" src="js/bootstrap-slider.min.js"></script>
 		<script type="text/javascript" src="js/jszip.min.js"></script>
 		<script type="text/javascript" src="js/FileSaver.min.js"></script>
-		<script type="text/javascript" src="js/html2canvas.js?v=0.6b"></script>
-		<script type="text/javascript" src="js/aaig.js?v=0.6b"></script>
-		<script type="text/javascript" src="js/lang.pt-br.js?v=0.6b"></script>
+		<script type="text/javascript" src="js/stash.min.js"></script>
+		<script type="text/javascript" src="js/html2canvas.js?v=0.6c"></script>
+		<script type="text/javascript" src="js/aaig.js?v=0.6c"></script>
 		<script type="text/javascript">
 			// Electron - Line needed in order to script imports to work.
 			// Need to be added after all JS files are loaded.
@@ -62,14 +62,20 @@
 			// Common tool routines
 			var device = aaig.getDevice(true);
 			$(function(){
+				aaig.loadConfigs();
+				aaig.loadTheme();
 				aaig.loadTabContents(function(){
-					aaig.loadLanguageScriptStrings();
-					aaig.setDefaultTextFieldValues();
-					aaig.triggerMainTextFieldEvents();
-					aaig.toggleSandboxFieldEventsOnTabClick();
-					aaig.toggleAccordionIcon();
-					aaig.instantiateSliderFields();
-					aaig.instantiateFontFields();
+					aaig.loadModalWindows(function(){
+						aaig.loadLanguage(function(){
+							aaig.setDefaultTextFieldValues();
+							aaig.triggerMainTextFieldEvents();
+							aaig.toggleSandboxFieldEventsOnTabClick();
+							aaig.toggleAccordionIcon();
+							aaig.instantiateSliderFields();
+							aaig.instantiateFontFields();
+							aaig.removeTitleAttributeOnElectron();
+						});
+					});
 				});
 			})
 		</script>
@@ -77,89 +83,64 @@
 	<body>
 		<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container-fluid">
-				<nav id="header" class="navbar-collapse">
-					<ul class="nav navbar-nav title">
-						<li>
-							<a class="navbar-brand" href="#" style="padding-top: 0;">
-								<img src="favicons/brand.png" />
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#global-actions-menu" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">
+						<img class="brand" alt="Brand" src="favicons/brand.png" />
+						<span class="title hidden-xs">
+							<span class="l-navbar-title">&nbsp;</span>
+							<span class="l-version">&nbsp;</span>
+						</span>
+						<span class="title visible-xs">
+							<span class="l-navbar-title-mobile">&nbsp;</span>
+							<span class="l-version">&nbsp;</span>
+						</span>
+					</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="global-actions-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<span class="l-menu-title">&nbsp;</span>
+								<span class="caret"></span>
 							</a>
-						</li>
-						<li>
-							<a class="navbar-brand" href="#">
-								<span class="hidden-xs">
-									<span class="l-navbar-title">&nbsp;</span>
-									<span class="l-version">&nbsp;</span>
-								</span>
-								<span class="visible-xs">
-									<span class="l-navbar-title-mobile">&nbsp;</span>
-									<span class="l-version">&nbsp;</span>
-								</span>
-							</a>
+							<ul id="global-actions-dropdown" class="dropdown-menu">
+								<li>
+									<a href="#" onclick="aaig.openTextFile()">
+										<span class="glyphicon glyphicon-open-file"></span>
+										<span class="l-open-text-file">&nbsp;</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick="aaig.showConfigSettings()">
+										<span class="glyphicon glyphicon-cog"></span>
+										<span class="l-configs">&nbsp;</span>
+									</a>
+								</li>
+								<li>
+									<a href="#" onclick="aaig.openPageAboutThisSoftware()">
+										<span class="glyphicon glyphicon-info-sign"></span>
+										<span class="l-about">&nbsp;</span>
+									</a>
+								</li>
+							</ul>
 						</li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right about">
-						<li>
-							<a class="navbar-brand t-about" href="#" title="" id="about-this-software" onclick="aaig.openPageAboutThisSoftware()">
-								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-							</a>
-						</li>
-					</ul>
-				</nav>
+				</div>
 			</div>
 		</nav>
 		
-		<!-- Language selection field -->
-		<div class="dropdown pull-right" style="margin-right: 5px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="language-button"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<img class="flag" src="images/flag_brazil.png" />
-				<span class="language-name" data-value="pt-br">Português</span>
-				<span class="caret"></span>
-			</button>
-			<ul id="languages-list" class="dropdown-menu" aria-labelledby="language-button">
-				<li>
-					<a href="#en-us" onclick="aaig.changeLanguage(this, event)">
-						<img src="images/flag_usa.png" />
-						<span>English</span>
-					</a>
-				</li>
-				<li>
-					<a href="#es" onclick="aaig.changeLanguage(this, event)">
-						<img src="images/flag_spain.png" />
-						<span>Español</span>
-					</a>
-				</li>
-				<li>
-					<a href="#pt-br" onclick="aaig.changeLanguage(this, event)">
-						<img src="images/flag_brazil.png" />
-						<span>Português</span>
-					</a>
-				</li>
-			</ul>
-		</div>
-		
-		<!-- Theme selection field -->
-		<div class="dropdown pull-right" style="margin-right: 5px">
-			<button class="btn btn-default dropdown-toggle" type="button" id="theme-button"
-				data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<i class="glyphicon glyphicon-text-background"></i>
-				<span class="l-theme">Tema</span>
-				<span class="caret"></span>
-			</button>
-			<ul id="themes-list" class="dropdown-menu" aria-labelledby="theme-button">
-				<li>
-					<a href="#light" class="l-light-theme" onclick="aaig.changeTheme(this, event)">Claro</a>
-				</li>
-				<li>
-					<a href="#dark" class="l-dark-theme" onclick="aaig.changeTheme(this, event)">Escuro</a>
-				</li>
-			</ul>
-		</div>
-		<br /><br />
-		
-		<div class="container">
+		<div id="main-container" class="container">
 			<!-- Tabs -->
-			<ul class="nav nav-tabs" role="tablist">
+			<ul id="main-tabs" class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active">
 					<a href="#buttons" aria-controls="buttons" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-align-justify"></span>
@@ -199,7 +180,7 @@
 			</ul>
 
 			<!-- Tab conteiners -->
-			<div class="tab-content">
+			<div id="main-tabs-conteiners" class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="buttons">
 					<!-- include "tab-buttons.html" -->
 					<span class="l-loading">&nbsp;</span>
@@ -223,18 +204,6 @@
 				<div role="tabpanel" class="tab-pane" id="sandbox">
 					<!-- include "tab-sandbox.html" -->
 					<span class="l-loading">&nbsp;</span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="modal" id="loading-indicator" tabindex="-1" role="dialog"
-			aria-labelledby="loadingIndicator" data-backdrop="static" data-keyboard="false">
-			<div class="modal-dialog modal-sm" role="document">
-				<div class="modal-content">
-					<div class="modal-body text-center">
-						<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-						<span class="l-loading">&nbsp;</span>
-					</div>
 				</div>
 			</div>
 		</div>

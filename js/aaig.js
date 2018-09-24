@@ -388,7 +388,7 @@ function aaig(){
 	}
 	
 	this.openTextFile = function(){
-		if(this.checkOnElectron){
+		if( this.checkOnElectron() ){
 			return this.openTextFileOnElectron();
 		}
 		
@@ -1201,6 +1201,7 @@ function aaig(){
 		var $textarea = $form.find('textarea.text, textarea.text-batch-mode');
 		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
 		var $inputBatchModeLeftZeroes = $form.find('input.batch-mode-left-zeroes');
+		var $inputBatchModePrefix = $form.find('input.batch-mode-prefix');
 		var $inputBatchModeSuffix = $form.find('input.batch-mode-suffix');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
@@ -1217,6 +1218,7 @@ function aaig(){
 		var totalBlocks = blocks.length;
 		var initialFileNumber = parseInt($inputBatchModeInitialFileNumber.val(), 10);
 		var leftZeroes = parseInt($inputBatchModeLeftZeroes.val(), 10);
+		var prefix = $inputBatchModePrefix.val();
 		var suffix = $inputBatchModeSuffix.val();
 		
 		if(isNaN(initialFileNumber)) initialFileNumber = 0;
@@ -1225,7 +1227,7 @@ function aaig(){
 		$divConteinerPreviewFilenames.show();
 		$ulPreviewFilenames.html('');
 		for(var i in blocks){
-			var filename = this.formatFilenameBatchMode(initialFileNumber, leftZeroes, suffix) + '.png';
+			var filename = this.formatFilenameBatchMode(initialFileNumber, leftZeroes, prefix, suffix) + '.png';
 			
 			$ulPreviewFilenames.append(
 				$('<li />').html(filename)
@@ -1392,6 +1394,7 @@ function aaig(){
 		var $checkboxBatchMode = $form.find('input.batch-mode');
 		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
 		var $inputBatchModeLeftZeroes = $form.find('input.batch-mode-left-zeroes');
+		var $inputBatchModePrefix = $form.find('input.batch-mode-prefix');
 		var $inputBatchModeSuffix = $form.find('input.batch-mode-suffix');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
@@ -1403,6 +1406,7 @@ function aaig(){
 		var filename = previewConteinerFieldId + '-' + date;
 		var initialFileNumber = $inputBatchModeInitialFileNumber.val();
 		var leftZeroes = $inputBatchModeLeftZeroes.val();
+		var prefix = $inputBatchModePrefix.val();
 		var suffix = $inputBatchModeSuffix.val();
 		
 		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner']) !== -1 ){
@@ -1411,7 +1415,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
-				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
+				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1421,7 +1425,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
-				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
+				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1431,7 +1435,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, suffix);
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1442,7 +1446,7 @@ function aaig(){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
 				$divPreviewConteinerField.removeClass('brown-background');
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, suffix, function(){
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, function(){
 					$divPreviewConteinerField.addClass('brown-background');
 				});
 			} else {
@@ -1501,7 +1505,7 @@ function aaig(){
 		});
 	}
 	
-	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, suffix, callback){
+	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, callback){
 		var $element = $(element);
 		var $divPreviewConteinerFieldText = $element.children('div.text');
 		var $tab = $element.closest('div.tab-pane');
@@ -1557,7 +1561,7 @@ function aaig(){
 
 					// Adding images in the zip file
 					for(var j in canvases){
-						var filename = that.formatFilenameBatchMode(initialFileNumber, leftZeroes, suffix) + '.png';
+						var filename = that.formatFilenameBatchMode(initialFileNumber, leftZeroes, prefix, suffix) + '.png';
 						var image = canvases[j].toDataURL();
 						var header_index = image.indexOf(",");
 						var base64_image = image.slice(header_index + 1);
@@ -1588,8 +1592,8 @@ function aaig(){
 		return date;
 	}
 	
-	this.formatFilenameBatchMode = function(initialFileNumber, leftZeroes, suffix){
-		return this.zeroFill(initialFileNumber, leftZeroes) + suffix;
+	this.formatFilenameBatchMode = function(initialFileNumber, leftZeroes, prefix, suffix){
+		return prefix + this.zeroFill(initialFileNumber, leftZeroes) + suffix;
 	}
 	
 	this.zeroFill = function(number, width){

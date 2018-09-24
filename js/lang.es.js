@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v0.6c',
+		'version': 'v0.6d',
 		
 		'menu-title': 'Archivo',
 		'open-text-file': 'Abrir archivo de texto',
@@ -31,6 +31,7 @@ aaig.languageStrings = {
 		'label-batch-mode': 'Por Lotes:',
 		'label-batch-mode-initial-file-number': 'Numero ficheiro inicial:',
 		'label-batch-mode-left-zeroes': 'Ceros a la izquierda:',
+		'label-batch-mode-prefix': 'Prefijo:',
 		'label-batch-mode-suffix': 'Sufijo:',
 		
 		'accordion-visual-customizations': 'Personalizacion Visual',
@@ -70,6 +71,7 @@ aaig.languageStrings = {
 	'p': { // Placeholders
 		'text-buttons': 'Escribe para ver el resultado en la previsualización',
 		'text-batch-mode': 'Escribe textos separados por quebras de linha',
+		'text-batch-mode-prefix': 'Incluido al principio del archivo',
 		'text-batch-mode-suffix': 'Incluido antes de la extensión',
 		'text-sandbox-mode': 'Escribe para ver el resultado en la previsualización',
 		'another-font': 'Escribe aquí el nombre de la fuente',

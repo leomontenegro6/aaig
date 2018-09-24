@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Ace Attorney Image Generator',
 		'navbar-title': 'Ace Attorney Image Generator',
 		'navbar-title-mobile': 'AAIG',
-		'version': 'v0.6c',
+		'version': 'v0.6d',
 		
 		'menu-title': 'File',
 		'open-text-file': 'Open text file',
@@ -31,6 +31,7 @@ aaig.languageStrings = {
 		'label-batch-mode': 'Batch Mode:',
 		'label-batch-mode-initial-file-number': 'Initial File Number:',
 		'label-batch-mode-left-zeroes': 'Left Zeroes:',
+		'label-batch-mode-prefix': 'prefix:',
 		'label-batch-mode-suffix': 'Suffix:',
 		
 		'accordion-visual-customizations': 'Visual Customizations',
@@ -70,6 +71,7 @@ aaig.languageStrings = {
 	'p': { // Placeholders
 		'text-buttons': 'Type text to be shown on preview on the right',
 		'text-batch-mode': 'Type texts separated by line breaks',
+		'text-batch-mode-prefix': 'To be included in the beginning of the file',
 		'text-batch-mode-suffix': 'To be included before file extension',
 		'text-sandbox-mode': 'Type text to be shown on preview on the right',
 		'another-font': 'Type font name here',

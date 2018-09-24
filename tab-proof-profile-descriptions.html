@@ -46,6 +46,10 @@
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" onmouseup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
+								<label for="proof-profile-description-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
+								<input type="text" id="proof-profile-description-batch-mode-prefix" name="proof-profile-description-batch-mode-prefix"
+									value=".bch" class="form-control batch-mode-prefix p-text-batch-mode-prefix"
+									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="proof-profile-description-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
 								<input type="text" id="proof-profile-description-batch-mode-suffix" name="proof-profile-description-batch-mode-suffix"
 									value=".bch" class="form-control batch-mode-suffix p-text-batch-mode-suffix"

@@ -150,10 +150,12 @@ function aaig(){
 		},
 		'proof-profile-description-conteiner': {
 			'ds': {
+				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
 				},
 				'font-3ds': 'Ace Attorney US',
+				'font-ds': 'a',
 				'font-size': 16,
 				'margin-top': {
 					'value': 0
@@ -170,9 +172,11 @@ function aaig(){
 				'show-font-3ds-field': false,
 				'show-font-ds-field': true,
 				'show-scale-field': false,
-				'trigger-keyup-text-fields': true
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
 			},
 			'3ds': {
+				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1.075
 				},
@@ -193,7 +197,8 @@ function aaig(){
 				'show-font-3ds-field': true,
 				'show-font-ds-field': false,
 				'show-scale-field': true,
-				'trigger-keyup-text-fields': true
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
 			}
 		},
 		'button-conteiner-sandbox': {
@@ -296,6 +301,14 @@ function aaig(){
 		});
 	}
 	
+	this.setTitleByOption = function(selectField){
+		var $selectField = $(selectField);
+		
+		var selectedOptionText = $selectField.children('option:selected').first().text();
+		
+		$selectField.attr('title', selectedOptionText);
+	}
+	
 	this.changeLanguage = function(element){
 		var $element = $(element);
 		
@@ -311,6 +324,7 @@ function aaig(){
 		// Updating config variables and loading language afterwards
 		this.loadConfigs();
 		this.loadLanguage();
+		this.updateDesktopMenusLanguage();
 	}
 	
 	this.addLanguageScript = function(language, callback){
@@ -452,21 +466,30 @@ function aaig(){
 		var dialog = require('electron').remote.dialog;
 		var fs = require('fs');
 		
-		var $body = $('body');
 		var $activeTab = $('#main-tabs-conteiners').children('div.active').first();
 		var $inputTextBatchMode = $activeTab.find('textarea.text-batch-mode, textarea.text');
 		var $checkboxBatchMode = $activeTab.find('input.batch-mode');
 		
-		dialog.showOpenDialog({properties: ['openFile']}, function(file){
-			if (file !== undefined) {
-				fs.readFile(file[0], 'utf8', function(err, data){
-					if(err) return console.log(err);
-					
-					var textFromFileLoaded = data.replace(/^\s+|\s+$/g, "");
-					$checkboxBatchMode.prop('checked', true).trigger('change');
-					$inputTextBatchMode.val(textFromFileLoaded).focus();
-				});
+		dialog.showOpenDialog({properties: ['openFile']}, function(files){
+			if (files === undefined) {
+				return;
 			}
+			
+			var file = files[0];
+			var extension = ( file.split('.').pop() ).toLowerCase();
+			
+			if(extension != 'txt'){
+				alert('Apenas arquivos .TXT são aceitos!');
+				return;
+			}
+			
+			fs.readFile(file, 'utf8', function(err, data){
+				if(err) return console.log(err);
+
+				var textFromFileLoaded = data.replace(/^\s+|\s+$/g, "");
+				$checkboxBatchMode.prop('checked', true).trigger('change');
+				$inputTextBatchMode.val(textFromFileLoaded).focus();
+			});
 		})
 	}
 	
@@ -538,7 +561,7 @@ function aaig(){
 		$('#proof-profile-title-text').attr('value', 'Fingerprinting Set');
 		$('#proof-profile-title-text-batch-mode').html('Attorney\'s Badge\nCindy\'s Autopsy Report\nStatue / The Thinker\nPassport');
 		$('#proof-profile-subtitle-text').html('Age: 27\nGender: Female');
-		$('#proof-profile-description-text').html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma.\nDeath was instantaneous.');
+		$('#proof-profile-description-text').html('Time of death: 9/5 at 9:00 PM. Cause: single blunt force trauma. Death was instantaneous.');
 		$('#sandbox-buttons-text-1').attr('value', 'Aline Sato');
 		$('#sandbox-buttons-text-2').attr('value', 'Cíntia Muito');
 		$('#sandbox-buttons-text-3').attr('value', 'Cíntia Rocha');
@@ -599,6 +622,56 @@ function aaig(){
 		$('.panel-group').on('hide.bs.collapse show.bs.collapse', function(e){
 			$(e.target).prev('.panel-heading').find(".plus-minus").toggleClass('glyphicon-plus glyphicon-minus');
 		});
+	}
+	
+	this.changeLineBreakMode = function(selectLineBreakMode){
+		var $selectLineBreakMode = $(selectLineBreakMode);
+		var $form = $selectLineBreakMode.closest('form');
+		var $textarea = $form.find('textarea.text');
+		var $selectPlatform = $form.find('select.platform');
+		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
+		var $selectFontFieldDS = $form.find('select.font-ds');
+		var $containerFontFieldDS = $selectFontFieldDS.closest('div.form-inline');
+		var $scaleField = $form.find('input.scale');
+		var $conteinerScaleField = $scaleField.closest('div.form-inline');
+		
+		var platform = $selectPlatform.val();
+		var lineBreakMode = $selectLineBreakMode.val();
+		
+		if(platform == '3ds'){
+			if(lineBreakMode == 'mode1'){
+				// Mode 1: Automatic linebreaks, no scale
+				$conteinerScaleField.hide();
+			} else if(lineBreakMode == 'mode2'){
+				// Mode 2: Manual linebreaks, automatic scale
+				$conteinerScaleField.show();
+				$checkboxAutomaticScale.prop('checked', true);
+			} else {
+				// Mode 3: All manual
+				$conteinerScaleField.show();
+				$checkboxAutomaticScale.prop('checked', false);
+			}
+			
+			this.toggleAutomaticScale( $checkboxAutomaticScale[0] );
+		} else {
+			if(lineBreakMode == 'mode1'){
+				// Mode 1: Automatic linebreaks, normal font
+				$containerFontFieldDS.hide();
+				$selectFontFieldDS.val('n');
+			} else if(lineBreakMode == 'mode2'){
+				// Mode 2: Manual linebreaks, automatic font
+				$containerFontFieldDS.hide();
+				$selectFontFieldDS.val('a');
+			} else {
+				// Mode 3: Manual linebreaks, customizable font
+				$containerFontFieldDS.show();
+				$selectFontFieldDS.val('a');
+			}
+			
+			$selectFontFieldDS.trigger('change');
+		}
+		
+		$textarea.trigger('onkeyup');
 	}
 	
 	this.toggleAutomaticScale = function(checkbox){
@@ -794,6 +867,7 @@ function aaig(){
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $selectPlatform = $form.find('select.platform');
+		var $selectLineBreakMode = $form.find('select.line-break-mode');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $checkboxBatchMode = $form.find('input.batch-mode');
 		var previewConteinerFieldId = $form.attr('data-image');
@@ -803,6 +877,7 @@ function aaig(){
 		var text = field.value;
 		var textfieldName = $field.attr('name');
 		var platform = $selectPlatform.val();
+		var lineBreakMode = $selectLineBreakMode.val();
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 		var checkBatchModeActivated = $checkboxBatchMode.is(':checked');
 		
@@ -830,9 +905,9 @@ function aaig(){
 				// Updating preview from current block
 				if(platform == '3ds'){
 					current_block = current_block.replace(/\n/g, '<br />');
-					this.updatePreviewText($divPreviewConteinerFieldText, current_block, checkAutomaticScale);
+					this.updatePreviewText($divPreviewConteinerFieldText, current_block, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
-					this.updatePreviewSprites($divPreviewConteinerFieldText, current_block, 'n');
+					this.updatePreviewSprites($divPreviewConteinerFieldText, current_block, 'n', lineBreakMode);
 				}
 				
 				// Updating filenames preview
@@ -840,9 +915,9 @@ function aaig(){
 			} else {
 				if(platform == '3ds'){
 					text = text.replace(/\n/g, '<br />');
-					this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale);
+					this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
-					this.updatePreviewSprites($divPreviewConteinerFieldText, text);
+					this.updatePreviewSprites($divPreviewConteinerFieldText, text, undefined, lineBreakMode);
 				}
 			}
 		} else if(previewConteinerFieldId == 'button-conteiner-sandbox' || previewConteinerFieldId == 'smaller-button-conteiner-sandbox'){
@@ -867,7 +942,7 @@ function aaig(){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
-					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, 'a', function(checkLimitExceeded){
+					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, 'a', undefined, function(checkLimitExceeded){
 						if(checkLimitExceeded){
 							$newDivPreviewConteinerFieldText.addClass('red');
 						} else {
@@ -934,13 +1009,32 @@ function aaig(){
 		this.updatePreviewFilenamesBatchMode(field);
 	}
 	
-	this.updatePreviewText = function(divPreviewConteiner, text, checkAutomaticScale, approximation){
+	this.updatePreviewText = function(divPreviewConteiner, text, checkAutomaticScale, approximation, lineBreakMode){
 		if(typeof approximation == 'undefined') approximation = 0.95;
 
 		var $divPreviewConteiner = $(divPreviewConteiner);
+		
+		// Line break mode (for Proof / Profile Descriptions only)
+		if(lineBreakMode == 'mode1'){
+			// Mode 1: Automatic line breaks, no scale
+			checkAutomaticScale = false;
+			text = text.replace(/\<br \/\>/g, ' ');
+			$divPreviewConteiner.removeClass('nowrap');
+		} else if(lineBreakMode == 'mode2'){
+			// Mode 2: Manual line breaks, automatic scale
+			checkAutomaticScale = true;
+			$divPreviewConteiner.addClass('nowrap');
+		} else if(lineBreakMode == 'mode3'){
+			// Mode 3: All manual
+			checkAutomaticScale = false;
+			$divPreviewConteiner.addClass('nowrap');
+		} else {
+			// No line break mode provided
+			$divPreviewConteiner.addClass('nowrap');
+		}
 
 		$divPreviewConteiner.html(text);
-
+		
 		if(checkAutomaticScale){
 			this.definePreviewScale($divPreviewConteiner, 1);
 			var text_width = this.calculateTextWidth($divPreviewConteiner);
@@ -954,7 +1048,7 @@ function aaig(){
 		}
 	}
 	
-	this.updatePreviewSprites = function(divPreviewConteiner, text, font, callback){
+	this.updatePreviewSprites = function(divPreviewConteiner, text, font, lineBreakMode, callback){
 		var $divPreviewConteiner = $(divPreviewConteiner);
 		var $divPreviewConteinerParent = $divPreviewConteiner.parent();
 		var checkLimitExceeded = false;
@@ -962,12 +1056,34 @@ function aaig(){
 		if(typeof font == 'undefined'){
 			font = $divPreviewConteiner.closest('div.tab-pane').find("select.font-ds").val();
 		}
+		if(typeof lineBreakMode != 'undefined'){
+			$divPreviewConteiner.addClass('nowrap');
+		}
+		
+		// Line break mode (for Proof / Profile Descriptions only)
+		var checkAutomaticLinebreaks;
+		if(lineBreakMode == 'mode1'){
+			// Mode 1: Automatic linebreaks, normal font
+			checkAutomaticLinebreaks = true;
+			font == 'n';
+			text = text.replace(/\n/g, ' ');
+		} else if(lineBreakMode == 'mode2'){
+			// Mode 2: Manual linebreaks, automatic font
+			checkAutomaticLinebreaks = false;
+			font == 'a';
+		} else if(lineBreakMode == 'mode3'){
+			// Mode 3: Manual linebreaks, customized font
+			checkAutomaticLinebreaks = false;
+		}
 
 		// Undoing condensed font effect, in case of the field's "automatic" option is activated.
 		// Needed to check automatically if the font is condensed or not
 		if(font == 'a'){
 			$divPreviewConteinerParent.removeClass('condensed extra-condensed');
 		}
+		
+		var preview_width = $divPreviewConteiner.width();
+		var new_character, $spanLastSpace;
 
 		// Adding sprite letters in the preview
 		$divPreviewConteiner.html('').css('fontFamily', '');
@@ -975,22 +1091,38 @@ function aaig(){
 			var character = text[i];
 
 			if(character == "\n"){
-				$divPreviewConteiner.append(
-					$('<br />')
-				);
+				if(!checkAutomaticLinebreaks){
+					$divPreviewConteiner.append(
+						$('<br />')
+					);
+				}
 			} else {
-				var new_character = this.formatCharacter(character);
-
+				new_character = this.formatCharacter(character);
 				$divPreviewConteiner.append(
 					$('<span />').addClass('letter ' + new_character + ' ').html('&nbsp;')
 				);
+		
+				if(new_character == 'space'){
+					$divPreviewConteiner.children('span.space').removeAttr('id').last().attr('id', 'last-space');
+				}
+			}
+			
+			// If automatic line breaks is active, insert a line break in the
+			// place of the last space character added
+			if(checkAutomaticLinebreaks){
+				text_width = this.calculateTextWidth( $divPreviewConteiner );
+				if(text_width > preview_width){
+					$spanLastSpace = $('#last-space');
+					$spanLastSpace.after(
+						$('<br />')
+					).remove();
+				}
 			}
 		}
 
 		// Checking if condensed font must be used or not
-		if(font == 'a'){
+		if(font == 'a'){	
 			var text_width = this.calculateTextWidth( $divPreviewConteiner );
-			var preview_width = $divPreviewConteiner.width();
 
 			// Checking if text width exceeded the maximum width of the preview
 			if(text_width > preview_width){
@@ -1024,6 +1156,7 @@ function aaig(){
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $textFields = $form.find('input.text, textarea.text');
+		var $selectLineBreakModeOptions = $form.find('select.line-break-mode').children('option');
 		var $automaticScaleField = $form.find('input.automatic-scale');
 		var $scaleField = $form.find('input.scale');
 		var $conteinerScaleField = $scaleField.closest('div.form-inline');
@@ -1046,7 +1179,16 @@ function aaig(){
 		for(var configName in platformConfigs){
 			var configValues = platformConfigs[configName];
 			
-			if(configName == 'scale'){
+			if(configName == 'line-break-mode-options-suffix-class'){
+				$selectLineBreakModeOptions.each(function(){
+					var $option = $(this);
+					
+					var optionClass = ( $option.attr('class') ).replace('-ds', '');
+					
+					$option.attr('class', optionClass + configValues);
+				})
+				this.loadLanguageScriptStrings();
+			} else if(configName == 'scale'){
 				$scaleField.slider('setValue', configValues.value);
 				$scaleField.trigger('change');
 			} else if(configName == 'font-3ds'){
@@ -1096,13 +1238,22 @@ function aaig(){
 				}
 			} else if(configName == 'conteiner-text-proof-profile-title-class'){
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-title');
-				$divPreviewConteinerFieldText.attr('class', 'proof-profile-title nowrap ' + configValues);
+				
+				var classes = $divPreviewConteinerFieldText.attr('class');
+				
+				$divPreviewConteinerFieldText.attr('class', classes + ' ' + configValues);
 			} else if(configName == 'conteiner-text-proof-profile-subtitle-class'){
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-subtitle');
-				$divPreviewConteinerFieldText.attr('class', 'proof-profile-subtitle nowrap ' + configValues);
+				
+				var classes = $divPreviewConteinerFieldText.attr('class');
+				
+				$divPreviewConteinerFieldText.attr('class', classes + ' ' + configValues);
 			} else if(configName == 'conteiner-text-proof-profile-description-class'){
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-description');
-				$divPreviewConteinerFieldText.attr('class', 'proof-profile-description nowrap ' + configValues);
+				
+				var classes = $divPreviewConteinerFieldText.attr('class');
+				
+				$divPreviewConteinerFieldText.attr('class', classes + ' ' + configValues);
 			} else if(configName == 'trigger-change-scale-fields'){
 				if(configValues == true){
 					if(previewConteinerFieldId == 'proof-profile-title-conteiner'){
@@ -1119,8 +1270,14 @@ function aaig(){
 						}
 					}
 				}
-			} else if(configName = 'trigger-keyup-text-fields'){
-				$textFields.trigger('keyup');
+			} else if(configName == 'trigger-keyup-text-fields'){
+				if(configValues == true){
+					$textFields.trigger('keyup');
+				}
+			} else if(configName == 'trigger-change-line-break-mode-field'){
+				if(configValues == true){
+					$selectLineBreakModeOptions.trigger('change');
+				}
 			}
 		}
 	}
@@ -1396,6 +1553,7 @@ function aaig(){
 		var $inputBatchModeLeftZeroes = $form.find('input.batch-mode-left-zeroes');
 		var $inputBatchModePrefix = $form.find('input.batch-mode-prefix');
 		var $inputBatchModeSuffix = $form.find('input.batch-mode-suffix');
+		var $selectLineBreakMode = $form.find('select.line-break-mode');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		
@@ -1441,12 +1599,13 @@ function aaig(){
 			}
 		} else if(previewConteinerFieldId == 'proof-profile-description-conteiner'){
 			// Proof / profile descriptions
+			var lineBreakMode = $selectLineBreakMode.val();
 			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (platform != 'ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
 				$divPreviewConteinerField.removeClass('brown-background');
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, function(){
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, lineBreakMode, function(){
 					$divPreviewConteinerField.addClass('brown-background');
 				});
 			} else {
@@ -1505,7 +1664,7 @@ function aaig(){
 		});
 	}
 	
-	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, callback){
+	this.batchRenderImages = function(element, texts, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, lineBreakMode, callback){
 		var $element = $(element);
 		var $divPreviewConteinerFieldText = $element.children('div.text');
 		var $tab = $element.closest('div.tab-pane');
@@ -1540,9 +1699,9 @@ function aaig(){
 			var filename = i + '.png';
 
 			if(checkUsingSprites){
-				that.updatePreviewSprites($divPreviewConteinerFieldText, text);
+				that.updatePreviewSprites($divPreviewConteinerFieldText, text, undefined, lineBreakMode);
 			} else {
-				that.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale);
+				that.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 			}
 
 			that.renderImageOnBrowser($element, filename, function(canvas){
@@ -1593,6 +1752,9 @@ function aaig(){
 	}
 	
 	this.formatFilenameBatchMode = function(initialFileNumber, leftZeroes, prefix, suffix){
+		prefix = prefix.replace(/[?/]/g, '');
+		suffix = suffix.replace(/[?/]/g, '');
+		
 		return prefix + this.zeroFill(initialFileNumber, leftZeroes) + suffix;
 	}
 	
@@ -1676,7 +1838,7 @@ function aaig(){
 	this.maskFilenameInput = function(event){
 		var keyCode = event.which;
 		
-		var invalidKeycodes = [81, 87, 106, 111, 188, 191, 192, 220, 221];
+		var invalidKeycodes = [106, 111, 188, 191, 192, 220, 221, 225];
 		var checkKeycodeInvalid = ($.inArray(keyCode, invalidKeycodes) !== -1);
 		if(checkKeycodeInvalid){
 			return false;
@@ -1689,21 +1851,19 @@ function aaig(){
 		return (typeof process == 'object');
 	}
 	
-	this.getTitle = function(){
-		if( this.checkOnElectron() ){
-			var ipc = require('electron').ipcRenderer;
-			return ipc.sendSync('getTitle');
-		} else {
-			return $('title').html();
-		}
-	}
-	
 	this.setTitle = function(title){
 		if( this.checkOnElectron() ){
 			var ipc = require('electron').ipcRenderer;
 			ipc.send('setTitle', title);
 		} else {
 			$('title').html(title);
+		}
+	}
+	
+	this.updateDesktopMenusLanguage = function(){
+		if( this.checkOnElectron() ){
+			var ipc = require('electron').ipcRenderer;
+			ipc.send('updateDesktopMenusLanguage', this.configs.language);
 		}
 	}
 	

@@ -411,6 +411,10 @@ select.form-control option.recommended{
 	background: #ddd;
 }
 
+select.line-break-mode{
+	width: 55% !important;
+}
+
 input.slider-value{
 	margin-left: 7.5px;
 	width: 62.5px !important;
@@ -420,8 +424,9 @@ input.batch-mode-left-zeroes{
 	width: 95px !important;
 }
 
+input.batch-mode-prefix,
 input.batch-mode-suffix{
-	width: 200px !important;
+	width: 190px !important;
 }
 
 .bold{

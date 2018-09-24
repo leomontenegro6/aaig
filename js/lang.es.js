@@ -35,6 +35,13 @@ aaig.languageStrings = {
 		'label-batch-mode-suffix': 'Sufijo:',
 		
 		'accordion-visual-customizations': 'Personalizacion Visual',
+		'label-line-break-mode': 'Modo de saltos de línea:',
+		'option-line-break-mode-1': 'Saltos automáticos, sin escala',
+		'option-line-break-mode-2': 'Saltos normales, escala automática',
+		'option-line-break-mode-3': 'Todo Manual',
+		'option-line-break-mode-1-ds': 'Saltos automáticos, fuente normal',
+		'option-line-break-mode-2-ds': 'Saltos normales, fuente automática',
+		'option-line-break-mode-3-ds': 'Saltos normales, fuente adaptable',
 		'label-scale': 'Escala:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">matica</span>',
 		'label-font': 'Fuente:',
@@ -66,7 +73,10 @@ aaig.languageStrings = {
 		'sandbox-smaller-buttons': 'Botones menores',
 		'sandbox-proof-profiles': 'Pruebas / perfis',
 		
-		'loading': 'Cargando...'
+		'loading': 'Cargando...',
+		
+		'about-description': 'Programa creado para incrementar la velocidad haciendo imágenes para el juego de Nintendo 3DS "Ace Attorney Trilogy".',
+		'about-github-page': 'Página en Github'
 	},
 	'p': { // Placeholders
 		'text-buttons': 'Escribe para ver el resultado en la previsualización',

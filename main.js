@@ -14,14 +14,17 @@ const url = require('url')
 // be affected by javascript garbage collection routines
 let mainWindow
 let menu
+let menuTemplate
 let aboutWindow
+let selectedLanguage
 
 function createWindow () {
 	// Create windows
 	mainWindow = new BrowserWindow({
 		width: 1280,
 		height: 768,
-		title: app.getName()
+		title: app.getName(),
+		icon: __dirname + '/favicons/favicon-196x196.png',
 	})
 	
 	// Maximize window, if needed
@@ -57,7 +60,7 @@ function createWindow () {
 	})
 
 	// Instantiating menus
-	const menuTemplate = [
+	menuTemplate = [
 		{
 			id: 'file',
 			label: 'Arquivo',
@@ -100,11 +103,20 @@ function createWindow () {
 					label: 'Sobre',
 					accelerator: 'F1',
 					click () {
+						let aboutWindowTitle;
+						if(selectedLanguage == 'pt-br'){
+							aboutWindowTitle = 'Sobre o programa';
+						} else if(selectedLanguage == 'es'){
+							aboutWindowTitle = 'Sobre el programa';
+						} else {
+							aboutWindowTitle = 'About this software';
+						}
+						
 						// Creating about window, and setting it as child of main window
 						aboutWindow = new BrowserWindow({
 							width: 640,
 							height: 384,
-							title: 'Sobre o programa',
+							title: aboutWindowTitle,
 							parent: mainWindow,
 							resizable: false,
 							fullscreenable: false,
@@ -142,6 +154,49 @@ function createWindow () {
 	}
 }
 
+function updateMenuLanguage(language){
+	let fileMenu = menuTemplate[0];
+	let openTextFileMenu = fileMenu.submenu[0];
+	let exitMenu = fileMenu.submenu[1];
+	let toolsMenu = menuTemplate[1];
+	let configSettingsMenu = toolsMenu.submenu[0];
+	let helpMenu = menuTemplate[2];
+	let aboutMenu = helpMenu.submenu[0];
+	
+	if(language == 'pt-br'){
+		// Português
+		fileMenu.label = 'Arquivo';
+		openTextFileMenu.label = 'Abrir arquivo de texto';
+		exitMenu.label = 'Sair';
+		toolsMenu.label = 'Ferramentas';
+		configSettingsMenu.label = 'Configurações';
+		helpMenu.label = 'Ajuda';
+		aboutMenu.label = 'Sobre';
+	} else if(language == 'es'){
+		// Español
+		fileMenu.label = 'Archivo';
+		openTextFileMenu.label = 'Abrir archivo de texto';
+		exitMenu.label = 'Sair';
+		toolsMenu.label = 'Herramientas';
+		configSettingsMenu.label = 'Configuraciones';
+		helpMenu.label = 'Ayuda';
+		aboutMenu.label = 'Sobre';
+	} else {
+		// English
+		fileMenu.label = 'File';
+		openTextFileMenu.label = 'Open text file';
+		exitMenu.label = 'Exit';
+		toolsMenu.label = 'Tools';
+		configSettingsMenu.label = 'Settings';
+		helpMenu.label = 'Help';
+		aboutMenu.label = 'About';
+	}
+	
+	menu = Menu.buildFromTemplate(menuTemplate)
+	Menu.setApplicationMenu(menu)
+	selectedLanguage = language;
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -171,6 +226,9 @@ ipc.on('getTitle', (e) => {
 })
 ipc.on('setTitle', (e, title) => {
 	mainWindow.setTitle(title)
+})
+ipc.on('updateDesktopMenusLanguage', (e, language) => {
+	updateMenuLanguage(language)
 })
 ipc.on('closeAboutWindow', () => {
 	aboutWindow.close()

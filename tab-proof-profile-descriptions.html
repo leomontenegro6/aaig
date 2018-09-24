@@ -48,7 +48,7 @@
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
 								<label for="proof-profile-description-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
 								<input type="text" id="proof-profile-description-batch-mode-prefix" name="proof-profile-description-batch-mode-prefix"
-									value=".bch" class="form-control batch-mode-prefix p-text-batch-mode-prefix"
+									class="form-control batch-mode-prefix p-text-batch-mode-prefix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="proof-profile-description-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
 								<input type="text" id="proof-profile-description-batch-mode-suffix" name="proof-profile-description-batch-mode-suffix"
@@ -72,13 +72,25 @@
 									<div id="visual-customization-proof-profile-descriptions-collapse" class="panel-collapse collapse"
 										role="tabpanel" aria-labelledby="visual-customization-proof-profile-descriptions-heading">
 										<div class="panel-body">
+											<!-- Line Break Mode -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="line-break-mode-proof-profile-description" class="l-label-line-break-mode">&nbsp;</label>
+												<select id="line-break-mode-proof-profile-description" name="line-break-mode-proof-profile-description"
+													class="form-control line-break-mode" onmouseover="aaig.setTitleByOption(this)"
+													onchange="aaig.changeLineBreakMode(this)">
+													<option value="mode1" class="l-option-line-break-mode-1">&nbsp;</option>
+													<option value="mode2" class="l-option-line-break-mode-2">&nbsp;</option>
+													<option value="mode3" class="l-option-line-break-mode-3">&nbsp;</option>
+												</select>
+											</div>
+											
 											<!-- Scale -->
-											<div class="form-inline" style="margin-bottom: 5px;">
-												<label for="automatic-scale-proof-profile-description" class="control-label l-label-scale">&nbsp;</label>
-												<div class="checkbox">
-													<input type="checkbox" name="automatic-scale-proof-profile-description" onchange="aaig.toggleAutomaticScale(this)"
-														id="automatic-scale-proof-profile-description" class="form-control automatic-scale" checked />
-													<label for="automatic-scale-proof-profile-description" class="control-label l-label-automatic-scale"
+											<div class="form-inline" style="margin-bottom: 5px; display: none">
+												<label for="scale-proof-profile-description" class="control-label l-label-scale">&nbsp;</label>
+												<div class="checkbox" style="display: none">
+													<input type="checkbox" name="automatic-scale-proof-profile-description" id="automatic-scale-proof-profile-description"
+														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
+													<label class="control-label l-label-automatic-scale"
 														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 												</div>
 												<input type="text" id="scale-proof-profile-description" class="slider scale"
@@ -113,7 +125,7 @@
 												<label for="proof-profile-description-font-ds" class="control-label l-label-font">&nbsp;</label>
 												<select id="proof-profile-description-font-ds" name="proof-profile-description-font-ds" class="form-control font-ds"
 													onchange="aaig.changeFontDS(this)">
-													<option value="a" class="l-option-ds-font-automatica" selected>&nbsp;</option>
+													<option value="a" class="l-option-ds-font-automatic" selected>&nbsp;</option>
 													<option value="n" class="l-option-ds-font-normal">&nbsp;</option>
 													<option value="c" class="l-option-ds-font-condensed">&nbsp;</option>
 													<option value="ec" class="l-option-ds-font-extra-condensed">&nbsp;</option>

@@ -31,10 +31,17 @@ aaig.languageStrings = {
 		'label-batch-mode': 'Batch Mode:',
 		'label-batch-mode-initial-file-number': 'Initial File Number:',
 		'label-batch-mode-left-zeroes': 'Left Zeroes:',
-		'label-batch-mode-prefix': 'prefix:',
+		'label-batch-mode-prefix': 'Prefix:',
 		'label-batch-mode-suffix': 'Suffix:',
 		
 		'accordion-visual-customizations': 'Visual Customizations',
+		'label-line-break-mode': 'Line Break Mode:',
+		'option-line-break-mode-1': 'Automatic Line Breaks, No Scale',
+		'option-line-break-mode-2': 'Manual Line Breaks, Automatic Scale',
+		'option-line-break-mode-3': 'All Manual',
+		'option-line-break-mode-1-ds': 'Automatic Line Breaks, Normal Font',
+		'option-line-break-mode-2-ds': 'Manual Line Breaks, Automatic Font',
+		'option-line-break-mode-3-ds': 'Manual Line Breaks, Customizable Font',
 		'label-scale': 'Scale:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">matic</span>',
 		'label-font': 'Font:',
@@ -66,7 +73,10 @@ aaig.languageStrings = {
 		'sandbox-smaller-buttons': 'Smaller Buttons',
 		'sandbox-proof-profiles': 'Proofs / Profiles',
 		
-		'loading': 'Loading...'
+		'loading': 'Loading...',
+		
+		'about-description': 'Program created to increase speed edition of images from Nintendo 3DS game "Ace Attorney Trilogy".',
+		'about-github-page': 'Github page'
 	},
 	'p': { // Placeholders
 		'text-buttons': 'Type text to be shown on preview on the right',

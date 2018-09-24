@@ -27,6 +27,7 @@
 				aaig.loadConfigs();
 				aaig.loadTheme();
 				aaig.closeAboutWindowOnEscEvent();
+				aaig.loadLanguage();
 			})
 		</script>
 	</head>
@@ -36,17 +37,15 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">
 						<img class="brand" alt="Brand" src="favicons/brand.png" />
-						<span class="title">Ace Attorney Image Generator</span>
+						<span class="title l-main-title">Ace Attorney Image Generator</span>
 					</a>
 				</div>
 			</div>
 		</nav>
 		<div class="container-fluid" style="text-align: center; color: #777">
-			<p class="version">v0.6d</p>
-			<p class="description">
-				Gerador de imagens para os três primeiros jogos da franquia Ace Attorney, para plataformas Nintendo DS e Nintendo 3DS.
-			</p>
-			<a href="#" onclick="aaig.openPageAboutThisSoftware()">Página no Github</a>
+			<p class="version l-version">v0.6d</p>
+			<p class="description l-about-description">&nbsp;</p>
+			<a href="#" onclick="aaig.openPageAboutThisSoftware()" class="l-about-github-page">&nbsp;</a>
 		</div>
 		<footer class="footer">
 			<div class="container">

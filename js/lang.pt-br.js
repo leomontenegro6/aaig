@@ -30,11 +30,18 @@ aaig.languageStrings = {
 		'label-platform': 'Plataforma:',
 		'label-batch-mode': 'Em Lote:',
 		'label-batch-mode-initial-file-number': 'Nº do Arquivo Inicial:',
-		'label-batch-mode-left-zeroes': 'Zeros à Esquerda:',
+		'label-batch-mode-left-zeroes': 'Total de Algarismos:',
 		'label-batch-mode-prefix': 'Prefixo:',
 		'label-batch-mode-suffix': 'Sufixo:',
 		
 		'accordion-visual-customizations': 'Personalização Visual',
+		'label-line-break-mode': 'Modo de Quebras-de-Linha:',
+		'option-line-break-mode-1': 'Quebras Automáticas, Sem Escala',
+		'option-line-break-mode-2': 'Quebras Manuais, Escala Automática',
+		'option-line-break-mode-3': 'Tudo Manual',
+		'option-line-break-mode-1-ds': 'Quebras Automáticas, Fonte Normal',
+		'option-line-break-mode-2-ds': 'Quebras Manuais, Fonte Automática',
+		'option-line-break-mode-3-ds': 'Quebras Manuais, Fonte Customizável',
 		'label-scale': 'Escala:',
 		'label-automatic-scale': 'Auto<span class="hidden-sm">mática</span>',
 		'label-font': 'Fonte:',
@@ -66,7 +73,10 @@ aaig.languageStrings = {
 		'sandbox-smaller-buttons': 'Botões Menores',
 		'sandbox-proof-profiles': 'Provas / Perfis',
 		
-		'loading': 'Carregando...'
+		'loading': 'Carregando...',
+		
+		'about-description': 'Programa desenvolvido para agilizar na edição de imagens do jogo "Ace Attorney Trilogy", para Nintendo 3DS.',
+		'about-github-page': 'Página no Github'
 	},
 	'p': { // Placeholders
 		'text-buttons': 'Digite o texto a aparecer na prévia ao lado',

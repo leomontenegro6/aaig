@@ -1,6 +1,6 @@
 {
 	"name": "Ace Attorney Image Generator",
-	"version": "0.6d",
+	"version": "0.6e",
 	"description": "Gerador de imagens para os três primeiros jogos da franquia Ace Attorney",
 	"main": "main.js",
 	"scripts": {

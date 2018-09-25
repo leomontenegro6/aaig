@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label for="proof-profile-description-text" class="control-label l-label-proof-profile-descriptions">&nbsp;</label>
 								<textarea name="proof-profile-description-text" id="proof-profile-description-text" class="form-control p-text-buttons text noresizable"
-									rows="3" onkeyup="aaig.updatePreview(this)" onclick="$(this).trigger('keyup')"></textarea>
+									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
 							<!-- Platform and batch mode -->
@@ -52,7 +52,7 @@
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="proof-profile-description-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
 								<input type="text" id="proof-profile-description-batch-mode-suffix" name="proof-profile-description-batch-mode-suffix"
-									value=".bch" class="form-control batch-mode-suffix p-text-batch-mode-suffix"
+									value=".bch.00" class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							
@@ -78,9 +78,9 @@
 												<select id="line-break-mode-proof-profile-description" name="line-break-mode-proof-profile-description"
 													class="form-control line-break-mode" onmouseover="aaig.setTitleByOption(this)"
 													onchange="aaig.changeLineBreakMode(this)">
-													<option value="mode1" class="l-option-line-break-mode-1">&nbsp;</option>
-													<option value="mode2" class="l-option-line-break-mode-2">&nbsp;</option>
-													<option value="mode3" class="l-option-line-break-mode-3">&nbsp;</option>
+													<option value="mode1" class="l-ppd-option-line-break-mode-1">&nbsp;</option>
+													<option value="mode2" class="l-ppd-option-line-break-mode-2">&nbsp;</option>
+													<option value="mode3" class="l-ppd-option-line-break-mode-3">&nbsp;</option>
 												</select>
 											</div>
 											

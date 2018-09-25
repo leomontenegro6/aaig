@@ -110,6 +110,7 @@ function aaig(){
 		},
 		'proof-profile-subtitle-conteiner': {
 			'ds': {
+				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
 				},
@@ -126,9 +127,11 @@ function aaig(){
 				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_ds.png',
 				'show-font-3ds-field': false,
 				'show-scale-field': false,
-				'trigger-keyup-text-fields': true
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
 			},
 			'3ds': {
+				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1
 				},
@@ -145,7 +148,8 @@ function aaig(){
 				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled.png',
 				'show-font-3ds-field': true,
 				'show-scale-field': true,
-				'trigger-keyup-text-fields': true
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
 			}
 		},
 		'proof-profile-description-conteiner': {
@@ -560,8 +564,8 @@ function aaig(){
 		$('#smaller-button-text-batch-mode').html('Detention Center\nFey & Co. Law Offices\nGrossberg Law Offices\nGatewater Hotel');
 		$('#proof-profile-title-text').attr('value', 'Fingerprinting Set');
 		$('#proof-profile-title-text-batch-mode').html('Attorney\'s Badge\nCindy\'s Autopsy Report\nStatue / The Thinker\nPassport');
-		$('#proof-profile-subtitle-text').html('Age: 27\nGender: Female');
-		$('#proof-profile-description-text').html('Time of death: 9/5 at 9:00 PM. Cause: single blunt force trauma. Death was instantaneous.');
+		$('#proof-profile-subtitle-text').html('Type: Weapons\nSubmitted as evidence by Prosecutor Payne.');
+		$('#proof-profile-description-text').html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma. Death was instantaneous.');
 		$('#sandbox-buttons-text-1').attr('value', 'Aline Sato');
 		$('#sandbox-buttons-text-2').attr('value', 'Cíntia Muito');
 		$('#sandbox-buttons-text-3').attr('value', 'Cíntia Rocha');
@@ -635,8 +639,14 @@ function aaig(){
 		var $scaleField = $form.find('input.scale');
 		var $conteinerScaleField = $scaleField.closest('div.form-inline');
 		
+		var previewConteinerFieldId = $form.attr('data-image');
 		var platform = $selectPlatform.val();
 		var lineBreakMode = $selectLineBreakMode.val();
+		
+		if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner' && platform == 'ds' && lineBreakMode == 'mode3'){
+			$selectLineBreakMode.val('mode2').trigger('change');
+			return;
+		}
 		
 		if(platform == '3ds'){
 			if(lineBreakMode == 'mode1'){
@@ -863,13 +873,32 @@ function aaig(){
 		}
 	}
 	
-	this.updatePreview = function(field){
+	this.updatePreview = function(field, event){
+		// Obtaining keycode from the event
+		var keyCode;
+		if(typeof event != 'undefined'){
+			keyCode = (typeof event.which != 'undefined') ? (event.which) : (0);
+		} else {
+			keyCode = 0;
+		}
+		
+		// Allowing the preview updating only if user is typing valid characters,
+		// such as A-z and 0-9 per example. Arrow keys will be ignored in order
+		// to avoid unnecessary client-side processing.
+		var invalidKeycodes = [9, 16, 17, 18, 20, 27, 33, 34, 35, 36, 37, 38, 39, 40, 45, 91, 92, 93, 144, 145, 225];
+		var checkKeycodeInvalid = ($.inArray(keyCode, invalidKeycodes) !== -1);
+		if(checkKeycodeInvalid){
+			return;
+		}
+		
+		// If got here, the preview can be updated. Proceed as normal.
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $selectPlatform = $form.find('select.platform');
 		var $selectLineBreakMode = $form.find('select.line-break-mode');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $checkboxBatchMode = $form.find('input.batch-mode');
+		var $marginLeftField = $form.find('input.margin-left');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		var $divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.text');
@@ -878,6 +907,7 @@ function aaig(){
 		var textfieldName = $field.attr('name');
 		var platform = $selectPlatform.val();
 		var lineBreakMode = $selectLineBreakMode.val();
+		var marginLeft = $marginLeftField.val();
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 		var checkBatchModeActivated = $checkboxBatchMode.is(':checked');
 		
@@ -907,7 +937,7 @@ function aaig(){
 					current_block = current_block.replace(/\n/g, '<br />');
 					this.updatePreviewText($divPreviewConteinerFieldText, current_block, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
-					this.updatePreviewSprites($divPreviewConteinerFieldText, current_block, 'n', lineBreakMode);
+					this.updatePreviewSprites($divPreviewConteinerFieldText, current_block, lineBreakMode, 'n', marginLeft);
 				}
 				
 				// Updating filenames preview
@@ -917,7 +947,7 @@ function aaig(){
 					text = text.replace(/\n/g, '<br />');
 					this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
-					this.updatePreviewSprites($divPreviewConteinerFieldText, text, undefined, lineBreakMode);
+					this.updatePreviewSprites($divPreviewConteinerFieldText, text, lineBreakMode, undefined, marginLeft);
 				}
 			}
 		} else if(previewConteinerFieldId == 'button-conteiner-sandbox' || previewConteinerFieldId == 'smaller-button-conteiner-sandbox'){
@@ -942,7 +972,7 @@ function aaig(){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
-					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, 'a', undefined, function(checkLimitExceeded){
+					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, undefined, 'a', undefined, function(checkLimitExceeded){
 						if(checkLimitExceeded){
 							$newDivPreviewConteinerFieldText.addClass('red');
 						} else {
@@ -971,7 +1001,7 @@ function aaig(){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
-					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, 'a');
+					this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, undefined, 'a');
 				} else {
 					text = text.replace(/\n/g, '<br />');
 					this.updatePreviewText($divPreviewConteinerFieldText, text, true, 1);
@@ -1018,7 +1048,6 @@ function aaig(){
 		if(lineBreakMode == 'mode1'){
 			// Mode 1: Automatic line breaks, no scale
 			checkAutomaticScale = false;
-			text = text.replace(/\<br \/\>/g, ' ');
 			$divPreviewConteiner.removeClass('nowrap');
 		} else if(lineBreakMode == 'mode2'){
 			// Mode 2: Manual line breaks, automatic scale
@@ -1048,9 +1077,10 @@ function aaig(){
 		}
 	}
 	
-	this.updatePreviewSprites = function(divPreviewConteiner, text, font, lineBreakMode, callback){
+	this.updatePreviewSprites = function(divPreviewConteiner, text, lineBreakMode, font, marginLeft, callback){
 		var $divPreviewConteiner = $(divPreviewConteiner);
 		var $divPreviewConteinerParent = $divPreviewConteiner.parent();
+		var previewConteinerFieldId = $divPreviewConteinerParent.attr('id');
 		var checkLimitExceeded = false;
 
 		if(typeof font == 'undefined'){
@@ -1066,13 +1096,15 @@ function aaig(){
 			// Mode 1: Automatic linebreaks, normal font
 			checkAutomaticLinebreaks = true;
 			font == 'n';
-			text = text.replace(/\n/g, ' ');
 		} else if(lineBreakMode == 'mode2'){
 			// Mode 2: Manual linebreaks, automatic font
 			checkAutomaticLinebreaks = false;
 			font == 'a';
 		} else if(lineBreakMode == 'mode3'){
 			// Mode 3: Manual linebreaks, customized font
+			checkAutomaticLinebreaks = false;
+		} else {
+			// No mode provided
 			checkAutomaticLinebreaks = false;
 		}
 
@@ -1084,6 +1116,13 @@ function aaig(){
 		
 		var preview_width = $divPreviewConteiner.width();
 		var new_character, $spanLastSpace;
+		var last_space_id = previewConteinerFieldId + '-preview-last-space';
+		var text_width, automatic_linebreaks_margin_left;
+		if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner' || previewConteinerFieldId == 'proof-profile-description-conteiner'){
+			automatic_linebreaks_margin_left = parseInt(marginLeft, 10);
+		} else {
+			automatic_linebreaks_margin_left = 0;
+		}
 
 		// Adding sprite letters in the preview
 		$divPreviewConteiner.html('').css('fontFamily', '');
@@ -1091,11 +1130,9 @@ function aaig(){
 			var character = text[i];
 
 			if(character == "\n"){
-				if(!checkAutomaticLinebreaks){
-					$divPreviewConteiner.append(
-						$('<br />')
-					);
-				}
+				$divPreviewConteiner.append(
+					$('<br />')
+				);
 			} else {
 				new_character = this.formatCharacter(character);
 				$divPreviewConteiner.append(
@@ -1103,16 +1140,16 @@ function aaig(){
 				);
 		
 				if(new_character == 'space'){
-					$divPreviewConteiner.children('span.space').removeAttr('id').last().attr('id', 'last-space');
+					$divPreviewConteiner.children('span.space').removeAttr('id').last().attr('id', last_space_id);
 				}
 			}
 			
 			// If automatic line breaks is active, insert a line break in the
 			// place of the last space character added
 			if(checkAutomaticLinebreaks){
-				text_width = this.calculateTextWidth( $divPreviewConteiner );
+				text_width = this.calculateTextWidth( $divPreviewConteiner ) + automatic_linebreaks_margin_left;
 				if(text_width > preview_width){
-					$spanLastSpace = $('#last-space');
+					$spanLastSpace = $('#' + last_space_id);
 					$spanLastSpace.after(
 						$('<br />')
 					).remove();
@@ -1122,7 +1159,7 @@ function aaig(){
 
 		// Checking if condensed font must be used or not
 		if(font == 'a'){	
-			var text_width = this.calculateTextWidth( $divPreviewConteiner );
+			text_width = this.calculateTextWidth( $divPreviewConteiner );
 
 			// Checking if text width exceeded the maximum width of the preview
 			if(text_width > preview_width){
@@ -1305,8 +1342,10 @@ function aaig(){
 							$input.val('0');
 						} else if($input.hasClass('batch-mode-left-zeroes')){
 							$input.val('8');
+						} else if($input.hasClass('batch-mode-suffix')){
+							$input.val('.bch.00');
 						} else {
-							$input.val('.bch');
+							$input.val('');
 						}
 					});
 				});
@@ -1329,8 +1368,10 @@ function aaig(){
 						$input.val('0');
 					} else if($input.hasClass('batch-mode-left-zeroes')){
 						$input.val('8');
+					} else if($input.hasClass('batch-mode-suffix')){
+						$input.val('.bch.00');
 					} else {
-						$input.val('.bch');
+						$input.val('');
 					}
 				});
 			}
@@ -1699,7 +1740,7 @@ function aaig(){
 			var filename = i + '.png';
 
 			if(checkUsingSprites){
-				that.updatePreviewSprites($divPreviewConteinerFieldText, text, undefined, lineBreakMode);
+				that.updatePreviewSprites($divPreviewConteinerFieldText, text, lineBreakMode, undefined);
 			} else {
 				that.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 			}

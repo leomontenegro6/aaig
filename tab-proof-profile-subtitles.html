@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label for="proof-profile-subtitle-text" class="control-label l-label-proof-profile-subtitles">&nbsp;</label>
 								<textarea name="proof-profile-subtitle-text" id="proof-profile-subtitle-text" class="form-control p-text-buttons text noresizable"
-									rows="3" onkeyup="aaig.updatePreview(this)" onclick="$(this).trigger('keyup')"></textarea>
+									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
 							<!-- Platform and batch mode -->
@@ -51,7 +51,7 @@
 									class="form-control batch-mode-prefix p-text-batch-mode-prefix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="proof-profile-subtitle-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
-								<input type="text" id="proof-profile-subtitle-batch-mode-suffix" name="proof-profile-subtitle-batch-mode-suffix" value=".bch"
+								<input type="text" id="proof-profile-subtitle-batch-mode-suffix" name="proof-profile-subtitle-batch-mode-suffix" value=".bch.00"
 									class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
@@ -72,13 +72,25 @@
 									<div id="visual-customization-proof-profile-subtitle-collapse" class="panel-collapse collapse"
 										role="tabpanel" aria-labelledby="visual-customization-proof-profile-subtitle-heading">
 										<div class="panel-body">
+											<!-- Line Break Mode -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="line-break-mode-proof-profile-subtitle" class="l-label-line-break-mode">&nbsp;</label>
+												<select id="line-break-mode-proof-profile-subtitle" name="line-break-mode-proof-profile-subtitle"
+													class="form-control line-break-mode" onmouseover="aaig.setTitleByOption(this)"
+													onchange="aaig.changeLineBreakMode(this)">
+													<option value="mode1" class="l-pps-option-line-break-mode-1">&nbsp;</option>
+													<option value="mode2" class="l-pps-option-line-break-mode-2">&nbsp;</option>
+													<option value="mode3" class="l-pps-option-line-break-mode-3">&nbsp;</option>
+												</select>
+											</div>
+											
 											<!-- Scale -->
-											<div class="form-inline" style="margin-bottom: 5px;">
+											<div class="form-inline" style="margin-bottom: 5px; display: none">
 												<label for="automatic-scale-proof-profile-subtitle" class="control-label l-label-scale">&nbsp;</label>
-												<div class="checkbox">
+												<div class="checkbox" style="display: none">
 													<input type="checkbox" name="automatic-scale-proof-profile-subtitle" id="automatic-scale-proof-profile-subtitle"
 														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
-													<label for="automatic-scale-proof-profile-subtitle" class="control-label l-label-automatic-scale"
+													<label class="control-label l-label-automatic-scale"
 														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 												</div>
 												<input type="text" id="proof-profile-subtitle-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"

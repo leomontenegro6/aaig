@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label for="button-text" class="control-label l-label-buttons">&nbsp;</label>
 								<input type="text" name="button-text" id="button-text" class="form-control p-text-buttons text"
-									onkeyup="aaig.updatePreview(this)" />
+									onkeyup="aaig.updatePreview(this, event)" />
 								<textarea name="button-text-batch-mode" id="button-text-batch-mode"
 									class="form-control p-text-batch-mode text-batch-mode resizable-vertical" rows="10"
 									onkeyup="aaig.updatePreviewBatchMode(this)" onclick="$(this).trigger('keyup')"
@@ -52,7 +52,7 @@
 									class="form-control batch-mode-prefix p-text-batch-mode-prefix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="button-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
-								<input type="text" id="button-batch-mode-suffix" name="button-batch-mode-suffix" value=".bch"
+								<input type="text" id="button-batch-mode-suffix" name="button-batch-mode-suffix" value=".bch.00"
 									class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>

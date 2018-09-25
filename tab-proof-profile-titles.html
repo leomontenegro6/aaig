@@ -13,7 +13,7 @@
 							<div class="form-group">
 								<label for="proof-profile-title-text" class="control-label l-label-proof-profile-titles">&nbsp;</label>
 								<input type="text" name="proof-profile-title-text" id="proof-profile-title-text" class="form-control p-text-buttons text"
-									onkeyup="aaig.updatePreview(this)" />
+									onkeyup="aaig.updatePreview(this, event)" />
 								<textarea name="proof-profile-title-text-batch-mode" id="proof-profile-title-text-batch-mode"
 									class="form-control p-text-batch-mode text-batch-mode resizable-vertical" rows="10"
 									onkeyup="aaig.updatePreviewBatchMode(this)" onclick="$(this).trigger('keyup')"
@@ -56,7 +56,7 @@
 									onkeydown="return aaig.maskFilenameInput(event)"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 								<label for="proof-profile-title-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
-								<input type="text" id="proof-profile-title-batch-mode-suffix" name="proof-profile-title-batch-mode-suffix" value=".bch"
+								<input type="text" id="proof-profile-title-batch-mode-suffix" name="proof-profile-title-batch-mode-suffix" value=".bch.00"
 									class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />

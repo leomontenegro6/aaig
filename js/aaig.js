@@ -278,7 +278,7 @@ function aaig(){
 			that.loadConfigs();
 			that.loadTheme();
 			that.loadTabContents(function(){
-				that.loadLanguage(function(){
+				that.loadLanguage(false, function(){
 					that.setDefaultTextFieldValues();
 					that.triggerMainTextFieldEvents();
 					that.toggleSandboxFieldEventsOnTabClick();
@@ -350,12 +350,13 @@ function aaig(){
 		}
 	}
 	
-	this.loadLanguage = function(callback){
+	this.loadLanguage = function(aboutWindow, callback){
+		if(typeof aboutWindow == 'undefined') aboutWindow = false;
 		var language = this.configs.language;
 		var that = this;
 		
 		this.removeAllLanguageScripts();
-		this.addLanguageScripts(language, function(){
+		this.addLanguageScripts(language, aboutWindow, function(){
 			that.loadLanguageScriptStrings();
 			if(callback) callback();
 		});
@@ -376,24 +377,28 @@ function aaig(){
 		
 		// Updating config variables and loading language afterwards
 		this.loadConfigs();
-		this.loadLanguage(function(){
+		this.loadLanguage(false, function(){
 			that.reinstantiateSelect2Fields();
 		});
 		this.updateDesktopMenusLanguage();
 	}
 	
-	this.addLanguageScripts = function(language, callback){
+	this.addLanguageScripts = function(language, aboutWindow, callback){
 		$.getScript('js/i18n/aaig.' + language + '.js', function(){
-			$.getScript('js/i18n/select2.' + language + '.js', function(){
-				if(language == 'en-us'){
-					language = 'en';
-				} else if(language == 'pt-br'){
-					language = 'pt-BR';
-				}
-				$.fn.select2.defaults.set('language', language);
-				
+			if(aboutWindow){
 				if(callback) callback();
-			})
+			} else {
+				$.getScript('js/i18n/select2.' + language + '.js', function(){
+					if(language == 'en-us'){
+						language = 'en';
+					} else if(language == 'pt-br'){
+						language = 'pt-BR';
+					}
+					$.fn.select2.defaults.set('language', language);
+
+					if(callback) callback();
+				})
+			}
 		})
 	}
 	

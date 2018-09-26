@@ -5,33 +5,3 @@
 
 # Arquivos de configuração privados do projeto do netbeans
 /nbproject/private/
-
-# Arquivos referentes às fontes proprietárias
-proprietary-fonts.html
-css/proprietary-fonts.css
-fonts/AlteHaasGroteskRegular.eot
-fonts/AlteHaasGroteskRegular.otf
-fonts/AlteHaasGroteskRegular.svg
-fonts/AlteHaasGroteskRegular.ttf
-fonts/AlteHaasGroteskRegular.woff
-fonts/helvetica-normal.eot
-fonts/helvetica-normal.otf
-fonts/helvetica-normal.svg
-fonts/helvetica-normal.ttf
-fonts/helvetica-normal.woff
-fonts/helvetica-neue.eot
-fonts/helvetica-neue.otf
-fonts/helvetica-neue.svg
-fonts/helvetica-neue.ttf
-fonts/helvetica-neue.woff
-fonts/univers-light-normal.eot
-fonts/univers-light-normal.otf
-fonts/univers-light-normal.svg
-fonts/univers-light-normal.ttf
-fonts/univers-light-normal.woff
-fonts/whitney-medium.eot
-fonts/whitney-medium.otf
-fonts/whitney-medium.svg
-fonts/whitney-medium.ttf
-fonts/whitney-medium.woff
-fonts/Kaleko_205_Round_W01_Book.ttf

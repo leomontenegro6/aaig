@@ -1,11 +1,13 @@
 const electron = require('electron')
 const fs = require('fs')
+const SystemFontFamilies = require('system-font-families')
 
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const Menu = electron.Menu
 const ipc = electron.ipcMain
 const globalShortcut = electron.globalShortcut
+const SystemFonts = SystemFontFamilies.default
 
 const path = require('path')
 const url = require('url')
@@ -17,6 +19,7 @@ let menu
 let menuTemplate
 let aboutWindow
 let selectedLanguage
+let systemFonts
 
 function createWindow () {
 	// Create windows
@@ -221,14 +224,27 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-ipc.on('getTitle', (e) => {
-	e.returnValue = mainWindow.getTitle()
+ipc.on('getTitle', (event) => {
+	event.returnValue = mainWindow.getTitle()
 })
-ipc.on('setTitle', (e, title) => {
+ipc.on('setTitle', (event, title) => {
 	mainWindow.setTitle(title)
 })
-ipc.on('updateDesktopMenusLanguage', (e, language) => {
+ipc.on('updateDesktopMenusLanguage', (event, language) => {
 	updateMenuLanguage(language)
+})
+ipc.on('getSystemFonts', (event) => {
+	systemFonts = new SystemFonts();
+	
+	systemFonts.getFonts().then(
+		function (res) {
+			event.sender.send('getSystemFonts', res);
+		},
+		function (err) {
+			console.log(err);
+			event.sender.send('getSystemFonts', []);
+		}
+	);
 })
 ipc.on('closeAboutWindow', () => {
 	aboutWindow.close()

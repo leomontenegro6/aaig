@@ -25,14 +25,20 @@ A maneira tradicional de editar esses gráficos é através de arquivos .PSD via
 
 O "Gerador de Imagens do Ace Attorney" é um programa que consegue gerar as imagens no padrão do jogo "Ace Attorney Trilogy". Para isso, são utilizadas as seguintes tecnologias:
 
-*   HTML5, para a montagem das páginas;
-*   CSS3, para a estilização dos textos nas imagens;
-*   JavaScript e [jQuery](https://jquery.com/), para a programação de campos e botões;
-*   [Html2canvas](http://html2canvas.hertzen.com/), para conversão de elementos HTML para imagens em PNG;
-*   [Bootstrap](http://getbootstrap.com/), para tornar esta página responsiva;
-*   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), para os campos de escala;
-*   [JSZip](https://stuk.github.io/jszip/), para criação de arquivos zipados contendo imagens;
-*   [FileSaver.js](https://github.com/eligrey/FileSaver.js/), para salvar arquivos no lado do cliente, necessário para a geração de imagens em lote.
+*   Versão Web
+    *   HTML5, para a montagem das páginas;
+    *   CSS3, para a estilização dos textos nas imagens;
+    *   JavaScript e [jQuery](https://jquery.com/), para a programação de campos e botões;
+    *   [Html2canvas](http://html2canvas.hertzen.com/), para conversão de elementos HTML para imagens em PNG;
+    *   [Bootstrap](http://getbootstrap.com/), para tornar esta página responsiva;
+    *   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), para os campos de escala;
+    *   [Select2](https://select2.org/), para instanciar campos select customizáveis, com suporte a interpretação HTML e busca em ajax;
+    *   [stash](http://rezitech.github.io/stash/), para armazenamento de configurações locais do usuário, como tema e idioma;
+    *   [JSZip](https://stuk.github.io/jszip/), para criação de arquivos zipados contendo imagens;
+    *   [FileSaver.js](https://github.com/eligrey/FileSaver.js/), para salvar arquivos no lado do cliente, necessário para a geração de imagens em lote;
+*   Versão Desktop
+    *   [Electron.js](https://electronjs.org/), para conversão do conteiner web do programa para um app desktop multiplataforma;
+    *   [system-font-families](https://github.com/rBurgett/system-font-families), para ler as fontes instaladas no PC do usuário e montar um campo seletor de fonte.
 
 #### Pré-Requisitos
 

@@ -27,14 +27,20 @@ The traditional way of editing those graphics is through .PSD files in Adobe Pho
 
 The "Ace Attorney Image Generator" is a program that can generate imagens on the same patterns of "Ace Attorney Trilogy" game. For such task, the following technologies were used:
 
-*   HTML5, for web page creation;
-*   CSS3, for text styling on images;
-*   JavaScript and [jQuery](https://jquery.com/), for fields' and buttons' programming;
-*   [Html2canvas](http://html2canvas.hertzen.com/), for converting HTML elements to PNG images;
-*   [Bootstrap](http://getbootstrap.com/), to become this page responsive;
-*   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), for scale and margin fields;
-*   [JSZip](https://stuk.github.io/jszip/), for creating zipped files with images;
-*   [FileSaver.js](https://github.com/eligrey/FileSaver.js/), for saving files on the client-side, needed for batch image generation.
+*   Web Version
+    *   HTML5, for web page creation;
+    *   CSS3, for text styling on images;
+    *   JavaScript and [jQuery](https://jquery.com/), for fields' and buttons' programming;
+    *   [Html2canvas](http://html2canvas.hertzen.com/), for converting HTML elements to PNG images;
+    *   [Bootstrap](http://getbootstrap.com/), to become this page responsive;
+    *   [Bootstrap Slider](https://github.com/seiyria/bootstrap-slider), for scale and margin fields;
+    *   [Select2](https://select2.org/), to instantiate customizable select fields with HTML rendering support and ajax;
+    *   [stash](http://rezitech.github.io/stash/), for storing local user settings, such as theme and language;
+    *   [JSZip](https://stuk.github.io/jszip/), for creating zipped files with images;
+    *   [FileSaver.js](https://github.com/eligrey/FileSaver.js/), for saving files on the client-side, needed for batch image generation;
+*   Desktop Version
+    *   [Electron.js](https://electronjs.org/), for converting the web files into a cross platform desktop app;
+    *   [system-font-families](https://github.com/rBurgett/system-font-families), for getting a list of all user's installed fonts and mount a font selector field based on this list.
 
 #### Prerequisites
 

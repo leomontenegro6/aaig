@@ -135,5 +135,6 @@
 .proof-profile-subtitle-sprites-ds div.text span.letter.o-tilde{ width: 6px; background-position: -105px -120px; }
 .proof-profile-subtitle-sprites-ds div.text span.letter.u-acute{ width: 6px; background-position: -120px -120px; }
 .proof-profile-subtitle-sprites-ds div.text span.letter.u-diaeresis{ width: 6px; background-position: -135px -120px; }
+.proof-profile-subtitle-sprites-ds div.text span.letter.star{ width: 12px; background-position: -150px -120px; }
 
 .proof-profile-subtitle-sprites-ds div.text span.letter.unknown{ width: 10px !important; background-position: -15px 0 !important; }

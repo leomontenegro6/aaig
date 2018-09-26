@@ -92,9 +92,9 @@
 											<!-- Font -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="button-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="button-font" name="button-font" class="form-control font-3ds"
+												<select id="button-font" name="button-font" class="form-control font-3ds" data-has-filter="true"
 													onchange="aaig.changeFont(this)"></select>
-												<input type="text" id="button-another-font" class="form-control p-another-font" style="display: none"
+												<input type="text" id="button-another-font" class="form-control p-another-font another-font" style="display: none"
 													onkeyup="aaig.setCustomFont(this)" />
 												<select id="button-font-size" name="button-font-size" class="form-control font-size"
 													onchange="aaig.changeFontSize(this)"></select>
@@ -133,6 +133,15 @@
 												<label for="button-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
 												<input type="text" id="button-margin-left" class="slider margin-left"
 													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
+													data-slider-tooltip="hide" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+											
+											<!-- Letter Spacing -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="button-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="button-letter-spacing" class="slider letter-spacing"
+													data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"
 													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>

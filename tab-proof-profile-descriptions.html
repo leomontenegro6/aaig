@@ -76,8 +76,7 @@
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="line-break-mode-proof-profile-description" class="l-label-line-break-mode">&nbsp;</label>
 												<select id="line-break-mode-proof-profile-description" name="line-break-mode-proof-profile-description"
-													class="form-control line-break-mode" onmouseover="aaig.setTitleByOption(this)"
-													onchange="aaig.changeLineBreakMode(this)">
+													class="form-control line-break-mode" onchange="aaig.changeLineBreakMode(this)">
 													<option value="mode1" class="l-ppd-option-line-break-mode-1">&nbsp;</option>
 													<option value="mode2" class="l-ppd-option-line-break-mode-2">&nbsp;</option>
 													<option value="mode3" class="l-ppd-option-line-break-mode-3">&nbsp;</option>
@@ -102,9 +101,9 @@
 											<!-- Font (3DS) -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="proof-profile-description-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="proof-profile-description-font" name="proof-profile-description-font" class="form-control font-3ds"
+												<select id="proof-profile-description-font" name="proof-profile-description-font" class="form-control font-3ds" data-has-filter="true"
 													onchange="aaig.changeFont(this)"></select>
-												<input type="text" id="proof-profile-description-another-font" class="form-control p-another-font"
+												<input type="text" id="proof-profile-description-another-font" class="form-control p-another-font another-font"
 													style="display: none" onkeyup="aaig.setCustomFont(this)" />
 												<select id="proof-profile-description-font-size" name="proof-profile-description-font-size"
 													class="form-control font-size" onchange="aaig.changeFontSize(this)"></select>
@@ -156,6 +155,15 @@
 												<label for="proof-profile-description-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
 												<input type="text" id="proof-profile-description-margin-left" class="slider margin-left"
 													data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="23"
+													data-slider-tooltip="hide" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+											
+											<!-- Letter Spacing -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-description-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-description-letter-spacing" class="slider letter-spacing"
+													data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"
 													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>

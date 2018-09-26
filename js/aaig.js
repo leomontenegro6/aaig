@@ -74,10 +74,15 @@ function aaig(){
 				'scale': {
 					'value': 1
 				},
-				'font-3ds': 'Ace Attorney US',
+				'font-3ds': 'Phoenix Wright',
 				'font-ds': 'a',
 				'font-size': 15,
 				'margin-top': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
 					'value': 1
 				},
 				'conteiner-class': 'proof-profile-title-sprites-ds',
@@ -93,10 +98,15 @@ function aaig(){
 				'scale': {
 					'value': 1.045
 				},
-				'font-3ds': 'Vaud Book',
+				'font-3ds': 'Vaud-Book',
 				'font-size': 18,
 				'margin-top': {
 					'value': -2
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 10,
+					'value': 1
 				},
 				'conteiner-class': '',
 				'conteiner-text-width': 160,
@@ -122,6 +132,11 @@ function aaig(){
 				'line-height': {
 					'value': 1.95
 				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
 				'conteiner-class': 'proof-profile-subtitle-sprites-ds',
 				'conteiner-text-width': 128,
 				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_ds.png',
@@ -135,13 +150,18 @@ function aaig(){
 				'scale': {
 					'value': 1
 				},
-				'font-3ds': 'Vaud Book',
+				'font-3ds': 'Vaud-Book',
 				'font-size': 14,
 				'margin-top': {
 					'value': 4
 				},
 				'line-height': {
 					'value': 1.35
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 10,
+					'value': 1
 				},
 				'conteiner-class': '',
 				'conteiner-text-width': 160,
@@ -158,7 +178,7 @@ function aaig(){
 				'scale': {
 					'value': 1
 				},
-				'font-3ds': 'Ace Attorney US',
+				'font-3ds': 'Phoenix Wright',
 				'font-ds': 'a',
 				'font-size': 16,
 				'margin-top': {
@@ -168,6 +188,11 @@ function aaig(){
 					'value': 18
 				},
 				'line-height': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
 					'value': 1
 				},
 				'conteiner-class': 'proof-profile-description-sprites-ds brown-background',
@@ -184,7 +209,7 @@ function aaig(){
 				'scale': {
 					'value': 1.075
 				},
-				'font-3ds': 'Vaud Book',
+				'font-3ds': 'Vaud-Book',
 				'font-size': 14,
 				'margin-top': {
 					'value': 3
@@ -194,6 +219,11 @@ function aaig(){
 				},
 				'line-height': {
 					'value': 1.35
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 10,
+					'value': 1
 				},
 				'conteiner-class': 'brown-background',
 				'conteiner-text-width': 256,
@@ -240,6 +270,32 @@ function aaig(){
 	};
 	
 	// Methods
+	this.loadMainAppRoutines = function(){
+		var that = this;
+		
+		that.loadModalWindows(function(){
+			that.showLoadingIndicator();
+			that.loadConfigs();
+			that.loadTheme();
+			that.loadTabContents(function(){
+				that.loadLanguage(function(){
+					that.setDefaultTextFieldValues();
+					that.triggerMainTextFieldEvents();
+					that.toggleSandboxFieldEventsOnTabClick();
+					that.toggleAccordionIcon();
+					that.instantiateSliderFields();
+					that.instantiateFontFields(function(){
+						that.instantiateSelect2Fields();
+						that.removeTitleAttributeOnElectron();
+						that.updateDesktopMenusLanguage();
+						that.preloadDesktopFontData();
+						that.hideLoadingIndicator();
+					});
+				});
+			});
+		});
+	}
+	
 	this.loadConfigs = function(){
 		var theme = stash.get('theme');
 		var language = stash.get('language');
@@ -299,23 +355,16 @@ function aaig(){
 		var that = this;
 		
 		this.removeAllLanguageScripts();
-		this.addLanguageScript(language, function(){
+		this.addLanguageScripts(language, function(){
 			that.loadLanguageScriptStrings();
 			if(callback) callback();
 		});
 	}
 	
-	this.setTitleByOption = function(selectField){
-		var $selectField = $(selectField);
-		
-		var selectedOptionText = $selectField.children('option:selected').first().text();
-		
-		$selectField.attr('title', selectedOptionText);
-	}
-	
 	this.changeLanguage = function(element){
 		var $element = $(element);
 		
+		var that = this;
 		var language;
 		if($element.is('a')){
 			language = ( $element.attr('href') ).replace('#', '');
@@ -327,13 +376,24 @@ function aaig(){
 		
 		// Updating config variables and loading language afterwards
 		this.loadConfigs();
-		this.loadLanguage();
+		this.loadLanguage(function(){
+			that.reinstantiateSelect2Fields();
+		});
 		this.updateDesktopMenusLanguage();
 	}
 	
-	this.addLanguageScript = function(language, callback){
-		$.getScript('js/lang.' + language + '.js', function(){
-			if(callback) callback();
+	this.addLanguageScripts = function(language, callback){
+		$.getScript('js/i18n/aaig.' + language + '.js', function(){
+			$.getScript('js/i18n/select2.' + language + '.js', function(){
+				if(language == 'en-us'){
+					language = 'en';
+				} else if(language == 'pt-br'){
+					language = 'pt-BR';
+				}
+				$.fn.select2.defaults.set('language', language);
+				
+				if(callback) callback();
+			})
 		})
 	}
 	
@@ -392,9 +452,15 @@ function aaig(){
 		
 		$.get('modal-loading.html').then(function(response){
 			$body.append(response);
-			$.get('modal-config.html').then(function(response){
+			
+			$.get('modal-processing.html').then(function(response){
 				$body.append(response);
-				if(callback) callback();
+				
+				$.get('modal-config.html').then(function(response){
+					$body.append(response);
+					
+					if(callback) callback();
+				});
 			});
 		});
 	}
@@ -752,7 +818,7 @@ function aaig(){
 
 					$divPreviewConteinerFieldText.css('marginTop', marginTop + 'px');
 
-					$inputValueExhibitor.val(marginTop);
+					$inputValueExhibitor.val(marginTop + ' px');
 				});
 
 				$input.trigger('change');
@@ -762,7 +828,35 @@ function aaig(){
 
 					$divPreviewConteinerFieldText.css('marginLeft', marginLeft + 'px');
 
-					$inputValueExhibitor.val(marginLeft);
+					$inputValueExhibitor.val(marginLeft + ' px');
+				});
+
+				$input.trigger('change');
+			} else if($input.hasClass('letter-spacing')){
+				$input.on('change', function(){
+					var $visibleTextField = $form.find('input.text, textarea.text, textarea.text-batch-mode').filter(':visible');
+					var $selectPlatform = $form.find('select.platform');
+					
+					var platform = $selectPlatform.val();
+					var letterSpacing = parseInt(this.value, 10);
+					var letterSpacingCSS, letterSpacingLabel;
+					if(letterSpacing > 1){
+						letterSpacingLabel = letterSpacing + ' px';
+						letterSpacingCSS = (letterSpacing - 1) + 'px';
+					} else {
+						letterSpacingLabel = '1' + ' px';
+						letterSpacingCSS = 'normal';						
+					}
+					
+					$divPreviewConteinerFieldText.removeClass('letter-spacing-1 letter-spacing-2');
+					if(platform == 'ds' && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner']) !== -1)){
+						letterSpacing = (letterSpacing - 1);
+						if(letterSpacing > 0) $divPreviewConteinerFieldText.addClass('letter-spacing-' + letterSpacing);
+					} else {
+						$divPreviewConteinerFieldText.css('letterSpacing', letterSpacingCSS);
+					}
+					$inputValueExhibitor.val(letterSpacingLabel);
+					$visibleTextField.trigger('keyup');
 				});
 
 				$input.trigger('change');
@@ -770,9 +864,11 @@ function aaig(){
 		});
 	}
 	
-	this.instantiateFontFields = function(){
+	this.instantiateFontFields = function(callback){
 		var $fontFields = $('select.font-3ds');
+		
 		var languageStrings = this.languageStrings;
+		var that = this;
 		
 		$fontFields.html(
 			$("<option />").html(languageStrings.l.loading).attr({
@@ -781,11 +877,41 @@ function aaig(){
 				'disabled': 'disabled'
 			})
 		);
-		$.get('fonts.html', function(f){
-			$.get('proprietary-fonts.html').always(function(fp) {
+		$.getJSON('fonts.json', function(defaultFonts){
+			that.getSystemFonts(function(systemFonts){
+				var checkHasSystemFonts = (systemFonts.length > 0);
+				
+				if(checkHasSystemFonts){
+					// Removing default fonts from the system font listing,
+					// in order to avoid duplicates
+					for(var i in systemFonts){
+						var systemFontName = systemFonts[i];
+						for(var defaultFontName in defaultFonts){
+							if(systemFontName == defaultFontName){
+								systemFonts.splice(i, 1);
+							}
+						}
+					}
+				}
+				
 				$fontFields.each(function(){
 					var $fontField = $(this);
 					var $fontSizeField = $fontField.siblings('select.font-size');
+					
+					// Cleaning font field options, in order to update them later
+					$fontField.html('');
+					
+					var $optgroupDefaultFonts, $optgroupSystemFonts;
+					if(checkHasSystemFonts){
+						// Creating optgroups to separate default fonts from system fonts
+						$optgroupDefaultFonts = $('<optgroup />').attr('label', 'Fontes padrões');
+						$optgroupSystemFonts = $('<optgroup />').attr('label', 'Fontes do sistema');
+						$fontField.prepend($optgroupDefaultFonts).append($optgroupSystemFonts);
+					} else {
+						$fontField.removeAttr('data-has-filter');
+						$optgroupDefaultFonts = $optgroupSystemFonts = $fontField;
+					}
+					
 					var name = $fontField.attr('name');
 					var defaultFont, defaultFontSize;
 
@@ -797,41 +923,33 @@ function aaig(){
 						defaultFont = 'Arial';
 						defaultFontSize = 23;
 					} else if(name == 'proof-profile-title-font'){
-						defaultFont = 'Vaud Book';
+						defaultFont = 'Vaud-Book';
 						defaultFontSize = 18;
 					} else if(name == 'proof-profile-subtitle-font'){
-						defaultFont = 'Vaud Book';
+						defaultFont = 'Vaud-Book';
 						defaultFontSize = 14;
 					} else if(name == 'proof-profile-description-font'){
-						defaultFont = 'Vaud Book';
+						defaultFont = 'Vaud-Book';
 						defaultFontSize = 14;
 					}
 
-					// Appending loaded fonts inside font field
-					$fontField.html(f);
-					if ((typeof fp == 'string') && (fp.indexOf('<option') > -1)) {
-						$fontField.append(fp);
+					// Adding default fonts to the field
+					for(var defaultFontName in defaultFonts){
+						var defaultFontDescription = defaultFonts[defaultFontName];
+						$optgroupDefaultFonts.append("<option value='" + defaultFontName + "'>" + defaultFontDescription + "</option>");
 					}
 
-					// Sorting options per font name
-					var $options = $fontField.find('option');
-					var array_options = $options.map(function(e, o) {
-						return{
-							t: $(o).text(),
-							v: o.value
-						};
-					}).get();
-					array_options.sort(function(o1, o2){
-						var t1 = o1.t.toLowerCase(), t2 = o2.t.toLowerCase();
-						return t1 > t2 ? 1 : t1 < t2 ? -1 : 0;
-					});
-					$options.each(function(i, o) {
-						o.value = array_options[i].v;
-						$(o).text(array_options[i].t);
-					});
-
-					// Adding option for selecting another fonts
-					$fontField.append('<option value="_o_" class="l-option-another-font">' + languageStrings.l['option-another-font'] + '</option>');
+					// Checking if has system fonts, and doing specific treatments
+					// for each case
+					if(checkHasSystemFonts){
+						// Adding system fonts to the field
+						for(var i in systemFonts){
+							var systemFontName = systemFonts[i];
+							$optgroupSystemFonts.append("<option value='" + systemFontName + "'>" + systemFontName + "</option>");
+						}
+					} else {
+						$optgroupDefaultFonts.append('<option value="_o_" class="l-option-another-font">' + languageStrings.l['option-another-font'] + '</option>');
+					}
 
 					// Setting default font, and fix it in case of the form begin resetted
 					$fontField.val(defaultFont);
@@ -855,8 +973,71 @@ function aaig(){
 					// default font size in the preview
 					$fontSizeField.trigger('change');
 				});
-			});
+				
+				if(callback) callback();
+			})
 		});
+	}
+	
+	this.instantiateSelect2Fields = function(){
+		var $selectFields = $('select.form-control');
+		
+		$selectFields.each(function(){
+			var $select = $(this);
+			
+			var checkHasFilter = $select.is("[data-has-filter='true']");
+			var checkFontField = $select.hasClass('font-3ds');
+			
+			var parameters = [];
+			if(checkHasFilter){
+				parameters.minimumResultsForSearch = 1;
+			} else {
+				parameters.minimumResultsForSearch = Infinity;
+			}
+			if(checkFontField){
+				var templateFunction = function(repo){
+					var $element = $(repo.element);
+					var fontFamily = repo.id;
+					var markup;
+					if(fontFamily == '_o_' || $element.is('optgroup')){
+						markup = repo.text;
+					} else {
+						var markup = document.createElement('span');
+						markup.style.fontFamily = fontFamily;
+						markup.innerHTML = repo.text;
+					}
+					
+					return markup;
+				}
+				
+				parameters.templateResult = templateFunction;
+				parameters.templateSelection = templateFunction;
+			}
+			
+			$select.select2(parameters);
+			
+			$select.on({
+				'select2:open': function(){
+					if(checkFontField){
+						// Adding specific class for styling the font dropdown
+						var $dropdown = $select.data()['select2']['$dropdown'];
+						$dropdown.addClass('font-field');
+					}
+				}
+			})
+		})
+	}
+	
+	this.reinstantiateSelect2Fields = function(){
+		var $selectFields = $('select.form-control');
+		
+		$selectFields.each(function(){
+			var $select = $(this);
+			
+			$select.select2('destroy');
+		});
+		
+		this.instantiateSelect2Fields();
 	}
 	
 	this.toggleComparativeImage = function(checkbox){
@@ -1086,6 +1267,9 @@ function aaig(){
 		if(typeof font == 'undefined'){
 			font = $divPreviewConteiner.closest('div.tab-pane').find("select.font-ds").val();
 		}
+		if(typeof marginLeft == 'undefined'){
+			marginLeft = $divPreviewConteiner.closest('div.tab-pane').find("input.margin-left").val();
+		}
 		if(typeof lineBreakMode != 'undefined'){
 			$divPreviewConteiner.addClass('nowrap');
 		}
@@ -1205,6 +1389,7 @@ function aaig(){
 		var $lineHeightField = $form.find('input.line-height');
 		var $marginTopField = $form.find('input.margin-top');
 		var $marginLeftField = $form.find('input.margin-left');
+		var $letterSpacingField = $form.find('input.letter-spacing');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		var $divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.text');
@@ -1244,6 +1429,11 @@ function aaig(){
 				if(!isNaN(configValues.min)) $marginLeftField.slider('setAttribute', 'min', configValues.min);
 				if(!isNaN(configValues.max)) $marginLeftField.slider('setAttribute', 'max', configValues.max);
 				$marginLeftField.trigger('change');
+			} else if(configName == 'letter-spacing'){
+				$letterSpacingField.slider('setValue', configValues.value);
+				if(!isNaN(configValues.min)) $letterSpacingField.slider('setAttribute', 'min', configValues.min);
+				if(!isNaN(configValues.max)) $letterSpacingField.slider('setAttribute', 'max', configValues.max);
+				$letterSpacingField.trigger('change');
 			} else if(configName == 'line-height'){
 				$lineHeightField.slider('setValue', configValues.value);
 				if(!isNaN(configValues.min)) $lineHeightField.slider('setAttribute', 'min', configValues.min);
@@ -1447,7 +1637,7 @@ function aaig(){
 	this.changeFont = function(fontField){
 		var $fontField = $(fontField);
 		var $form = $fontField.closest('form');
-		var $inputOtherFont = $fontField.next();
+		var $inputOtherFont = $form.find('input.another-font');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerFieldText = $('#' + previewConteinerFieldId).children('div.text');
 		
@@ -1552,6 +1742,28 @@ function aaig(){
 		$('#loading-indicator').modal('hide');
 	}
 	
+	this.showProcessingIndicator = function(){
+		$('#processing-indicator').modal('show');
+		$('#processing-progress-bar').addClass('active');
+	}
+	
+	this.updateProcessingIndicator = function(percentage){
+		if((typeof percentage == 'undefined') || (percentage < 0)){
+			percentage = 0;
+		} else if(percentage > 100) {
+			percentage = 100;
+		}
+		
+		var $progressBar = $('#processing-progress-bar');
+		$progressBar.attr('aria-valuenow', percentage).css('width', percentage + '%').html(percentage + '%');
+		if(percentage == 100) $progressBar.removeClass('active');
+	}
+	
+	this.hideProcessingIndicator = function(){
+		this.updateProcessingIndicator(100);
+		$('#processing-indicator').modal('hide');
+	}
+	
 	/* Function that returns de device used by the user, when acessing the app
 	 * Possible return values:
 	 *	- xs: Extra small (Cellphones, with screen width smaller than 768px);
@@ -1634,7 +1846,7 @@ function aaig(){
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
-				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
+				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, lineBreakMode);
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
@@ -1730,8 +1942,10 @@ function aaig(){
 		var i = 0;
 		var canvases = [];
 		var that = this;
+		var totalTexts = texts.length;
 
-		this.showLoadingIndicator();
+		this.showProcessingIndicator();
+		this.updateProcessingIndicator(0);
 
 		var renderImage = function(){
 			var text = texts.shift();
@@ -1751,6 +1965,8 @@ function aaig(){
 				if(texts.length){
 					// Render image of the next line
 					i++;
+					var percentage = Math.ceil( (i * 100) / totalTexts );
+					that.updateProcessingIndicator(percentage);
 					renderImage();
 				} else {
 					// Generate zipped file containing the batch generated images
@@ -1773,7 +1989,7 @@ function aaig(){
 
 					// Generating zip and offering it to the user
 					zip.generateAsync({type:"blob"}).then(function(content){
-						that.hideLoadingIndicator();
+						that.hideProcessingIndicator();
 						saveAs(content, final_filename);
 
 						if(callback) callback(canvases);
@@ -1850,10 +2066,13 @@ function aaig(){
 			'í': 'i-acute', 'ï': 'i-diaeresis', 'î': 'i-circumflex', 'ò': 'o-grave',
 			'ó': 'o-acute', 'ô': 'o-circumflex', 'õ': 'o-tilde', 'ö': 'o-diaeresis',
 			'ù': 'u-grave', 'ú': 'u-acute', 'û': 'u-circumflex', 'ü': 'u-diaeresis',
-			'ñ': 'n-tilde', 'ÿ': 'y-diaeresis'
+			'ñ': 'n-tilde', 'ÿ': 'y-diaeresis',
+			
+			// Custom characters
+			'☆': 'star'
 
 		}
-
+		
 		var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
 		for(var i in alphabet){
 			var letter = alphabet[i];
@@ -1905,6 +2124,30 @@ function aaig(){
 		if( this.checkOnElectron() ){
 			var ipc = require('electron').ipcRenderer;
 			ipc.send('updateDesktopMenusLanguage', this.configs.language);
+		}
+	}
+	
+	this.preloadDesktopFontData = function(){
+		if( this.checkOnElectron() ){
+			var $firstFontField = $('#button-font');
+			$firstFontField.select2('open');
+			$firstFontField.select2('close');
+		}
+	}
+	
+	this.getSystemFonts = function(callback){
+		if( this.checkOnElectron() ){
+			var ipc = require('electron').ipcRenderer;
+			new Promise(resolve => {
+				ipc.send('getSystemFonts');
+				ipc.on('getSystemFonts', (event, result) => {
+					resolve(result);
+				})
+			}).then(function(systemFonts){
+				if(callback) callback(systemFonts);
+			});
+		} else {
+			if(callback) callback([]);
 		}
 	}
 	

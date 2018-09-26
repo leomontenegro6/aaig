@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Ace Attorney Image Generator',
 		'navbar-title': 'Ace Attorney Image Generator',
 		'navbar-title-mobile': 'AAIG',
-		'version': 'v0.6e',
+		'version': 'v1.0.0',
 		
 		'menu-title': 'File',
 		'open-text-file': 'Open text file',
@@ -58,6 +58,7 @@ aaig.languageStrings = {
 		'label-luminosity': 'Luminosity:',
 		'label-margin-top': 'Margin Top:',
 		'label-margin-left': 'Margin Left:',
+		'label-letter-spacing': 'Letter Spacing:',
 		'label-show-comparative': 'Show comparative:',
 		
 		'option-ds-font-automatic': 'Automatic',
@@ -80,6 +81,7 @@ aaig.languageStrings = {
 		'sandbox-proof-profiles': 'Proofs / Profiles',
 		
 		'loading': 'Loading...',
+		'processing': 'Processing...',
 		
 		'about-description': 'Program created to increase speed edition of images from Nintendo 3DS game "Ace Attorney Trilogy".',
 		'about-github-page': 'Github page'

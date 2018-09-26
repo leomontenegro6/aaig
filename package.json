@@ -1,7 +1,7 @@
 {
-	"name": "Ace Attorney Image Generator",
-	"version": "0.6e",
-	"description": "Gerador de imagens para os três primeiros jogos da franquia Ace Attorney",
+	"name": "aaig",
+	"version": "1.0.0",
+	"description": "App for generatings images from the first three Ace Attorney games",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron ."
@@ -22,5 +22,8 @@
 	"license": "GPL-3.0",
 	"devDependencies": {
 		"electron": "~1.8.4"
+	},
+	"dependencies": {
+		"system-font-families": "^0.4.1"
 	}
 }

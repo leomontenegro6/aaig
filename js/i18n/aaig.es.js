@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v0.6e',
+		'version': 'v1.0.0',
 		
 		'menu-title': 'Archivo',
 		'open-text-file': 'Abrir archivo de texto',
@@ -58,7 +58,8 @@ aaig.languageStrings = {
 		'label-luminosity': 'Claridad:',
 		'label-margin-top': 'Margen superior:',
 		'label-margin-left': 'Margen izquierda:',
-		'label-show-comparative': 'Mostrar comparativo:',
+		'label-letter-spacing': 'Espaciado de letras:',
+		'label-show-comparative': 'Mostrar la comparación:',
 		
 		'option-ds-font-automatic': 'Automatica',
 		'option-ds-font-normal': 'Normal',
@@ -80,6 +81,7 @@ aaig.languageStrings = {
 		'sandbox-proof-profiles': 'Pruebas / perfis',
 		
 		'loading': 'Cargando...',
+		'processing': 'Procesando...',
 		
 		'about-description': 'Programa creado para incrementar la velocidad haciendo imágenes para el juego de Nintendo 3DS "Ace Attorney Trilogy".',
 		'about-github-page': 'Página en Github'

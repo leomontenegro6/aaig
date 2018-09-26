@@ -95,9 +95,9 @@
 											<!-- Font (3DS) -->
 											<div class="form-inline" style="margin-bottom: 5px">
 												<label for="proof-profile-title-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="proof-profile-title-font" name="proof-profile-title-font" class="form-control font-3ds"
+												<select id="proof-profile-title-font" name="proof-profile-title-font" class="form-control font-3ds" data-has-filter="true"
 													onchange="aaig.changeFont(this)"></select>
-												<input type="text" id="proof-profile-title-another-font" class="form-control p-another-font" style="display: none"
+												<input type="text" id="proof-profile-title-another-font" class="form-control p-another-font another-font" style="display: none"
 													onkeyup="aaig.setCustomFont(this)" />
 												<select id="proof-profile-title-font-size" name="proof-profile-title-font-size" class="form-control font-size"
 													onchange="aaig.changeFontSize(this)"></select>
@@ -140,6 +140,15 @@
 												<input type="text" id="proof-profile-title-margin-left" class="slider margin-left"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
 													   data-slider-tooltip="hide" />
+												<input type="text" class="form-control slider-value" disabled />
+											</div>
+											
+											<!-- Letter Spacing -->
+											<div class="form-inline" style="margin-bottom: 5px">
+												<label for="proof-profile-title-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="proof-profile-title-letter-spacing" class="slider letter-spacing"
+													data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"
+													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 

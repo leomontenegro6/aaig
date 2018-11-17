@@ -1,6 +1,6 @@
 {
 	"name": "aaig",
-	"version": "1.0.0",
+	"version": "1.0.0b",
 	"description": "App for generatings images from the first three Ace Attorney games",
 	"main": "main.js",
 	"scripts": {

@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v1.0.0',
+		'version': 'v1.0.0b',
 		
 		'menu-title': 'Arquivo',
 		'open-text-file': 'Abrir arquivo de texto',

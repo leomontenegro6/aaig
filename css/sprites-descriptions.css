@@ -7,11 +7,11 @@
 }
 
 .proof-profile-description-sprites-ds.condensed div.text span.letter{
-	background: url('../images/proof_profile_description_font_ds_condensed.png');
+	background: url('../images/proof_profile_description_font_ds_condensed.png?v=1.0.0b');
 }
 
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter{
-	background: url('../images/proof_profile_description_font_ds_extracondensed.png');
+	background: url('../images/proof_profile_description_font_ds_extracondensed.png?v=1.0.0b');
 }
 
 /* Sizes and dimensions from normal characters */
@@ -144,6 +144,7 @@
 .proof-profile-description-sprites-ds div.text span.letter.o-tilde{ width: 8px; background-position: -112px -128px; }
 .proof-profile-description-sprites-ds div.text span.letter.u-acute{ width: 7px; background-position: -128px -128px; }
 .proof-profile-description-sprites-ds div.text span.letter.u-diaeresis{ width: 7px; background-position: -144px -128px; }
+.proof-profile-description-sprites-ds div.text span.letter.e-grave{ width: 8px; background-position: -160px -128px; }
 .proof-profile-description-sprites-ds div.text span.letter.star{ width: 12px; background-position: -192px -128px; }
 
 .proof-profile-description-sprites-ds div.text span.letter.unknown{ width: 11px !important; background-position: -16px 0 !important; }
@@ -278,6 +279,7 @@
 .proof-profile-description-sprites-ds.condensed div.text span.letter.o-tilde{ width: 6px; }
 .proof-profile-description-sprites-ds.condensed div.text span.letter.u-acute{ width: 6px; }
 .proof-profile-description-sprites-ds.condensed div.text span.letter.u-diaeresis{ width: 6px; }
+.proof-profile-description-sprites-ds.condensed div.text span.letter.e-grave{ width: 6px; }
 
 /* Sizes and dimensions from extra-condensed characters */
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter.space{ width: 3px; }
@@ -409,3 +411,4 @@
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter.o-tilde{ width: 4px; }
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter.u-acute{ width: 5px; }
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter.u-diaeresis{ width: 5px; }
+.proof-profile-description-sprites-ds.extra-condensed div.text span.letter.e-grave{ width: 4px; }

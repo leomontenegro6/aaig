@@ -1033,8 +1033,13 @@ function aaig(){
 		})
 	}
 	
-	this.reinstantiateSelect2Fields = function(){
-		var $selectFields = $('select.form-control');
+	this.reinstantiateSelect2Fields = function(select){
+		var $selectFields;
+		if(typeof select == 'undefined'){
+			$selectFields = $('select.form-control');
+		} else {
+			$selectFields = $(select);
+		}
 		
 		$selectFields.each(function(){
 			var $select = $(this);
@@ -1382,7 +1387,8 @@ function aaig(){
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $textFields = $form.find('input.text, textarea.text');
-		var $selectLineBreakModeOptions = $form.find('select.line-break-mode').children('option');
+		var $selectLineBreakMode = $form.find('select.line-break-mode');
+		var $selectLineBreakModeOptions = $selectLineBreakMode.children('option');
 		var $automaticScaleField = $form.find('input.automatic-scale');
 		var $scaleField = $form.find('input.scale');
 		var $conteinerScaleField = $scaleField.closest('div.form-inline');
@@ -1508,7 +1514,8 @@ function aaig(){
 				}
 			} else if(configName == 'trigger-change-line-break-mode-field'){
 				if(configValues == true){
-					$selectLineBreakModeOptions.trigger('change');
+					this.reinstantiateSelect2Fields($selectLineBreakMode);
+					$selectLineBreakMode.trigger('change');
 				}
 			}
 		}
@@ -1847,6 +1854,7 @@ function aaig(){
 			}
 		} else if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner'){
 			// Proof / profile subtitles
+			var lineBreakMode = $selectLineBreakMode.val();
 			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (platform != 'ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();

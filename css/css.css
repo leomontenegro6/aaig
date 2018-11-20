@@ -185,7 +185,7 @@ a[aria-controls="sandbox"] span.glyphicon{
 	background-image: url('../images/proof_profile_description_bg_ds.png') !important;
 }
 .proof-profile-description-sprites-ds div.text{
-	width: 256px;
+	width: 238px !important;
 	font-family: "Phoenix Wright";
 	color: #fff;
 	line-height: 1.35;

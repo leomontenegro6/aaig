@@ -1,0 +1,146 @@
+/* Common Proof / profile titles */
+.logic-button-sprites-ds div.text span.letter{
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	background: url('../images/logic_button_font_ds.png?v=1.0.1ba');
+	background-position: 0 0;
+	margin-left: -1px;
+}
+
+/* Sizes and dimensions from condensed characters */
+.logic-button-sprites-ds div.text span.letter.space{ width: 3px; background-position: 0 0; }
+.logic-button-sprites-ds div.text span.letter.exclamation{ width: 3px; background-position: -30px 0; }
+.logic-button-sprites-ds div.text span.letter.double-quotes{ width: 5px; background-position: -45px 0; }
+.logic-button-sprites-ds div.text span.letter.cerquilha{ width: 6px; background-position: -60px 0; }
+.logic-button-sprites-ds div.text span.letter.money-sign{ width: 6px; background-position: -75px 0; }
+.logic-button-sprites-ds div.text span.letter.percent{ width: 10px; background-position: -90px 0; }
+.logic-button-sprites-ds div.text span.letter.ampersand{ width: 7px; background-position: -105px 0; }
+.logic-button-sprites-ds div.text span.letter.quotes{ width: 3px; background-position: -120px 0; }
+.logic-button-sprites-ds div.text span.letter.open-parenthesis{ width: 4px; background-position: -135px 0; }
+.logic-button-sprites-ds div.text span.letter.close-parenthesis{ width: 4px; background-position: -150px 0; }
+.logic-button-sprites-ds div.text span.letter.asterisk{ width: 4px; background-position: -165px 0; }
+.logic-button-sprites-ds div.text span.letter.plus{ width: 5px; background-position: -180px 0; }
+.logic-button-sprites-ds div.text span.letter.comma{ width: 2px; background-position: -195px 0; }
+
+.logic-button-sprites-ds div.text span.letter.minus{ width: 5px; background-position: 0 -15px; }
+.logic-button-sprites-ds div.text span.letter.dot{ width: 3px; background-position: -15px -15px; }
+.logic-button-sprites-ds div.text span.letter.slash{ width: 4px; background-position: -30px -15px; }
+.logic-button-sprites-ds div.text span.letter.n0{ width: 6px; background-position: -45px -15px; }
+.logic-button-sprites-ds div.text span.letter.n1{ width: 5px; background-position: -60px -15px; }
+.logic-button-sprites-ds div.text span.letter.n2{ width: 6px; background-position: -75px -15px; }
+.logic-button-sprites-ds div.text span.letter.n3{ width: 6px; background-position: -90px -15px; }
+.logic-button-sprites-ds div.text span.letter.n4{ width: 6px; background-position: -105px -15px; }
+.logic-button-sprites-ds div.text span.letter.n5{ width: 6px; background-position: -120px -15px; }
+.logic-button-sprites-ds div.text span.letter.n6{ width: 6px; background-position: -135px -15px; }
+.logic-button-sprites-ds div.text span.letter.n7{ width: 6px; background-position: -150px -15px; }
+.logic-button-sprites-ds div.text span.letter.n8{ width: 6px; background-position: -165px -15px; }
+.logic-button-sprites-ds div.text span.letter.n9{ width: 6px; background-position: -180px -15px; }
+.logic-button-sprites-ds div.text span.letter.colon{ width: 3px; background-position: -195px -15px; }
+
+.logic-button-sprites-ds div.text span.letter.semicolon{ width: 4px; background-position: 0 -30px; }
+.logic-button-sprites-ds div.text span.letter.less-than{ width: 6px; background-position: -15px -30px; }
+.logic-button-sprites-ds div.text span.letter.equal{ width: 6px; background-position: -30px -30px; }
+.logic-button-sprites-ds div.text span.letter.greater-than{ width: 6px; background-position: -45px -30px; }
+.logic-button-sprites-ds div.text span.letter.interrogation{ width: 7px; background-position: -60px -30px; }
+.logic-button-sprites-ds div.text span.letter.at-sign{ width: 11px; background-position: -75px -30px; }
+.logic-button-sprites-ds div.text span.letter.A{ width: 7px; background-position: -90px -30px; }
+.logic-button-sprites-ds div.text span.letter.B{ width: 6px; background-position: -105px -30px; }
+.logic-button-sprites-ds div.text span.letter.C{ width: 6px; background-position: -120px -30px; }
+.logic-button-sprites-ds div.text span.letter.D{ width: 6px; background-position: -135px -30px; }
+.logic-button-sprites-ds div.text span.letter.E{ width: 6px; background-position: -150px -30px; }
+.logic-button-sprites-ds div.text span.letter.F{ width: 6px; background-position: -165px -30px; }
+.logic-button-sprites-ds div.text span.letter.G{ width: 6px; background-position: -180px -30px; }
+.logic-button-sprites-ds div.text span.letter.H{ width: 6px; background-position: -195px -30px; }
+
+.logic-button-sprites-ds div.text span.letter.I{ width: 5px; background-position: 0 -45px; }
+.logic-button-sprites-ds div.text span.letter.J{ width: 7px; background-position: -15px -45px; }
+.logic-button-sprites-ds div.text span.letter.K{ width: 6px; background-position: -30px -45px; }
+.logic-button-sprites-ds div.text span.letter.L{ width: 6px; background-position: -45px -45px; }
+.logic-button-sprites-ds div.text span.letter.M{ width: 7px; background-position: -60px -45px; }
+.logic-button-sprites-ds div.text span.letter.N{ width: 6px; background-position: -75px -45px; }
+.logic-button-sprites-ds div.text span.letter.O{ width: 6px; background-position: -90px -45px; }
+.logic-button-sprites-ds div.text span.letter.P{ width: 6px; background-position: -105px -45px; }
+.logic-button-sprites-ds div.text span.letter.Q{ width: 6px; background-position: -120px -45px; }
+.logic-button-sprites-ds div.text span.letter.R{ width: 6px; background-position: -135px -45px; }
+.logic-button-sprites-ds div.text span.letter.S{ width: 6px; background-position: -150px -45px; }
+.logic-button-sprites-ds div.text span.letter.T{ width: 7px; background-position: -165px -45px; }
+.logic-button-sprites-ds div.text span.letter.U{ width: 6px; background-position: -180px -45px; }
+.logic-button-sprites-ds div.text span.letter.V{ width: 7px; background-position: -195px -45px; }
+
+.logic-button-sprites-ds div.text span.letter.W{ width: 7px; background-position: 0 -60px; }
+.logic-button-sprites-ds div.text span.letter.X{ width: 7px; background-position: -15px -60px; }
+.logic-button-sprites-ds div.text span.letter.Y{ width: 7px; background-position: -30px -60px; }
+.logic-button-sprites-ds div.text span.letter.Z{ width: 7px; background-position: -45px -60px; }
+.logic-button-sprites-ds div.text span.letter.open-square-brackets{ width: 3px; background-position: -60px -60px; }
+.logic-button-sprites-ds div.text span.letter.backslash{ width: 4px; background-position: -75px -60px; }
+.logic-button-sprites-ds div.text span.letter.close-square-brackets{ width: 3px; background-position: -90px -60px; }
+.logic-button-sprites-ds div.text span.letter.circumflex{ width: 6px; background-position: -105px -60px; }
+.logic-button-sprites-ds div.text span.letter.underscore{ width: 7px; background-position: -120px -60px; }
+.logic-button-sprites-ds div.text span.letter.grave-accent{ width: 3px; background-position: -135px -60px; }
+.logic-button-sprites-ds div.text span.letter.a{ width: 6px; background-position: -150px -60px; }
+.logic-button-sprites-ds div.text span.letter.b{ width: 6px; background-position: -165px -60px; }
+.logic-button-sprites-ds div.text span.letter.c{ width: 6px; background-position: -180px -60px; }
+.logic-button-sprites-ds div.text span.letter.d{ width: 6px; background-position: -195px -60px; }
+
+.logic-button-sprites-ds div.text span.letter.e{ width: 6px; background-position: 0 -75px; }
+.logic-button-sprites-ds div.text span.letter.f{ width: 5px; background-position: -15px -75px; }
+.logic-button-sprites-ds div.text span.letter.g{ width: 6px; background-position: -30px -75px; }
+.logic-button-sprites-ds div.text span.letter.h{ width: 6px; background-position: -45px -75px; }
+.logic-button-sprites-ds div.text span.letter.i{ width: 3px; background-position: -60px -75px; }
+.logic-button-sprites-ds div.text span.letter.j{ width: 5px; background-position: -75px -75px; }
+.logic-button-sprites-ds div.text span.letter.k{ width: 6px; background-position: -90px -75px; }
+.logic-button-sprites-ds div.text span.letter.l{ width: 3px; background-position: -105px -75px; }
+.logic-button-sprites-ds div.text span.letter.m{ width: 7px; background-position: -120px -75px; }
+.logic-button-sprites-ds div.text span.letter.n{ width: 6px; background-position: -135px -75px; }
+.logic-button-sprites-ds div.text span.letter.o{ width: 6px; background-position: -150px -75px; }
+.logic-button-sprites-ds div.text span.letter.p{ width: 6px; background-position: -165px -75px; }
+.logic-button-sprites-ds div.text span.letter.q{ width: 6px; background-position: -180px -75px; }
+.logic-button-sprites-ds div.text span.letter.r{ width: 5px; background-position: -195px -75px; }
+
+.logic-button-sprites-ds div.text span.letter.s{ width: 6px; background-position: 0 -90px; }
+.logic-button-sprites-ds div.text span.letter.t{ width: 5px; background-position: -15px -90px; }
+.logic-button-sprites-ds div.text span.letter.u{ width: 6px; background-position: -30px -90px; }
+.logic-button-sprites-ds div.text span.letter.v{ width: 7px; background-position: -45px -90px; }
+.logic-button-sprites-ds div.text span.letter.w{ width: 7px; background-position: -60px -90px; }
+.logic-button-sprites-ds div.text span.letter.x{ width: 7px; background-position: -75px -90px; }
+.logic-button-sprites-ds div.text span.letter.y{ width: 6px; background-position: -90px -90px; }
+.logic-button-sprites-ds div.text span.letter.z{ width: 6px; background-position: -105px -90px; }
+.logic-button-sprites-ds div.text span.letter.open-curly-brackets{ width: 4px; background-position: -120px -90px; }
+.logic-button-sprites-ds div.text span.letter.vertical-bar{ width: 2px; background-position: -135px -90px; }
+.logic-button-sprites-ds div.text span.letter.close-curly-brackets{ width: 4px; background-position: -150px -90px; }
+.logic-button-sprites-ds div.text span.letter.tilde{ width: 6px; background-position: -165px -90px; }
+.logic-button-sprites-ds div.text span.letter.A-grave{ width: 7px; background-position: -180px -90px; }
+.logic-button-sprites-ds div.text span.letter.A-acute{ width: 7px; background-position: -195px -90px; }
+
+.logic-button-sprites-ds div.text span.letter.A-circumflex{ width: 7px; background-position: 0 -105px; }
+.logic-button-sprites-ds div.text span.letter.A-tilde{ width: 7px; background-position: -15px -105px; }
+.logic-button-sprites-ds div.text span.letter.C-cedilla{ width: 6px; background-position: -30px -105px; }
+.logic-button-sprites-ds div.text span.letter.E-acute{ width: 6px; background-position: -45px -105px; }
+.logic-button-sprites-ds div.text span.letter.E-circumflex{ width: 6px; background-position: -60px -105px; }
+.logic-button-sprites-ds div.text span.letter.I-acute{ width: 5px; background-position: -75px -105px; }
+.logic-button-sprites-ds div.text span.letter.O-acute{ width: 6px; background-position: -90px -105px; }
+.logic-button-sprites-ds div.text span.letter.O-circumflex{ width: 6px; background-position: -105px -105px; }
+.logic-button-sprites-ds div.text span.letter.O-tilde{ width: 6px; background-position: -120px -105px; }
+.logic-button-sprites-ds div.text span.letter.U-acute{ width: 6px; background-position: -135px -105px; }
+.logic-button-sprites-ds div.text span.letter.U-diaeresis{ width: 6px; background-position: -150px -105px; }
+.logic-button-sprites-ds div.text span.letter.a-grave{ width: 6px; background-position: -165px -105px; }
+.logic-button-sprites-ds div.text span.letter.a-acute{ width: 6px; background-position: -180px -105px; }
+.logic-button-sprites-ds div.text span.letter.a-circumflex{ width: 6px; background-position: -195px -105px; }
+
+.logic-button-sprites-ds div.text span.letter.a-tilde{ width: 6px; background-position: 0 -120px; }
+.logic-button-sprites-ds div.text span.letter.c-cedilla{ width: 6px; background-position: -15px -120px; }
+.logic-button-sprites-ds div.text span.letter.e-acute{ width: 6px; background-position: -30px -120px; }
+.logic-button-sprites-ds div.text span.letter.e-circumflex{ width: 6px; background-position: -45px -120px; }
+.logic-button-sprites-ds div.text span.letter.i-acute{ width: 3px; background-position: -60px -120px; }
+.logic-button-sprites-ds div.text span.letter.o-acute{ width: 6px; background-position: -75px -120px; }
+.logic-button-sprites-ds div.text span.letter.o-circumflex{ width: 6px; background-position: -90px -120px; }
+.logic-button-sprites-ds div.text span.letter.o-tilde{ width: 6px; background-position: -105px -120px; }
+.logic-button-sprites-ds div.text span.letter.u-acute{ width: 6px; background-position: -120px -120px; }
+.logic-button-sprites-ds div.text span.letter.u-diaeresis{ width: 6px; background-position: -135px -120px; }
+.logic-button-sprites-ds div.text span.letter.star{ width: 12px; background-position: -150px -120px; }
+.logic-button-sprites-ds div.text span.letter.e-grave{ width: 6px; background-position: -165px -120px; }
+.logic-button-sprites-ds div.text span.letter.o-ordinal{ width: 5px; background-position: -180px -120px; }
+.logic-button-sprites-ds div.text span.letter.a-ordinal{ width: 5px; background-position: -195px -120px; }
+
+.logic-button-sprites-ds div.text span.letter.unknown{ width: 10px !important; background-position: -15px 0 !important; }

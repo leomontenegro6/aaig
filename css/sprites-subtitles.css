@@ -2,7 +2,7 @@
 	display: inline-block;
 	width: 15px;
 	height: 15px;
-	background: url('../images/proof_profile_subtitle_font_ds.png?v=1.0.0b');
+	background: url('../images/proof_profile_subtitle_font_ds.png?v=1.0.1b');
 	background-position: 0 0;
 }
 
@@ -137,5 +137,7 @@
 .proof-profile-subtitle-sprites-ds div.text span.letter.u-diaeresis{ width: 6px; background-position: -135px -120px; }
 .proof-profile-subtitle-sprites-ds div.text span.letter.star{ width: 12px; background-position: -150px -120px; }
 .proof-profile-subtitle-sprites-ds div.text span.letter.e-grave{ width: 6px; background-position: -165px -120px; }
+.proof-profile-subtitle-sprites-ds div.text span.letter.o-ordinal{ width: 4px; background-position: -180px -120px; }
+.proof-profile-subtitle-sprites-ds div.text span.letter.a-ordinal{ width: 4px; background-position: -195px -120px; }
 
 .proof-profile-subtitle-sprites-ds div.text span.letter.unknown{ width: 10px !important; background-position: -15px 0 !important; }

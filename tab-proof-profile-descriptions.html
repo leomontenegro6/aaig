@@ -16,13 +16,18 @@
 									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
-							<!-- Platform and batch mode -->
+							<!-- Game and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
-								<label for="proof-profile-description-platform" class="control-label l-label-platform">&nbsp;</label>
-								<select id="proof-profile-description-platform" name="proof-profile-description-platform" class="form-control platform"
-									onchange="aaig.changePlatform(this)">
-									<option value="ds">Nintendo DS</option>
-									<option value="3ds" selected>Nintendo 3DS</option>
+								<label for="proof-profile-description-game" class="control-label l-label-game">&nbsp;</label>
+								<select id="proof-profile-description-game" name="proof-profile-description-game" class="form-control game"
+									onchange="aaig.changeGame(this)">
+									<optgroup label="Nintendo DS">
+										<option value="aa123_ds">Ace Attorney 1-3</option>
+										<option value="aai_ds">Ace Attorney Investigations</option>
+									</optgroup>
+									<optgroup label="Nintendo 3DS">
+										<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+									</optgroup>
 								</select>
 								<label for="proof-profile-description-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
 								<div class="checkbox">
@@ -74,7 +79,7 @@
 										<div class="panel-body">
 											<!-- Line Break Mode -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="line-break-mode-proof-profile-description" class="l-label-line-break-mode">&nbsp;</label>
+												<label for="line-break-mode-proof-profile-description" class="control-label l-label-line-break-mode">&nbsp;</label>
 												<select id="line-break-mode-proof-profile-description" name="line-break-mode-proof-profile-description"
 													class="form-control line-break-mode" onchange="aaig.changeLineBreakMode(this)">
 													<option value="mode1" class="l-ppd-option-line-break-mode-1">&nbsp;</option>

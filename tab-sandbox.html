@@ -22,11 +22,16 @@
 											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)" />
 									</div>
 									<div class="form-group">
-										<label for="sandbox-buttons-platform" class="control-label l-label-platform">&nbsp;</label>
-										<select id="sandbox-buttons-platform" name="sandbox-buttons-platform" class="form-control platform"
-											onchange="aaig.changePlatform(this)" style="width: 150px">
-											<option value="ds">Nintendo DS</option>
-											<option value="3ds" selected>Nintendo 3DS</option>
+										<label for="sandbox-buttons-game" class="control-label l-label-game">&nbsp;</label>
+										<select id="sandbox-buttons-game" name="sandbox-buttons-game" class="form-control game"
+											onchange="aaig.changeGame(this)" style="width: 150px">
+											<optgroup label="Nintendo DS">
+												<option value="aa123_ds">Ace Attorney 1-3</option>
+												<option value="aai_ds">Ace Attorney Investigations</option>
+											</optgroup>
+											<optgroup label="Nintendo 3DS">
+												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+											</optgroup>
 										</select>
 									</div>
 
@@ -76,11 +81,16 @@
 											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)" />
 									</div>
 									<div class="form-group">
-										<label for="sandbox-smaller-buttons-platform" class="control-label l-label-platform">&nbsp;</label>
-										<select id="sandbox-smaller-buttons-platform" name="sandbox-smaller-buttons-platform" class="form-control platform"
-											onchange="aaig.changePlatform(this)" style="width: 150px">
-											<option value="ds">Nintendo DS</option>
-											<option value="3ds" selected>Nintendo 3DS</option>
+										<label for="sandbox-smaller-buttons-game" class="control-label l-label-game">&nbsp;</label>
+										<select id="sandbox-smaller-buttons-game" name="sandbox-smaller-buttons-game" class="form-control game"
+											onchange="aaig.changeGame(this)" style="width: 150px">
+											<optgroup label="Nintendo DS">
+												<option value="aa123_ds">Ace Attorney 1-3</option>
+												<option value="aai_ds">Ace Attorney Investigations</option>
+											</optgroup>
+											<optgroup label="Nintendo 3DS">
+												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+											</optgroup>
 										</select>
 									</div>
 
@@ -137,13 +147,18 @@
 										<textarea name="proof-profile-description-text-sandbox" id="proof-profile-description-text-sandbox" rows="3"
 											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)"></textarea>
 									</div>
-									<!-- Platform -->
+									<!-- Game -->
 									<div class="form-group">
-										<label for="sandbox-proof-profiles-platform" class="control-label l-label-platform">&nbsp;</label>
-										<select id="sandbox-proof-profiles-platform" name="sandbox-proof-profiles-platform" class="form-control platform"
-											onchange="aaig.changePlatform(this)" style="width: 150px">
-											<option value="ds">Nintendo DS</option>
-											<option value="3ds" selected>Nintendo 3DS</option>
+										<label for="sandbox-proof-profiles-game" class="control-label l-label-game">&nbsp;</label>
+										<select id="sandbox-proof-profiles-game" name="sandbox-proof-profiles-game" class="form-control game"
+											onchange="aaig.changeGame(this)" style="width: 150px">
+											<optgroup label="Nintendo DS">
+												<option value="aa123_ds">Ace Attorney 1-3</option>
+												<option value="aai_ds">Ace Attorney Investigations</option>
+											</optgroup>
+											<optgroup label="Nintendo 3DS">
+												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+											</optgroup>
 										</select>
 									</div>
 

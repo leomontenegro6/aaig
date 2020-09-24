@@ -1,0 +1,421 @@
+/* Logic Proof Titles */
+.logic-title-sprites-ds div.text span.letter{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../images/logic_title_font_ds.png?v=1.0.1b');
+	background-position: 0 0;
+}
+
+.logic-title-sprites-ds.condensed div.text span.letter{
+	background: url('../images/logic_title_font_ds_condensed.png?v=1.0.1b');
+}
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter{
+	background: url('../images/logic_title_font_ds_extracondensed.png?v=1.0.1b');
+}
+
+/* Sizes and dimensions from normal characters */
+.logic-title-sprites-ds div.text span.letter.space{ width: 5px; background-position: 0 0; }
+.logic-title-sprites-ds div.text span.letter.exclamation{ width: 2px; background-position: -32px 0; }
+.logic-title-sprites-ds div.text span.letter.double-quotes{ width: 6px; background-position: -48px 0; }
+.logic-title-sprites-ds div.text span.letter.cerquilha{ width: 12px; background-position: -64px 0; }
+.logic-title-sprites-ds div.text span.letter.money-sign{ width: 8px; background-position: -80px 0; }
+.logic-title-sprites-ds div.text span.letter.percent{ width: 11px; background-position: -96px 0; }
+.logic-title-sprites-ds div.text span.letter.ampersand{ width: 10px; background-position: -112px 0; }
+.logic-title-sprites-ds div.text span.letter.quotes{ width: 3px; background-position: -128px 0; }
+.logic-title-sprites-ds div.text span.letter.open-parenthesis{ width: 4px; background-position: -144px 0; }
+.logic-title-sprites-ds div.text span.letter.close-parenthesis{ width: 4px; background-position: -160px 0; }
+.logic-title-sprites-ds div.text span.letter.asterisk{ width: 8px; background-position: -176px 0; }
+.logic-title-sprites-ds div.text span.letter.plus{ width: 10px; background-position: -192px 0; }
+.logic-title-sprites-ds div.text span.letter.comma{ width: 3px; background-position: -208px 0; }
+.logic-title-sprites-ds div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.logic-title-sprites-ds div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
+
+.logic-title-sprites-ds div.text span.letter.minus{ width: 6px; background-position: 0 -16px; }
+.logic-title-sprites-ds div.text span.letter.dot{ width: 3px; background-position: -16px -16px; }
+.logic-title-sprites-ds div.text span.letter.slash{ width: 6px; background-position: -32px -16px; }
+.logic-title-sprites-ds div.text span.letter.n0{ width: 6px; background-position: -48px -16px; }
+.logic-title-sprites-ds div.text span.letter.n1{ width: 4px; background-position: -64px -16px; }
+.logic-title-sprites-ds div.text span.letter.n2{ width: 6px; background-position: -80px -16px; }
+.logic-title-sprites-ds div.text span.letter.n3{ width: 6px; background-position: -96px -16px; }
+.logic-title-sprites-ds div.text span.letter.n4{ width: 6px; background-position: -112px -16px; }
+.logic-title-sprites-ds div.text span.letter.n5{ width: 6px; background-position: -128px -16px; }
+.logic-title-sprites-ds div.text span.letter.n6{ width: 6px; background-position: -144px -16px; }
+.logic-title-sprites-ds div.text span.letter.n7{ width: 6px; background-position: -160px -16px; }
+.logic-title-sprites-ds div.text span.letter.n8{ width: 6px; background-position: -176px -16px; }
+.logic-title-sprites-ds div.text span.letter.n9{ width: 6px; background-position: -192px -16px; }
+.logic-title-sprites-ds div.text span.letter.colon{ width: 3px; background-position: -208px -16px; }
+
+.logic-title-sprites-ds div.text span.letter.semicolon{ width: 3px; background-position: 0 -32px; }
+.logic-title-sprites-ds div.text span.letter.less-than{ width: 13px; background-position: -16px -32px; }
+.logic-title-sprites-ds div.text span.letter.equal{ width: 12px; background-position: -32px -32px; }
+.logic-title-sprites-ds div.text span.letter.greater-than{ width: 13px; background-position: -48px -32px; }
+.logic-title-sprites-ds div.text span.letter.interrogation{ width: 8px; background-position: -64px -32px; }
+.logic-title-sprites-ds div.text span.letter.at-sign{ width: 15px; background-position: -80px -32px; }
+.logic-title-sprites-ds div.text span.letter.A{ width: 9px; background-position: -96px -32px; }
+.logic-title-sprites-ds div.text span.letter.B{ width: 8px; background-position: -112px -32px; }
+.logic-title-sprites-ds div.text span.letter.C{ width: 9px; background-position: -128px -32px; }
+.logic-title-sprites-ds div.text span.letter.D{ width: 8px; background-position: -144px -32px; }
+.logic-title-sprites-ds div.text span.letter.E{ width: 7px; background-position: -160px -32px; }
+.logic-title-sprites-ds div.text span.letter.F{ width: 7px; background-position: -176px -32px; }
+.logic-title-sprites-ds div.text span.letter.G{ width: 9px; background-position: -192px -32px; }
+.logic-title-sprites-ds div.text span.letter.H{ width: 8px; background-position: -208px -32px; }
+
+.logic-title-sprites-ds div.text span.letter.I{ width: 4px; background-position: 0 -48px; }
+.logic-title-sprites-ds div.text span.letter.J{ width: 6px; background-position: -16px -48px; }
+.logic-title-sprites-ds div.text span.letter.K{ width: 8px; background-position: -32px -48px; }
+.logic-title-sprites-ds div.text span.letter.L{ width: 8px; background-position: -48px -48px; }
+.logic-title-sprites-ds div.text span.letter.M{ width: 10px; background-position: -64px -48px; }
+.logic-title-sprites-ds div.text span.letter.N{ width: 8px; background-position: -80px -48px; }
+.logic-title-sprites-ds div.text span.letter.O{ width: 11px; background-position: -96px -48px; }
+.logic-title-sprites-ds div.text span.letter.P{ width: 8px; background-position: -112px -48px; }
+.logic-title-sprites-ds div.text span.letter.Q{ width: 11px; background-position: -128px -48px; }
+.logic-title-sprites-ds div.text span.letter.R{ width: 8px; background-position: -144px -48px; }
+.logic-title-sprites-ds div.text span.letter.S{ width: 8px; background-position: -160px -48px; }
+.logic-title-sprites-ds div.text span.letter.T{ width: 8px; background-position: -176px -48px; }
+.logic-title-sprites-ds div.text span.letter.U{ width: 8px; background-position: -192px -48px; }
+.logic-title-sprites-ds div.text span.letter.V{ width: 8px; background-position: -208px -48px; }
+
+.logic-title-sprites-ds div.text span.letter.W{ width: 14px; background-position: 0 -64px; }
+.logic-title-sprites-ds div.text span.letter.X{ width: 7px; background-position: -16px -64px; }
+.logic-title-sprites-ds div.text span.letter.Y{ width: 8px; background-position: -32px -64px; }
+.logic-title-sprites-ds div.text span.letter.Z{ width: 8px; background-position: -48px -64px; }
+.logic-title-sprites-ds div.text span.letter.open-square-brackets{ width: 5px; background-position: -64px -64px; }
+.logic-title-sprites-ds div.text span.letter.backslash{ width: 7px; background-position: -80px -64px; }
+.logic-title-sprites-ds div.text span.letter.close-square-brackets{ width: 5px; background-position: -96px -64px; }
+.logic-title-sprites-ds div.text span.letter.circumflex{ width: 8px; background-position: -112px -64px; }
+.logic-title-sprites-ds div.text span.letter.underscore{ width: 10px; background-position: -128px -64px; }
+.logic-title-sprites-ds div.text span.letter.grave-accent{ width: 7px; background-position: -144px -64px; }
+.logic-title-sprites-ds div.text span.letter.a{ width: 7px; background-position: -160px -64px; }
+.logic-title-sprites-ds div.text span.letter.b{ width: 7px; background-position: -176px -64px; }
+.logic-title-sprites-ds div.text span.letter.c{ width: 7px; background-position: -192px -64px; }
+.logic-title-sprites-ds div.text span.letter.d{ width: 7px; background-position: -208px -64px; }
+
+.logic-title-sprites-ds div.text span.letter.e{ width: 7px; background-position: 0 -80px; }
+.logic-title-sprites-ds div.text span.letter.f{ width: 5px; background-position: -16px -80px; }
+.logic-title-sprites-ds div.text span.letter.g{ width: 7px; background-position: -32px -80px; }
+.logic-title-sprites-ds div.text span.letter.h{ width: 7px; background-position: -48px -80px; }
+.logic-title-sprites-ds div.text span.letter.i{ width: 2px; background-position: -64px -80px; }
+.logic-title-sprites-ds div.text span.letter.j{ width: 3px; background-position: -80px -80px; }
+.logic-title-sprites-ds div.text span.letter.k{ width: 7px; background-position: -96px -80px; }
+.logic-title-sprites-ds div.text span.letter.l{ width: 2px; background-position: -112px -80px; }
+.logic-title-sprites-ds div.text span.letter.m{ width: 10px; background-position: -128px -80px; }
+.logic-title-sprites-ds div.text span.letter.n{ width: 7px; background-position: -144px -80px; }
+.logic-title-sprites-ds div.text span.letter.o{ width: 8px; background-position: -160px -80px; }
+.logic-title-sprites-ds div.text span.letter.p{ width: 7px; background-position: -176px -80px; }
+.logic-title-sprites-ds div.text span.letter.q{ width: 7px; background-position: -192px -80px; }
+.logic-title-sprites-ds div.text span.letter.r{ width: 5px; background-position: -208px -80px; }
+
+.logic-title-sprites-ds div.text span.letter.s{ width: 7px; background-position: 0 -96px; }
+.logic-title-sprites-ds div.text span.letter.t{ width: 5px; background-position: -16px -96px; }
+.logic-title-sprites-ds div.text span.letter.u{ width: 7px; background-position: -32px -96px; }
+.logic-title-sprites-ds div.text span.letter.v{ width: 8px; background-position: -48px -96px; }
+.logic-title-sprites-ds div.text span.letter.w{ width: 10px; background-position: -64px -96px; }
+.logic-title-sprites-ds div.text span.letter.x{ width: 8px; background-position: -80px -96px; }
+.logic-title-sprites-ds div.text span.letter.y{ width: 8px; background-position: -96px -96px; }
+.logic-title-sprites-ds div.text span.letter.z{ width: 7px; background-position: -112px -96px; }
+.logic-title-sprites-ds div.text span.letter.open-curly-brackets{ width: 5px; background-position: -128px -96px; }
+.logic-title-sprites-ds div.text span.letter.vertical-bar{ width: 2px; background-position: -144px -96px; }
+.logic-title-sprites-ds div.text span.letter.close-curly-brackets{ width: 5px; background-position: -160px -96px; }
+.logic-title-sprites-ds div.text span.letter.tilde{ width: 10px; background-position: -176px -96px; }
+.logic-title-sprites-ds div.text span.letter.A-grave{ width: 8px; background-position: -192px -96px; }
+.logic-title-sprites-ds div.text span.letter.A-acute{ width: 8px; background-position: -208px -96px; }
+
+.logic-title-sprites-ds div.text span.letter.A-circumflex{ width: 8px; background-position: 0 -112px; }
+.logic-title-sprites-ds div.text span.letter.A-tilde{ width: 8px; background-position: -16px -112px; }
+.logic-title-sprites-ds div.text span.letter.C-cedilla{ width: 9px; background-position: -32px -112px; }
+.logic-title-sprites-ds div.text span.letter.E-acute{ width: 8px; background-position: -48px -112px; }
+.logic-title-sprites-ds div.text span.letter.E-circumflex{ width: 8px; background-position: -64px -112px; }
+.logic-title-sprites-ds div.text span.letter.I-acute{ width: 3px; background-position: -80px -112px; }
+.logic-title-sprites-ds div.text span.letter.O-acute{ width: 9px; background-position: -96px -112px; }
+.logic-title-sprites-ds div.text span.letter.O-circumflex{ width: 9px; background-position: -112px -112px; }
+.logic-title-sprites-ds div.text span.letter.O-tilde{ width: 9px; background-position: -128px -112px; }
+.logic-title-sprites-ds div.text span.letter.U-acute{ width: 8px; background-position: -144px -112px; }
+.logic-title-sprites-ds div.text span.letter.U-diaeresis{ width: 8px; background-position: -160px -112px; }
+.logic-title-sprites-ds div.text span.letter.a-grave{ width: 7px; background-position: -176px -112px; }
+.logic-title-sprites-ds div.text span.letter.a-acute{ width: 7px; background-position: -192px -112px; }
+.logic-title-sprites-ds div.text span.letter.a-circumflex{ width: 7px; background-position: -208px -112px; }
+
+.logic-title-sprites-ds div.text span.letter.a-tilde{ width: 7px; background-position: 0 -128px; }
+.logic-title-sprites-ds div.text span.letter.c-cedilla{ width: 7px; background-position: -16px -128px; }
+.logic-title-sprites-ds div.text span.letter.e-acute{ width: 7px; background-position: -32px -128px; }
+.logic-title-sprites-ds div.text span.letter.e-circumflex{ width: 7px; background-position: -48px -128px; }
+.logic-title-sprites-ds div.text span.letter.i-acute{ width: 2px; background-position: -64px -128px; }
+.logic-title-sprites-ds div.text span.letter.o-acute{ width: 8px; background-position: -80px -128px; }
+.logic-title-sprites-ds div.text span.letter.o-circumflex{ width: 8px; background-position: -96px -128px; }
+.logic-title-sprites-ds div.text span.letter.o-tilde{ width: 8px; background-position: -112px -128px; }
+.logic-title-sprites-ds div.text span.letter.u-acute{ width: 7px; background-position: -128px -128px; }
+.logic-title-sprites-ds div.text span.letter.u-diaeresis{ width: 7px; background-position: -144px -128px; }
+.logic-title-sprites-ds div.text span.letter.e-grave{ width: 7px; background-position: -160px -128px; }
+.logic-title-sprites-ds div.text span.letter.star{ width: 12px; background-position: -192px -128px; }
+
+.logic-title-sprites-ds div.text span.letter.unknown{ width: 11px !important; background-position: -16px 0 !important; }
+
+/* Sizes and dimensions from condensed characters */
+.logic-title-sprites-ds.condensed div.text span.letter.space{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.exclamation{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.double-quotes{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.cerquilha{ width: 9px; }
+.logic-title-sprites-ds.condensed div.text span.letter.money-sign{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.percent{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.ampersand{ width: 7px; }
+.logic-title-sprites-ds.condensed div.text span.letter.quotes{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.open-parenthesis{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.close-parenthesis{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.asterisk{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.plus{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.comma{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.logic-title-sprites-ds.condensed div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.minus{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.dot{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.slash{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n0{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n1{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n2{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n3{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n4{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n5{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n6{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n7{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n8{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n9{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.colon{ width: 3px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.semicolon{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.less-than{ width: 9px; }
+.logic-title-sprites-ds.condensed div.text span.letter.equal{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.greater-than{ width: 9px; }
+.logic-title-sprites-ds.condensed div.text span.letter.interrogation{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.at-sign{ width: 13px; }
+.logic-title-sprites-ds.condensed div.text span.letter.A{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.B{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.C{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.D{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.E{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.F{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.G{ width: 7px; }
+.logic-title-sprites-ds.condensed div.text span.letter.H{ width: 6px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.I{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.J{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.K{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.L{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.M{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.N{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.O{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.P{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.Q{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.R{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.S{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.T{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.U{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.V{ width: 6px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.W{ width: 10px; }
+.logic-title-sprites-ds.condensed div.text span.letter.X{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.Y{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.Z{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.open-square-brackets{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.backslash{ width: 7px; }
+.logic-title-sprites-ds.condensed div.text span.letter.close-square-brackets{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.circumflex{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.underscore{ width: 10px; }
+.logic-title-sprites-ds.condensed div.text span.letter.grave-accent{ width: 7px; }
+.logic-title-sprites-ds.condensed div.text span.letter.a{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.b{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.c{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.d{ width: 6px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.e{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.f{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.g{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.h{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.i{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.j{ width: 3px; }
+.logic-title-sprites-ds.condensed div.text span.letter.k{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.l{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.m{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.n{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.o{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.p{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.q{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.r{ width: 4px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.s{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.t{ width: 4px; }
+.logic-title-sprites-ds.condensed div.text span.letter.u{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.v{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.w{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.x{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.y{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.z{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.open-curly-brackets{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.vertical-bar{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.close-curly-brackets{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.tilde{ width: 8px; }
+.logic-title-sprites-ds.condensed div.text span.letter.A-grave{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.A-acute{ width: 6px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.A-circumflex{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.A-tilde{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.C-cedilla{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.E-acute{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.E-circumflex{ width: 5px; }
+.logic-title-sprites-ds.condensed div.text span.letter.I-acute{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.O-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.O-circumflex{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.O-tilde{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.U-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.U-diaeresis{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.a-grave{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.a-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.a-circumflex{ width: 6px; }
+
+.logic-title-sprites-ds.condensed div.text span.letter.a-tilde{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.c-cedilla{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.e-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.e-circumflex{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.i-acute{ width: 2px; }
+.logic-title-sprites-ds.condensed div.text span.letter.o-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.o-circumflex{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.o-tilde{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.u-acute{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.u-diaeresis{ width: 6px; }
+.logic-title-sprites-ds.condensed div.text span.letter.e-grave{ width: 6px; }
+
+/* Sizes and dimensions from extra-condensed characters */
+.logic-title-sprites-ds.extra-condensed div.text span.letter.space{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.exclamation{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.double-quotes{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.cerquilha{ width: 8px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.money-sign{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.percent{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.ampersand{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.quotes{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.open-parenthesis{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.close-parenthesis{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.asterisk{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.plus{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.comma{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.minus{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.dot{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.slash{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n0{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n1{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n2{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n3{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n4{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n5{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n6{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n7{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n8{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n9{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.colon{ width: 3px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.semicolon{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.less-than{ width: 7px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.equal{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.greater-than{ width: 7px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.interrogation{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.at-sign{ width: 11px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.A{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.B{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.C{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.D{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.E{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.F{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.G{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.H{ width: 4px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.I{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.J{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.K{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.L{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.M{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.N{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.O{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.P{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.Q{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.R{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.S{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.T{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.U{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.V{ width: 4px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.W{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.X{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.Y{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.Z{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.open-square-brackets{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.backslash{ width: 7px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.close-square-brackets{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.circumflex{ width: 7px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.underscore{ width: 8px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.grave-accent{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.b{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.c{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.d{ width: 5px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.e{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.f{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.g{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.h{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.i{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.j{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.k{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.l{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.m{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.n{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.o{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.p{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.q{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.r{ width: 4px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.s{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.t{ width: 3px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.u{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.v{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.w{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.x{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.y{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.z{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.open-curly-brackets{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.vertical-bar{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.close-curly-brackets{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.tilde{ width: 6px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.A-grave{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.A-acute{ width: 4px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.A-circumflex{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.A-tilde{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.C-cedilla{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.E-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.E-circumflex{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.I-acute{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.O-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.O-circumflex{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.O-tilde{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.U-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.U-diaeresis{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a-grave{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a-circumflex{ width: 4px; }
+
+.logic-title-sprites-ds.extra-condensed div.text span.letter.a-tilde{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.c-cedilla{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.e-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.e-circumflex{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.i-acute{ width: 2px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.o-acute{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.o-circumflex{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.o-tilde{ width: 4px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.u-acute{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.u-diaeresis{ width: 5px; }
+.logic-title-sprites-ds.extra-condensed div.text span.letter.e-grave{ width: 4px; }

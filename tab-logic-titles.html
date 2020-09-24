@@ -7,14 +7,14 @@
 					<div class="panel-heading l-filters">&nbsp;</div>
 					<div class="panel-body">
 						
-						<form class="form-proof-profile-title" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
-							data-image="proof-profile-title-conteiner">
-							<!-- Proof / profile title text -->
+						<form class="form-logic-title" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
+							data-image="logic-title-conteiner">
+							<!-- Logic title text -->
 							<div class="form-group">
-								<label for="proof-profile-title-text" class="control-label l-label-proof-profile-titles">&nbsp;</label>
-								<input type="text" name="proof-profile-title-text" id="proof-profile-title-text" class="form-control p-text-buttons text"
+								<label for="logic-title-text" class="control-label l-label-logic-titles">&nbsp;</label>
+								<input type="text" name="logic-title-text" id="logic-title-text" class="form-control p-text-buttons text"
 									onkeyup="aaig.updatePreview(this, event)" />
-								<textarea name="proof-profile-title-text-batch-mode" id="proof-profile-title-text-batch-mode"
+								<textarea name="logic-title-text-batch-mode" id="logic-title-text-batch-mode"
 									class="form-control p-text-batch-mode text-batch-mode resizable-vertical" rows="10"
 									onkeyup="aaig.updatePreviewBatchMode(this)" onclick="$(this).trigger('keyup')"
 									style="display: none"></textarea>
@@ -22,89 +22,88 @@
 
 							<!-- Game and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
-								<label for="proof-profile-title-game" class="control-label l-label-game">&nbsp;</label>
-								<select id="proof-profile-title-game" name="proof-profile-title-game" class="form-control game"
+								<label for="logic-title-game" class="control-label l-label-game">&nbsp;</label>
+								<select id="logic-title-game" name="logic-title-game" class="form-control game"
 									onchange="aaig.changeGame(this)">
 									<optgroup label="Nintendo DS">
-										<option value="aa123_ds">Ace Attorney 1-3</option>
-										<option value="aai_ds">Ace Attorney Investigations</option>
+										<option value="aai_ds" selected>Ace Attorney Investigations</option>
 									</optgroup>
-									<optgroup label="Nintendo 3DS">
-										<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+									<optgroup label="Android">
+										<option value="aai_android" disabled>Ace Attorney Investigations</option>
 									</optgroup>
 								</select>
-								<label for="proof-profile-title-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
+								<label for="logic-title-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
 								<div class="checkbox">
-									<input type="checkbox" name="proof-profile-title-batch-mode" id="proof-profile-title-batch-mode"
+									<input type="checkbox" name="logic-title-batch-mode" id="logic-title-batch-mode"
 										class="form-control batch-mode" onchange="aaig.toggleBatchModeFields(this)" />
-									<label for="proof-profile-title-batch-mode">&nbsp;</label>
+									<label for="logic-title-batch-mode">&nbsp;</label>
 								</div>
 							</div>
 							
 							<!-- Batch mode settings -->
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
-								<label for="proof-profile-title-batch-mode-initial-file-number"
+								<label for="logic-title-batch-mode-initial-file-number"
 									class="control-label l-label-batch-mode-initial-file-number">&nbsp;</label>
-								<input type="number" id="proof-profile-title-batch-mode-initial-file-number"
-									name="proof-profile-title-batch-mode-initial-file-number" class="form-control batch-mode-initial-file-number"
+								<input type="number" id="logic-title-batch-mode-initial-file-number"
+									name="logic-title-batch-mode-initial-file-number" class="form-control batch-mode-initial-file-number"
 									value="0" min="0" max="12940" maxlength="5" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)"
 									onmouseup="aaig.updatePreviewFilenamesBatchMode(this)" />
-								<label for="proof-profile-title-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
-								<input type="number" id="proof-profile-title-batch-mode-left-zeroes" name="proof-profile-title-batch-mode-left-zeroes"
+								<label for="logic-title-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
+								<input type="number" id="logic-title-batch-mode-left-zeroes" name="logic-title-batch-mode-left-zeroes"
 									class="form-control batch-mode-left-zeroes p-none" value="8" min="0" max="8" maxlength="4"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" onmouseup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
-								<label for="proof-profile-title-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
-								<input type="text" id="proof-profile-title-batch-mode-prefix" name="proof-profile-title-batch-mode-prefix"
+								<label for="logic-title-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
+								<input type="text" id="logic-title-batch-mode-prefix" name="logic-title-batch-mode-prefix"
 									class="form-control batch-mode-prefix p-text-batch-mode-prefix"
 									onkeydown="return aaig.maskFilenameInput(event)"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
-								<label for="proof-profile-title-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
-								<input type="text" id="proof-profile-title-batch-mode-suffix" name="proof-profile-title-batch-mode-suffix" value=".bch.00"
+								<label for="logic-title-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
+								<input type="text" id="logic-title-batch-mode-suffix" name="logic-title-batch-mode-suffix" value=".bch.00"
 									class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							
 							<!-- Visual customization fields -->
-							<div class="panel-group" id="visual-customization-proof-profile-titles" role="tablist">
+							<div class="panel-group" id="visual-customization-logic-titles" role="tablist">
 								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="visual-customization-proof-profile-titles-heading">
+									<div class="panel-heading" role="tab" id="visual-customization-logic-titles-heading">
 										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse" data-parent="#visual-customization-proof-profile-titles"
-												href="#visual-customization-proof-profile-titles-collapse" aria-expanded="true"
-												aria-controls="visual-customization-proof-profile-titles-collapse">
+											<a role="button" data-toggle="collapse" data-parent="#visual-customization-logic-titles"
+												href="#visual-customization-logic-titles-collapse" aria-expanded="true"
+												aria-controls="visual-customization-logic-titles-collapse">
 												<span class="plus-minus glyphicon glyphicon-plus"></span>
 												<span class="l-accordion-visual-customizations">&nbsp;</span>
 											</a>
 										</h4>
 									</div>
-									<div id="visual-customization-proof-profile-titles-collapse" class="panel-collapse collapse"
-										role="tabpanel" aria-labelledby="visual-customization-proof-profile-titles-heading">
+									<div id="visual-customization-logic-titles-collapse" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="visual-customization-logic-titles-heading">
 										<div class="panel-body">
 											<!-- Scale -->
 											<div class="form-inline" style="margin-bottom: 5px;">
-												<label for="automatic-scale-proof-profile-title" class="control-label l-label-scale">&nbsp;</label>
+												<label for="automatic-scale-logic-title" class="control-label l-label-scale">&nbsp;</label>
 												<div class="checkbox">
-													<input type="checkbox" name="automatic-scale-proof-profile-title" id="automatic-scale-proof-profile-title"
+													<input type="checkbox" name="automatic-scale-logic-title" id="automatic-scale-logic-title"
 														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
-													<label for="automatic-scale-proof-profile-title" class="control-label l-label-automatic-scale"
+													<label for="automatic-scale-logic-title" class="control-label l-label-automatic-scale"
 														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 												</div>												
-												<input type="text" id="proof-profile-title-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.200"
+												<input type="text" id="logic-title-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.200"
 													data-slider-step="0.005" data-slider-value="1.045" data-slider-tooltip="hide" data-slider-enabled="false" />
 												<input type="text" class="form-control slider-value" disabled />
 											</div>
 
 											<!-- Font (3DS) -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-title-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="proof-profile-title-font" name="proof-profile-title-font" class="form-control font-3ds" data-has-filter="true"
+												<label for="logic-title-font" class="control-label l-label-font">&nbsp;</label>
+												<select id="logic-title-font" name="logic-title-font" class="form-control font-3ds" data-has-filter="true"
 													onchange="aaig.changeFont(this)"></select>
-												<input type="text" id="proof-profile-title-another-font" class="form-control p-another-font another-font" style="display: none"
+												<input type="text" id="logic-title-another-font" class="form-control p-another-font another-font" style="display: none"
 													onkeyup="aaig.setCustomFont(this)" />
-												<select id="proof-profile-title-font-size" name="proof-profile-title-font-size" class="form-control font-size"
+												<select id="logic-title-font-size" name="logic-title-font-size" class="form-control font-size"
 													onchange="aaig.changeFontSize(this)"></select>
 												<div class="btn-group" data-toggle="buttons">
 													<label class="btn btn-default t-button-bold">
@@ -120,8 +119,8 @@
 
 											<!-- Font (DS) -->
 											<div class="form-inline" style="margin-bottom: 5px; margin-top: 5px; display: none">
-												<label for="proof-profile-title-font-ds" class="control-label l-label-font">&nbsp;</label>
-												<select id="proof-profile-title-font-ds" name="proof-profile-title-font-ds" class="form-control font-ds"
+												<label for="logic-title-font-ds" class="control-label l-label-font">&nbsp;</label>
+												<select id="logic-title-font-ds" name="logic-title-font-ds" class="form-control font-ds"
 													onchange="aaig.changeFontDS(this)">
 													<option value="a" class="l-option-ds-font-automatic" selected>&nbsp;</option>
 													<option value="n" class="l-option-ds-font-normal">&nbsp;</option>
@@ -132,8 +131,8 @@
 
 											<!-- Margin Top -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-title-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-title-margin-top" class="slider margin-top"
+												<label for="logic-title-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-title-margin-top" class="slider margin-top"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="-2"
 													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -141,8 +140,8 @@
 
 											<!-- Margin Left -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-title-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-title-margin-left" class="slider margin-left"
+												<label for="logic-title-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-title-margin-left" class="slider margin-left"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="0"
 													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -150,8 +149,8 @@
 											
 											<!-- Letter Spacing -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-title-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-title-letter-spacing" class="slider letter-spacing"
+												<label for="logic-title-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-title-letter-spacing" class="slider letter-spacing"
 													data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"
 													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -159,11 +158,11 @@
 
 											<!-- Show Comparative -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-title-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
+												<label for="logic-title-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
 												<div class="checkbox">
-													<input type="checkbox" name="proof-profile-title-show-comparative" id="proof-profile-title-show-comparative"
+													<input type="checkbox" name="logic-title-show-comparative" id="logic-title-show-comparative"
 														class="form-control show-comparative" onchange="aaig.toggleComparativeImage(this)" />
-													<label for="proof-profile-title-show-comparative">&nbsp;</label>
+													<label for="logic-title-show-comparative">&nbsp;</label>
 												</div>
 											</div>
 										</div>
@@ -172,7 +171,7 @@
 							</div>
 
 							<!-- Generate image and reset form buttons -->
-							<button type="submit" id="proof-profile-title-generate-image" class="btn btn-primary" aria-label="Generate button">
+							<button type="submit" id="logic-title-generate-image" class="btn btn-primary" aria-label="Generate button">
 								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 								<span class="l-button-generate-image">&nbsp;</span>
 							</button>
@@ -188,14 +187,14 @@
 			<div class="col-sm-6">
 				<div class="previews row">
 					<div class="col-xs-12">
-						<div id="proof-profile-title-preview" class="panel panel-default">
+						<div id="logic-title-preview" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
-								<div id="proof-profile-title-conteiner">
+								<div id="logic-title-conteiner">
 									<div class="text nowrap" data-width="160"></div>
 								</div>
 								<br /><br />
-								<img src="images/proof_profile_title_bg_filled.png" class="button-template" style="display: none" />
+								<img src="images/logic_title_bg_filled.png" class="button-template" style="display: none" />
 								
 								<div class="form-inline" style="display: none">
 									<label class="control-label l-batch-filenaming-preview">&nbsp;</label>

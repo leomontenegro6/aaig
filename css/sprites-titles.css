@@ -1,17 +1,18 @@
+/* Common Proof / profile titles */
 .proof-profile-title-sprites-ds div.text span.letter{
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	background: url('../images/proof_profile_title_font_ds.png?v=1.0.0b');
+	background: url('../images/proof_profile_title_font_ds.png?v=1.0.1b');
 	background-position: 0 0;
 }
 
 .proof-profile-title-sprites-ds.condensed div.text span.letter{
-	background: url('../images/proof_profile_title_font_ds_condensed.png?v=1.0.0b');
+	background: url('../images/proof_profile_title_font_ds_condensed.png?v=1.0.1b');
 }
 
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter{
-	background: url('../images/proof_profile_title_font_ds_extracondensed.png?v=1.0.0b');
+	background: url('../images/proof_profile_title_font_ds_extracondensed.png?v=1.0.1b');
 }
 
 /* Sizes and dimensions from normal characters */
@@ -28,6 +29,8 @@
 .proof-profile-title-sprites-ds div.text span.letter.asterisk{ width: 8px; background-position: -176px 0; }
 .proof-profile-title-sprites-ds div.text span.letter.plus{ width: 10px; background-position: -192px 0; }
 .proof-profile-title-sprites-ds div.text span.letter.comma{ width: 3px; background-position: -208px 0; }
+.proof-profile-title-sprites-ds div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.proof-profile-title-sprites-ds div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
 
 .proof-profile-title-sprites-ds div.text span.letter.minus{ width: 6px; background-position: 0 -16px; }
 .proof-profile-title-sprites-ds div.text span.letter.dot{ width: 3px; background-position: -16px -16px; }
@@ -163,6 +166,8 @@
 .proof-profile-title-sprites-ds.condensed div.text span.letter.asterisk{ width: 6px; }
 .proof-profile-title-sprites-ds.condensed div.text span.letter.plus{ width: 8px; }
 .proof-profile-title-sprites-ds.condensed div.text span.letter.comma{ width: 3px; }
+.proof-profile-title-sprites-ds.condensed div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.proof-profile-title-sprites-ds.condensed div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
 
 .proof-profile-title-sprites-ds.condensed div.text span.letter.minus{ width: 6px; }
 .proof-profile-title-sprites-ds.condensed div.text span.letter.dot{ width: 3px; }
@@ -295,6 +300,8 @@
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter.asterisk{ width: 6px; }
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter.plus{ width: 6px; }
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter.comma{ width: 3px; }
+.proof-profile-title-sprites-ds.extra-condensed div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.proof-profile-title-sprites-ds.extra-condensed div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
 
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter.minus{ width: 6px; }
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter.dot{ width: 3px; }

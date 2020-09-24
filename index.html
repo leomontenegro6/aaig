@@ -35,10 +35,13 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-slider.min.css">
 		<link rel="stylesheet" href="css/select2.min.css">
-		<link rel="stylesheet" href="css/css.css?v=1.0.0b">
-		<link rel="stylesheet" href="css/sprites-titles.css?v=1.0.0b">
-		<link rel="stylesheet" href="css/sprites-subtitles.css?v=1.0.0b">
-		<link rel="stylesheet" href="css/sprites-descriptions.css?v=1.0.0b">
+		<link rel="stylesheet" href="css/css.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-titles.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-subtitles.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-descriptions.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-logic-buttons.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-logic-titles.css?v=1.0.1b">
+		<link rel="stylesheet" href="css/sprites-logic-descriptions.css?v=1.0.1b">
 		<link rel="stylesheet" href="css/theme-dark.css">
 		
 		<!--
@@ -54,8 +57,8 @@
 		<script type="text/javascript" src="js/jszip.min.js"></script>
 		<script type="text/javascript" src="js/FileSaver.min.js"></script>
 		<script type="text/javascript" src="js/stash.min.js"></script>
-		<script type="text/javascript" src="js/html2canvas.js?v=1.0.0b"></script>
-		<script type="text/javascript" src="js/aaig.js?v=1.0.0b"></script>
+		<script type="text/javascript" src="js/html2canvas.js?v=1.0.1b"></script>
+		<script type="text/javascript" src="js/aaig.js?v=1.0.1b"></script>
 		<script type="text/javascript">
 			// Electron - Line needed in order to script imports to work.
 			// Need to be added after all JS files are loaded.
@@ -126,9 +129,9 @@
 			</div>
 		</nav>
 		
-		<div id="main-container" class="container">
+		<div id="main-container" class="container-fluid">
 			<!-- Tabs -->
-			<ul id="main-tabs" class="nav nav-tabs" role="tablist">
+			<ul id="main-tabs" class="nav nav-pills nav-stacked col-md-2 col-sm-3" role="tablist">
 				<li role="presentation" class="active">
 					<a href="#buttons" aria-controls="buttons" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-align-justify"></span>
@@ -160,6 +163,24 @@
 					</a>
 				</li>
 				<li role="presentation">
+					<a href="#logic-buttons" aria-controls="logic-buttons" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-text-background"></span>
+						<span class="l-tab-logic-buttons">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#logic-titles" aria-controls="logic-titles" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-text-background"></span>
+						<span class="l-tab-logic-titles">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#logic-descriptions" aria-controls="logic-descriptions" role="tab" data-toggle="tab">
+						<span class="glyphicon glyphicon-list-alt"></span>
+						<span class="l-tab-logic-descriptions">&nbsp;</span>
+					</a>
+				</li>
+				<li role="presentation">
 					<a href="#sandbox" aria-controls="sandbox" role="tab" data-toggle="tab">
 						<span class="glyphicon glyphicon-inbox"></span>
 						<span class="l-tab-sandbox">&nbsp;</span>
@@ -168,7 +189,7 @@
 			</ul>
 
 			<!-- Tab conteiners -->
-			<div id="main-tabs-conteiners" class="tab-content">
+			<div id="main-tabs-conteiners" class="tab-content col-md-10 col-sm-9">
 				<div role="tabpanel" class="tab-pane active" id="buttons">
 					<!-- include "tab-buttons.html" -->
 					<span class="l-loading">&nbsp;</span>
@@ -187,6 +208,18 @@
 				</div>
 				<div role="tabpanel" class="tab-pane" id="proof-profile-descriptions">
 					<!-- include "tab-proof-profile-descriptions.html" -->
+					<span class="l-loading">&nbsp;</span>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="logic-titles">
+					<!-- include "tab-logic-titles.html" -->
+					<span class="l-loading">&nbsp;</span>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="logic-buttons">
+					<!-- include "tab-logic-buttons.html" -->
+					<span class="l-loading">&nbsp;</span>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="logic-descriptions">
+					<!-- include "tab-logic-descriptions.html" -->
 					<span class="l-loading">&nbsp;</span>
 				</div>
 				<div role="tabpanel" class="tab-pane" id="sandbox">

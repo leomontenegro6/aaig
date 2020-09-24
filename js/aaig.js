@@ -10,9 +10,10 @@ function aaig(){
 		'language': 'pt-br'
 	};
 	this.languageStrings = {}
-	this.platformConfigs = {
+	this.gameConfigs = {
 		'button-conteiner': {
-			'ds': {
+			'aa123_ds': {
+				'font-ds': 'Arial',
 				'font-size': 18,
 				'margin-top': {
 					'min': -30,
@@ -24,12 +25,31 @@ function aaig(){
 					'max': 60,
 					'value': 16
 				},
-				'conteiner-class': 'ds',
+				'conteiner-class': 'aa123_ds',
 				'conteiner-text-width': 224,
 				'comparative-image-src': 'images/button_bg_filled_ds.png',
 				'trigger-change-scale-fields': true
 			},
-			'3ds': {
+			'aai_ds': {
+				'font-ds': 'Kosugi Sans',
+				'font-size': 21,
+				'margin-top': {
+					'min': -30,
+					'max': 60,
+					'value': -2
+				},
+				'margin-left': {
+					'min': -30,
+					'max': 60,
+					'value': 0
+				},
+				'conteiner-class': 'aai_ds',
+				'conteiner-text-width': 224,
+				'comparative-image-src': 'images/button_bg_filled_ds_2.png',
+				'trigger-change-scale-fields': true
+			},
+			'aat_3ds': {
+				'font-3ds': 'Arial',
 				'font-size': 23,
 				'margin-top': {
 					'min': -5,
@@ -48,17 +68,28 @@ function aaig(){
 			}
 		},
 		'smaller-button-conteiner': {
-			'ds': {
+			'aa123_ds': {
 				'font-size': 18,
 				'margin-top': {
 					'value': 4
 				},
-				'conteiner-class': 'ds',
+				'conteiner-class': 'aa123_ds',
 				'conteiner-text-width': 128,
 				'comparative-image-src': 'images/smaller_button_bg_filled_ds.png',
 				'trigger-change-scale-fields': true
 			},
-			'3ds': {
+			'aai_ds': {
+				'font-ds': 'Kosugi Sans',
+				'font-size': 21,
+				'margin-top': {
+					'value': -2
+				},
+				'conteiner-class': 'aai_ds',
+				'conteiner-text-width': 144,
+				'comparative-image-src': 'images/smaller_button_bg_filled_ds_2.png',
+				'trigger-change-scale-fields': true
+			},
+			'aat_3ds': {
 				'font-size': 23,
 				'margin-top': {
 					'value': 0
@@ -70,7 +101,7 @@ function aaig(){
 			}
 		},
 		'proof-profile-title-conteiner': {
-			'ds': {
+			'aa123_ds': {
 				'scale': {
 					'value': 1
 				},
@@ -94,7 +125,31 @@ function aaig(){
 				'trigger-change-scale-fields': true,
 				'trigger-keyup-text-fields': true
 			},
-			'3ds': {
+			'aai_ds': {
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Phoenix Wright',
+				'font-ds': 'a',
+				'font-size': 15,
+				'margin-top': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-title-sprites-ds',
+				'conteiner-text-width': 128,
+				'comparative-image-src': 'images/proof_profile_title_bg_filled_ds.png',
+				'show-font-3ds-field': false,
+				'show-font-ds-field': true,
+				'show-scale-field': false,
+				'trigger-change-scale-fields': true,
+				'trigger-keyup-text-fields': true
+			},
+			'aat_3ds': {
 				'scale': {
 					'value': 1.045
 				},
@@ -119,7 +174,7 @@ function aaig(){
 			}
 		},
 		'proof-profile-subtitle-conteiner': {
-			'ds': {
+			'aa123_ds': {
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -145,7 +200,33 @@ function aaig(){
 				'trigger-keyup-text-fields': true,
 				'trigger-change-line-break-mode-field': true
 			},
-			'3ds': {
+			'aai_ds': {
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Pixel Arial',
+				'font-size': 8,
+				'margin-top': {
+					'value': 2
+				},
+				'line-height': {
+					'value': 1.95
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-subtitle-sprites-ds aai',
+				'conteiner-text-width': 128,
+				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_ds_2.png',
+				'show-font-3ds-field': false,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			},
+			'aat_3ds': {
 				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1
@@ -173,7 +254,7 @@ function aaig(){
 			}
 		},
 		'proof-profile-description-conteiner': {
-			'ds': {
+			'aa123_ds': {
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -204,7 +285,38 @@ function aaig(){
 				'trigger-keyup-text-fields': true,
 				'trigger-change-line-break-mode-field': true
 			},
-			'3ds': {
+			'aai_ds': {
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Phoenix Wright',
+				'font-ds': 'a',
+				'font-size': 16,
+				'margin-top': {
+					'value': 0
+				},
+				'margin-left': {
+					'value': 1
+				},
+				'line-height': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-description-sprites-ds aai',
+				'conteiner-text-width': 223,
+				'comparative-image-src': 'images/proof_profile_description_bg_filled_ds_2.png',
+				'show-font-3ds-field': false,
+				'show-font-ds-field': true,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			},
+			'aat_3ds': {
 				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1.075
@@ -235,31 +347,119 @@ function aaig(){
 				'trigger-change-line-break-mode-field': true
 			}
 		},
+		'logic-button-conteiner': {
+			'aai_ds': {
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Pixel Arial',
+				'font-size': 8,
+				'margin-left': {
+					'value': 2
+				},
+				'margin-top': {
+					'value': 2
+				},
+				'line-height': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'logic-button-sprites-ds',
+				'conteiner-text-width': 76,
+				'comparative-image-src': 'images/logic_button_bg_filled.png',
+				'show-font-3ds-field': false,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			}
+		},
+		'logic-title-conteiner': {
+			'aai_ds': {
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Phoenix Wright',
+				'font-ds': 'a',
+				'font-size': 15,
+				'margin-top': {
+					'value': 2
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'logic-title-sprites-ds',
+				'conteiner-text-width': 184,
+				'comparative-image-src': 'images/logic_title_bg_filled.png',
+				'show-font-3ds-field': false,
+				'show-font-ds-field': true,
+				'show-scale-field': false,
+				'trigger-change-scale-fields': true,
+				'trigger-keyup-text-fields': true
+			}
+		},
+		'logic-description-conteiner': {
+			'aai_ds': {
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Pixel Arial',
+				'font-size': 8,
+				'margin-left': {
+					'value': 1
+				},
+				'margin-top': {
+					'value': 0
+				},
+				'line-height': {
+					'value': 1.65
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'logic-description-sprites-ds',
+				'conteiner-text-width': 144,
+				'comparative-image-src': 'images/logic_description_bg_filled.png',
+				'show-font-3ds-field': false,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			}
+		},
 		'button-conteiner-sandbox': {
-			'ds': {
-				'conteiner-class': 'ds'
+			'aa123_ds': {
+				'conteiner-class': 'aa123_ds'
 			},
-			'3ds': {
+			'aat_3ds': {
 				'conteiner-class': ''
 			}
 		},
 		'smaller-button-conteiner-sandbox': {
-			'ds': {
-				'conteiner-class': 'ds'
+			'aa123_ds': {
+				'conteiner-class': 'aa123_ds'
 			},
-			'3ds': {
+			'aat_3ds': {
 				'conteiner-class': ''
 			}
 		},
 		'proof-profile-conteiner-sandbox': {
-			'ds': {
-				'conteiner-class': 'ds',
+			'aa123_ds': {
+				'conteiner-class': 'aa123_ds',
 				'conteiner-text-proof-profile-title-class': 'proof-profile-title-sprites-ds',
 				'conteiner-text-proof-profile-subtitle-class': 'proof-profile-subtitle-sprites-ds',
 				'conteiner-text-proof-profile-description-class': 'proof-profile-description-sprites-ds',
 				'trigger-keyup-text-fields': true
 			},
-			'3ds': {
+			'aat_3ds': {
 				'conteiner-class': '',
 				'conteiner-text-proof-profile-title-class': '',
 				'conteiner-text-proof-profile-subtitle-class': '',
@@ -431,6 +631,9 @@ function aaig(){
 		var $divTabProofProfileTitles = $('#proof-profile-titles');
 		var $divTabProofProfileSubtitles = $('#proof-profile-subtitles');
 		var $divTabProofProfileDescriptions = $('#proof-profile-descriptions');
+		var $divTabLogicButtons = $('#logic-buttons');
+		var $divTabLogicTitles = $('#logic-titles');
+		var $divTabLogicDescriptions = $('#logic-descriptions');
 		var $divTabSandbox = $('#sandbox');
 		
 		// Disabling cache for ajax requests
@@ -444,7 +647,13 @@ function aaig(){
 				$divTabProofProfileTitles.load('tab-proof-profile-titles.html', function(){
 					$divTabProofProfileSubtitles.load('tab-proof-profile-subtitles.html', function(){
 						$divTabProofProfileDescriptions.load('tab-proof-profile-descriptions.html', function(){
-							$divTabSandbox.load('tab-sandbox.html', callback);
+							$divTabLogicButtons.load('tab-logic-buttons.html', function(){
+								$divTabLogicTitles.load('tab-logic-titles.html', function(){
+									$divTabLogicDescriptions.load('tab-logic-descriptions.html', function(){
+										$divTabSandbox.load('tab-sandbox.html', callback);
+									});
+								});
+							})
 						});
 					});
 				});
@@ -637,6 +846,10 @@ function aaig(){
 		$('#proof-profile-title-text-batch-mode').html('Attorney\'s Badge\nCindy\'s Autopsy Report\nStatue / The Thinker\nPassport');
 		$('#proof-profile-subtitle-text').html('Type: Weapons\nSubmitted as evidence by Prosecutor Payne.');
 		$('#proof-profile-description-text').html('Time of death: 9/5 at 9:00 PM.\nCause: single blunt force trauma. Death was instantaneous.');
+		$('#logic-button-text').html("Victim was a\ndetective");
+		$('#logic-title-text').attr('value', "The killer's goal");
+		$('#logic-title-text-batch-mode').html("The killer's goal\nSigns of a struggle\nMotive: Theft (?)");
+		$('#logic-description-text').html('Why did this happen in my\noffice? What was the killer\nafter?');
 		$('#sandbox-buttons-text-1').attr('value', 'Aline Sato');
 		$('#sandbox-buttons-text-2').attr('value', 'Cíntia Muito');
 		$('#sandbox-buttons-text-3').attr('value', 'Cíntia Rocha');
@@ -678,9 +891,20 @@ function aaig(){
 		var $textareaProofProfileTitleText = $('#proof-profile-title-text');
 		var $textareaProofProfileSubtitleText = $('#proof-profile-subtitle-text');
 		var $textareaProofProfileDescriptionText = $('#proof-profile-description-text');
+		var $textareaLogicButtonText = $('#logic-button-text');
+		var $textareaLogicTitleText = $('#logic-title-text');
+		var $textareaLogicDescriptionText = $('#logic-description-text');
+		var $selectLogicButtonGame = $('#logic-button-game');
+		var $selectLogicTitleGame = $('#logic-title-game');
+		var $selectLogicDescriptionGame = $('#logic-description-game');
 		
 		$inputButtonText.add($inputSmallerButtonText).add($textareaProofProfileTitleText).trigger('keyup');
 		$textareaProofProfileSubtitleText.add($textareaProofProfileDescriptionText).trigger('keyup');
+		$textareaLogicButtonText.add($textareaLogicTitleText).add($textareaLogicDescriptionText).trigger('keyup');
+		
+		setTimeout(function(){
+			$selectLogicButtonGame.add($selectLogicTitleGame).add($selectLogicDescriptionGame).trigger('change');
+		}, 500);
 	}
 	
 	this.toggleSandboxFieldEventsOnTabClick = function(){
@@ -703,7 +927,7 @@ function aaig(){
 		var $selectLineBreakMode = $(selectLineBreakMode);
 		var $form = $selectLineBreakMode.closest('form');
 		var $textarea = $form.find('textarea.text');
-		var $selectPlatform = $form.find('select.platform');
+		var $selectGame = $form.find('select.game');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $selectFontFieldDS = $form.find('select.font-ds');
 		var $containerFontFieldDS = $selectFontFieldDS.closest('div.form-inline');
@@ -711,15 +935,15 @@ function aaig(){
 		var $conteinerScaleField = $scaleField.closest('div.form-inline');
 		
 		var previewConteinerFieldId = $form.attr('data-image');
-		var platform = $selectPlatform.val();
+		var game = $selectGame.val();
 		var lineBreakMode = $selectLineBreakMode.val();
 		
-		if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner' && platform == 'ds' && lineBreakMode == 'mode3'){
+		if(($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'logic-description-conteiner']) !== -1) && ($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && lineBreakMode == 'mode3'){
 			$selectLineBreakMode.val('mode2').trigger('change');
 			return;
 		}
 		
-		if(platform == '3ds'){
+		if(game == 'aat_3ds'){
 			if(lineBreakMode == 'mode1'){
 				// Mode 1: Automatic linebreaks, no scale
 				$conteinerScaleField.hide();
@@ -840,9 +1064,9 @@ function aaig(){
 			} else if($input.hasClass('letter-spacing')){
 				$input.on('change', function(){
 					var $visibleTextField = $form.find('input.text, textarea.text, textarea.text-batch-mode').filter(':visible');
-					var $selectPlatform = $form.find('select.platform');
+					var $selectGame = $form.find('select.game');
 					
-					var platform = $selectPlatform.val();
+					var game = $selectGame.val();
 					var letterSpacing = parseInt(this.value, 10);
 					var letterSpacingCSS, letterSpacingLabel;
 					if(letterSpacing > 1){
@@ -854,7 +1078,7 @@ function aaig(){
 					}
 					
 					$divPreviewConteinerFieldText.removeClass('letter-spacing-1 letter-spacing-2');
-					if(platform == 'ds' && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner']) !== -1)){
+					if(($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
 						letterSpacing = (letterSpacing - 1);
 						if(letterSpacing > 0) $divPreviewConteinerFieldText.addClass('letter-spacing-' + letterSpacing);
 					} else {
@@ -927,13 +1151,13 @@ function aaig(){
 					} else if(name == 'smaller-button-font'){
 						defaultFont = 'Arial';
 						defaultFontSize = 23;
-					} else if(name == 'proof-profile-title-font'){
+					} else if(name == 'proof-profile-title-font' || name == 'logic-title-font'){
 						defaultFont = 'Vaud-Book';
 						defaultFontSize = 18;
-					} else if(name == 'proof-profile-subtitle-font'){
+					} else if(name == 'proof-profile-subtitle-font' || name == 'logic-button-font'){
 						defaultFont = 'Vaud-Book';
 						defaultFontSize = 14;
-					} else if(name == 'proof-profile-description-font'){
+					} else if(name == 'proof-profile-description-font' || name == 'logic-description-font'){
 						defaultFont = 'Vaud-Book';
 						defaultFontSize = 14;
 					}
@@ -1085,7 +1309,7 @@ function aaig(){
 		// If got here, the preview can be updated. Proceed as normal.
 		var $field = $(field);
 		var $form = $field.closest('form');
-		var $selectPlatform = $form.find('select.platform');
+		var $selectGame = $form.find('select.game');
 		var $selectLineBreakMode = $form.find('select.line-break-mode');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $checkboxBatchMode = $form.find('input.batch-mode');
@@ -1096,25 +1320,25 @@ function aaig(){
 		
 		var text = field.value;
 		var textfieldName = $field.attr('name');
-		var platform = $selectPlatform.val();
+		var game = $selectGame.val();
 		var lineBreakMode = $selectLineBreakMode.val();
 		var marginLeft = $marginLeftField.val();
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 		var checkBatchModeActivated = $checkboxBatchMode.is(':checked');
 		
-		if(previewConteinerFieldId == 'button-conteiner' || previewConteinerFieldId == 'smaller-button-conteiner'){
+		if($.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner']) !== -1){
 			// Buttons and smaller buttons
 			this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale);
-		} else if(previewConteinerFieldId == 'proof-profile-title-conteiner'){
-			// Proof / profile titles
-			if(platform == '3ds'){
+		} else if($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-title-conteiner']) !== -1){
+			// Proof / profile titles, and logic titles (AAI)
+			if(game == 'aat_3ds'){
 				text = text.replace(/\n/g, '<br />');
 				this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale);
 			} else {
 				this.updatePreviewSprites($divPreviewConteinerFieldText, text);
 			}
-		} else if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner' || previewConteinerFieldId == 'proof-profile-description-conteiner'){
-			// Proof / profile subtitles and proof / profile descriptions
+		} else if($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-button-conteiner', 'logic-description-conteiner']) !== -1){
+			// Proof / profile subtitles, proof / profile descriptions, logic buttons (AAI) and logic descriptions (AAI)
 			if(checkBatchModeActivated){
 				var selection_start = field.selectionStart;
 				var block_number = (text.substr(0, selection_start).split(/\n\n/).length) - 1;
@@ -1124,7 +1348,7 @@ function aaig(){
 				var current_block = $.trim( blocks[block_number] );
 
 				// Updating preview from current block
-				if(platform == '3ds'){
+				if(game == 'aat_3ds'){
 					current_block = current_block.replace(/\n/g, '<br />');
 					this.updatePreviewText($divPreviewConteinerFieldText, current_block, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
@@ -1134,7 +1358,7 @@ function aaig(){
 				// Updating filenames preview
 				this.updatePreviewFilenamesBatchMode(field);
 			} else {
-				if(platform == '3ds'){
+				if(game == 'aat_3ds'){
 					text = text.replace(/\n/g, '<br />');
 					this.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 				} else {
@@ -1159,7 +1383,7 @@ function aaig(){
 			if(textfieldName == 'proof-profile-title-text-sandbox'){
 				// Preview called from title text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-title');
-				if(platform == 'ds'){
+				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1176,7 +1400,7 @@ function aaig(){
 			} else if(textfieldName == 'proof-profile-subtitle-text-sandbox'){
 				// Preview called from subtitle text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-subtitle');
-				if(platform == 'ds'){
+				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1188,7 +1412,7 @@ function aaig(){
 			} else if(textfieldName == 'proof-profile-description-text-sandbox'){
 				// Preview called from description text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-description');
-				if(platform == 'ds'){
+				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1204,7 +1428,7 @@ function aaig(){
 	this.updatePreviewBatchMode = function(field){
 		var $field = $(field);
 		var $form = $field.closest('form');
-		var $selectPlatform = $form.find('select.platform');
+		var $selectGame = $form.find('select.game');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerFieldText = $('#' + previewConteinerFieldId).children('div.text');
@@ -1216,11 +1440,11 @@ function aaig(){
 		// Separating text by line breaks
 		var lines = text.split(/\n/);
 		var current_line = lines[line_number];
-		var platform = $selectPlatform.val();
+		var game = $selectGame.val();
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 
 		// Updating preview from the current line
-		if((platform == 'ds') && (previewConteinerFieldId == 'proof-profile-title-conteiner')){
+		if(($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-button-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
 			this.updatePreviewSprites($divPreviewConteinerFieldText, current_line);
 		} else {
 			this.updatePreviewText($divPreviewConteinerFieldText, current_line, checkAutomaticScale);
@@ -1312,11 +1536,12 @@ function aaig(){
 		var new_character, $spanLastSpace;
 		var last_space_id = previewConteinerFieldId + '-preview-last-space';
 		var text_width, automatic_linebreaks_margin_left;
-		if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner' || previewConteinerFieldId == 'proof-profile-description-conteiner'){
+		if($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-button-conteiner', 'logic-description-conteiner']) !== -1){
 			automatic_linebreaks_margin_left = parseInt(marginLeft, 10);
 		} else {
 			automatic_linebreaks_margin_left = 0;
 		}
+		var checkHasLineBreak = false;
 
 		// Adding sprite letters in the preview
 		$divPreviewConteiner.html('').css('fontFamily', '');
@@ -1327,6 +1552,8 @@ function aaig(){
 				$divPreviewConteiner.append(
 					$('<br />')
 				);
+				
+				checkHasLineBreak = true;
 			} else {
 				new_character = this.formatCharacter(character);
 				$divPreviewConteiner.append(
@@ -1347,6 +1574,8 @@ function aaig(){
 					$spanLastSpace.after(
 						$('<br />')
 					).remove();
+					
+					checkHasLineBreak = true;
 				}
 			}
 		}
@@ -1379,11 +1608,21 @@ function aaig(){
 				}
 			}
 		}
+		
+		// Doing additional treatments for AAI logic buttons
+		if(previewConteinerFieldId == 'logic-button-conteiner'){
+			// Implementing vertical alignment if the button has no line breaks
+			if(checkHasLineBreak){
+				$divPreviewConteiner.removeClass('vertical-centered');
+			} else {
+				$divPreviewConteiner.addClass('vertical-centered');
+			}
+		}
 
 		if(callback) callback(checkLimitExceeded);
 	}
 	
-	this.changePlatform = function(field){
+	this.changeGame = function(field){
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $textFields = $form.find('input.text, textarea.text');
@@ -1406,11 +1645,11 @@ function aaig(){
 		var $divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.text');
 		var $imgComparative = $divPreviewConteinerField.siblings('img.button-template');
 		
-		var selectedPlatform = field.value;
+		var selectedGame = field.value;
 		
-		var platformConfigs = this.platformConfigs[previewConteinerFieldId][selectedPlatform];
-		for(var configName in platformConfigs){
-			var configValues = platformConfigs[configName];
+		var gameConfigs = this.gameConfigs[previewConteinerFieldId][selectedGame];
+		for(var configName in gameConfigs){
+			var configValues = gameConfigs[configName];
 			
 			if(configName == 'line-break-mode-options-suffix-class'){
 				$selectLineBreakModeOptions.each(function(){
@@ -1427,6 +1666,10 @@ function aaig(){
 			} else if(configName == 'font-3ds'){
 				$fontField.val(configValues).trigger('change');
 			} else if(configName == 'font-ds'){
+				if(previewConteinerFieldId == 'button-conteiner' || previewConteinerFieldId == 'smaller-button-conteiner') {
+					$fontFieldDS = $fontField;
+					$conteinerFontFieldDS = $fontFieldDS.closest('div.form-inline');
+				}
 				$fontFieldDS.val(configValues).trigger('change');
 			} else if(configName == 'font-size'){
 				$fontSizeField.val(configValues).trigger('change');
@@ -1494,8 +1737,8 @@ function aaig(){
 				$divPreviewConteinerFieldText.attr('class', classes + ' ' + configValues);
 			} else if(configName == 'trigger-change-scale-fields'){
 				if(configValues == true){
-					if(previewConteinerFieldId == 'proof-profile-title-conteiner'){
-						if($automaticScaleField.is(':checked') && (selectedPlatform != 'ds')){
+					if(previewConteinerFieldId == 'proof-profile-title-conteiner' || previewConteinerFieldId == 'logic-title-conteiner'){
+						if($automaticScaleField.is(':checked') && (selectedGame != 'aa123_ds' && selectedGame != 'aai_ds')){
 							$automaticScaleField.trigger('change');
 						} else {
 							$scaleField.trigger('change');
@@ -1529,7 +1772,7 @@ function aaig(){
 		var $textfieldBatchMode = $form.find('textarea.text-batch-mode');
 		var $divBatchModeSettings = $form.find('div.batch-mode-settings');
 		
-		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner', 'proof-profile-title-conteiner']) !== -1 ){
+		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner', 'proof-profile-title-conteiner', 'logic-title-conteiner']) !== -1 ){
 			if($checkbox.is(':checked')){
 				$textfield.hide();
 				$textfieldBatchMode.height(214).slideDown('fast').trigger('keyup');
@@ -1553,7 +1796,7 @@ function aaig(){
 				});
 				this.hidePreviewFilenamesBatchMode( $textfield[0] );
 			}
-		} else if( $.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner']) !== -1 ){
+		} else if( $.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-button-conteiner', 'logic-description-conteiner']) !== -1 ){
 			var height, resizable_class;
 			if($checkbox.is(':checked')){
 				height = 214;
@@ -1610,7 +1853,7 @@ function aaig(){
 		
 		var text = $textarea.val();
 		var blocks;
-		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner', 'proof-profile-title-conteiner']) !== -1 ){
+		if( $.inArray(previewConteinerFieldId, ['button-conteiner', 'smaller-button-conteiner', 'proof-profile-title-conteiner', 'logic-title-conteiner']) !== -1 ){
 			blocks = text.split(/\n/);
 		} else {
 			blocks = text.split(/\n\n/);
@@ -1811,7 +2054,7 @@ function aaig(){
 		var $form = $(form);
 		var $textfield = $form.find('input.text, textarea.text');
 		var $textfieldBatchMode = $form.find('textarea.text-batch-mode');
-		var $selectPlatform = $form.find('select.platform');
+		var $selectGame = $form.find('select.game');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $checkboxBatchMode = $form.find('input.batch-mode');
 		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
@@ -1822,7 +2065,7 @@ function aaig(){
 		var previewConteinerFieldId = $form.attr('data-image');
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		
-		var platform = $selectPlatform.val();
+		var game = $selectGame.val();
 		
 		var text, checkAutomaticScale;
 		var date = this.obtainClientDatetimeForFilenames();
@@ -1842,9 +2085,9 @@ function aaig(){
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
-		} else if(previewConteinerFieldId == 'proof-profile-title-conteiner'){
+		} else if($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-title-conteiner']) !== -1){
 			// Proof / profile titles
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (platform != 'ds'));
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
@@ -1852,10 +2095,10 @@ function aaig(){
 			} else {
 				this.renderImageOnBrowser($divPreviewConteinerField, filename);
 			}
-		} else if(previewConteinerFieldId == 'proof-profile-subtitle-conteiner'){
+		} else if($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'logic-button-conteiner', 'logic-description-conteiner']) !== -1){
 			// Proof / profile subtitles
 			var lineBreakMode = $selectLineBreakMode.val();
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (platform != 'ds'));
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
@@ -1866,7 +2109,7 @@ function aaig(){
 		} else if(previewConteinerFieldId == 'proof-profile-description-conteiner'){
 			// Proof / profile descriptions
 			var lineBreakMode = $selectLineBreakMode.val();
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (platform != 'ds'));
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
@@ -1934,9 +2177,9 @@ function aaig(){
 		var $element = $(element);
 		var $divPreviewConteinerFieldText = $element.children('div.text');
 		var $tab = $element.closest('div.tab-pane');
-		var $selectPlatform = $tab.find("select.platform");
+		var $selectGame = $tab.find("select.game");
 
-		var platform = $selectPlatform.val();
+		var game = $selectGame.val();
 		if(typeof checkAutomaticScale == 'undefined') checkAutomaticScale = false;
 		if(typeof initialFileNumber != 'undefined'){
 			initialFileNumber = parseInt(initialFileNumber, 10);
@@ -1951,7 +2194,7 @@ function aaig(){
 			leftZeroes = 0;
 		}
 		
-		var checkUsingSprites = (platform == 'ds') && ($tab.is("[id='proof-profile-titles'], [id='proof-profile-subtitles'], [id='proof-profile-descriptions']"));
+		var checkUsingSprites = ($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($tab.is("[id='proof-profile-titles'], [id='proof-profile-subtitles'], [id='proof-profile-descriptions'], [id='logic-buttons'], [id='logic-titles'], [id='logic-descriptions']"));
 		var i = 0;
 		var canvases = [];
 		var that = this;
@@ -1962,7 +2205,7 @@ function aaig(){
 
 		var renderImage = function(){
 			var text = texts.shift();
-			if(platform == '3ds') text = text.replace(/\n/g, '<br />');
+			if(game == 'aat_3ds') text = text.replace(/\n/g, '<br />');
 
 			var filename = i + '.png';
 

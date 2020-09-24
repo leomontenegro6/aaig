@@ -7,80 +7,79 @@
 					<div class="panel-heading l-filters">&nbsp;</div>
 					<div class="panel-body">
 						
-						<form class="form-proof-profile-subtitle" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
-							data-image="proof-profile-subtitle-conteiner">
-							<!-- Proof / profile subtitle text -->
+						<form class="form-logic-button" onsubmit="return aaig.generateImages(this)" onreset="return aaig.resetForm(this)"
+							data-image="logic-button-conteiner">
+							<!-- Logic description text -->
 							<div class="form-group">
-								<label for="proof-profile-subtitle-text" class="control-label l-label-proof-profile-subtitles">&nbsp;</label>
-								<textarea name="proof-profile-subtitle-text" id="proof-profile-subtitle-text" class="form-control p-text-buttons text noresizable"
+								<label for="logic-button-text" class="control-label l-label-logic-buttons">&nbsp;</label>
+								<textarea name="logic-button-text" id="logic-button-text" class="form-control p-text-buttons text noresizable"
 									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
 							<!-- Game and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
-								<label for="proof-profile-subtitle-game" class="control-label l-label-game">&nbsp;</label>
-								<select id="proof-profile-subtitle-game" name="proof-profile-subtitle-game" class="form-control game"
+								<label for="logic-button-game" class="control-label l-label-game">&nbsp;</label>
+								<select id="logic-button-game" name="logic-button-game" class="form-control game"
 									onchange="aaig.changeGame(this)">
 									<optgroup label="Nintendo DS">
-										<option value="aa123_ds">Ace Attorney 1-3</option>
-										<option value="aai_ds">Ace Attorney Investigations</option>
+										<option value="aai_ds" selected>Ace Attorney Investigations</option>
 									</optgroup>
-									<optgroup label="Nintendo 3DS">
-										<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
+									<optgroup label="Android">
+										<option value="aai_android" disabled>Ace Attorney Investigations</option>
 									</optgroup>
 								</select>
-								<label for="proof-profile-subtitle-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
+								<label for="logic-button-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
 								<div class="checkbox">
-									<input type="checkbox" name="proof-profile-subtitle-batch-mode" id="proof-profile-subtitle-batch-mode"
+									<input type="checkbox" name="logic-button-batch-mode" id="logic-button-batch-mode"
 										class="form-control batch-mode" onchange="aaig.toggleBatchModeFields(this)" />
-									<label for="proof-profile-subtitle-batch-mode">&nbsp;</label>
+									<label for="logic-button-batch-mode">&nbsp;</label>
 								</div>
 							</div>
 							
 							<!-- Batch mode settings -->
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
-								<label for="proof-profile-subtitle-batch-mode-initial-file-number"
+								<label for="logic-button-batch-mode-initial-file-number"
 									class="control-label l-label-batch-mode-initial-file-number">&nbsp;</label>
-								<input type="number" id="proof-profile-subtitle-batch-mode-initial-file-number"
-									name="proof-profile-subtitle-batch-mode-initial-file-number" class="form-control batch-mode-initial-file-number"
+								<input type="number" id="logic-button-batch-mode-initial-file-number"
+									name="logic-button-batch-mode-initial-file-number" class="form-control batch-mode-initial-file-number"
 									value="0" min="0" max="12940" maxlength="5" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)"
 									onmouseup="aaig.updatePreviewFilenamesBatchMode(this)" />
-								<label for="proof-profile-subtitle-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
-								<input type="number" id="proof-profile-subtitle-batch-mode-left-zeroes" name="proof-profile-subtitle-batch-mode-left-zeroes"
+								<label for="logic-button-batch-mode-left-zeroes" class="control-label l-label-batch-mode-left-zeroes">&nbsp;</label>
+								<input type="number" id="logic-button-batch-mode-left-zeroes" name="logic-button-batch-mode-left-zeroes"
 									class="form-control batch-mode-left-zeroes p-none" value="8" min="0" max="8" maxlength="4"
 									onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" onmouseup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							<div class="form-inline batch-mode-settings" style="margin-bottom: 5px; display: none">
-								<label for="proof-profile-subtitle-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
-								<input type="text" id="proof-profile-subtitle-batch-mode-prefix" name="proof-profile-subtitle-batch-mode-prefix"
+								<label for="logic-button-batch-mode-prefix" class="control-label l-label-batch-mode-prefix">&nbsp;</label>
+								<input type="text" id="logic-button-batch-mode-prefix" name="logic-button-batch-mode-prefix"
 									class="form-control batch-mode-prefix p-text-batch-mode-prefix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
-								<label for="proof-profile-subtitle-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
-								<input type="text" id="proof-profile-subtitle-batch-mode-suffix" name="proof-profile-subtitle-batch-mode-suffix" value=".bch.00"
+								<label for="logic-button-batch-mode-suffix" class="control-label l-label-batch-mode-suffix">&nbsp;</label>
+								<input type="text" id="logic-button-batch-mode-suffix" name="logic-button-batch-mode-suffix" value=".bch.00"
 									class="form-control batch-mode-suffix p-text-batch-mode-suffix"
 									onkeydown="return aaig.maskFilenameInput(event)" onkeyup="aaig.updatePreviewFilenamesBatchMode(this)" />
 							</div>
 							
 							<!-- Visual customization fields -->
-							<div class="panel-group" id="visual-customization-proof-profile-subtitle" role="tablist">
+							<div class="panel-group" id="visual-customization-logic-button" role="tablist">
 								<div class="panel panel-default">
-									<div class="panel-heading" role="tab" id="visual-customization-proof-profile-subtitle-heading">
+									<div class="panel-heading" role="tab" id="visual-customization-logic-button-heading">
 										<h4 class="panel-title">
-											<a role="button" data-toggle="collapse" data-parent="#visual-customization-proof-profile-subtitle"
-												href="#visual-customization-proof-profile-subtitle-collapse" aria-expanded="true"
-												aria-controls="visual-customization-proof-profile-subtitle-collapse">
+											<a role="button" data-toggle="collapse" data-parent="#visual-customization-logic-button"
+												href="#visual-customization-logic-button-collapse" aria-expanded="true"
+												aria-controls="visual-customization-logic-button-collapse">
 												<span class="plus-minus glyphicon glyphicon-plus"></span>
 												<span class="l-accordion-visual-customizations">&nbsp;</span>
 											</a>
 										</h4>
 									</div>
-									<div id="visual-customization-proof-profile-subtitle-collapse" class="panel-collapse collapse"
-										role="tabpanel" aria-labelledby="visual-customization-proof-profile-subtitle-heading">
+									<div id="visual-customization-logic-button-collapse" class="panel-collapse collapse"
+										role="tabpanel" aria-labelledby="visual-customization-logic-button-heading">
 										<div class="panel-body">
 											<!-- Line Break Mode -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="line-break-mode-proof-profile-subtitle" class="control-label l-label-line-break-mode">&nbsp;</label>
-												<select id="line-break-mode-proof-profile-subtitle" name="line-break-mode-proof-profile-subtitle"
+												<label for="line-break-mode-logic-button" class="control-label l-label-line-break-mode">&nbsp;</label>
+												<select id="line-break-mode-logic-button" name="line-break-mode-logic-button"
 													class="form-control line-break-mode" onchange="aaig.changeLineBreakMode(this)">
 													<option value="mode1" class="l-pps-option-line-break-mode-1">&nbsp;</option>
 													<option value="mode2" class="l-pps-option-line-break-mode-2">&nbsp;</option>
@@ -90,14 +89,14 @@
 											
 											<!-- Scale -->
 											<div class="form-inline" style="margin-bottom: 5px; display: none">
-												<label for="automatic-scale-proof-profile-subtitle" class="control-label l-label-scale">&nbsp;</label>
+												<label for="automatic-scale-logic-button" class="control-label l-label-scale">&nbsp;</label>
 												<div class="checkbox" style="display: none">
-													<input type="checkbox" name="automatic-scale-proof-profile-subtitle" id="automatic-scale-proof-profile-subtitle"
+													<input type="checkbox" name="automatic-scale-logic-button" id="automatic-scale-logic-button"
 														class="form-control automatic-scale" checked onchange="aaig.toggleAutomaticScale(this)" />
 													<label class="control-label l-label-automatic-scale"
 														style="margin-right: 7.5px; font-weight: normal">&nbsp;</label>
 												</div>
-												<input type="text" id="proof-profile-subtitle-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
+												<input type="text" id="logic-button-scale" class="slider scale" data-slider-min="0.500" data-slider-max="1.000"
 													data-slider-step="0.005" data-slider-value="1" data-slider-tooltip="hide"
 													data-slider-enabled="false" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -105,12 +104,12 @@
 
 											<!-- Font -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-font" class="control-label l-label-font">&nbsp;</label>
-												<select id="proof-profile-subtitle-font" name="proof-profile-subtitle-font" class="form-control font-3ds" data-has-filter="true"
+												<label for="logic-button-font" class="control-label l-label-font">&nbsp;</label>
+												<select id="logic-button-font" name="logic-button-font" class="form-control font-3ds" data-has-filter="true"
 													onchange="aaig.changeFont(this)"></select>
-												<input type="text" id="proof-profile-subtitle-another-font" class="form-control p-another-font another-font"
+												<input type="text" id="logic-button-another-font" class="form-control p-another-font another-font"
 													style="display: none" onkeyup="aaig.setCustomFont(this)" />
-												<select id="proof-profile-subtitle-font-size" name="proof-profile-subtitle-font-size"
+												<select id="logic-button-font-size" name="logic-button-font-size"
 													class="form-control font-size" onchange="aaig.changeFontSize(this)"></select>
 												<div class="btn-group" data-toggle="buttons">
 													<label class="btn btn-default t-button-bold">
@@ -126,8 +125,8 @@
 
 											<!-- Line Height -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-line-height" class="control-label l-label-line-height" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-subtitle-line-height" class="slider line-height"
+												<label for="logic-button-line-height" class="control-label l-label-line-height" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-button-line-height" class="slider line-height"
 													data-slider-min="0.9" data-slider-max="2" data-slider-step="0.05" data-slider-value="1.35"
 													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -135,8 +134,8 @@
 
 											<!-- Margin Top -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-subtitle-margin-top" class="slider margin-top"
+												<label for="logic-button-margin-top" class="control-label l-label-margin-top" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-button-margin-top" class="slider margin-top"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="4"
 													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -144,8 +143,8 @@
 
 											<!-- Margin Left -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-subtitle-margin-left" class="slider margin-left"
+												<label for="logic-button-margin-left" class="control-label l-label-margin-left" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-button-margin-left" class="slider margin-left"
 													   data-slider-min="-5" data-slider-max="30" data-slider-step="1" data-slider-value="2"
 													   data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -153,8 +152,8 @@
 											
 											<!-- Letter Spacing -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
-												<input type="text" id="proof-profile-subtitle-letter-spacing" class="slider letter-spacing"
+												<label for="logic-button-letter-spacing" class="control-label l-label-letter-spacing" style="margin-right: 7.5px">&nbsp;</label>
+												<input type="text" id="logic-button-letter-spacing" class="slider letter-spacing"
 													data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"
 													data-slider-tooltip="hide" />
 												<input type="text" class="form-control slider-value" disabled />
@@ -162,11 +161,11 @@
 
 											<!-- Show Comparative -->
 											<div class="form-inline" style="margin-bottom: 5px">
-												<label for="proof-profile-subtitle-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
+												<label for="logic-button-show-comparative" class="control-label l-label-show-comparative">&nbsp;</label>
 												<div class="checkbox">
-													<input type="checkbox" name="proof-profile-subtitle-show-comparative" id="proof-profile-subtitle-show-comparative"
+													<input type="checkbox" name="logic-button-show-comparative" id="logic-button-show-comparative"
 														class="form-control show-comparative" onchange="aaig.toggleComparativeImage(this)" />
-													<label for="proof-profile-subtitle-show-comparative">&nbsp;</label>
+													<label for="logic-button-show-comparative">&nbsp;</label>
 												</div>
 											</div>
 										</div>
@@ -175,7 +174,7 @@
 							</div>
 
 							<!-- Generate image and reset form buttons -->
-							<button type="submit" id="proof-profile-subtitle-generate-image" class="btn btn-primary" aria-label="Generate button">
+							<button type="submit" id="logic-button-generate-image" class="btn btn-primary" aria-label="Generate button">
 								<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
 								<span class="l-button-generate-image">&nbsp;</span>
 							</button>
@@ -191,14 +190,14 @@
 			<div class="col-sm-6">
 				<div class="previews row">
 					<div class="col-xs-12">
-						<div id="proof-profile-subtitle-preview" class="panel panel-default">
+						<div id="logic-button-preview" class="panel panel-default">
 							<div class="panel-heading l-preview">&nbsp;</div>
 							<div class="panel-body">
-								<div id="proof-profile-subtitle-conteiner">
+								<div id="logic-button-conteiner">
 									<div class="text nowrap" data-width="160"></div>
 								</div>
 								<br /><br />
-								<img src="images/proof_profile_subtitle_bg_filled.png" class="button-template" style="display: none" />
+								<img src="images/logic_button_bg_filled.png" class="button-template" style="display: none" />
 								
 								<div class="form-inline" style="display: none">
 									<label class="control-label l-batch-filenaming-preview">&nbsp;</label>

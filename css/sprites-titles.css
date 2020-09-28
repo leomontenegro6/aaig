@@ -3,16 +3,16 @@
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	background: url('../images/proof_profile_title_font_ds.png?v=1.0.1b');
+	background: url('../images/proof_profile_title_font_ds.png?v=1.0.1c');
 	background-position: 0 0;
 }
 
 .proof-profile-title-sprites-ds.condensed div.text span.letter{
-	background: url('../images/proof_profile_title_font_ds_condensed.png?v=1.0.1b');
+	background: url('../images/proof_profile_title_font_ds_condensed.png?v=1.0.1c');
 }
 
 .proof-profile-title-sprites-ds.extra-condensed div.text span.letter{
-	background: url('../images/proof_profile_title_font_ds_extracondensed.png?v=1.0.1b');
+	background: url('../images/proof_profile_title_font_ds_extracondensed.png?v=1.0.1c');
 }
 
 /* Sizes and dimensions from normal characters */

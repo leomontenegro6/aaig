@@ -320,9 +320,15 @@ a[aria-controls="sandbox"] span.glyphicon{
 	position: relative;
 }
 
-#button-conteiner-sandbox.aa123_ds, #smaller-button-conteiner-sandbox.aa123_ds, #proof-profile-conteiner-sandbox.aa123_ds{
+#button-conteiner-sandbox.aa123_ds,
+#smaller-button-conteiner-sandbox.aa123_ds,
+#proof-profile-conteiner-sandbox.aa123_ds{
 	width: 256px;
 	height: 192px;
+}
+#logic-conteiner-sandbox.aai_ds{
+	width: 256px;
+	height: 384px;
 }
 
 #button-conteiner-sandbox{
@@ -347,6 +353,10 @@ a[aria-controls="sandbox"] span.glyphicon{
 
 #proof-profile-conteiner-sandbox.aa123_ds{
 	background-image: url('../images/sandbox_3_ds.png');
+}
+
+#logic-conteiner-sandbox.aai_ds{
+	background-image: url('../images/sandbox_4_ds.png');
 }
 
 #button-conteiner-sandbox div.button1,
@@ -517,6 +527,65 @@ a[aria-controls="sandbox"] span.glyphicon{
 
 #proof-profile-conteiner-sandbox.aa123_ds div.proof-profile-description div.text{
 	width: 232px !important;
+	line-height: 0;
+}
+
+#logic-conteiner-sandbox div.logic-button1,
+#logic-conteiner-sandbox div.logic-button2{
+	width: 80px;
+	height: 40px;
+	font-family: "Vaud-Book";
+	text-shadow: 1px 1px 0px rgba(102, 102, 102, 0.5);
+	color: #444;
+	line-height: 1;
+	transform-origin: 0 0;
+	position: absolute;
+    background: transparent;
+	text-align: center;
+}
+
+#logic-conteiner-sandbox div.logic-title{
+	width: 184px;
+	transform: scaleX(1.045);
+	font-family: "Vaud-Book";
+	font-size: 13px;
+	text-align: center;
+	color: #E4A018;
+	transform-origin: 0 0;
+	position: absolute;
+    top: 123px;
+	left: 67px;
+    background: transparent;
+}
+
+#logic-conteiner-sandbox div.logic-description{
+	width: 144px;
+	height: 40px;
+	font-family: "Vaud-Book";
+	color: #eee;
+	line-height: 1.35;
+	transform-origin: 0 0;
+	position: absolute;
+	top: 140px;
+	left: 109px;
+    background: transparent;
+}
+
+#logic-conteiner-sandbox div.logic-button1{
+	bottom: 132px;
+	left: 74px;
+}
+
+#logic-conteiner-sandbox div.logic-button2{
+	bottom: 80px;
+	left: 184px;
+}
+
+#logic-conteiner-sandbox.aai_ds div.logic-button div.text{
+	line-height: 0;
+}
+
+#logic-conteiner-sandbox.aai_ds div.logic-description div.text{
 	line-height: 0;
 }
 

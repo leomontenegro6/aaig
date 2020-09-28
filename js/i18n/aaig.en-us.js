@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Ace Attorney Image Generator',
 		'navbar-title': 'Ace Attorney Image Generator',
 		'navbar-title-mobile': 'AAIG',
-		'version': 'v1.0.1b',
+		'version': 'v1.0.1c',
 		
 		'menu-title': 'File',
 		'open-text-file': 'Open text file',
@@ -85,6 +85,7 @@ aaig.languageStrings = {
 		'sandbox-bigger-buttons': 'Large Buttons',
 		'sandbox-smaller-buttons': 'Smaller Buttons',
 		'sandbox-proof-profiles': 'Proofs / Profiles',
+		'sandbox-logic-screens': 'Logic Screens:',
 		
 		'loading': 'Loading...',
 		'processing': 'Processing...',

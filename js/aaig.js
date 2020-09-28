@@ -466,6 +466,15 @@ function aaig(){
 				'conteiner-text-proof-profile-description-class': '',
 				'trigger-keyup-text-fields': true
 			}
+		},
+		'logic-conteiner-sandbox': {
+			'aai_ds': {
+				'conteiner-class': 'aai_ds',
+				'conteiner-text-logic-button-class': 'logic-button-sprites-ds',
+				'conteiner-text-logic-title-class': 'logic-title-sprites-ds',
+				'conteiner-text-logic-description-class': 'logic-description-sprites-ds',
+				'trigger-keyup-text-fields': true
+			}
 		}
 	};
 	
@@ -860,6 +869,10 @@ function aaig(){
 		$('#proof-profile-title-text-sandbox').attr('value', 'Aline Sato');
 		$('#proof-profile-subtitle-text-sandbox').html('Idade: 27\nGênero: Feminino');
 		$('#proof-profile-description-text-sandbox').html('Advogada-chefe de Sato Advogados.\nMinha chefe e uma excelente\nadvogada de defesa.');
+		$('#logic-button-text-sandbox-1').html('Cena do Crime:\nMeu Gabinete');
+		$('#logic-button-text-sandbox-2').html('O objetivo do\nAssassino');
+		$('#logic-title-text-sandbox').attr('value', 'O Objetivo do Assassino');
+		$('#logic-description-text-sandbox').html('Por que isso aconteceu no\nmeu escritório? O que o\nassassino procurava?');
 	}
 	
 	this.resetForm = function(form){
@@ -910,9 +923,11 @@ function aaig(){
 	this.toggleSandboxFieldEventsOnTabClick = function(){
 		var $buttonTabSandbox = $('a[aria-controls="sandbox"]');
 		var $divSandboxTab = $('#sandbox');
+		var $selectSandboxLogicGame = $('#sandbox-logic-game');
 		
 		$buttonTabSandbox.on('shown.bs.tab', function () {
 			$divSandboxTab.find('input, textarea').trigger('keyup');
+			$selectSandboxLogicGame.trigger('change');
 		});
 	}
 	
@@ -1422,6 +1437,41 @@ function aaig(){
 					this.updatePreviewText($divPreviewConteinerFieldText, text, true, 1);
 				}
 			}
+		} else if(previewConteinerFieldId == 'logic-conteiner-sandbox'){
+			// Sandbox - Logic screens
+			if(textfieldName.startsWith('logic-button-text-sandbox')){
+				// Preview called from button text field
+				if(textfieldName == 'logic-button-text-sandbox-1'){
+					$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-button1');
+				} else if(textfieldName == 'logic-button-text-sandbox-2'){
+					$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-button2');
+				}
+
+				var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
+				$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
+
+				this.updatePreviewSprites($newDivPreviewConteinerFieldText, text);
+			} else if(textfieldName == 'logic-title-text-sandbox'){
+				// Preview called from title text field
+				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-title');
+				var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
+				$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
+
+				this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, undefined, 'a', undefined, function(checkLimitExceeded){
+					if(checkLimitExceeded){
+						$newDivPreviewConteinerFieldText.addClass('red');
+					} else {
+						$newDivPreviewConteinerFieldText.removeClass('red');
+					}
+				});
+			} else if(textfieldName == 'logic-description-text-sandbox'){
+				// Preview called from description text field
+				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-description');
+				var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
+				$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
+
+				this.updatePreviewSprites($newDivPreviewConteinerFieldText, text, undefined, 'a');
+			}
 		}
 	}
 	
@@ -1735,6 +1785,34 @@ function aaig(){
 				var classes = $divPreviewConteinerFieldText.attr('class');
 				
 				$divPreviewConteinerFieldText.attr('class', classes + ' ' + configValues);
+			} else if(configName == 'conteiner-text-logic-button-class'){
+				var $divPreviewConteinerFieldsText = $divPreviewConteinerField.children("div[class^='logic-button']");
+				
+				$divPreviewConteinerFieldsText.each(function(){
+					var $div = $(this);
+					
+					var classes = $div.attr('class');
+					var newClasses = classes + ' ' + configValues;
+					newClasses = newClasses.replace(configValues + ' ' + configValues, configValues);
+
+					$div.attr('class', newClasses);
+				});
+			} else if(configName == 'conteiner-text-logic-title-class'){
+				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-title');
+				
+				var classes = $divPreviewConteinerFieldText.attr('class');
+				var newClasses = classes + ' ' + configValues;
+				newClasses = newClasses.replace(configValues + ' ' + configValues, configValues);
+				
+				$divPreviewConteinerFieldText.attr('class', newClasses);
+			} else if(configName == 'conteiner-text-logic-description-class'){
+				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.logic-description');
+				
+				var classes = $divPreviewConteinerFieldText.attr('class');
+				var newClasses = classes + ' ' + configValues;
+				newClasses = newClasses.replace(configValues + ' ' + configValues, configValues);
+				
+				$divPreviewConteinerFieldText.attr('class', newClasses);
 			} else if(configName == 'trigger-change-scale-fields'){
 				if(configValues == true){
 					if(previewConteinerFieldId == 'proof-profile-title-conteiner' || previewConteinerFieldId == 'logic-title-conteiner'){
@@ -2123,7 +2201,7 @@ function aaig(){
 					$divPreviewConteinerField.addClass('brown-background');
 				});
 			}
-		} else if( $.inArray(previewConteinerFieldId, ['button-conteiner-sandbox', 'smaller-button-conteiner-sandbox', 'proof-profile-conteiner-sandbox']) !== -1 ){
+		} else if( $.inArray(previewConteinerFieldId, ['button-conteiner-sandbox', 'smaller-button-conteiner-sandbox', 'proof-profile-conteiner-sandbox', 'logic-conteiner-sandbox']) !== -1 ){
 			// Sandbox
 			this.renderImageOnBrowser($divPreviewConteinerField, filename);
 		}

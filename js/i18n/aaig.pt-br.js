@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title': 'Gerador de Imagens do Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v1.0.1b',
+		'version': 'v1.0.1c',
 		
 		'menu-title': 'Arquivo',
 		'open-text-file': 'Abrir arquivo de texto',
@@ -85,6 +85,7 @@ aaig.languageStrings = {
 		'sandbox-bigger-buttons': 'Botões Grandes',
 		'sandbox-smaller-buttons': 'Botões Menores',
 		'sandbox-proof-profiles': 'Provas / Perfis',
+		'sandbox-logic-screens': 'Telas de Lógica:',
 		
 		'loading': 'Carregando...',
 		'processing': 'Processando...',

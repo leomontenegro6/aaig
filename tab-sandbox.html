@@ -27,7 +27,7 @@
 											onchange="aaig.changeGame(this)" style="width: 150px">
 											<optgroup label="Nintendo DS">
 												<option value="aa123_ds">Ace Attorney 1-3</option>
-												<option value="aai_ds">Ace Attorney Investigations</option>
+												<option value="aai_ds" disabled>Ace Attorney Investigations</option>
 											</optgroup>
 											<optgroup label="Nintendo 3DS">
 												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
@@ -86,7 +86,7 @@
 											onchange="aaig.changeGame(this)" style="width: 150px">
 											<optgroup label="Nintendo DS">
 												<option value="aa123_ds">Ace Attorney 1-3</option>
-												<option value="aai_ds">Ace Attorney Investigations</option>
+												<option value="aai_ds" disabled>Ace Attorney Investigations</option>
 											</optgroup>
 											<optgroup label="Nintendo 3DS">
 												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
@@ -154,7 +154,7 @@
 											onchange="aaig.changeGame(this)" style="width: 150px">
 											<optgroup label="Nintendo DS">
 												<option value="aa123_ds">Ace Attorney 1-3</option>
-												<option value="aai_ds">Ace Attorney Investigations</option>
+												<option value="aai_ds" disabled>Ace Attorney Investigations</option>
 											</optgroup>
 											<optgroup label="Nintendo 3DS">
 												<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
@@ -182,6 +182,75 @@
 									<div class="proof-profile-title nowrap"></div>
 									<div class="proof-profile-subtitle nowrap"></div>
 									<div class="proof-profile-description nowrap"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Logic texts (AAI) -->
+				<div class="row">
+					<div class="col-xs-6">
+						<div id="preview-sandbox-4" class="panel panel-default">
+							<div class="panel-heading l-sandbox-logic-screens">&nbsp;</div>
+							<div class="panel-body">
+								<form class="form-sandbox-4" onsubmit="return aaig.generateImages(this)" onreset="aaig.resetForm(this)"
+									data-image="logic-conteiner-sandbox">
+									<!-- Logic buttons text -->
+									<div class="form-group">
+										<label for="logic-button-text-sandbox-1" class="control-label l-label-logic-buttons">&nbsp;</label>
+										<textarea name="logic-button-text-sandbox-1" id="logic-button-text-sandbox-1" rows="2"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)"></textarea>
+										<textarea name="logic-button-text-sandbox-2" id="logic-button-text-sandbox-2" rows="2"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)"></textarea>
+									</div>
+									<!-- Logic title text -->
+									<div class="form-group">
+										<label for="logic-title-text-sandbox" class="control-label l-label-logic-titles">&nbsp;</label>
+										<input type="text" name="logic-title-text-sandbox" id="logic-title-text-sandbox"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)" />
+									</div>
+									<!-- Logic description text -->
+									<div class="form-group">
+										<label for="logic-description-text-sandbox" class="control-label l-label-logic-descriptions">&nbsp;</label>
+										<textarea name="logic-description-text-sandbox" id="logic-description-text-sandbox" rows="3"
+											class="form-control p-text-sandbox-mode text" onkeyup="aaig.updatePreview(this, event)"></textarea>
+									</div>
+									<!-- Game -->
+									<div class="form-group">
+										<label for="sandbox-logic-game" class="control-label l-label-game">&nbsp;</label>
+										<select id="sandbox-logic-game" name="sandbox-logic-game" class="form-control game"
+											onchange="aaig.changeGame(this)" style="width: 150px">
+											<optgroup label="Nintendo DS">
+												<option value="aai_ds" selected>Ace Attorney Investigations</option>
+											</optgroup>
+											<optgroup label="Android">
+												<option value="aai_android" disabled>Ace Attorney Investigations</option>
+											</optgroup>
+										</select>
+									</div>
+
+									<button type="submit" id="sandbox-generate-image-4" class="btn btn-primary" aria-label="Gerar">
+										<span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+										<span class="l-button-generate-image">&nbsp;</span>
+									</button>
+									<button type="reset" class="btn btn-danger" aria-label="Resetar">
+										<span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+										<span class="l-button-reset-form">&nbsp;</span>
+									</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div id="preview-logic-screen-sandbox" class="panel panel-default">
+							<div class="panel-heading l-preview">&nbsp;</div>
+							<div class="panel-body">
+								<div id="logic-conteiner-sandbox">
+									<div class="logic-button1 nowrap"></div>
+									<div class="logic-button2 nowrap"></div>
+									<div class="logic-title nowrap"></div>
+									<div class="logic-description nowrap"></div>
 								</div>
 							</div>
 						</div>

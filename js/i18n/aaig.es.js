@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title': 'Generador de imágenes Ace Attorney',
 		'navbar-title-mobile': 'GIAA',
-		'version': 'v1.0.1c',
+		'version': 'v1.0.2',
 		
 		'menu-title': 'Archivo',
 		'open-text-file': 'Abrir archivo de texto',
@@ -34,6 +34,7 @@ aaig.languageStrings = {
 		'label-logic-descriptions': 'Texto de la descripción de la lógica:',
 		
 		'label-game': 'Juego:',
+		'label-export-format': 'Formato:',
 		'label-batch-mode': 'Por Lotes:',
 		'label-batch-mode-initial-file-number': 'Numero ficheiro inicial:',
 		'label-batch-mode-left-zeroes': 'Ceros a la izquierda:',
@@ -85,7 +86,7 @@ aaig.languageStrings = {
 		'sandbox-bigger-buttons': 'Botones grandes',
 		'sandbox-smaller-buttons': 'Botones menores',
 		'sandbox-proof-profiles': 'Pruebas / perfis',
-		'sandbox-logic-screens': 'Pantallas de la logica:',
+		'sandbox-logic-screens': 'Pantallas de la logica',
 		
 		'loading': 'Cargando...',
 		'processing': 'Procesando...',

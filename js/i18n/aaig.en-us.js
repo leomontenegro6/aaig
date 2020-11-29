@@ -3,7 +3,7 @@ aaig.languageStrings = {
 		'main-title': 'Ace Attorney Image Generator',
 		'navbar-title': 'Ace Attorney Image Generator',
 		'navbar-title-mobile': 'AAIG',
-		'version': 'v1.0.1c',
+		'version': 'v1.0.2',
 		
 		'menu-title': 'File',
 		'open-text-file': 'Open text file',
@@ -34,6 +34,7 @@ aaig.languageStrings = {
 		'label-logic-descriptions': 'Logic Description:',
 		
 		'label-game': 'Game:',
+		'label-export-format': 'Format:',
 		'label-batch-mode': 'Batch Mode:',
 		'label-batch-mode-initial-file-number': 'Initial File Number:',
 		'label-batch-mode-left-zeroes': 'Left Zeroes:',
@@ -85,7 +86,7 @@ aaig.languageStrings = {
 		'sandbox-bigger-buttons': 'Large Buttons',
 		'sandbox-smaller-buttons': 'Smaller Buttons',
 		'sandbox-proof-profiles': 'Proofs / Profiles',
-		'sandbox-logic-screens': 'Logic Screens:',
+		'sandbox-logic-screens': 'Logic Screens',
 		
 		'loading': 'Loading...',
 		'processing': 'Processing...',

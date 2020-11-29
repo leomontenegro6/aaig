@@ -13,6 +13,7 @@ function aaig(){
 	this.gameConfigs = {
 		'button-conteiner': {
 			'aa123_ds': {
+				'export-format': 'png',
 				'font-ds': 'Arial',
 				'font-size': 18,
 				'margin-top': {
@@ -30,7 +31,27 @@ function aaig(){
 				'comparative-image-src': 'images/button_bg_filled_ds.png',
 				'trigger-change-scale-fields': true
 			},
+			'aa4_ds': {
+				'export-format': 'bmp',
+				'font-ds': 'Arial',
+				'font-size': 18,
+				'margin-top': {
+					'min': -30,
+					'max': 60,
+					'value': 4
+				},
+				'margin-left': {
+					'min': -30,
+					'max': 60,
+					'value': 16
+				},
+				'conteiner-class': 'aa4_ds',
+				'conteiner-text-width': 224,
+				'comparative-image-src': 'images/button_bg_filled_ds.png',
+				'trigger-change-scale-fields': true
+			},
 			'aai_ds': {
+				'export-format': 'png',
 				'font-ds': 'Kosugi Sans',
 				'font-size': 21,
 				'margin-top': {
@@ -45,10 +66,11 @@ function aaig(){
 				},
 				'conteiner-class': 'aai_ds',
 				'conteiner-text-width': 224,
-				'comparative-image-src': 'images/button_bg_filled_ds_2.png',
+				'comparative-image-src': 'images/button_bg_filled_aai_ds.png',
 				'trigger-change-scale-fields': true
 			},
 			'aat_3ds': {
+				'export-format': 'png',
 				'font-3ds': 'Arial',
 				'font-size': 23,
 				'margin-top': {
@@ -69,6 +91,7 @@ function aaig(){
 		},
 		'smaller-button-conteiner': {
 			'aa123_ds': {
+				'export-format': 'png',
 				'font-size': 18,
 				'margin-top': {
 					'value': 4
@@ -78,7 +101,19 @@ function aaig(){
 				'comparative-image-src': 'images/smaller_button_bg_filled_ds.png',
 				'trigger-change-scale-fields': true
 			},
+			'aa4_ds': {
+				'export-format': 'bmp',
+				'font-size': 18,
+				'margin-top': {
+					'value': 4
+				},
+				'conteiner-class': 'aa4_ds',
+				'conteiner-text-width': 128,
+				'comparative-image-src': 'images/smaller_button_bg_filled_ds.png',
+				'trigger-change-scale-fields': true
+			},
 			'aai_ds': {
+				'export-format': 'png',
 				'font-ds': 'Kosugi Sans',
 				'font-size': 21,
 				'margin-top': {
@@ -86,10 +121,11 @@ function aaig(){
 				},
 				'conteiner-class': 'aai_ds',
 				'conteiner-text-width': 144,
-				'comparative-image-src': 'images/smaller_button_bg_filled_ds_2.png',
+				'comparative-image-src': 'images/smaller_button_bg_filled_aai_ds.png',
 				'trigger-change-scale-fields': true
 			},
 			'aat_3ds': {
+				'export-format': 'png',
 				'font-size': 23,
 				'margin-top': {
 					'value': 0
@@ -102,6 +138,7 @@ function aaig(){
 		},
 		'proof-profile-title-conteiner': {
 			'aa123_ds': {
+				'export-format': 'png',
 				'scale': {
 					'value': 1
 				},
@@ -125,7 +162,33 @@ function aaig(){
 				'trigger-change-scale-fields': true,
 				'trigger-keyup-text-fields': true
 			},
+			'aa4_ds': {
+				'export-format': 'bmp',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Phoenix Wright',
+				'font-ds': 'a',
+				'font-size': 15,
+				'margin-top': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-title-sprites-ds aa4_ds',
+				'conteiner-text-width': 128,
+				'comparative-image-src': 'images/proof_profile_title_bg_filled_aa4_ds.png',
+				'show-font-3ds-field': false,
+				'show-font-ds-field': true,
+				'show-scale-field': false,
+				'trigger-change-scale-fields': true,
+				'trigger-keyup-text-fields': true
+			},
 			'aai_ds': {
+				'export-format': 'png',
 				'scale': {
 					'value': 1
 				},
@@ -150,6 +213,7 @@ function aaig(){
 				'trigger-keyup-text-fields': true
 			},
 			'aat_3ds': {
+				'export-format': 'png',
 				'scale': {
 					'value': 1.045
 				},
@@ -175,6 +239,7 @@ function aaig(){
 		},
 		'proof-profile-subtitle-conteiner': {
 			'aa123_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -200,7 +265,35 @@ function aaig(){
 				'trigger-keyup-text-fields': true,
 				'trigger-change-line-break-mode-field': true
 			},
+			'aa4_ds': {
+				'export-format': 'bmp',
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Pixel Arial',
+				'font-size': 8,
+				'margin-top': {
+					'value': 2
+				},
+				'line-height': {
+					'value': 1.95
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-subtitle-sprites-ds aa4_ds',
+				'conteiner-text-width': 128,
+				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_ds.png',
+				'show-font-3ds-field': false,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			},
 			'aai_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -220,13 +313,14 @@ function aaig(){
 				},
 				'conteiner-class': 'proof-profile-subtitle-sprites-ds aai',
 				'conteiner-text-width': 128,
-				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_ds_2.png',
+				'comparative-image-src': 'images/proof_profile_subtitle_bg_filled_aai_ds.png',
 				'show-font-3ds-field': false,
 				'show-scale-field': false,
 				'trigger-keyup-text-fields': true,
 				'trigger-change-line-break-mode-field': true
 			},
 			'aat_3ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1
@@ -255,6 +349,7 @@ function aaig(){
 		},
 		'proof-profile-description-conteiner': {
 			'aa123_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -285,7 +380,40 @@ function aaig(){
 				'trigger-keyup-text-fields': true,
 				'trigger-change-line-break-mode-field': true
 			},
+			'aa4_ds': {
+				'export-format': 'bmp',
+				'line-break-mode-options-suffix-class': '-ds',
+				'scale': {
+					'value': 1
+				},
+				'font-3ds': 'Phoenix Wright',
+				'font-ds': 'a',
+				'font-size': 16,
+				'margin-top': {
+					'value': 0
+				},
+				'margin-left': {
+					'value': 13
+				},
+				'line-height': {
+					'value': 1
+				},
+				'letter-spacing': {
+					'min': 1,
+					'max': 3,
+					'value': 1
+				},
+				'conteiner-class': 'proof-profile-description-sprites-ds aa4_ds',
+				'conteiner-text-width': 238,
+				'comparative-image-src': 'images/proof_profile_description_bg_filled_aa4_ds.png',
+				'show-font-3ds-field': false,
+				'show-font-ds-field': true,
+				'show-scale-field': false,
+				'trigger-keyup-text-fields': true,
+				'trigger-change-line-break-mode-field': true
+			},
 			'aai_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -309,7 +437,7 @@ function aaig(){
 				},
 				'conteiner-class': 'proof-profile-description-sprites-ds aai',
 				'conteiner-text-width': 223,
-				'comparative-image-src': 'images/proof_profile_description_bg_filled_ds_2.png',
+				'comparative-image-src': 'images/proof_profile_description_bg_filled_aai_ds.png',
 				'show-font-3ds-field': false,
 				'show-font-ds-field': true,
 				'show-scale-field': false,
@@ -317,6 +445,7 @@ function aaig(){
 				'trigger-change-line-break-mode-field': true
 			},
 			'aat_3ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '',
 				'scale': {
 					'value': 1.075
@@ -349,6 +478,7 @@ function aaig(){
 		},
 		'logic-button-conteiner': {
 			'aai_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -380,6 +510,7 @@ function aaig(){
 		},
 		'logic-title-conteiner': {
 			'aai_ds': {
+				'export-format': 'png',
 				'scale': {
 					'value': 1
 				},
@@ -406,6 +537,7 @@ function aaig(){
 		},
 		'logic-description-conteiner': {
 			'aai_ds': {
+				'export-format': 'png',
 				'line-break-mode-options-suffix-class': '-ds',
 				'scale': {
 					'value': 1
@@ -439,6 +571,9 @@ function aaig(){
 			'aa123_ds': {
 				'conteiner-class': 'aa123_ds'
 			},
+			'aa4_ds': {
+				'conteiner-class': 'aa4_ds'
+			},
 			'aat_3ds': {
 				'conteiner-class': ''
 			}
@@ -447,6 +582,9 @@ function aaig(){
 			'aa123_ds': {
 				'conteiner-class': 'aa123_ds'
 			},
+			'aa4_ds': {
+				'conteiner-class': 'aa4_ds'
+			},
 			'aat_3ds': {
 				'conteiner-class': ''
 			}
@@ -454,6 +592,13 @@ function aaig(){
 		'proof-profile-conteiner-sandbox': {
 			'aa123_ds': {
 				'conteiner-class': 'aa123_ds',
+				'conteiner-text-proof-profile-title-class': 'proof-profile-title-sprites-ds',
+				'conteiner-text-proof-profile-subtitle-class': 'proof-profile-subtitle-sprites-ds',
+				'conteiner-text-proof-profile-description-class': 'proof-profile-description-sprites-ds',
+				'trigger-keyup-text-fields': true
+			},
+			'aa4_ds': {
+				'conteiner-class': 'aa4_ds',
 				'conteiner-text-proof-profile-title-class': 'proof-profile-title-sprites-ds',
 				'conteiner-text-proof-profile-subtitle-class': 'proof-profile-subtitle-sprites-ds',
 				'conteiner-text-proof-profile-description-class': 'proof-profile-description-sprites-ds',
@@ -953,7 +1098,7 @@ function aaig(){
 		var game = $selectGame.val();
 		var lineBreakMode = $selectLineBreakMode.val();
 		
-		if(($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'logic-description-conteiner']) !== -1) && ($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && lineBreakMode == 'mode3'){
+		if(($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'logic-description-conteiner']) !== -1) && ($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1) && lineBreakMode == 'mode3'){
 			$selectLineBreakMode.val('mode2').trigger('change');
 			return;
 		}
@@ -1093,7 +1238,7 @@ function aaig(){
 					}
 					
 					$divPreviewConteinerFieldText.removeClass('letter-spacing-1 letter-spacing-2');
-					if(($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
+					if(($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'proof-profile-subtitle-conteiner', 'proof-profile-description-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
 						letterSpacing = (letterSpacing - 1);
 						if(letterSpacing > 0) $divPreviewConteinerFieldText.addClass('letter-spacing-' + letterSpacing);
 					} else {
@@ -1398,7 +1543,7 @@ function aaig(){
 			if(textfieldName == 'proof-profile-title-text-sandbox'){
 				// Preview called from title text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-title');
-				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
+				if($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1415,7 +1560,7 @@ function aaig(){
 			} else if(textfieldName == 'proof-profile-subtitle-text-sandbox'){
 				// Preview called from subtitle text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-subtitle');
-				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
+				if($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1427,7 +1572,7 @@ function aaig(){
 			} else if(textfieldName == 'proof-profile-description-text-sandbox'){
 				// Preview called from description text field
 				$divPreviewConteinerFieldText = $divPreviewConteinerField.children('div.proof-profile-description');
-				if($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1){
+				if($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1){
 					var $newDivPreviewConteinerFieldText = $('<div />').addClass('text');
 					$divPreviewConteinerFieldText.html($newDivPreviewConteinerFieldText).css('transform', 'none');
 
@@ -1494,7 +1639,7 @@ function aaig(){
 		var checkAutomaticScale = $checkboxAutomaticScale.is(':checked');
 
 		// Updating preview from the current line
-		if(($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-button-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
+		if(($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1) && ($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-button-conteiner', 'logic-title-conteiner', 'logic-description-conteiner']) !== -1)){
 			this.updatePreviewSprites($divPreviewConteinerFieldText, current_line);
 		} else {
 			this.updatePreviewText($divPreviewConteinerFieldText, current_line, checkAutomaticScale);
@@ -1676,6 +1821,7 @@ function aaig(){
 		var $field = $(field);
 		var $form = $field.closest('form');
 		var $textFields = $form.find('input.text, textarea.text');
+		var $selectExportFormat = $form.find('select.export-format');
 		var $selectLineBreakMode = $form.find('select.line-break-mode');
 		var $selectLineBreakModeOptions = $selectLineBreakMode.children('option');
 		var $automaticScaleField = $form.find('input.automatic-scale');
@@ -1701,7 +1847,14 @@ function aaig(){
 		for(var configName in gameConfigs){
 			var configValues = gameConfigs[configName];
 			
-			if(configName == 'line-break-mode-options-suffix-class'){
+			if(configName == 'export-format'){
+				if(selectedGame == 'aa4_ds'){
+					$selectExportFormat.val('bmp');
+				} else {
+					$selectExportFormat.val('png');
+				}
+				$selectExportFormat.trigger('change');
+			} else if(configName == 'line-break-mode-options-suffix-class'){
 				$selectLineBreakModeOptions.each(function(){
 					var $option = $(this);
 					
@@ -1816,7 +1969,7 @@ function aaig(){
 			} else if(configName == 'trigger-change-scale-fields'){
 				if(configValues == true){
 					if(previewConteinerFieldId == 'proof-profile-title-conteiner' || previewConteinerFieldId == 'logic-title-conteiner'){
-						if($automaticScaleField.is(':checked') && (selectedGame != 'aa123_ds' && selectedGame != 'aai_ds')){
+						if($automaticScaleField.is(':checked') && (selectedGame != 'aa123_ds' && selectedGame != 'aa4_ds' && selectedGame != 'aai_ds')){
 							$automaticScaleField.trigger('change');
 						} else {
 							$scaleField.trigger('change');
@@ -2133,6 +2286,7 @@ function aaig(){
 		var $textfield = $form.find('input.text, textarea.text');
 		var $textfieldBatchMode = $form.find('textarea.text-batch-mode');
 		var $selectGame = $form.find('select.game');
+		var $selectExportFormat = $form.find('select.export-format');
 		var $checkboxAutomaticScale = $form.find('input.automatic-scale');
 		var $checkboxBatchMode = $form.find('input.batch-mode');
 		var $inputBatchModeInitialFileNumber = $form.find('input.batch-mode-initial-file-number');
@@ -2144,6 +2298,7 @@ function aaig(){
 		var $divPreviewConteinerField = $('#' + previewConteinerFieldId);
 		
 		var game = $selectGame.val();
+		var exportFormat = $selectExportFormat.val();
 		
 		var text, checkAutomaticScale;
 		var date = this.obtainClientDatetimeForFilenames();
@@ -2161,56 +2316,58 @@ function aaig(){
 				var lines = text.split(/\n/);
 				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
 			} else {
-				this.renderImageOnBrowser($divPreviewConteinerField, filename);
+				this.renderImageOnBrowser($divPreviewConteinerField, filename, exportFormat);
 			}
 		} else if($.inArray(previewConteinerFieldId, ['proof-profile-title-conteiner', 'logic-title-conteiner']) !== -1){
 			// Proof / profile titles
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aa4_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfieldBatchMode.val();
 				var lines = text.split(/\n/);
 				this.batchRenderImages($divPreviewConteinerField, lines, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix);
 			} else {
-				this.renderImageOnBrowser($divPreviewConteinerField, filename);
+				this.renderImageOnBrowser($divPreviewConteinerField, filename, exportFormat);
 			}
 		} else if($.inArray(previewConteinerFieldId, ['proof-profile-subtitle-conteiner', 'logic-button-conteiner', 'logic-description-conteiner']) !== -1){
 			// Proof / profile subtitles
 			var lineBreakMode = $selectLineBreakMode.val();
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aa4_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
 				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, lineBreakMode);
 			} else {
-				this.renderImageOnBrowser($divPreviewConteinerField, filename);
+				this.renderImageOnBrowser($divPreviewConteinerField, filename, exportFormat);
 			}
 		} else if(previewConteinerFieldId == 'proof-profile-description-conteiner'){
 			// Proof / profile descriptions
 			var lineBreakMode = $selectLineBreakMode.val();
-			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aai_ds'));
+			var checkHasBrownBackgroundClass = $divPreviewConteinerField.hasClass('brown-background');
+			checkAutomaticScale = ($checkboxAutomaticScale.is(':checked') && (game != 'aa123_ds' && game != 'aa4_ds' && game != 'aai_ds'));
 			if($checkboxBatchMode.is(':checked')){
 				text = $textfield.val();
 				var blocks = text.split(/\n\n/);
-				$divPreviewConteinerField.removeClass('brown-background');
+				
+				if(checkHasBrownBackgroundClass) $divPreviewConteinerField.removeClass('brown-background');
 				this.batchRenderImages($divPreviewConteinerField, blocks, checkAutomaticScale, initialFileNumber, leftZeroes, prefix, suffix, lineBreakMode, function(){
-					$divPreviewConteinerField.addClass('brown-background');
+					if(checkHasBrownBackgroundClass) $divPreviewConteinerField.addClass('brown-background');
 				});
 			} else {
-				$divPreviewConteinerField.removeClass('brown-background');
-				this.renderImageOnBrowser($divPreviewConteinerField, filename, function(){
-					$divPreviewConteinerField.addClass('brown-background');
+				if(checkHasBrownBackgroundClass) $divPreviewConteinerField.removeClass('brown-background');
+				this.renderImageOnBrowser($divPreviewConteinerField, filename, exportFormat, function(){
+					if(checkHasBrownBackgroundClass) $divPreviewConteinerField.addClass('brown-background');
 				});
 			}
 		} else if( $.inArray(previewConteinerFieldId, ['button-conteiner-sandbox', 'smaller-button-conteiner-sandbox', 'proof-profile-conteiner-sandbox', 'logic-conteiner-sandbox']) !== -1 ){
 			// Sandbox
-			this.renderImageOnBrowser($divPreviewConteinerField, filename);
+			this.renderImageOnBrowser($divPreviewConteinerField, filename, exportFormat);
 		}
 		
 		// Avoid default form submission
 		return false;
 	}
 	
-	this.renderImageOnBrowser = function(element, filename, callback, triggerDownload){
+	this.renderImageOnBrowser = function(element, filename, exportFormat, callback, triggerDownload){
 		var $element = $(element);
 		var $divPreviews = $element.closest('div.previews');
 		var $divLastCanvases = $divPreviews.find('div.last-canvases').children('div.panel-body');
@@ -2233,8 +2390,12 @@ function aaig(){
 				if(triggerDownload){
 					// Creating temporary anchor for receiving data of the image generated
 					var a = document.createElement('a');
-					a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-					a.download = filename + '.png';
+					if(exportFormat == 'bmp'){
+						a.href = CanvasToBMP.toDataURL(canvas).replace("image/bmp", "image/octet-stream");
+					} else {
+						a.href = canvas.toDataURL('image/png').replace("image/png", "image/octet-stream");
+					}
+					a.download = filename + '.' + exportFormat;
 
 					// Adding anchor inside <body> tag
 					var $a = $(a);
@@ -2256,8 +2417,10 @@ function aaig(){
 		var $divPreviewConteinerFieldText = $element.children('div.text');
 		var $tab = $element.closest('div.tab-pane');
 		var $selectGame = $tab.find("select.game");
+		var $selectExportFormat = $tab.find("select.export-format");
 
 		var game = $selectGame.val();
+		var exportFormat = $selectExportFormat.val();
 		if(typeof checkAutomaticScale == 'undefined') checkAutomaticScale = false;
 		if(typeof initialFileNumber != 'undefined'){
 			initialFileNumber = parseInt(initialFileNumber, 10);
@@ -2272,7 +2435,7 @@ function aaig(){
 			leftZeroes = 0;
 		}
 		
-		var checkUsingSprites = ($.inArray(game, ['aa123_ds', 'aai_ds']) !== -1) && ($tab.is("[id='proof-profile-titles'], [id='proof-profile-subtitles'], [id='proof-profile-descriptions'], [id='logic-buttons'], [id='logic-titles'], [id='logic-descriptions']"));
+		var checkUsingSprites = ($.inArray(game, ['aa123_ds', 'aa4_ds', 'aai_ds']) !== -1) && ($tab.is("[id='proof-profile-titles'], [id='proof-profile-subtitles'], [id='proof-profile-descriptions'], [id='logic-buttons'], [id='logic-titles'], [id='logic-descriptions']"));
 		var i = 0;
 		var canvases = [];
 		var that = this;
@@ -2293,7 +2456,7 @@ function aaig(){
 				that.updatePreviewText($divPreviewConteinerFieldText, text, checkAutomaticScale, undefined, lineBreakMode);
 			}
 
-			that.renderImageOnBrowser($element, filename, function(canvas){
+			that.renderImageOnBrowser($element, filename, exportFormat, function(canvas){
 				canvases.push(canvas);
 
 				if(texts.length){
@@ -2311,8 +2474,13 @@ function aaig(){
 
 					// Adding images in the zip file
 					for(var j in canvases){
-						var filename = that.formatFilenameBatchMode(initialFileNumber, leftZeroes, prefix, suffix) + '.png';
-						var image = canvases[j].toDataURL();
+						var filename = that.formatFilenameBatchMode(initialFileNumber, leftZeroes, prefix, suffix) + '.' + exportFormat;
+						var image;
+						if(exportFormat == 'bmp'){
+							image = CanvasToBMP.toDataURL(canvases[j]);
+						} else {
+							image = canvases[j].toDataURL();
+						}
 						var header_index = image.indexOf(",");
 						var base64_image = image.slice(header_index + 1);
 

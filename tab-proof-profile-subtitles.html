@@ -16,18 +16,24 @@
 									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
-							<!-- Game and batch mode -->
+							<!-- Game, export format and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
 								<label for="proof-profile-subtitle-game" class="control-label l-label-game">&nbsp;</label>
 								<select id="proof-profile-subtitle-game" name="proof-profile-subtitle-game" class="form-control game"
 									onchange="aaig.changeGame(this)">
 									<optgroup label="Nintendo DS">
 										<option value="aa123_ds">Ace Attorney 1-3</option>
+										<option value="aa4_ds">Ace Attorney 4</option>
 										<option value="aai_ds">Ace Attorney Investigations</option>
 									</optgroup>
 									<optgroup label="Nintendo 3DS">
 										<option value="aat_3ds" selected>Ace Attorney Trilogy</option>
 									</optgroup>
+								</select>
+								<label for="proof-profile-subtitle-export-format" class="control-label l-label-export-format">&nbsp;</label>
+								<select id="proof-profile-subtitle-export-format" name="proof-profile-subtitle-export-format" class="form-control export-format">
+									<option value="png">PNG</option>
+									<option value="bmp">BMP</option>
 								</select>
 								<label for="proof-profile-subtitle-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
 								<div class="checkbox">

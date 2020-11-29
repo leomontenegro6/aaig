@@ -16,7 +16,7 @@
 									rows="3" onkeyup="aaig.updatePreview(this, event)" onclick="$(this).trigger('keyup')"></textarea>
 							</div>
 
-							<!-- Game and batch mode -->
+							<!-- Game, export format and batch mode -->
 							<div class="form-inline" style="margin-bottom: 5px">
 								<label for="logic-description-game" class="control-label l-label-game">&nbsp;</label>
 								<select id="logic-description-game" name="logic-description-game" class="form-control game"
@@ -27,6 +27,11 @@
 									<optgroup label="Android">
 										<option value="aai_android" disabled>Ace Attorney Investigations</option>
 									</optgroup>
+								</select>
+								<label for="logic-description-export-format" class="control-label l-label-export-format">&nbsp;</label>
+								<select id="logic-description-export-format" name="logic-description-export-format" class="form-control export-format">
+									<option value="png">PNG</option>
+									<option value="bmp">BMP</option>
 								</select>
 								<label for="logic-description-batch-mode" class="control-label l-label-batch-mode">&nbsp;</label>
 								<div class="checkbox">

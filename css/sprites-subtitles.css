@@ -2,8 +2,12 @@
 	display: inline-block;
 	width: 15px;
 	height: 15px;
-	background: url('../images/proof_profile_subtitle_font_ds.png?v=1.0.1c');
+	background: url('../images/proof_profile_subtitle_font_ds.png?v=1.0.2');
 	background-position: 0 0;
+}
+
+.proof-profile-subtitle-sprites-ds.aa4_ds div.text span.letter{
+	background-image: url('../images/proof_profile_subtitle_font_aa4_ds.png?v=1.0.2') !important;
 }
 
 .proof-profile-subtitle-sprites-ds div.text span.letter.space{ width: 3px; background-position: 0 0; }

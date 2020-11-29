@@ -7,11 +7,11 @@
 }
 
 .proof-profile-description-sprites-ds.condensed div.text span.letter{
-	background: url('../images/proof_profile_description_font_ds_condensed.png?v=1.0.1c');
+	background: url('../images/proof_profile_description_font_ds_condensed.png?v=1.0.2');
 }
 
 .proof-profile-description-sprites-ds.extra-condensed div.text span.letter{
-	background: url('../images/proof_profile_description_font_ds_extracondensed.png?v=1.0.1c');
+	background: url('../images/proof_profile_description_font_ds_extracondensed.png?v=1.0.2');
 }
 
 /* Sizes and dimensions from normal characters */

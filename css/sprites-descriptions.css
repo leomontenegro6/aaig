@@ -146,6 +146,8 @@
 .proof-profile-description-sprites-ds div.text span.letter.u-diaeresis{ width: 7px; background-position: -144px -128px; }
 .proof-profile-description-sprites-ds div.text span.letter.e-grave{ width: 8px; background-position: -160px -128px; }
 .proof-profile-description-sprites-ds div.text span.letter.star{ width: 12px; background-position: -192px -128px; }
+.proof-profile-description-sprites-ds div.text span.letter.o-ordinal{ width: 5px; background-position: -16px -144px; }
+.proof-profile-description-sprites-ds div.text span.letter.a-ordinal{ width: 5px; background-position: -32px -144px; }
 
 .proof-profile-description-sprites-ds div.text span.letter.unknown{ width: 11px !important; background-position: -16px 0 !important; }
 
